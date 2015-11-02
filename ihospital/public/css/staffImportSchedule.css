@@ -1,0 +1,17 @@
+#importSchedulePanelHeader{
+	background-color: #C3E6CD;
+}
+#doctor{
+	width : 500px;
+	margin: 10px 10px 10px 50px;
+}
+#schedule{
+	width : 90%;
+	margin: 10px 10px 10px 50px;
+}
+td,th{
+	width :80px;
+}
+#importButton{
+	margin: 10px 10px 10px 50px;
+}

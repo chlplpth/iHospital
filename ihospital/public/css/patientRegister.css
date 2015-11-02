@@ -1,0 +1,53 @@
+#registerPanelHeader{
+	background-color: #C3E6CD;
+}
+#citizenNumber{
+	margin: 10px 10px 10px 50px;
+	width: 500px;
+}
+#submitButton{
+	margin: 10px 10px 10px 50px;
+}
+#name{
+	margin: 10px 10px 10px 50px;
+	width: 300px;
+}
+#surname{
+	margin: 10px 10px 10px 0px;
+	width: 300px;
+}
+#sex{
+	margin: 10px 10px 10px 50px;
+}
+#address{
+	margin: 10px 10px 10px 50px;
+}
+#email{
+	margin: 10px 10px 10px 50px;
+	width: 400px;
+}
+#tel{
+	margin: 10px 10px 10px 50px;
+	width: 400px;
+}
+#allergy{
+	margin: 10px 10px 10px 50px;
+}
+#bloodType{
+	margin: 20px 10px 10px 0px;
+}
+#username{
+	margin: 10px 10px 10px 50px;
+	width: 300px;
+}
+#password{
+	margin: 10px 10px 10px 50px;
+	width: 300px;
+}
+#confirmPassword{
+	margin: 10px 10px 10px 0px;
+	width: 300px;
+}
+#registerButton{
+	margin: 10px 10px 10px 50px;
+}

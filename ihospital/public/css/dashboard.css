@@ -23,6 +23,7 @@ body {
  */
 .navbar-fixed-top {
   border: 0;
+  background-color: #f2f2f2;
 }
 
 /*
@@ -44,14 +45,14 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #1D636F;
+    background-color: #C3E6CD;
     border-right: 1px solid #eee;
   }
 }
 
 /* Sidebar navigation */
 a{
-  color: #FFFFFF;
+  color: #999999;
   font-weight: bold;
 }
 a:hover{
@@ -71,7 +72,7 @@ a:hover{
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
-  color: #1D636F;
+  color: #999999;
   font-weight: bold;
   background-color: #FFFFFF;
 }
@@ -113,3 +114,4 @@ a:hover{
   display: inline-block;
   border-radius: 50%;
 }
+

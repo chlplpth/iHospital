@@ -21,3 +21,21 @@ Route::get('login',function(){
 Route::get('doctor',function(){
 	return view('doctor.doctorHome');
 });
+Route::get('doctorRecordDiagnosis',function(){
+	return view('doctor.doctorRecordDiagnosis');
+});
+Route::get('doctorRecordDiagnosis2',function(){
+	return view('doctor.doctorRecordDiagnosis2');
+});
+Route::get('staffMakeAppointment',function(){
+	return view('staff.staffMakeAppointment');
+});
+Route::get('staffImportSchedule',function(){
+	return view('staff.staffImportSchedule');
+});
+Route::get('staffManageUser',function(){
+	return view('staff.staffManageUser');
+});
+Route::get('patientRegister',function(){
+	return view('patient.patientRegister');
+});
