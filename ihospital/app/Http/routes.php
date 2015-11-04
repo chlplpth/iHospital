@@ -27,6 +27,9 @@ Route::get('doctorRecordDiagnosis',function(){
 Route::get('doctorRecordDiagnosis2',function(){
 	return view('doctor.doctorRecordDiagnosis2');
 });
+Route::get('staff',function(){
+	return view('staff.staffHome');
+});
 Route::get('staffMakeAppointment',function(){
 	return view('staff.staffMakeAppointment');
 });
@@ -35,6 +38,9 @@ Route::get('staffImportSchedule',function(){
 });
 Route::get('staffManageUser',function(){
 	return view('staff.staffManageUser');
+});
+Route::get('staffEditUser',function(){
+	return view('staff.staffEditUser');
 });
 Route::get('patientRegister',function(){
 	return view('patient.patientRegister');

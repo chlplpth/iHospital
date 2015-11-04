@@ -1,0 +1,22 @@
+#editUserPanelHeader{
+	background-color: #C3E6CD;
+}
+#hospitalStaff{
+	width : 500px;
+	margin: 10px 10px 10px 50px;
+}
+#name{
+	margin: 10px 10px 10px 50px;
+	width: 300px;
+}
+#surname{
+	margin: 10px 10px 10px 0px;
+	width: 300px;
+}
+#department{
+	width :300px;
+	margin: 10px 10px 10px 50px;
+}
+#editButton{
+	margin: 10px 10px 10px 50px;
+}

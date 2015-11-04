@@ -31,15 +31,15 @@
 							<td>00000001</td>
 							<td>AAA</td>
 							<td>aaa</td>
-							<td>กกก</td>
-							<td><button type="button" class="btn btn-warning">แก้ไข</button></td>
+							<td>หู คอ จมูก</td>
+							<td><a href="/staffEditUser"><button type="button" class="btn btn-warning">แก้ไข</button></a></td>
 							<td><button type="button" class="btn btn-danger">ลบ</button></td>
 						</tr>
 						<tr>
 							<td>00000002</td>
 							<td>BBB</td>
 							<td>bbb</td>
-							<td>ขขข</td>
+							<td>หู คอ จมูก</td>
 							<td><button type="button" class="btn btn-warning">แก้ไข</button></td>
 							<td><button type="button" class="btn btn-danger">ลบ</button></td>
 						</tr>
@@ -47,7 +47,7 @@
 							<td>00000003</td>
 							<td>CCC</td>
 							<td>ccc</td>
-							<td>คคค</td>
+							<td>อายุรกรรม</td>
 							<td><button type="button" class="btn btn-warning">แก้ไข</button></td>
 							<td><button type="button" class="btn btn-danger">ลบ</button></td>
 						</tr>
@@ -55,7 +55,7 @@
 							<td>00000004</td>
 							<td>DDD</td>
 							<td>ddd</td>
-							<td>งงง</td>
+							<td>อายุกรรม</td>
 							<td><button type="button" class="btn btn-warning">แก้ไข</button></td>
 							<td><button type="button" class="btn btn-danger">ลบ</button></td>
 						</tr>

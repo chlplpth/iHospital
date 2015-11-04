@@ -49,10 +49,10 @@
 								<span class="caret"></span>
 							</button>
 							<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
-								<li><a href="#"></a></li>
+								<li><a href="#">A</a></li>
+								<li><a href="#">AB</a></li>
+								<li><a href="#">B</a></li>
+								<li><a href="#">O</a></li>
 							</ul>
 						</div>
 
@@ -96,13 +96,13 @@
 					<div class ="col-md-6">
 						<div class="input-group" id="password">
 							<span class="input-group-addon" id="sizing-addon2">รหัสผ่าน</span>
-							<input type="text" class="form-control" aria-describedby="sizing-addon2" placeholder = "password">
+							<input type="password" class="form-control" aria-describedby="sizing-addon2" placeholder = "password">
 						</div>
 					</div>
 					<div class ="col-md-6">
 						<div class="input-group" id="confirmPassword">
 							<span class="input-group-addon" id="sizing-addon2">ยืนยันรหัสผ่าน</span>
-							<input type="text" class="form-control" aria-describedby="sizing-addon2" placeholder = "re-password">
+							<input type="password" class="form-control" aria-describedby="sizing-addon2" placeholder = "re-password">
 						</div>
 					</div>
 				</div>
