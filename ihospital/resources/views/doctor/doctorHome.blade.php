@@ -1,24 +1,47 @@
-@extends('layouts.master')
-
-@section('menu')
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar" id = "menu">
-          <ul class="nav nav-sidebar">
-            <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbspค้นหาผู้ป่วย</span></a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true">&nbspบันทึกการออกตรวจ</span></a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbspตารางออกตรวจ</span></a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true">&nbspสรุปผล</span></a></li>
-          </ul>
-     	</div>
-    	
-@endsection
+@extends('layouts.doctorLayout')
 
 @section('content')
 <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
-          <h1 class="page-header">Welcome [Username]</h1>
-          
+          <h1 class="page-header">Welcome Doctor</h1>
+          <div>
+          		<div class = "btn-group">
+   <button type = "button" class = "btn btn-default">Default</button>
+   
+   <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+      <span class = "caret"></span>
+      <span class = "sr-only">Toggle Dropdown</span>
+   </button>
+   
+   <ul class = "dropdown-menu" role = "menu">
+      <li><a href = "#">Action</a></li>
+      <li><a href = "#">Another action</a></li>
+      <li><a href = "#">Something else here</a></li>
+      
+      <li class = "divider"></li>
+      <li><a href = "#">Separated link</a></li>
+   </ul>
 </div>
+
+<div class = "btn-group">
+   <button type = "button" class = "btn btn-primary">Primary</button>
+   
+   <button type = "button" class = "btn btn-primary dropdown-toggle" data-toggle = "dropdown">
+      <span class = "caret"></span>
+      <span class = "sr-only">Toggle Dropdown</span>
+   </button>
+   
+   <ul class = "dropdown-menu" role = "menu">
+      <li><a href = "#">Action</a></li>
+      <li><a href = "#">Another action</a></li>
+      <li><a href = "#">Something else here</a></li>
+      
+      <li class = "divider"></li>
+      <li><a href = "#">Separated link</a></li>
+   </ul>
+</div>
+          <div> 
+</div>
+
 </div>
 </div>
 @endsection

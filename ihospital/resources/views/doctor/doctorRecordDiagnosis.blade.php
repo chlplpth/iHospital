@@ -1,19 +1,4 @@
-@extends('layouts.master')
-@section('css')
-@endsection
-@section('menu')
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-sm-3 col-md-2 sidebar" id = "menu">
-      <ul class="nav nav-sidebar">
-        <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbspค้นหาผู้ป่วย</span></a></li>
-        <li class="active"><a href="#"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true">&nbspบันทึกการออกตรวจ</span></a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbspตารางออกตรวจ</span></a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true">&nbspสรุปผล</span></a></li>
-      </ul>
-    </div>
-
-    @endsection
+@extends('layouts.doctorLayout')
 
     @section('content')
     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
@@ -38,7 +23,7 @@
                 <td>H.N.00000001</td>
                 <td>นางสาวชลธร ขวัญขจรเกียรติ</td>
                 <td>9.00-11.30 น.</td>
-                <td><button type="button" class="btn btn-default">บันทึก</button></td>
+                <td><a href="/doctorRecordDiagnosis2"><button type="button" class="btn btn-default">บันทึก</button></a></td>
               </tr>
               <tr>
                 <td>2 </td>
@@ -61,4 +46,7 @@
     </div>
   </div>
 </div>
+@endsection
+
+@section('css')
 @endsection

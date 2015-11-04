@@ -1,22 +1,5 @@
-@extends('layouts.master')
-@section('css')
-<link href="css/staffMakeAppointment.css" rel="stylesheet">
-@endsection
-@section('menu')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar" id = "menu">
-			<ul class="nav nav-sidebar">
-				<li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true">&nbspลงทะเบียนผู้ป่วยใหม่</span></a></li>
-				<li class="active"><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true">&nbspสร้างการนัดหมาย</span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbspจัดการการนัดหมาย</span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-import" aria-hidden="true">&nbspนำเข้าตารางการออกตรวจ</span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-remove" aria-hidden="true">&nbspยกเลิกตารางการออกตรวจ</span></a></li>
-				<li><a href="#"><span class="glyphicon glyphicon-cog" aria-hidden="true">&nbspจัดการบุคลากร</span></a></li>
-			</ul>
-		</div>
+@extends('layouts.staffLayout')
 
-		@endsection
 		@section('content')
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
 			<div class="panel panel-default">
@@ -32,12 +15,13 @@
 					<button type="button" class="btn btn-default">แผนก</button>
 					<div class="btn-group" role="group">
 						<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							ไม่ระบุ...
+							ไม่ระบุ
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="#"></a></li>
-							<li><a href="#"></a></li>
+							<li><a href="#">ไม่ระบุ</a></li>
+							<li><a href="#">อายุรกรรม</a></li>
+							<li><a href="#">หู คอ จมูก</a></li>
 						</ul>
 					</div>
 				</div>
@@ -49,8 +33,8 @@
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu">
-							<li><a href="#"></a></li>
-							<li><a href="#"></a></li>
+							<li><a href="#">นายแพทย์ a</a></li>
+							<li><a href="#">นายแพทย์ b</a></li>
 						</ul>
 					</div>
 				</div>
@@ -73,4 +57,8 @@
 		</div>
 	</dev>
 </dev>
+@endsection
+
+@section('css')
+<link href="css/staffMakeAppointment.css" rel="stylesheet">
 @endsection

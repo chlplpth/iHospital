@@ -1,17 +1,6 @@
-@extends('layouts.master')
-@section('css')
-<link href="css/patientRegister.css" rel="stylesheet">
-@endsection
-@section('menu')
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-3 col-md-2 sidebar" id = "menu">
-			<ul class="nav nav-sidebar">
-				<li class="active"><a href="#"><span class="glyphicon glyphicon-plus" aria-hidden="true">&nbspลงทะเบียน</span></a></li>
-			</ul>
-		</div>
+@extends('layouts.patientLayout')
 
-		@endsection
+
 		@section('content')
 		<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id = "content">
 			<div class="panel panel-default">
@@ -122,4 +111,8 @@
 		</div>
 	</dev>
 </dev>
+@endsection
+
+@section('css')
+<link href="css/patientRegister.css" rel="stylesheet">
 @endsection
