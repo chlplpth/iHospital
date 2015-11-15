@@ -12,22 +12,23 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return view('doctor.doctorHome');
 });
 
 Route::get('login',function(){
 	return view('login');
 });
-Route::get('doctor',function(){
+Route::get('/doctor',function(){
 	return view('doctor.doctorHome');
 });
-Route::get('doctorRecordDiagnosis',function(){
+Route::get('/doctorRecordDiagnosis',function(){
 	return view('doctor.doctorRecordDiagnosis');
 });
 Route::get('doctorRecordDiagnosis2',function(){
 	return view('doctor.doctorRecordDiagnosis2');
 });
-Route::get('staff',function(){
+Route::get('/staff',function(){
 	return view('staff.staffHome');
 });
 Route::get('staffMakeAppointment',function(){
@@ -42,6 +43,15 @@ Route::get('staffManageUser',function(){
 Route::get('staffEditUser',function(){
 	return view('staff.staffEditUser');
 });
+Route::get('staffRegisterNewPatient',function(){
+	return view('staff.staffRegisterNewPatient');
+});
 Route::get('patientRegister',function(){
 	return view('patient.patientRegister');
+});
+Route::get('/nurse',function(){
+	return view('nurse.nurseHome');
+});
+Route::get('/nurseRecordPatientGeneralDetail',function(){
+	return view('nurse.nurseRecordPatientGeneralDetail');
 });

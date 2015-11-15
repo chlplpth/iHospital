@@ -8,7 +8,7 @@
             <li><a href="#"><span class="glyphicon glyphicon-search" aria-hidden="true">&nbspค้นหาผู้ป่วย</span></a></li>
             <li {{{ (Request::is('doctorRecordDiagnosis')? 'class=active': '') }}}
             {{{ (Request::is('doctorRecordDiagnosis2')? 'class=active': '') }}} >
-              <a href="/doctorRecordDiagnosis"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true">&nbspบันทึกการออกตรวจ</span></a>
+              <a href="/ihospital/ihospital/public/doctorRecordDiagnosis"><span class="glyphicon glyphicon-heart-empty" aria-hidden="true">&nbspบันทึกการออกตรวจ</span></a>
             </li>
             <li><a href="#"><span class="glyphicon glyphicon-calendar" aria-hidden="true">&nbspตารางออกตรวจ</span></a></li>
             <li><a href="#"><span class="glyphicon glyphicon-file" aria-hidden="true">&nbspสรุปผล</span></a></li>
