@@ -1,0 +1,21 @@
+body{
+	color: black;
+	font-weight: bold;
+	background-color: #FFEFAB;
+}
+#loginForm{
+	width : 300px;
+	margin: auto;
+}
+#loginButton{
+	float : right;
+}
+#logo{
+	text-align: center;
+}
+#logoImg{
+	width: 500px;
+}
+#forgetPassword{
+	float : right;
+}

@@ -1,0 +1,20 @@
+#manageUserPanelHeader{
+	background-color: #C3E6CD;
+}
+#hospitalStaff{
+	width : 500px;
+	margin: 10px 10px 10px 50px;
+}
+#searchButton{
+	margin: 10px 10px 10px 0px;
+}
+#id{
+	width :150px;
+}
+#edit,#delete{
+	width :100px;
+}
+#userTable{
+	margin: 10px 10px 10px 50px;
+	width :90%;
+}
