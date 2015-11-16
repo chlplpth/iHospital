@@ -19,6 +19,21 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/testform', function () {
-    return view('testform');
+Route::get('staff', function() {
+	return view('layout/staffLayout');
+});
+
+Route::get('addPatient', function() {
+	return view('staff/addPatient');
+});
+
+Route::get('createAppointment', function() {
+	return view('patient/createAppointment');
+});
+
+Route::get('editProfile', function() {
+	return view('patient/editProfile');
+});
+Route::get('patientProfile', function() {
+	return view('patient/patientProfile');
 });
