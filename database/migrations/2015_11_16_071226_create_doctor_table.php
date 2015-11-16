@@ -13,7 +13,8 @@ class CreateDoctorTable extends Migration
     public function up()
     {
         Schema::create('doctor', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('userId');
+            $table->string('proficiency');
             $table->timestamps();
         });
     }
