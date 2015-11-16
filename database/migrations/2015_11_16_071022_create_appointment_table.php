@@ -13,7 +13,13 @@ class CreateAppointmentTable extends Migration
     public function up()
     {
         Schema::create('appointment', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('appointmentId');
+            $table->integer('patientId');
+            $table->integer('doctorId');
+            $table->string('date');
+            $table->string('time');
+            $table->string('symptom');
+            $table->integer('diagRecordId');
             $table->timestamps();
         });
     }

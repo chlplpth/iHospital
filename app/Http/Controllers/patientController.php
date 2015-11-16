@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Request;
+use Carbon;
 
 class patientController extends Controller
 {
@@ -19,7 +20,7 @@ class patientController extends Controller
     //store patient from create new patient to database
     public function store(){
     	$input = Request::all();
-
+    	$input['timestamp'] = Carbon::now();
     	Patient::create($input);
 
     	return redirect('');
