@@ -19,6 +19,18 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/testform', function () {
-    return view('testform');
+Route::get('/addDepartment', function () {
+    return view('admin/addDepartment');
+});
+
+Route::get('/addMedicine', function () {
+    return view('admin/addMedicine');
+});
+
+Route::get('/addStaff', function () {
+    return view('admin/addStaff');
+});
+
+Route::get('/grantStaff', function () {
+    return view('admin/grantStaff');
 });
