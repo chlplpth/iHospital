@@ -13,7 +13,12 @@ class CreateScheduleTable extends Migration
     public function up()
     {
         Schema::create('schedule', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('scheduleId');
+            $table->integer('doctorId');
+            $table->integer('staffId');
+            $table->string('startDate');
+            $table->string('endDate');
+            $table->string('diagDateList');
             $table->timestamps();
         });
     }

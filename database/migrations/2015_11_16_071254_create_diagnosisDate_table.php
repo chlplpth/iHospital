@@ -13,7 +13,8 @@ class CreateDiagnosisDateTable extends Migration
     public function up()
     {
         Schema::create('diagnosisDate', function (Blueprint $table) {
-            $table->increments('id');
+            $table->integer('diagnosisDateId');
+            $table->integer('scheduleId');
             $table->timestamps();
         });
     }
