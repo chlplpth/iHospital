@@ -36,3 +36,15 @@ Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
 
+
+Route::get('/mainPharmacist', function () {
+    return view('pharmacist/main');
+});
+
+Route::get('/recordPrescriptionHistory', function () {
+    return view('pharmacist/recordPrescriptionHistory');
+});
+
+Route::get('/findPatient', function () {
+    return view('pharmacist/findPatient');
+});
