@@ -56,9 +56,8 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">บันทึกการออกตรวจ</a></li>
-            <li><a href="#">ตารางการออกตรวจ</a></li>
-            <li><a href="#">สรุปผล</a></li>
+            <li><a href="#">กรอกข้อมูลผู้ป่วย</a></li>
+            <li><a href="#">ตารางนัดหมาย</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
