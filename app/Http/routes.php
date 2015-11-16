@@ -19,6 +19,4 @@ Route::get('/index', function () {
     return view('index');
 });
 
-Route::get('/testform', function () {
-    return view('testform');
-});
+Route::get('/testDatabase', 'ScheduleController@testDatabase');
