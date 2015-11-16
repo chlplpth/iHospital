@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>iHospital</title>
 
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -44,8 +44,8 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Name  Lastname</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Logout</a></li>
+            <li><a href="#">ข้อมูลส่วนตัว</a></li>
+            <li><a href="#">ออกจากระบบ</a></li>
           </ul>
         </div>
       </div>
@@ -55,15 +55,14 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
+            <li class="active"><a href="#"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a></li>
+            <li><a href="#">บันทึกการออกตรวจ</a></li>
+            <li><a href="#">ตารางการออกตรวจ</a></li>
+            <li><a href="#">สรุปผล</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-         <!--edit here-->
-
+          @yield('content')
         </div>
       </div>
     </div>
