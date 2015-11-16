@@ -1,0 +1,16 @@
+.btn-info{
+	float:right;
+}
+
+.btn-primary{
+	float:right;
+}
+
+.btn-success{
+	float:right;
+	margin-left: 10px;
+}
+
+#prescription{
+	margin-top: 30px;
+}
