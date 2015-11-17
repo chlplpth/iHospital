@@ -1,3 +1,11 @@
+#patientLabel {
+  margin-top: 7px;
+}
+
+.btn-success {
+  float: right;
+}
+
 .panel-heading{
 	background-color: #c3e6cd !important;
 }

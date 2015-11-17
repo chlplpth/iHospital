@@ -49,7 +49,7 @@
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="nurseLabel">อาการเบื้องต้น</label>
 		          	<div class="col-xs-10">
-		          		{!! Form::textarea('id', '', ["class" => "form-control", "rows" => "5"]) !!}
+		          		{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
 		          	</div>
 		        </div>
 		        <div class="form-group" id="buttonGroup">
