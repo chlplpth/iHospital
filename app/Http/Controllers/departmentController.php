@@ -10,10 +10,9 @@ use App\Http\Controllers\Controller;
 class departmentController extends Controller
 {
     //store department from addmin.addDepartment
-    public function store(){
-    	$input = Request::all();
-    	$input['timestamp'] = Carbon::now();
-    	Department::create($input);
+    public function addDepartment(Request $Request){
+    	$department = new department($request->all());
+        $department->save();
 
-    	return redirect('');
+        return redirect('department.all',compact($department));
     }
