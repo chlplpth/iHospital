@@ -55,7 +55,6 @@
       		</div>
         </div>
         {!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-        {!! Form::submit('ประวัติการจ่ายยา', ["class" => "btn btn-info"]) !!}
 
   		</div>
 	</div>

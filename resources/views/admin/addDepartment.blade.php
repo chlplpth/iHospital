@@ -10,10 +10,6 @@
     		<h3 class="panel-title">เพิ่มแผนก</h3>
   		</div>
   		<div class="panel-body">
-    		
-    		{!! Form::label('id', 'รหัสแผนก'); !!} &nbsp
-    		{!! Form::text('id', '', ["class" => "form-control"]) !!} <br>
-
   			{!! Form::label('name', 'ชื่อแผนก'); !!} &nbsp
     		{!! Form::text('name', '', ["class" => "form-control"]) !!} <br>
     		

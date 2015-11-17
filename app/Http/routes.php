@@ -19,6 +19,7 @@ Route::get('/index', function () {
     return view('index');
 });
 
+// Admin Role
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
@@ -35,6 +36,7 @@ Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
 
+// Pharmacist Role
 Route::get('/mainPharmacist', function () {
     return view('pharmacist/main');
 });
@@ -45,4 +47,13 @@ Route::get('/recordPrescriptionHistory', function () {
 
 Route::get('/findPatient', function () {
     return view('pharmacist/findPatient');
+});
+
+// Nurse Role
+Route::get('/mainNurse', function () {
+    return view('nurse/main');
+});
+
+Route::get('/recordPatientGeneralDetail', function () {
+    return view('nurse/recordPatientGeneralDetail');
 });
