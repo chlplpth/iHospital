@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
@@ -21,4 +21,16 @@ Route::get('/index', function () {
 
 Route::get('/testform', function () {
     return view('testform');
+});
+
+Route::get('/register', function () {
+    return view('general/register');
+});
+
+Route::get('/changePassword', function () {
+    return view('general/changePassword');
+});
+
+Route::get('/forgetPassword', function () {
+    return view('general/forgetPassword');
 });
