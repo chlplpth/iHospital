@@ -1,21 +1,27 @@
-body{
-	color: black;
-	font-weight: bold;
-	background-color: #FFEFAB;
+body {
+  padding-top: 40px;
+  padding-bottom: 40px;
+  background-color: #eee;
 }
-#loginForm{
-	width : 300px;
-	margin: auto;
+.container{
+  position: fixed;
+    left: 40%;
+    top: 40%;
 }
-#loginButton{
-	float : right;
+.form-signin {
+  max-width: 330px;
+  
 }
-#logo{
-	text-align: center;
+.form-signin .form-control {
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 16px;
 }
-#logoImg{
-	width: 500px;
+.btn-success{
+  margin-left: 250px;
 }
-#forgetPassword{
-	float : right;
+.forgetAndRegis{
+  margin-left: 170px;
 }

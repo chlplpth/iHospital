@@ -12,13 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
     return view('index');
 });
 
+Route::get('/register', function () {
+    return view('general/register');
+});
+
+Route::get('/changePassword', function () {
+    return view('general/changePassword');
+});
+
+Route::get('/forgetPassword', function () {
+    return view('general/forgetPassword');
+});
 
 Route::get('staff', function() {
 	return view('layout/staffLayout');
@@ -56,7 +67,6 @@ Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
 
-
 Route::get('/mainPharmacist', function () {
     return view('pharmacist/main');
 });
@@ -65,6 +75,50 @@ Route::get('/recordPrescriptionHistory', function () {
     return view('pharmacist/recordPrescriptionHistory');
 });
 
-Route::get('/findPatient', function () {
-    return view('pharmacist/findPatient');
+Route::get('/searchPatientProfileByPharmacist', function () {
+    return view('pharmacist/searchPatientProfileByPharmacist');
+});
+
+Route::get('/mainNurse', function () {
+    return view('nurse/main');
+});
+
+Route::get('/recordPatientGeneralDetail', function () {
+    return view('nurse/recordPatientGeneralDetail');
+});
+
+Route::get('/searchPatientProfileByNurse', function () {
+    return view('nurse/searchPatientProfileByNurse');
+});
+
+Route::get('/viewDoctorScheduleByNurse', function () {
+    return view('nurse/viewDoctorScheduleByNurse');
+});
+
+Route::get('/mainDoctor', function () {
+    return view('doctor/mainDoctor');
+});
+
+Route::get('/diagnose', function () {
+    return view('doctor/diagnose');
+});
+
+Route::get('/patientProfileByDoctor', function () {
+    return view('doctor/patientProfileByDoctor');
+});
+
+Route::get('/searchPatientProfileByDoctor', function () {
+    return view('doctor/searchPatientProfileByDoctor');
+});
+
+Route::get('/doctorSchedule', function () {
+    return view('doctor/doctorSchedule');
+});
+
+Route::get('/patientAppointmentSchedule', function () {
+    return view('doctor/patientAppointmentSchedule');
+});
+
+Route::get('/diagnosisHistory', function () {
+    return view('doctor/diagnosisHistory');
 });

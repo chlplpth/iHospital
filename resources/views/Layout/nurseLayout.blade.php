@@ -16,7 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
-
+    @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src="js/ie-emulation-modes-warning.js"></script>
@@ -56,7 +56,7 @@
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">กรอกข้อมูลผู้ป่วย</a></li>
+            <li><a href="#">บันทึกข้อมูลทั่วไปของผู้ป่วย</a></li>
             <li><a href="#">ตารางนัดหมาย</a></li>
           </ul>
         </div>
