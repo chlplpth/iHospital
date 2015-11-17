@@ -5,7 +5,7 @@
 @section('content')
 	{!! Form::open(array('url' => 'foo/bar')) !!}
 
-	<h1>addPatient</h1>
+	<h1>importDoctorSchedule</h1>
 
 	{!! Form::close() !!}
 @stop

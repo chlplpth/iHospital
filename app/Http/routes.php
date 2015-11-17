@@ -31,12 +31,36 @@ Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
 
-Route::get('staff', function() {
-	return view('layout/staffLayout');
+Route::get('mainStaff', function() {
+    return view('staff/mainStaff');
+});
+
+Route::get('createAppointmentForPatient', function() {
+    return view('staff/createAppointmentForPatient');
+});
+
+Route::get('DelayCancelAppointmentForPatient', function() {
+    return view('staff/DelayCancelAppointmentForPatient');
+});
+
+Route::get('importDoctorSchedule', function() {
+    return view('staff/importDoctorSchedule');
+});
+
+Route::get('cancelDoctorSchedule', function() {
+    return view('staff/cancelDoctorSchedule');
 });
 
 Route::get('addPatient', function() {
 	return view('staff/addPatient');
+});
+
+Route::get('addStaffByStaff', function() {
+    return view('staff/addStaffByStaff');
+});
+
+Route::get('searchPatientProfileByStaff', function() {
+    return view('staff/searchPatientProfileByStaff');
 });
 
 Route::get('createAppointment', function() {
@@ -59,8 +83,8 @@ Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
 
-Route::get('/addStaff', function () {
-    return view('admin/addStaff');
+Route::get('/addStaffByAdmin', function () {
+    return view('admin/addStaffByAdmin');
 });
 
 Route::get('/grantStaff', function () {
