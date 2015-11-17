@@ -52,7 +52,7 @@ class appointmentController extends Controller
 
     public function viewAppointmentPatient(Request $request)
     {
-        $patient = $request->patientId;
+        $patient = $request->patientId
 
         $appointments = App\appointment::where('patientId', $patient)
                //->orderBy('name', 'desc')
