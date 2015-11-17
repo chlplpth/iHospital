@@ -26,8 +26,12 @@
             <div class="form-group row">
               <div class="col-xs-1" id="adminLabel">{!! Form::label('department', 'แผนก'); !!}</div>
               <div class="col-xs-3">{!! Form::select('department', array('A' => 'หู', 'B' => 'ตา', 'C' => 'จมูก', 'D' => 'ปาก'), null, ["class" => "form-control"]) !!}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-xs-1" id="adminLabel">{!! Form::label('username', 'ชื่อผู้ใช้'); !!}</div>
+              <div class="col-xs-3">{!! Form::text('username', '', ["class" => "form-control"]) !!}</div>
             </div> 
-            <div class="form-group row" id="buttonGroup">
+            <div class="form-group row">
               <div class="col-xs-1"></div>
               <div class="col-xs-3">{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}</div>
             </div>

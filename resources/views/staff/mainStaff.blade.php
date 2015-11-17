@@ -5,7 +5,7 @@
 @section('content')
 	{!! Form::open(array('url' => 'foo/bar')) !!}
 
-	<h1>mainStaff</h1>
+	<h1>Hello Staff</h1>
 
 	{!! Form::close() !!}
 @stop

@@ -39,8 +39,8 @@ Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
 
-Route::get('delayCancelAppointmentForPatient', function() {
-    return view('staff/delayCancelAppointmentForPatient');
+Route::get('manageAppointmentForPatient', function() {
+    return view('staff/manageAppointmentForPatient');
 });
 
 Route::get('importDoctorSchedule', function() {
@@ -92,7 +92,7 @@ Route::get('/grantStaff', function () {
 });
 
 Route::get('/mainPharmacist', function () {
-    return view('pharmacist/main');
+    return view('pharmacist/mainPharmacist');
 });
 
 Route::get('/recordPrescriptionHistory', function () {

@@ -11,16 +11,16 @@
   		</div>
   		<div class="panel-body" style="margin-top: 10px;">
         <form role="form">
-            <div class="row">
+            <div class="form-group row">
               <div class="col-xs-2" id="doctorLabel">{!! Form::label('date', 'วันที่'); !!}</div>
               <div class="col-xs-10" id="doctorLabel">{!! Form::label('date', '5 สิงหาคม พ.ศ.2536'); !!}</div>
             </div>
-            <div class="row">
+            <div class="form-group row">
               <div class="col-xs-2" id="doctorLabel">{!! Form::label('date', 'เวลา'); !!}</div>
               <div class="col-xs-10" id="doctorLabel">{!! Form::label('date', '9.00 - 12.00 น.'); !!}</div>
-              <div class="col-xs-2" id="doctorLabel">{!! Form::label('date', 'รายการนัดหมาย'); !!}</div>
             </div>
-            <div class="row">
+            <div class="form-group row">
+              <div class="col-xs-2" id="doctorLabel">{!! Form::label('date', 'รายการนัดหมาย'); !!}</div>
 	          <div class="col-xs-12">
 	              <table class="table table-bordered table-hover">
 	                <thead>
