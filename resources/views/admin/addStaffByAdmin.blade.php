@@ -9,28 +9,29 @@
   		<div class="panel-heading">
     		<h3 class="panel-title">เพิ่มบุคลากร</h3>
   		</div>
-  		<div class="panel-body">
-        <div class="form-inline">
-        {!! Form::label('name', 'ชื่อ'); !!} &nbsp
-        {!! Form::text('name', '', ["class" => "form-control"]) !!} &nbsp &nbsp
-
-        {!! Form::label('surname', 'นามสกุล'); !!} &nbsp
-        {!! Form::text('surname', '', ["class" => "form-control"]) !!}
-        </div>
-        <br>
-        
-        <div class="form-inline">
-          {!! Form::label('role', 'บทบาท'); !!} &nbsp
-          {!! Form::select('role', array('Doctor' => 'แพทย์', 'Nurse' => 'พยาบาล', 'Staff' => 'เจ้าหน้าที่', 'Phamacist' => 'เภสัชกร', 'Admin' => 'ผู้ดูแลระบบ'), null, ["class" => "form-control"]) !!} &nbsp &nbsp
-
-          {!! Form::label('department', 'แผนก'); !!} &nbsp
-          {!! Form::select('department', array('A' => 'หู', 'B' => 'ตา', 'C' => 'จมูก', 'D' => 'ปาก'), null, ["class" => "form-control"]) !!}
-        </div>
-        <br>
-
-        <br>
-    		{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}
-
+  		<div class="panel-body" style="margin-top: 10px;">
+        <form role="form">
+            <div class="form-group row">
+              <div class="col-xs-1" id="adminLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
+              <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control"]) !!}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-xs-1" id="adminLabel">{!! Form::label('surname', 'นามสกุล'); !!}</div>
+              <div class="col-xs-3">{!! Form::text('surname', '', ["class" => "form-control"]) !!}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-xs-1" id="adminLabel">{!! Form::label('role', 'บทบาท'); !!}</div>
+              <div class="col-xs-3">{!! Form::select('role', array('Doctor' => 'แพทย์', 'Nurse' => 'พยาบาล', 'Staff' => 'เจ้าหน้าที่', 'Phamacist' => 'เภสัชกร', 'Admin' => 'ผู้ดูแลระบบ'), null, ["class" => "form-control"]) !!}</div>
+            </div>
+            <div class="form-group row">
+              <div class="col-xs-1" id="adminLabel">{!! Form::label('department', 'แผนก'); !!}</div>
+              <div class="col-xs-3">{!! Form::select('department', array('A' => 'หู', 'B' => 'ตา', 'C' => 'จมูก', 'D' => 'ปาก'), null, ["class" => "form-control"]) !!}</div>
+            </div> 
+            <div class="form-group row" id="buttonGroup">
+              <div class="col-xs-1"></div>
+              <div class="col-xs-3">{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}</div>
+            </div>
+        </form>
 
   		</div>
 	</div>

@@ -39,16 +39,16 @@ Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
 
-Route::get('DelayCancelAppointmentForPatient', function() {
-    return view('staff/DelayCancelAppointmentForPatient');
+Route::get('delayCancelAppointmentForPatient', function() {
+    return view('staff/delayCancelAppointmentForPatient');
 });
 
 Route::get('importDoctorSchedule', function() {
     return view('staff/importDoctorSchedule');
 });
 
-Route::get('cancelDoctorSchedule', function() {
-    return view('staff/cancelDoctorSchedule');
+Route::get('doctorScheduleByStaff', function() {
+    return view('staff/doctorScheduleByStaff');
 });
 
 Route::get('addPatient', function() {
@@ -123,8 +123,8 @@ Route::get('/searchPatientProfileByNurse', function () {
     return view('nurse/searchPatientProfileByNurse');
 });
 
-Route::get('/viewDoctorScheduleByNurse', function () {
-    return view('nurse/viewDoctorScheduleByNurse');
+Route::get('/doctorScheduleByNurse', function () {
+    return view('nurse/doctorScheduleByNurse');
 });
 
 Route::get('/mainDoctor', function () {
@@ -135,16 +135,16 @@ Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
 
-Route::get('/patientProfileByDoctor', function () {
-    return view('doctor/patientProfileByDoctor');
+Route::get('/doctorAppointmentSchedule', function () {
+    return view('doctor/doctorAppointmentSchedule');
 });
 
 Route::get('/searchPatientProfileByDoctor', function () {
     return view('doctor/searchPatientProfileByDoctor');
 });
 
-Route::get('/doctorSchedule', function () {
-    return view('doctor/doctorSchedule');
+Route::get('/doctorScheduleByDoctor', function () {
+    return view('doctor/doctorScheduleByDoctor');
 });
 
 Route::get('/doctorAppointmentSchedule', function () {
