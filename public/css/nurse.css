@@ -1,4 +1,8 @@
-.btn-success{
+.btn-success {
+	float:right;
+}
+
+.btn-primary {
 	float:right;
 }
 
@@ -8,4 +12,8 @@
 
 #margin10 {
 	margin-top: 10px;
+}
+
+#nurseLabel {
+	margin-top: 7px;
 }

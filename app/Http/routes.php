@@ -69,7 +69,6 @@ Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
 
-
 Route::get('/mainPharmacist', function () {
     return view('pharmacist/main');
 });
@@ -78,7 +77,22 @@ Route::get('/recordPrescriptionHistory', function () {
     return view('pharmacist/recordPrescriptionHistory');
 });
 
-Route::get('/findPatient', function () {
-    return view('pharmacist/findPatient');
+Route::get('/searchPatientProfileByPharmacist', function () {
+    return view('pharmacist/searchPatientProfileByPharmacist');
 });
 
+Route::get('/mainNurse', function () {
+    return view('nurse/main');
+});
+
+Route::get('/recordPatientGeneralDetail', function () {
+    return view('nurse/recordPatientGeneralDetail');
+});
+
+Route::get('/searchPatientProfileByNurse', function () {
+    return view('nurse/searchPatientProfileByNurse');
+});
+
+Route::get('/viewDoctorScheduleByNurse', function () {
+    return view('nurse/viewDoctorScheduleByNurse');
+});
