@@ -19,6 +19,27 @@ Route::get('/index', function () {
     return view('index');
 });
 
+
+Route::get('staff', function() {
+	return view('layout/staffLayout');
+});
+
+Route::get('addPatient', function() {
+	return view('staff/addPatient');
+});
+
+Route::get('createAppointment', function() {
+	return view('patient/createAppointment');
+});
+
+Route::get('editProfile', function() {
+	return view('patient/editProfile');
+});
+
+Route::get('patientProfile', function() {
+	return view('patient/patientProfile');
+});
+
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
@@ -33,4 +54,17 @@ Route::get('/addStaff', function () {
 
 Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
+});
+
+
+Route::get('/mainPharmacist', function () {
+    return view('pharmacist/main');
+});
+
+Route::get('/recordPrescriptionHistory', function () {
+    return view('pharmacist/recordPrescriptionHistory');
+});
+
+Route::get('/findPatient', function () {
+    return view('pharmacist/findPatient');
 });

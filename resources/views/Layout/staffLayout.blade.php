@@ -55,7 +55,7 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">ลงทะเบียนผู้่วยใหม่<span class="sr-only">(current)</span></a></li>
+            <li class="active"><a href="#">ลงทะเบียนผู้ป่วยใหม่<span class="sr-only">(current)</span></a></li>
             <li><a href="#">สร้างนัดหมาย</a></li>
             <li><a href="#">จัดการการนัดหมาย</a></li>
             <li><a href="#">นำเข้าตารางการออกตรวจ</a></li>
