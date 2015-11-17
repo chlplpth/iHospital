@@ -13,7 +13,7 @@
 			<div class ="col-md-11">
 				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
 				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน']);!!}
-				{!!Form::button('submit',['class'=>'btn btn-default submitCitizenNo']);!!}
+				{!!Form::button('ยืนยัน',['class'=>'btn btn-default submitCitizenNo']);!!}
 			</div>
 		</div>
 		<br>
@@ -120,7 +120,7 @@
 					<div class="col-md-11 drugAllergy" >
 						{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
 						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา']);!!}
-						{!!Form::button('Add',['class'=>'btn btn-default addDrug']);!!}
+						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug']);!!}
 					</div>
 				</div>
 			</div>

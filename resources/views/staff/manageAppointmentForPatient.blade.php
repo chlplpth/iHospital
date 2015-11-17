@@ -63,7 +63,7 @@
 	                    <td>Mary</td>
 	                    <td>Moe</td>
 	                    <td>ตา</td>
-	                    <td>{!! Form::submit('เพิ่มเติม', ["class" => "btn btn-info"]) !!}</td>
+	                    <td>{!! Form::submit('เพิ่มเติม', ["class" => "btn btn-info", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
 	                  </tr>
 	                  <tr>
 	                    <td>3</td>
@@ -71,7 +71,7 @@
 	                    <td>July</td>
 	                    <td>Dooley</td>
 	                    <td>จมูก</td>
-	                    <td>{!! Form::submit('เพิ่มเติม', ["class" => "btn btn-info"]) !!}</td>
+	                    <td>{!! Form::submit('เพิ่มเติม', ["class" => "btn btn-info", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
 	                  </tr>
 	                </tbody>
 	              </table>
