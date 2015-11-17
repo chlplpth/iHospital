@@ -12,14 +12,47 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
     return view('index');
 });
 
-// Admin Role
+
+Route::get('/register', function () {
+    return view('general/register');
+});
+
+Route::get('/changePassword', function () {
+    return view('general/changePassword');
+});
+
+Route::get('/forgetPassword', function () {
+    return view('general/forgetPassword');
+});
+
+
+Route::get('staff', function() {
+	return view('layout/staffLayout');
+});
+
+Route::get('addPatient', function() {
+	return view('staff/addPatient');
+});
+
+Route::get('createAppointment', function() {
+	return view('patient/createAppointment');
+});
+
+Route::get('editProfile', function() {
+	return view('patient/editProfile');
+});
+
+Route::get('patientProfile', function() {
+	return view('patient/patientProfile');
+});
+
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
@@ -36,7 +69,7 @@ Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
 
-// Pharmacist Role
+
 Route::get('/mainPharmacist', function () {
     return view('pharmacist/main');
 });
@@ -49,11 +82,3 @@ Route::get('/findPatient', function () {
     return view('pharmacist/findPatient');
 });
 
-// Nurse Role
-Route::get('/mainNurse', function () {
-    return view('nurse/main');
-});
-
-Route::get('/recordPatientGeneralDetail', function () {
-    return view('nurse/recordPatientGeneralDetail');
-});
