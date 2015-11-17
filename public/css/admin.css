@@ -1,3 +1,16 @@
-.btn-success{
+.btn-success {
 	float:right;
+}
+
+.btn-primary {
+	float:right;
+}
+
+#buttonGroup {
+	margin-top: 30px;
+}
+
+#adminLabel {
+	margin-top: 7px;
+	text-indent: 7px;
 }
