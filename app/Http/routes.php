@@ -12,11 +12,24 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
     return view('index');
+});
+
+
+Route::get('/register', function () {
+    return view('general/register');
+});
+
+Route::get('/changePassword', function () {
+    return view('general/changePassword');
+});
+
+Route::get('/forgetPassword', function () {
+    return view('general/forgetPassword');
 });
 
 
@@ -68,3 +81,4 @@ Route::get('/recordPrescriptionHistory', function () {
 Route::get('/findPatient', function () {
     return view('pharmacist/findPatient');
 });
+
