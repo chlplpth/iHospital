@@ -55,6 +55,10 @@ Route::get('addPatient', function() {
 	return view('staff/addPatient');
 });
 
+Route::get('doctorList', function () {
+    return view('patient/doctorList');
+});
+
 Route::get('addStaffByStaff', function() {
     return view('staff/addStaffByStaff');
 });
@@ -73,6 +77,10 @@ Route::get('editProfile', function() {
 
 Route::get('patientProfile', function() {
 	return view('patient/patientProfile');
+});
+
+Route::get('patientAppointmentSchedule', function() {
+    return view('patient/patientAppointmentSchedule');
 });
 
 Route::get('/addDepartment', function () {
@@ -139,10 +147,11 @@ Route::get('/doctorSchedule', function () {
     return view('doctor/doctorSchedule');
 });
 
-Route::get('/patientAppointmentSchedule', function () {
-    return view('doctor/patientAppointmentSchedule');
+Route::get('/doctorAppointmentSchedule', function () {
+    return view('doctor/doctorAppointmentSchedule');
 });
 
 Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
+

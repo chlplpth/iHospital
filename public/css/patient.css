@@ -38,6 +38,12 @@
 .textbox200px{
 	width :200px;
 }
-.btn-warning{
+.edit{
 	float: right;
+}
+.textbox70px{
+  width :70px;
+}
+.textbox150px{
+  width :150px;
 }
