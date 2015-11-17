@@ -20,7 +20,7 @@
 
 		<div class="row">
 			<div class="col-md-1"></div>
-			<div class="col-md-5">{!! Form::label('department', 'แผนก'); !!} &nbsp
+			<div class="col-md-5 form-inline">{!! Form::label('department', 'แผนก'); !!} &nbsp
 		{!! Form::select('department', array(
 		'0' => 'ไม่ระบุ',
 		'1' => 'กายวิภาคศาสตร์', 
@@ -43,8 +43,8 @@
 		'18' => 'สุติศาสตร์-นารีเวชวิทยา',
 		'19' => 'โสต คอ นาสิกวิทยา',
 		'20' => 'ออโธปิดิกส์',
-		'21' => 'อายุรศาสตร์'),'0')!!} <br><br></div>
-			<div class="col-md-5">
+		'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
+			<div class="col-md-5 form-inline">
 			{!! Form::label('doctor', 'แพทย์'); !!} &nbsp
 		{!! Form::select('doctor', array(
 		'0' => 'ไม่ระบุ',
@@ -68,7 +68,7 @@
 		'18' => 'สุติศาสตร์-นารีเวชวิทยา',
 		'19' => 'โสต คอ นาสิกวิทยา',
 		'20' => 'ออโธปิดิกส์',
-		'21' => 'อายุรศาสตร์'),'0')!!} <br><br></div>
+		'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
 			<div class="col-md-1"></div>
 		</div>
 
