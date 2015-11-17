@@ -20,6 +20,7 @@ class CreatePatientTable extends Migration
             $table->string('sex');
             $table->string('bloodGroup');
             $table->timestamps();
+
         });
     }
 
@@ -31,5 +32,13 @@ class CreatePatientTable extends Migration
     public function down()
     {
         Schema::drop('patient');
+    }
+
+
+    //patient has appointments
+    public function appointments()
+    {
+
+        return $this->hasMany('App\Appointment');
     }
 }
