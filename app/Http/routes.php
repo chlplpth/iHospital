@@ -19,7 +19,6 @@ Route::get('/index', function () {
     return view('index');
 });
 
-
 Route::get('/register', function () {
     return view('general/register');
 });
@@ -31,7 +30,6 @@ Route::get('/changePassword', function () {
 Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
-
 
 Route::get('staff', function() {
 	return view('layout/staffLayout');
@@ -95,4 +93,32 @@ Route::get('/searchPatientProfileByNurse', function () {
 
 Route::get('/viewDoctorScheduleByNurse', function () {
     return view('nurse/viewDoctorScheduleByNurse');
+});
+
+Route::get('/mainDoctor', function () {
+    return view('doctor/mainDoctor');
+});
+
+Route::get('/diagnose', function () {
+    return view('doctor/diagnose');
+});
+
+Route::get('/patientProfileByDoctor', function () {
+    return view('doctor/patientProfileByDoctor');
+});
+
+Route::get('/searchPatientProfileByDoctor', function () {
+    return view('doctor/searchPatientProfileByDoctor');
+});
+
+Route::get('/doctorSchedule', function () {
+    return view('doctor/doctorSchedule');
+});
+
+Route::get('/patientAppointmentSchedule', function () {
+    return view('doctor/patientAppointmentSchedule');
+});
+
+Route::get('/diagnosisHistory', function () {
+    return view('doctor/diagnosisHistory');
 });
