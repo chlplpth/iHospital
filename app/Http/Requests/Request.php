@@ -7,4 +7,10 @@ use Illuminate\Foundation\Http\FormRequest;
 abstract class Request extends FormRequest
 {
     //
+    public function messages()
+    {
+    	return [
+    		'username.required' => 'kamkam'
+    	];
+    }
 }

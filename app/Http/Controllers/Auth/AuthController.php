@@ -72,19 +72,15 @@ class AuthController extends Controller
         ]);
     }
 
-    public function authenticate(Request $request)
+    public function authenticate(LoginRequest $request)
     {
-        $this->validate($request, [
-            'username' => 'required|exists:users,username',
-        ]);
-
         if(Auth::attempt(['username' => $request['username'], 'password' => $request['password']]))
         {
             echo "logged in successfully!";
         }
         else
         {
-            echo "Wrong username or password";
+            echo "wait please";
         }
     }
 

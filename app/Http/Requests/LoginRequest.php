@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Validator;
 use App\Http\Requests\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +15,7 @@ class LoginRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,14 +25,19 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
-        echo "aaa";
         return [
-            'username' => 'required',
+            'username' => 'required|exists:users,username',
+            'password' => 'required|' . ('matchUsername:' . $this->input('username')),
         ];
     }
 
-    public function forbiddenResponse()
+    public function messages()
     {
-        echo "abc";
+        return [
+            'username.required' => 'กรุณากรอกชื่อผู้ใช้งาน',
+            'username.exists' => 'ไม่มีชื่อผู้ใช้งานดังกล่าวในระบบ',
+            'password.required' => 'กรุณากรอกรหัสผ่าน',
+            'password.match_username' => 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง',
+        ];
     }
 }
