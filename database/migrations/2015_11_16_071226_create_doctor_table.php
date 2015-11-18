@@ -16,6 +16,10 @@ class CreateDoctorTable extends Migration
             $table->integer('userId');
             $table->string('proficiency');
             $table->timestamps();
+
+            $table->foreign('userId')
+                  ->references('userId')
+                  ->on('user');
         });
     }
 
