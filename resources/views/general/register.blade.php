@@ -40,16 +40,10 @@
 					<div class ="col-md-2"><br>
 						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp{!!Form::radio('sex', 'M', true);!!}&nbsp{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp{!!Form::radio('sex', 'F', false);!!}&nbsp{!!Form::label('female', 'หญิง');!!}
 					</div>
-<<<<<<< HEAD
 					<div class ="col-md-2"><br>
 						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'));!!}
-=======
-					<div class ="col-md-2 form-inline bloodType"><br>
-						{!!Form::label('bloodType', 'กรุ๊ปเลือด');!!}
-						{!!Form::select('bloodType', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'),'0',["class" => "form-control"]);!!}
->>>>>>> 297a9b46f449929862fd7c1bad250a4a30151542
-					</div>	
+					</div>
 					<div class ="col-md-7 birthDate"><br>
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด');!!}
 						{!!Form::text('dateOfBirth','',['class'=>'textbox','placeholder'=>'วว/ดด/ปป']);!!}

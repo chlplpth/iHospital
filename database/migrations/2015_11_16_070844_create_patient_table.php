@@ -21,6 +21,7 @@ class CreatePatientTable extends Migration
             $table->string('sex');
             $table->string('bloodGroup');
             $table->string('drugAllergy');
+            $table->string('citizenNo');
             $table->timestamps();
 
         });
