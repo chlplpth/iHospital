@@ -16,6 +16,10 @@ class CreatePrescriptionTable extends Migration
             $table->increments('prescriptionId');
             $table->integer('diagRecordId');
             $table->timestamps();
+
+            $table->foreign('diaRecordId')
+                  ->references('diagRecordId')
+                  ->on('diagnosisRecord');
         });
     }
 

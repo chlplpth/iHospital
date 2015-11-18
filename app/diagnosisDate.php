@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class doctor extends Model
+class diagnosisDate extends Model
 {
     /**
      * The database table used by the model.
      *
      * @var string
      */
-    protected $table = 'doctor';
+    protected $table = 'diagnosisDate';
 
     /**
      * The attributes that are mass assignable.
@@ -19,12 +19,11 @@ class doctor extends Model
      * @var array
      */
     protected $fillable = [
-        'userId',
-        'proficiency'];
+        'scheduleId'];
 
     //-------------  relationship
-    public function user()
+    public function schedule()
     {
-        return $this->belongsTo('App\User', 'userId');
+        return $this->belongsTo('App\schedule', 'scheduleId');
     }
 }
