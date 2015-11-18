@@ -40,7 +40,7 @@
         {!!Form::label('password', 'รหัสผ่าน');!!}
         {!!Form::password('password', [
               'class'=>'form-signin form-control']);!!}
-        <div class ="forgetAndRegis"><a href = "{{url('')">forget password</a> / <a href = "{{url('')">register</a></div><br>
+        <div class ="forgetAndRegis"><a href = "{!! url('forgetPassword')  !!}">forget password</a> / <a href = "{!! url('register') !!}">register</a></div><br>
         {!!Form::submit('Click Me!', ["class" => "btn btn-success"]);!!}
       
 

@@ -7,6 +7,8 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
 	</div>
+	{!! Form::open(array('url' => 'register')) !!}
+	{!! Form::hidden('userType', 'patient') !!}
 	<div class="panel-body">
 		<div class ="row">
 			<div class ="col-md-1"></div>
@@ -39,12 +41,12 @@
 						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp{!!Form::radio('sex', 'M', true);!!}&nbsp{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp{!!Form::radio('sex', 'F', false);!!}&nbsp{!!Form::label('female', 'หญิง');!!}
 					</div>
 					<div class ="col-md-2"><br>
-						{!!Form::label('bloodType', 'กรุ๊ปเลือด');!!}
-						{!!Form::select('bloodType', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'));!!}
+						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
+						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'));!!}
 					</div>	
 					<div class ="col-md-7 birthDate"><br>
-						{!!Form::label('birthDate', 'วัน/เดือน/ปี เกิด');!!}
-						{!!Form::text('birthDate','',['class'=>'textbox','placeholder'=>'วว/ดด/ปป']);!!}
+						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด');!!}
+						{!!Form::text('dateOfBirth','',['class'=>'textbox','placeholder'=>'วว/ดด/ปป']);!!}
 					</div>
 				</div>
 			</div>
@@ -88,7 +90,7 @@
 					</div>	
 					<div class ="col-md-3">
 						{!!Form::label('zipcode', 'รหัสไปรษณีย์');!!}&nbsp
-						{!!Form::text('street','',['class'=>'textbox textbox150px','placeholder'=>'รหัสไปรษณีย์']);!!}<br><br>
+						{!!Form::text('zipcode','',['class'=>'textbox textbox150px','placeholder'=>'รหัสไปรษณีย์']);!!}<br><br>
 					</div>
 					<div class ="col-md-3">
 					</div>
@@ -105,6 +107,15 @@
 					<div class ="col-md-6">
 						{!!Form::label('telMobile','โทรศัพท์มือถือ');!!}&nbsp
 						{!!Form::text('telMobile','',['class'=>'textbox','placeholder'=>'โทรศัพท์มือถือ']);!!}
+					</div>
+				</div>
+				<br>
+				<div class= "row">
+					<div class="col-md-1">
+					</div>
+					<div class="col-md-11 drugAllergy" >
+						{!!Form::label('email','อีเมล');!!}&nbsp
+						{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
 					</div>
 				</div>
 			</div>
@@ -153,7 +164,9 @@
 				</div>
 			</div>
 		</div>
-		{!!Form::button('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
+		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
 	</div>
+	{!! Form::close() !!}
+	
 </div>
 @stop
