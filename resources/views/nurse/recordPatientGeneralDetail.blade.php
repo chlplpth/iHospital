@@ -17,12 +17,12 @@
 		          <div class="col-xs-7">{!! Form::submit('ค้นหา', ["class" => "btn btn-info"]) !!}</div>
 		        </div>
 		        <div class="form-group row">  
-			        <label class="col-xs-2">ชื่อ</label>
-			        <label class="col-xs-10">ชลัมพล</label>
+			        <label class="col-xs-2" id="nurseLabel">ชื่อ</label>
+			        <label class="col-xs-10" id="nurseLabel">ชลัมพล</label>
 			    </div>
 			    <div class="form-group row">
-			        <label class="col-xs-2">นามสกุล</label>
-			        <label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
+			        <label class="col-xs-2" id="nurseLabel">นามสกุล</label>
+			        <label class="col-xs-10" id="nurseLabel">ไก๊ไก่ไก๊ไก่</label>
 			    </div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="nurseLabel">น้ำหนัก</label>
@@ -47,9 +47,9 @@
 			    	<label class="col-xs-9" id="nurseLabel">ครั้งต่อนาที</label>
 			    </div>
 			    <div class="form-group row">
-			        <label class="col-xs-2" id="nurseLabel">อาการเบื้องต้น: </label>
+			        <label class="col-xs-2" id="nurseLabel">อาการเบื้องต้น</label>
 		          	<div class="col-xs-10">
-		          		{!! Form::textarea('id', '', ["class" => "form-control", "rows" => "5"]) !!}
+		          		{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
 		          	</div>
 		        </div>
 		        <div class="form-group" id="buttonGroup">

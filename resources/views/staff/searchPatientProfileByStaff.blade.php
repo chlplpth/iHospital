@@ -1,11 +1,11 @@
-@extends('layout/pharmacistLayout')
+@extends('layout/staffLayout')
 @section('css')
-<link href="css/pharmacist.css" rel="stylesheet">
+<link href="css/staff.css" rel="stylesheet">
 @stop
 @section('content')
 	{!! Form::open(array('url' => 'foo/bar')) !!}
 
-	<div class="panel panel-default">
+  <div class="panel panel-default">
       <div class="panel-heading">
         <h3 class="panel-title">ค้นหาผู้ป่วย</h3>
       </div>

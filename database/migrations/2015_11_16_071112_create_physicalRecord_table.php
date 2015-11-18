@@ -13,7 +13,7 @@ class CreatePhysicalRecordTable extends Migration
     public function up()
     {
         Schema::create('physicalRecord', function (Blueprint $table) {
-            $table->increments('physicalRecordid');
+            $table->increments('physicalRecordId');
             $table->integer('nurseId');
             $table->integer('diagRecordId');
             $table->integer('weight');
@@ -22,6 +22,14 @@ class CreatePhysicalRecordTable extends Migration
             $table->integer('diBlood');
             $table->integer('heartRate');
             $table->timestamps();
+
+            $table->foreign('nurseId')
+                  ->references('userId')
+                  ->on('nurse');
+
+            $table->foreign('diagRecordId')
+                  ->references('diagRecordId')
+                  ->on('diagnosisRecord');
         });
     }
 

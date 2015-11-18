@@ -1,0 +1,19 @@
+#doctorLabel {
+	margin-top: 7px;
+}
+
+.indent7 {
+	text-indent: 7px;
+}
+
+th {
+	text-align: center;
+}
+
+#buttonGroup {
+	float: right;
+}
+
+.btn-info {
+	float: right;
+}

@@ -31,12 +31,40 @@ Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
 
-Route::get('staff', function() {
-	return view('layout/staffLayout');
+Route::get('mainStaff', function() {
+    return view('staff/mainStaff');
+});
+
+Route::get('createAppointmentForPatient', function() {
+    return view('staff/createAppointmentForPatient');
+});
+
+Route::get('manageAppointmentForPatient', function() {
+    return view('staff/manageAppointmentForPatient');
+});
+
+Route::get('importDoctorSchedule', function() {
+    return view('staff/importDoctorSchedule');
+});
+
+Route::get('doctorScheduleByStaff', function() {
+    return view('staff/doctorScheduleByStaff');
 });
 
 Route::get('addPatient', function() {
 	return view('staff/addPatient');
+});
+
+Route::get('doctorList', function () {
+    return view('patient/doctorList');
+});
+
+Route::get('addStaffByStaff', function() {
+    return view('staff/addStaffByStaff');
+});
+
+Route::get('searchPatientProfileByStaff', function() {
+    return view('staff/searchPatientProfileByStaff');
 });
 
 Route::get('createAppointment', function() {
@@ -51,6 +79,10 @@ Route::get('patientProfile', function() {
 	return view('patient/patientProfile');
 });
 
+Route::get('patientAppointmentSchedule', function() {
+    return view('patient/patientAppointmentSchedule');
+});
+
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
@@ -59,8 +91,8 @@ Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
 
-Route::get('/addStaff', function () {
-    return view('admin/addStaff');
+Route::get('/addStaffByAdmin', function () {
+    return view('admin/addStaffByAdmin');
 });
 
 Route::get('/grantStaff', function () {
@@ -68,7 +100,7 @@ Route::get('/grantStaff', function () {
 });
 
 Route::get('/mainPharmacist', function () {
-    return view('pharmacist/main');
+    return view('pharmacist/mainPharmacist');
 });
 
 Route::get('/recordPrescriptionHistory', function () {
@@ -91,8 +123,8 @@ Route::get('/searchPatientProfileByNurse', function () {
     return view('nurse/searchPatientProfileByNurse');
 });
 
-Route::get('/viewDoctorScheduleByNurse', function () {
-    return view('nurse/viewDoctorScheduleByNurse');
+Route::get('/doctorScheduleByNurse', function () {
+    return view('nurse/doctorScheduleByNurse');
 });
 
 Route::get('/mainDoctor', function () {
@@ -103,20 +135,20 @@ Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
 
-Route::get('/patientProfileByDoctor', function () {
-    return view('doctor/patientProfileByDoctor');
+Route::get('/doctorAppointmentSchedule', function () {
+    return view('doctor/doctorAppointmentSchedule');
 });
 
 Route::get('/searchPatientProfileByDoctor', function () {
     return view('doctor/searchPatientProfileByDoctor');
 });
 
-Route::get('/doctorSchedule', function () {
-    return view('doctor/doctorSchedule');
+Route::get('/doctorScheduleByDoctor', function () {
+    return view('doctor/doctorScheduleByDoctor');
 });
 
-Route::get('/patientAppointmentSchedule', function () {
-    return view('doctor/patientAppointmentSchedule');
+Route::get('/doctorAppointmentSchedule', function () {
+    return view('doctor/doctorAppointmentSchedule');
 });
 
 Route::get('/diagnosisHistory', function () {
@@ -125,5 +157,4 @@ Route::get('/diagnosisHistory', function () {
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
-
 

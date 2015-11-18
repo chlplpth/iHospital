@@ -19,8 +19,20 @@ class CreateDiagnosisRecordTable extends Migration
             $table->string('doctorAdvice');
             $table->string('diagnonsisDetail');
             $table->integer('prescriptionId');
-            $table->integer('phyRecordId');
+            $table->integer('physicalRecordId');
             $table->timestamps();
+
+            $table->foreign('appointmentId')
+                  ->references('appointmentId')
+                  ->on('appointment');
+
+            $table->foreign('prescriptionId')
+                  ->references('prescriptionId')
+                  ->on('prescription');
+
+            $table->foreign('physicalRecordId')
+                  ->references('physicalRecordId')
+                  ->on('physicalRecord');
         });
     }
 
