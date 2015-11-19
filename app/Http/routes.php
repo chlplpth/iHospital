@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/home', 'appointmentController@home');
+// Route::get('/home', 'appointmentController@home');
 
 Route::get('/', function () {
-    return view('emails.postponedAppointmentEmail');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
@@ -179,7 +179,8 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-
+Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');

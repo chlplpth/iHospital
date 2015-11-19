@@ -48,7 +48,7 @@
         @endif
 
         <div class ="forgetAndRegis"><a href = "{!! url('forgetPassword')  !!}">forget password</a> / <a href = "{!! url('register') !!}">register</a></div><br>
-        {!!Form::submit('Click Me!', ["class" => "btn btn-success"]);!!}
+        {!!Form::submit('เข้าสู่ระบบ', ["class" => "btn btn-success"]);!!}
       
 
       {!! Form::close() !!}
