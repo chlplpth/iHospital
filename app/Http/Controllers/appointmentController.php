@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 
 class appointmentController extends Controller
 {
-    
+    public function home()
+    {
+        return view('index');
+    }
 
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
@@ -21,17 +24,17 @@ class appointmentController extends Controller
         if(doctor!=null)
         {
             $availableDate = App\schedule::where('doctorId',$doctor);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         else
         {
             $availableDate = App\schedule::where('departmentId',$department);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
     	
-        return view(appointment.availableDate,compact($availableDate));
+        return view('appointment.availableDate',compact($availableDate));
     }   
 
     // show everything user fill in confirmation page
@@ -45,7 +48,7 @@ class appointmentController extends Controller
     public function createAppointmentStore(Request $request)
     {
         $appointment = new appointment($request->all());
-        Auth::user()->appointment()->save($article);
+        Auth::user()->appointment()->save($appointment);
 
         return redirect('appointment');
     }
@@ -59,7 +62,7 @@ class appointmentController extends Controller
                //->take(10)
                ->get();
 
-        return view(appointment.all,compact(appointments);
+        return view('appointment.all',compact(appointments);
     }
 
     public function delayAppointmentRequest(Request $request)
@@ -72,17 +75,17 @@ class appointmentController extends Controller
         if($doctor!=null)
         {
             $availableDate = App\schedule::where('doctorId',$doctor);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         else
         {
             $availableDate = App\schedule::where('departmentId',$department);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         
-        return view(appointment.availableDate,compact($availableDate));
+        return view('appointment.availableDate',compact($availableDate));
     }
 
     public function delayAppointmentStore(Request $request)

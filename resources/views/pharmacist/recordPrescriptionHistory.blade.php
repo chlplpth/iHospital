@@ -11,16 +11,16 @@
   		</div>
   		<div class="panel-body">
         <div class="row">
-          <label class="col-xs-2">รหัสผู้ป่วย: </label><label class="col-xs-10">123456789</label>
-          <label class="col-xs-2">ชื่อ: </label><label class="col-xs-10">ชลัมพล</label>
-          <label class="col-xs-2">นามสกุล: </label><label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
-          <label class="col-xs-2">ประวัติการแพ้ยา: </label><label class="col-xs-10"></label>
+          <label class="col-xs-2">รหัสผู้ป่วย</label><label class="col-xs-10">123456789</label>
+          <label class="col-xs-2">ชื่อ</label><label class="col-xs-10">ชลัมพล</label>
+          <label class="col-xs-2">นามสกุล</label><label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
+          <label class="col-xs-2">ประวัติการแพ้ยา</label><label class="col-xs-10"></label>
           <div class="col-xs-10">
             <textarea class="form-control" rows="5" readonly></textarea>
           </div>
         </div>
         <div class="row" id="prescription">
-          <label class="col-xs-2">ใบสั่งยา: </label>
+          <label class="col-xs-2">ใบสั่งยา</label>
           <div class="col-xs-10">
             <table class="table table-bordered table-hover">
                 <thead>
@@ -55,7 +55,6 @@
       		</div>
         </div>
         {!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-        {!! Form::submit('ประวัติการจ่ายยา', ["class" => "btn btn-info"]) !!}
 
   		</div>
 	</div>

@@ -58,7 +58,16 @@
 	float:right;
 	font-size: 20px;
 }
+
 #citizenError{
   margin-left: 50px;
   color : red;
 }
+
+.bloodType{
+  margin-top:-5px;
+}
+.province{
+  margin-top:-5px;
+}
+

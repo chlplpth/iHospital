@@ -31,16 +31,23 @@
   <body>
 
     <div class="container">
-
       {!! Form::open(array('url' => 'login')) !!}
         <h3>Please login</h3>
         {!!Form::label('username', 'ชื่อผู้ใช้งาน');!!}
         {!!Form::text('username', '', [
               'class'=>'form-signin form-control']);!!}
+        @if( $errors->has('username') )
+          <p class="text-danger"> {{ $errors->first('username') }} <br></p> 
+        @endif
+
         {!!Form::label('password', 'รหัสผ่าน');!!}
         {!!Form::password('password', [
               'class'=>'form-signin form-control']);!!}
-        <div class ="forgetAndRegis"><a href = "{{url('')">forget password</a> / <a href = "{{url('')">register</a></div><br>
+        @if( $errors->has('password') )
+          <p class="text-danger"> {{ $errors->first('password') }} <br></p> 
+        @endif
+
+        <div class ="forgetAndRegis"><a href = "{!! url('forgetPassword')  !!}">forget password</a> / <a href = "{!! url('register') !!}">register</a></div><br>
         {!!Form::submit('Click Me!', ["class" => "btn btn-success"]);!!}
       
 

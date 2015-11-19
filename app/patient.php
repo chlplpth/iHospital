@@ -19,14 +19,29 @@ class patient extends Model
      * @var array
      */
     protected $fillable = [
+        'userId',
         'hospitalNo',
-        'phoneNo',
+        'telHome',
+        'telMobile',
         'address',
         'sex',
         'bloodGroup'];
 
     //-------------  relationship
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'userId');
+    }
+
       public function appointments()
       {
-      	retuen $this->hasMany('App/Appointment');
+      	return $this->hasMany('App/Appointment');
       }
+
+    //-------------  accessor
+
+    public function getHospitalNoAttribute($value)
+    {
+        return sprintf("%08d", $value);
+    }
+}

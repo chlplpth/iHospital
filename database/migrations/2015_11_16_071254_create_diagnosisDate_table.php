@@ -13,9 +13,13 @@ class CreateDiagnosisDateTable extends Migration
     public function up()
     {
         Schema::create('diagnosisDate', function (Blueprint $table) {
-            $table->integer('diagnosisDateId');
+            $table->increments('diagnosisDateId');
             $table->integer('scheduleId');
             $table->timestamps();
+
+            $table->foreign('scheduleId')
+                  ->references('scheduleId')
+                  ->on('schedule');
         });
     }
 

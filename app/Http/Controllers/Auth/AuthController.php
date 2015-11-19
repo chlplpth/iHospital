@@ -2,11 +2,20 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use Hash;
 use App\User;
+use App\Patient;
+use App\Http\Requests\LoginRequest;
 use Validator;
+
+use App\Http\Requests;
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+
 
 class AuthController extends Controller
 {
@@ -62,4 +71,30 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function authenticate(LoginRequest $request)
+    {
+        if(Auth::attempt(['username' => $request['username'], 'password' => $request['password']]))
+        {
+            echo "logged in successfully!";
+        }
+        else
+        {
+            echo "wait please";
+        }
+    }
+
+    public function register(Request $request)
+    {
+        $input = $request->all();
+        $input['password'] = Hash::make($request['password']);
+        $user = User::create($input);
+
+        $patient = $input;
+        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        $patient['address'] = join(',,', $addressSet);
+        $patient['userId'] = $user->id;
+        $patient = Patient::create($patient);
+    }
+
 }

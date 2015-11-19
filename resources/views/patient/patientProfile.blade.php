@@ -16,46 +16,71 @@
 		<div class="row">
 			<div class="col-md-4"> <span class ="header">ชื่อ : </span>ชื่อจริง 
 			</div>
-			<div class="col-md-8">{!! Form::label('lastname', 'นามสกุล : '); !!} &nbsp
-				{!! Form::label('lastname', 'นามสกุล'); !!}
+			<div class="col-md-8"><span class ="header">นามสกุล : </span>นามสกุล
 			</div>
 		</div>
 		<br>
 
 		<div class ="row">
     	<div class ="col-md-2">
-		  	{!!Form::label('sex', 'เพศ : ');!!}
-  			{!! Form::label('sex', 'ชาย'); !!}
+    		<span class ="header">เพศ : </span>ชาย 
   		</div>
   		<div class ="col-md-2">
-  			{!!Form::label('bloodType', 'กรุ๊ปเลือด : ');!!}
-  			{!! Form::label('BloodType', 'O'); !!}
+			<span class ="header">กรุ้ปเลือด : </span>O
   		</div>	
   		<div class ="col-md-8">
-			{!!Form::label('birthDate', 'วัน/เดือน/ปี เกิด : ');!!}
-			{!!Form::label('birthDate','28/03/1994');!!}
-
+  			<span class ="header">วัน/เดือน/ปี เกิด : </span>XX/XX/XXXX 
   		</div>
   	</div>
 
 		<br>
 
-		{!! Form::label('address', 'ที่อยู่'); !!} &nbsp
-		{!! Form::text('address', '199/36 หมุ่.1 ต.รั่วใหญ่ อ.เมือง จ.สุพรรณบุรี 72000', ['class'=>'textbox textbox500px']);!!}
-
-
-	<div class="row"><br>
-		<div class="col-md-6">{!! Form::label('homeNumber', 'เบอร์บ้าน : '); !!} &nbsp
-			{!! Form::label('homeNumber', '02-XXXXXXX');!!}
-		</div>
-		<div class="col-md-6">{!! Form::label('phoneNumber', 'เบอร์มือถือ : '); !!} &nbsp
-			{!! Form::label('phoneNumber', '08X-XXX-XXXX');!!}
-		</div>
-
-	</div> <br>
-
-	{!! Form::label('emailAddress', 'อีเมล : '); !!} &nbsp
-	{!! Form::label('emailAddress', 'earthnapat12@gmail.com');!!}
+		<div class ="row">
+					
+					<div class ="col-md-2">
+						<span class ="header">บ้านเลขที่ : </span>199/36 
+					</div>
+					<div class ="col-md-2">
+						<span class ="header">หมู่ : </span>1
+					</div>	
+					<div class ="col-md-3">
+							<span class ="header">ถนน : </span>สมภารคง
+						</div>
+					<div class ="col-md-4">
+						<span class ="header">แขวง/ตำบล : </span>รั้วใหญ่
+					</div>
+					<div class ="col-md-1">
+					</div>
+				</div>
+				<br>
+				<div class ="row">
+					
+					<div class ="col-md-4">
+						<span class ="header">เขต/อำเภอ : </span>เมือง
+					</div>
+					<div class ="col-md-3 province">
+						<span class ="header">จังหวัด : </span>สุพรรณบุรี
+					</div>	
+					<div class ="col-md-4">
+						<span class ="header">รหัสไปรษณีย์ : </span>72000
+					</div>
+					<div class ="col-md-1">
+					</div>
+				</div>
+				<br>
+				<div class ="row">
+					
+					<div class ="col-md-5">
+						<span class ="header">โทรศัพท์บ้าน : </span>0X-XXXXXXX
+					</div>
+					<div class ="col-md-6">
+						<span class ="header">โทรศัพท์มือถือ : </span>0XX-XXXXXXX
+					</div>
+					<div class ="col-md-1">
+					</div>
+				</div>
+				<br>
+				<span class ="header">อีเมล : </span>XXXXX_XXXXX@gmail.com
 
 	<br><br>
 
