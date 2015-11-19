@@ -185,4 +185,4 @@ Route::get('/logout', 'Auth\AuthController@logout');
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
 
-
+Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
