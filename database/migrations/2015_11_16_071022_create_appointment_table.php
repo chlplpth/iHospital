@@ -22,17 +22,17 @@ class CreateAppointmentTable extends Migration
             $table->integer('diagRecordId');
             $table->timestamps();
 
-            $table->foreign('patientId')
-                  ->references('userId')
-                  ->on('patient');
+            // $table->foreign('patientId')
+            //       ->references('userId')
+            //       ->on('patient');
 
-            $table->foreign('doctorId')
-                  ->references('userId')
-                  ->on('doctor');
+            // $table->foreign('doctorId')
+            //       ->references('userId')
+            //       ->on('doctor');
 
-            $table->foreign('diagRecordId')
-                  ->references('diagRecordId')
-                  ->on('diagRecord');
+            // $table->foreign('diagRecordId')
+            //       ->references('diagRecordId')
+            //       ->on('diagRecord');
         });
     }
 

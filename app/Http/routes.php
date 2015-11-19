@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('general/login');
+    return view('emails.postponedAppointmentEmail');
 });
 
 Route::get('/index', function () {
@@ -80,5 +80,23 @@ Route::get('/recordPrescriptionHistory', function () {
 
 Route::get('/findPatient', function () {
     return view('pharmacist/findPatient');
+});
+
+Route::get('sendemail', function () {
+    $data = array(
+        'name' => "Noon",
+    );
+    
+
+    Mail::send('emails.confirmAppointmentEmail',$data,function ($message) {
+
+        $message->from('ihospital.se@gmail.com', 'iHospital');
+
+        $message->to('melodiiz_noon@hotmail.com')->subject('Learning Laravel test email');
+
+    });
+
+    return "Your email has been sent successfully";
+
 });
 

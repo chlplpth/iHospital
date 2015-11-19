@@ -1,8 +1,10 @@
 @extends('layout/unregisteredLayout')
 @section('css')
 <link href="css/register.css" rel="stylesheet">
+{!! HTML::script('js/register.js') !!}
 @stop
 @section('content')
+{!! Form::open(array('url' => 'foo/bar')) !!}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
@@ -12,8 +14,9 @@
 			<div class ="col-md-1"></div>
 			<div class ="col-md-11">
 				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
-				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน']);!!}
-				{!!Form::button('submit',['class'=>'btn btn-default submitCitizenNo']);!!}
+				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน','onkeyup'=>'citizenNoCheck()','onkeydown'=>'return isNumber(event)']);!!}
+				{!!Form::button('submit',['class'=>'btn btn-default submitCitizenNo','disabled'=>'true']);!!}
+				<span id="citizenError"></span>
 			</div>
 		</div>
 		<br>
@@ -156,4 +159,5 @@
 		{!!Form::button('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
 	</div>
 </div>
+{!! Form::close() !!}
 @stop
