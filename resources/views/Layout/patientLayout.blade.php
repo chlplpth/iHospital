@@ -55,7 +55,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">Name  Lastname</a></li>
             <li><a href="#">ข้อมูลส่วนตัว</a></li>
-            <li><a href="#">ออกจากระบบ</a></li>
+            <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
           </ul>
         </div>
       </div>
