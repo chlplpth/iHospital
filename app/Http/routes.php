@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/home', 'appointmentController@home');
+
 Route::get('/', function () {
     return view('general/login');
 });
@@ -22,6 +24,7 @@ Route::get('/index', function () {
 Route::get('/register', function () {
     return view('general/register');
 });
+
 
 Route::get('/changePassword', function () {
     return view('general/changePassword');
@@ -66,6 +69,8 @@ Route::get('addStaffByStaff', function() {
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
+
+Route::post('searchPatientProfileByStaff','userController@searchPatient' );
 
 Route::get('createAppointment', function() {
 	return view('patient/createAppointment');
@@ -156,5 +161,7 @@ Route::get('/diagnosisHistory', function () {
 });
 
 Route::post('/login', 'Auth\AuthController@authenticate');
+Route::post('/register', 'Auth\AuthController@register');
+
 Route::post('/register', 'Auth\AuthController@register');
 

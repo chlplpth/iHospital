@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 
 class appointmentController extends Controller
 {
-    
+    public function home()
+    {
+        return view('index');
+    }
 
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
@@ -21,13 +24,13 @@ class appointmentController extends Controller
         if(doctor!=null)
         {
             $availableDate = App\schedule::where('doctorId',$doctor);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         else
         {
             $availableDate = App\schedule::where('departmentId',$department);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
     	
@@ -72,13 +75,13 @@ class appointmentController extends Controller
         if($doctor!=null)
         {
             $availableDate = App\schedule::where('doctorId',$doctor);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         else
         {
             $availableDate = App\schedule::where('departmentId',$department);
-                                         ->where('date',$date);
+                                         //->where('date',$date);
                                          ->get();
         }
         
