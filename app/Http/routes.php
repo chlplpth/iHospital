@@ -84,6 +84,10 @@ Route::get('patientAppointmentSchedule', function() {
     return view('patient/patientAppointmentSchedule');
 });
 
+Route::get('mainAdmin', function () {
+    return view('admin/mainAdmin');
+});
+
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
