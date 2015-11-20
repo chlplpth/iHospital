@@ -1614,21 +1614,21 @@
 	$.fn.datepicker = datepickerPlugin;
 
 	var defaults = $.fn.datepicker.defaults = {
-		autoclose: false,
+		autoclose: true,
 		beforeShowDay: $.noop,
 		beforeShowMonth: $.noop,
 		beforeShowYear: $.noop,
 		calendarWeeks: false,
 		clearBtn: false,
-		toggleActive: false,
+		toggleActive: true,
 		daysOfWeekDisabled: [],
 		daysOfWeekHighlighted: [],
 		datesDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		format: 'mm/dd/yyyy',
+		format: 'dd/mm/yyyy',
 		keyboardNavigation: true,
-		language: 'en',
+		language: 'th',
 		minViewMode: 0,
 		maxViewMode: 2,
 		multidate: false,
@@ -1653,13 +1653,13 @@
 	];
 	$.fn.datepicker.Constructor = Datepicker;
 	var dates = $.fn.datepicker.dates = {
-		en: {
+		th: {
 			days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
 			daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-			daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"],
-			months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+			daysMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+			months: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
 			monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-			today: "Today",
+			today: "วันนี้",
 			clear: "Clear",
 			titleFormat: "MM yyyy"
 		}

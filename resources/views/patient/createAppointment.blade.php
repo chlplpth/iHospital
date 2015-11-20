@@ -83,10 +83,10 @@
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">วันนัด</label>
 				<div class="col-xs-3">
-					<div class="input-group date">
-						{!! Form::text('date', '', ['id' => 'datepicker', "class" => "form-control"]) !!}
+					<div class="input-group date" id="datepicker">
+						{!! Form::text('date', '', ["class" => "form-control"]) !!}
 						<div class="input-group-addon">
-							<span class="glyphicon glyphicon-th"></span>
+							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
 					</div>
 				</div>
@@ -100,25 +100,19 @@
 			<div class="form-group">
 				{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 			</div>
-			<div class="container">
-            <div class="hero-unit">
-            	<input  type="text" placeholder="click to show datepicker"  id="example1">
-            </div>
-        </div>
-        <!-- Load jQuery and bootstrap datepicker scripts -->
-        
-        <script type="text/javascript">
+
+			<!-- Script to construct datepicker -->
+			<script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
-
-            	$('#example1').datepicker({
-            		format: "dd/mm/yyyy"
-            	});  
-
+            	$('#datepicker').datepicker();
             });
             </script>
+            
         </form>
     </div>
+</div>
+</div>
 </div>
 
 {!! Form::close() !!}
