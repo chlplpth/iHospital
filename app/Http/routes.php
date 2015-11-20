@@ -13,10 +13,6 @@
 
 // Route::get('/home', 'appointmentController@home');
 
-Route::get('/', function () {
-    return view('general/login');
-});
-
 Route::get('/index', function () {
     return view('index');
 });
@@ -125,7 +121,7 @@ Route::get('/searchPatientProfileByPharmacist', function () {
 });
 
 Route::get('/mainNurse', function () {
-    return view('nurse/main');
+    return view('nurse/mainNurse');
 });
 
 Route::get('/recordPatientGeneralDetail', function () {
@@ -187,7 +183,7 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');

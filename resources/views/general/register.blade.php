@@ -46,10 +46,15 @@
 					<div class ="col-md-2"><br>
 						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'));!!}
-					</div>
-					<div class ="col-md-7 birthDate"><br>
-						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด');!!}
-						{!!Form::text('dateOfBirth','',['class'=>'textbox','placeholder'=>'วว/ดด/ปป']);!!}
+					</div><br>
+					<div class ="col-md-5 form-inline">
+						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
+						<div class="input-group date" id="datepicker">
+							{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -158,18 +163,24 @@
 					</div>
 					<div class="col-md-4" >
 						{!!Form::label('password','รหัสผ่าน');!!}&nbsp
-						{!!Form::text('password','',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
+						{!!Form::password('password',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
 					</div>
 					<div class="col-md-7" >
 						{!!Form::label('repassword','ยืนยันรหัสผ่าน');!!}&nbsp
-						{!!Form::text('repassword','',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
+						{!!Form::password('repassword',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
 					</div>
 				</div>
 			</div>
 		</div>
 		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
 	</div>
-
+	<!-- Script to construct datepicker -->
+	<script type="text/javascript">
+	    // When the document is ready
+	    $(document).ready(function () {
+	    	$('#datepicker').datepicker();
+    	});
+    </script>
 	
 </div>
 {!! Form::close() !!}
