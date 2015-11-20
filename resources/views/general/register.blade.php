@@ -163,11 +163,11 @@
 					</div>
 					<div class="col-md-4" >
 						{!!Form::label('password','รหัสผ่าน');!!}&nbsp
-						{!!Form::text('password','',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
+						{!!Form::password('password',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
 					</div>
 					<div class="col-md-7" >
 						{!!Form::label('repassword','ยืนยันรหัสผ่าน');!!}&nbsp
-						{!!Form::text('repassword','',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
+						{!!Form::password('repassword',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
 					</div>
 				</div>
 			</div>
