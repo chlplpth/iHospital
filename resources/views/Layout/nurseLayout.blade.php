@@ -39,7 +39,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h3>iHospital</h3>
+          <h3><a href="{{ url('/') }}">iHospital</a></h3>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -55,9 +55,15 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="{{ url('/searchPatientProfileByNurse') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a></li>
-            <li><a href="{{ url('/recordPatientGeneralDetail') }}">บันทึกข้อมูลทั่วไปของผู้ป่วย</a></li>
-            <li><a href="{{ url('/doctorScheduleByNurse') }}">ตารางนัดหมาย</a></li>
+           <li class="{{ Request::is('searchPatientProfileByNurse') ? 'active' : '' }}">
+              <a href="{{ url('/searchPatientProfileByNurse') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="{{ Request::is('recordPatientGeneralDetail') ? 'active' : '' }}">
+              <a href="{{ url('/recordPatientGeneralDetail') }}">บันทึกข้อมูลทั่วไปของผู้ป่วย</a>
+            </li>
+            <li class="{{ Request::is('doctorScheduleByNurse') ? 'active' : '' }}">
+              <a href="{{ url('/doctorScheduleByNurse') }}">ตารางนัดหมาย</a>
+            </li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
