@@ -53,8 +53,8 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Name  Lastname</a></li>
-            <li><a href="#">ข้อมูลส่วนตัว</a></li>
+            <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
+            <li><a href="{{ url('/patientProfile') }}">ข้อมูลส่วนตัว</a></li>
             <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
           </ul>
         </div>
@@ -65,10 +65,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">สร้างนัดหมาย<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">แก้ไขข้อมูลส่วนตัว</a></li>
-            <li><a href="#">รายการนัดหมาย</a></li>
-            <li><a href="#">ดูข้อมูลแพทย์</a></li>
+            <li class="active"><a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a></li>
+            <li><a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a></li>
+            <li><a href="{{ url('/patientAppointmentSchedule') }}">รายการนัดหมาย</a></li>
+            <li><a href="{{ url('doctorList') }}">ดูข้อมูลแพทย์</a></li>
             <li><a href="#">ประวัติการรักษา</a></li>
           </ul>
         </div>

@@ -99,4 +99,8 @@ class AuthController extends Controller
         return redirect('/');
     }
 
+    public function genPassword($text)
+    {
+        echo $text . "   =   " . Hash::make($text);
+    }
 }
