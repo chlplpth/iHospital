@@ -11,7 +11,7 @@
 		<h3 class="panel-title">แก้ไขข้อมูลส่วนตัว</h3>
 	</div>
 	<div class="panel-body">
-
+		<div id = "editProfile">
 
 		{!! Form::label('hospitalNo', 'รหัสประจำตัวผู้ป่วย'); !!} &nbsp
 		{!! Form::text('hospitalNo','Patient ID', ['class'=>'textbox textbox100px','disabled'=>'true' ]); !!} 
@@ -98,15 +98,17 @@
 			</div>
 		</div>
 
-		<br>
+		<br><br>
 
 		{!! Form::label('email', 'อีเมล'); !!} &nbsp
 		{!! Form::text('email', 'kamdekdee@hotmail.com', ['class'=>'textbox textbox300px']);!!}
 
 		<br><br>
-		{!! Form::submit('แก้ไข', ["class" => "btn btn-warning edit"]) !!}
+		<div id = "editButton">
+		{!! Form::submit('แก้ไข', ["class" => "btn btn-success edit"]) !!}
 		{!! Form::close() !!}
-
+	</div>
+	</div>
 
 
 

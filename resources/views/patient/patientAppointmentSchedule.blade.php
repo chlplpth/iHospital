@@ -17,10 +17,10 @@
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<th style="width: 5%;">วัน/เดือน/ปี</th>
-								<th style="width: 5%;">เวลา</th>
-								<th style="width: 5%;">แผนก</th>
-								<th style="width: 5%;">แพทย์</th>
+								<th style="width: 8%;">วัน/เดือน/ปี</th>
+								<th style="width: 10%;">เวลา</th>
+								<th style="width: 15%;">แผนก</th>
+								<th style="width: 25%;">แพทย์</th>
 								<th style="width: 5%;">เลื่อน</th>
 								<th style="width: 5%;">ยกเลิกการนัด</th>
 							</tr>

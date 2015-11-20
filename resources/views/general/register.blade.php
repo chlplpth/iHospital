@@ -169,7 +169,7 @@
 		</div>
 		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
 	</div>
-	{!! Form::close() !!}
+
 	
 </div>
 {!! Form::close() !!}
