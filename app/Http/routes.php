@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/home', 'appointmentController@home');
+// Route::get('/home', 'appointmentController@home');
 
 Route::get('/', function () {
     return view('general/login');
@@ -179,9 +179,10 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-
+Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
 
-
+Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');

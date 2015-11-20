@@ -43,9 +43,9 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Name  Lastname</a></li>
+            <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
             <li><a href="#">ข้อมูลส่วนตัว</a></li>
-            <li><a href="#">ออกจากระบบ</a></li>
+            <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
           </ul>
         </div>
       </div>
@@ -55,10 +55,10 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">เพิ่มแผนก<span class="sr-only">(current)</span></a></li>
-            <li><a href="#">เพิ่มยา</a></li>
-            <li><a href="#">เพิ่มบุคลากร</a></li>
-            <li><a href="#">ให้สิทธิ์เจ้าหน้าที่</a></li>
+            <li class="active"><a href="{{ url('/addDepartment') }}">เพิ่มแผนก<span class="sr-only">(current)</span></a></li>
+            <li><a href="{{ url('/addMedicine') }}">เพิ่มยา</a></li>
+            <li><a href="{{ url('/addStaffByAdmin') }}">เพิ่มบุคลากร</a></li>
+            <li><a href="{{ url('/grantStaff') }}">ให้สิทธิ์เจ้าหน้าที่</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

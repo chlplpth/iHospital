@@ -43,9 +43,6 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Name  Lastname</a></li>
-            <li><a href="#">ข้อมูลส่วนตัว</a></li>
-            <li><a href="#">ออกจากระบบ</a></li>
           </ul>
         </div>
       </div>

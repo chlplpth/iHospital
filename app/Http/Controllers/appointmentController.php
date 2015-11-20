@@ -17,7 +17,7 @@ class appointmentController extends Controller
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
     {
-    	$date = $request->date;
+        $date = $request->date;
         $department = $request->departmentId;
         $doctor = $request->doctorId;
 
@@ -33,7 +33,7 @@ class appointmentController extends Controller
                                          //->where('date',$date);
                                          ->get();
         }
-    	
+        
         return view('appointment.availableDate',compact($availableDate));
     }   
 
@@ -100,6 +100,6 @@ class appointmentController extends Controller
 
     public function cancelAppointment(Request $request)
     {
-    	
+        
     }
 }
