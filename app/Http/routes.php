@@ -14,7 +14,7 @@
 Route::get('/home', 'appointmentController@home');
 
 Route::get('/', function () {
-    return view('emails.postponedAppointmentEmail');
+    return view('general/login');
 });
 
 Route::get('/index', function () {
@@ -151,7 +151,7 @@ Route::get('sendemail', function () {
 
         $message->from('ihospital.se@gmail.com', 'iHospital');
 
-        $message->to('melodiiz_noon@hotmail.com')->subject('Learning Laravel test email');
+        $message->to('tonkung49031@gmail.com')->subject('Learning Laravel test email');
 
     });
 

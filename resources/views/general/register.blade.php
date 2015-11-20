@@ -4,7 +4,7 @@
 {!! HTML::script('js/register.js') !!}
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/register')) !!}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
@@ -34,7 +34,7 @@
 						{!!Form::label('name', 'ชื่อ');!!}&nbsp
 						{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						{!!Form::label('lastname', 'นามสกุล');!!}&nbsp
-						{!!Form::text('lastname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
+						{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
 					</div>
 				</div>
 				<div class ="row">
