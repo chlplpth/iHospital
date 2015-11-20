@@ -17,13 +17,13 @@ class CreateHospitalStaffTable extends Migration
             $table->integer('departmentId');
             $table->timestamps();
 
-            $table->foreign('userId')
-                  ->references('userId')
-                  ->on('user');
+            // $table->foreign('userId')
+            //       ->references('userId')
+            //       ->on('user');
 
-            $table->foreign('departmentId')
-                  ->references('departmentId')
-                  ->on('department');
+            // $table->foreign('departmentId')
+            //       ->references('departmentId')
+            //       ->on('department');
         });
     }
 

@@ -23,13 +23,13 @@ class CreatePhysicalRecordTable extends Migration
             $table->integer('heartRate');
             $table->timestamps();
 
-            $table->foreign('nurseId')
-                  ->references('userId')
-                  ->on('nurse');
+            // $table->foreign('nurseId')
+            //       ->references('userId')
+            //       ->on('nurse');
 
-            $table->foreign('diagRecordId')
-                  ->references('diagRecordId')
-                  ->on('diagnosisRecord');
+            // $table->foreign('diagRecordId')
+            //       ->references('diagRecordId')
+            //       ->on('diagnosisRecord');
         });
     }
 
