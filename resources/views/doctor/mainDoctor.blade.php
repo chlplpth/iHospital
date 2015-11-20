@@ -3,9 +3,5 @@
 <link href="css/doctor.css" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => 'foo/bar')) !!}
-
-	<h1>mainDoctor</h1>
-
-	{!! Form::close() !!}
+	<h1>Hello Doctor</h1>
 @stop

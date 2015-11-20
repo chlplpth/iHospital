@@ -32,55 +32,16 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    /**
-     * Create a new authentication controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest', ['except' => 'getLogout']);
-    }
-
-    /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6',
-        ]);
-    }
-
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array  $data
-     * @return User
-     */
-    protected function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
-    }
-
     public function authenticate(LoginRequest $request)
     {
-        if(Auth::attempt(['username' => $request['username'], 'password' => $request['password']]))
+        $user = User::where('username', $request['username'])->first();
+        if(Auth::attempt(['userId' => $user->userId, 'password' => $request['password']]))
         {
-            echo "logged in successfully!";
+            return redirect('/main');
         }
         else
         {
-            echo "wait please";
+            return redirect('/');
         }
     }
 
@@ -90,11 +51,56 @@ class AuthController extends Controller
         $input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
-        $patient = $input;
-        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        $patient['address'] = join(',,', $addressSet);
-        $patient['userId'] = $user->id;
-        $patient = Patient::create($patient);
+        // $patient = $input;
+        // $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        // $patient['address'] = join(',,', $addressSet);
+        // $patient['userId'] = $user->id;
+        // $patient = Patient::create($patient);
     }
 
+    public function getMainPage()
+    {
+        if(Auth::check()){
+            $utype = Auth::user()->userType;
+            if($utype == 'patient')
+            {
+                return view('patient.mainPatient');
+            }
+            else if($utype == 'doctor')
+            {
+                return view('doctor.mainDoctor');
+            }
+            else if($utype == 'staff')
+            {
+                return view('staff.mainStaff');
+            }
+            else if($utype == 'pharmacist')
+            {
+                return view('pharmacist.mainPharmacist');
+            }
+            else if($utype == 'nurse')
+            {
+                return view('nurse.mainNurse');
+            }
+            else if($utype == 'admin')
+            {
+                return view('admin.mainAdmin');
+            }
+        }
+        else
+        {
+            return redirect('/');
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
+
+    public function genPassword($text)
+    {
+        echo $text . "   =   " . Hash::make($text);
+    }
 }

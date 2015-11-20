@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/home', 'appointmentController@home');
+// Route::get('/home', 'appointmentController@home');
 
 Route::get('/', function () {
     return view('general/login');
@@ -142,6 +142,25 @@ Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
 
+
+Route::get('sendemail', function () {
+    $data = array(
+        'name' => "Noon",
+    );
+    
+
+    Mail::send('emails.confirmAppointmentEmail',$data,function ($message) {
+
+        $message->from('ihospital.se@gmail.com', 'iHospital');
+
+        $message->to('melodiiz_noon@hotmail.com')->subject('Learning Laravel test email');
+
+    });
+
+    return "Your email has been sent successfully";
+
+});
+
 Route::get('/doctorAppointmentSchedule', function () {
     return view('doctor/doctorAppointmentSchedule');
 });
@@ -162,10 +181,10 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-
+Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
 
-Route::post('/register', 'Auth\AuthController@register');
-
+Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
