@@ -23,14 +23,14 @@ class appointmentController extends Controller
 
         if(doctor!=null)
         {
-            $availableDate = App\schedule::where('doctorId',$doctor);
-                                         //->where('date',$date);
+            $availableDate = App\schedule::where('doctorId',$doctor)
+                                         ->where('date',$date)
                                          ->get();
         }
         else
         {
-            $availableDate = App\schedule::where('departmentId',$department);
-                                         //->where('date',$date);
+            $availableDate = App\schedule::where('departmentId',$department)
+                                         ->where('date',$date)
                                          ->get();
         }
     	
@@ -74,14 +74,14 @@ class appointmentController extends Controller
 
         if($doctor!=null)
         {
-            $availableDate = App\schedule::where('doctorId',$doctor);
-                                         //->where('date',$date);
+            $availableDate = App\schedule::where('doctorId',$doctor)
+                                         ->where('date',$date)
                                          ->get();
         }
         else
         {
-            $availableDate = App\schedule::where('departmentId',$department);
-                                         //->where('date',$date);
+            $availableDate = App\schedule::where('departmentId',$department)
+                                         ->where('date',$date)
                                          ->get();
         }
         

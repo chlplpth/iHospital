@@ -72,6 +72,8 @@ Route::get('searchPatientProfileByStaff', function() {
 
 Route::post('searchPatientProfileByStaff','userController@searchPatient' );
 
+Route::post('search','userController@searchPatient' );
+
 Route::get('createAppointment', function() {
 	return view('patient/createAppointment');
 });

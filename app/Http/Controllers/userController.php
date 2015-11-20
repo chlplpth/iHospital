@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\doctor;
+use App\patient;
+use App\user;
 
 class userController extends Controller
 {
@@ -88,18 +91,27 @@ class userController extends Controller
     
     public function searchPatient(Request $request)
     {
-    	$keyword = $request->patient;
-    	$patients = App\patient::where('name', 'like', '%{$keyword}%')
-    						 ->orwhere('surname', 'like', '%{$keyword}%')
-				             //->orderBy('name', 'desc')
-				             //->take(10)
-				             ->get();	
-		return view('patient.search',compact($patiens));
+    	$keyword = $request->input('patient');
+
+        $users = user::where(function ($query){
+                             $query->where('name', 'like', '%{$keyword}%')
+                                   ->orwhere('surname', 'like', '%{$keyword}%');
+                            })
+                     ->where('userType',"patient")
+                     ->leftJoin('patient','hospinalNo','=','hospinalNo')
+                     ->get();   
+        
+        // $patients = patient::where('userId',$users->userId)
+				    //        ->get();	
+
+        if(sizeof($patients)==0) echo "aaa";
+
+		//return view('patient.search',compact($patiens));
     }
     
     public function viewDoctorProfile(Request $request)
     {
-    	$doctor = App\doctor::find($request->doctorId);
+    	$doctor = App\doctor::find($request->doctor);
 
     	return view('Doctor.profile',compact($doctor));
     }

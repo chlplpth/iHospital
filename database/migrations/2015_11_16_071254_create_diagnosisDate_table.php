@@ -17,9 +17,9 @@ class CreateDiagnosisDateTable extends Migration
             $table->integer('scheduleId');
             $table->timestamps();
 
-            $table->foreign('scheduleId')
-                  ->references('scheduleId')
-                  ->on('schedule');
+            // $table->foreign('scheduleId')
+            //       ->references('scheduleId')
+            //       ->on('schedule');
         });
     }
 
