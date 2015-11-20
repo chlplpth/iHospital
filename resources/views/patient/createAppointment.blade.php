@@ -25,9 +25,9 @@ $(function() {
 
 				<form role="form">
 			        <div class="form-group row">
-			          <div class="col-xs-2" id="patientLabel">{!! Form::label('id', 'รหัสประจำตัวผู้ป่วย') !!}</div>
-			          <div class="col-xs-3">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
-			        </div>
+			          <label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
+				        <label class="col-xs-3" id="patientLabel">XXX</label>
+					</div>
 			        <div class="form-group row">  
 				        <label class="col-xs-2" id="patientLabel">ชื่อ</label>
 				        <label class="col-xs-10" id="patientLabel">ชลัมพล</label>
@@ -38,7 +38,7 @@ $(function() {
 				    </div>
 				    <div class="form-group row">
 				        <label class="col-xs-2" id="patientLabel">แผนก</label>
-				   		<div class="col-xs-3">{!! Form::select('department', array(
+				   		<div class="col-xs-3">{!! Form::select('departmentName', array(
 							'0' => 'ไม่ระบุ',
 							'1' => 'กายวิภาคศาสตร์', 
 							'2' => 'กุมารเวชศาสตร์',
@@ -65,29 +65,7 @@ $(function() {
 				    </div>
 				    <div class="form-group row">
 				        <label class="col-xs-2" id="patientLabel">แพทย์</label>
-				   		<div class="col-xs-3">{!! Form::select('department', array(
-							'0' => 'ไม่ระบุ',
-							'1' => 'กายวิภาคศาสตร์', 
-							'2' => 'กุมารเวชศาสตร์',
-							'3' => 'จิตเวชศาสตร์',
-							'4' => 'จุลชีววิทยา',
-							'5' => 'จักษุวิทยา',
-							'6' => 'ชีวเคมี',
-							'7' => 'นิติเวชศาสตร์',
-							'8' => 'ปรสิตวิทยา',
-							'9' => 'พยาธิวิทยา',
-							'10' => 'เภสัชวิทยา',
-							'11' => 'รังสีวิทยา',
-							'12' => 'วิสัญญีวิทยา',
-							'13' => 'เวชศาสตร์ชันสูตร',
-							'14' => 'เวชศาสตร์ป้องกันและสังคม',
-							'15' => 'เวชศาสตร์ฟื้นฟู',
-							'16' => 'ศัลยศาสตร์',
-							'17' => 'สรีรวิทยา',
-							'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-							'19' => 'โสต คอ นาสิกวิทยา',
-							'20' => 'ออโธปิดิกส์',
-							'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
+				   		<div class="col-xs-3">{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=> 'ชื่อแพทย์']);!!} 
 				   		</div>
 				    </div>
 				    <div class="form-group row">
