@@ -110,7 +110,7 @@ $(function() {
 			          	</div>
 			          	</div>
 			        </div>
-			        <div class="form-group">
+			        <div class="form-group" id = "editButton">
 		        		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 		        	</div>
 	        	</div>

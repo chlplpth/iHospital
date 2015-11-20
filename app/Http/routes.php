@@ -42,6 +42,10 @@ Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
 
+Route::get('diagnosisRecord', function() {
+    return view('patient/diagnosisRecord');
+});
+
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });

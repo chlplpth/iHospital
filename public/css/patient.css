@@ -1,3 +1,9 @@
+.centerBtn {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
 #patientLabel {
   margin-top: 7px;
 }
@@ -5,7 +11,9 @@
 .btn-success {
   float: right;
 }
-
+#appointmentTable {
+  width: 90%;  
+}
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
