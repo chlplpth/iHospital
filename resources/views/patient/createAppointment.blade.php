@@ -113,6 +113,44 @@
         <div class="form-group col-xs-6">
         	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
         </div>
+        <div class="panel-body">
+		<form>
+			<div class="form-group row">
+				<div class="col-xs-12">
+					<table class="table table-bordered centerBtn" id="appointmentTable" style = "text-align:center;">
+						<thead >
+							<br>
+							<tr>
+								<th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
+								<th style="width: 24%;text-align:center;">เวลา</th>
+								<th style="width: 26%; text-align:center;">แผนก</th>
+								<th style="width: 46%; text-align:center;">แพทย์</th>
+								<th style="width: 20%; text-align:center;">นัดหมาย</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>20/11/2558</td>
+								<td>9.00 น. - 12.00 น.</td>
+								<td>จักษุวิทยา</td>
+								<td>กรภพ</td>
+								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a></td>
+							</tr>
+
+							<tr>
+								<td>21/11/2558</td>
+								<td>13.00 น. - 16.00 น.</td>
+								<td>กุมารเวชรศาสตร์</td>
+								<td>ญานิกา</td>
+								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a></td>
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</form>
+	</div>
     </div>
 </div>
 

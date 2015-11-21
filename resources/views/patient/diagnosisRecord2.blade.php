@@ -56,8 +56,28 @@
 				<br><br>
 				<span class ="header">คำแนะนำจาแพทย์ : </span>กินยาแล้วไปนอนพัก 
 				<br><br>
-				<span class ="header">รายการยา : </span>paracetamol 
+				<span class ="header">รายการยา</span> 
+				<br><br>
+				<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
+						<thead >
+							<tr>
+								<th style="width: 33%; text-align:center;">ชื่อยา</th>
+								<th style="width: 16%; text-align:center;">จำนวน</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>paracetamol</td>
+								<td>2 เม็ด</td>
+							</tr>
+							<tr>
+								<td>ยาบ้า</td>
+								<td>5 แผง</td>
+								</tr>
 
+						</tbody>
+					</table>		
+				{!! Form::submit('ส่งออก', ["class" => "btn btn-warning"]) !!}
 				<br><br>
 			</div>
 		</div>
