@@ -69,9 +69,9 @@
             <ul class="nav nav-sidebar">
               <li class="active"><a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a></li>
               <li><a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a></li>
-              <li><a href="{{ url('/patientAppointmentSchedule') }}">รายการนัดหมาย</a></li>
-              <li><a href="{{ url('doctorList') }}">ดูข้อมูลแพทย์</a></li>
-              <li><a href="#">ประวัติการรักษา</a></li>
+              <li><a href="{{ url('/patientAppointmentSchedule') }}">ตารางการนัดหมาย</a></li>
+              <li><a href="{{ url('/doctorList') }}">ดูข้อมูลแพทย์</a></li>
+              <li><a href="{{ url('/diagnosisRecord') }}">ประวัติการรักษา</a></li>
             </ul>
           </div>
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

@@ -14,25 +14,26 @@ class CreateAppointmentTable extends Migration
     {
         Schema::create('appointment', function (Blueprint $table) {
             $table->increments('appointmentId');
-            $table->integer('patientId');
-            $table->integer('doctorId');
-            $table->string('date');
-            $table->string('time');
+            $table->integer('patientId')->unsigned();
+            $table->integer('doctorId')->unsigned();
+            $table->integer('diagDateId')->unsigned(); //represent appointment date,time
             $table->string('symptom');
-            $table->integer('diagRecordId');
+            $table->boolean('walkIn')->default(false);
             $table->timestamps();
+        });
 
-            // $table->foreign('patientId')
-            //       ->references('userId')
-            //       ->on('patient');
+        Schema::table('appointment', function(Blueprint $table) {
+            $table->foreign('patientId')
+                  ->references('userId')
+                  ->on('patient');
 
-            // $table->foreign('doctorId')
-            //       ->references('userId')
-            //       ->on('doctor');
+            $table->foreign('doctorId')
+                  ->references('userId')
+                  ->on('doctor');
 
-            // $table->foreign('diagRecordId')
-            //       ->references('diagRecordId')
-            //       ->on('diagRecord');
+            $table->foreign('diagDateId')
+                  ->references('diagnosisDateId')
+                  ->on('diagnosisDate');
         });
     }
 

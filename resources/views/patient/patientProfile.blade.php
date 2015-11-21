@@ -10,6 +10,7 @@
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
+			<br>
 		<span class ="header">รหัสประจำตัวผู้ป่วย : </span>PatientID 
 		<br> <br>
 		

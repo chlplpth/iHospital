@@ -14,12 +14,16 @@ class CreateDiagnosisDateTable extends Migration
     {
         Schema::create('diagnosisDate', function (Blueprint $table) {
             $table->increments('diagnosisDateId');
-            $table->integer('scheduleId');
+            $table->integer('scheduleId')->unsigned();
+            $table->date('workDate');
+            $table->enum('workTime', ['morning','afternoon']);
             $table->timestamps();
+        });
 
-            // $table->foreign('scheduleId')
-            //       ->references('scheduleId')
-            //       ->on('schedule');
+        Schema::table('diagnosisDate', function (Blueprint $table) {
+            $table->foreign('scheduleId')
+                  ->references('scheduleId')
+                  ->on('schedule');
         });
     }
 
