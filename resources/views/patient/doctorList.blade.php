@@ -4,6 +4,8 @@
 @stop
 @section('content')
 
+{!! Form::open(array('url' => 'foo/bar')) !!}
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">บุคลากร</h3>
@@ -35,29 +37,21 @@
 			'19' => 'โสต คอ นาสิกวิทยา',
 			'20' => 'ออโธปิดิกส์',
 			'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
-			<div class="col-md-4">{!! Form::label('doctorOrDepartment', 'ชื่อแพทย์ / แผนก'); !!} &nbsp
-				{!! Form::text('firstname', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์ / แผนก']);!!}
+			<div class="col-md-4">{!! Form::label('doctor', 'ชื่อแพทย์'); !!} &nbsp
+				{!! Form::text('firstname', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์']);!!}
 			</div>
-			<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-warning"]) !!}
+			<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-defalut", "id" => "searchButton"]) !!}
 			</div>
 
 		</div>
-		<div class="row">
-			<div class="col-md-5"></div>
-			<div class="col-md-7">
-				{!!Form::radio('doctorOrDepartment', 'Do', true);!!}&nbsp
-				{!!Form::label('doctor', 'แพทย์');!!}&nbsp&nbsp
-				{!!Form::radio('doctorOrDepartment', 'De', false);!!}&nbsp
-				{!!Form::label('department', 'แผนก');!!}
-			</div>
-		</div>
+		
 		<br><br>
 		
 		<div class="row">
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
 				<a href="#" class="thumbnail">
-					<img src="smurf.jpg" alt="Profile"width="200" height="200">
+					{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
 				</a>
 			</div>
 			<div class="col-md-6">
@@ -72,7 +66,7 @@
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
 				<a href="#" class="thumbnail">
-					<img src="smurf.jpg" alt="Profile"width="200" height="200">
+					{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
 				</a>
 			</div>
 			<div class="col-md-6">
@@ -85,6 +79,6 @@
 		
 
 	</div>
-
+{!! Form::close() !!}
 
 	@stop

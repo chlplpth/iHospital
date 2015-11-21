@@ -56,8 +56,13 @@ return [
             'driver'    => 'mysql',
             'host'      => 'localhost',
             'database'  => 'iHospital',
+<<<<<<< HEAD
             'username'  => 'root',
             'password'  => '',
+=======
+            'username'  => 'smurf',
+            'password'  => '123456',
+>>>>>>> 5c675f565d040bedb3519623b6755e3d120dad7c
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

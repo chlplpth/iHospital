@@ -13,10 +13,6 @@
 
 // Route::get('/home', 'appointmentController@home');
 
-Route::get('/', function () {
-    return view('general/login');
-});
-
 Route::get('/index', function () {
     return view('index');
 });
@@ -40,6 +36,14 @@ Route::get('mainStaff', function() {
 
 Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
+});
+
+Route::get('diagnosisRecord', function() {
+    return view('patient/diagnosisRecord');
+});
+
+Route::get('diagnosisRecord2', function() {
+    return view('patient/diagnosisRecord2');
 });
 
 Route::get('manageAppointmentForPatient', function() {
@@ -70,17 +74,7 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-Route::post('searchPatient','userController@searchPatient' );
 
-Route::post('searchDoctor','userController@searchDoctor' );
-
-Route::post('viewPatient','userController@viewPatientProfile');
-
-Route::post('editPatientProfile','userController@editPatientProfile');
-
-Route::post('getDoctorList','userController@getDoctorList');
-
-Route::post('viewDoctorProfile','userController@viewDoctorProfile');
 
 
 Route::get('createAppointment', function() {
@@ -97,6 +91,10 @@ Route::get('patientProfile', function() {
 
 Route::get('patientAppointmentSchedule', function() {
     return view('patient/patientAppointmentSchedule');
+});
+
+Route::get('mainAdmin', function () {
+    return view('admin/mainAdmin');
 });
 
 Route::get('/addDepartment', function () {
@@ -128,7 +126,7 @@ Route::get('/searchPatientProfileByPharmacist', function () {
 });
 
 Route::get('/mainNurse', function () {
-    return view('nurse/main');
+    return view('nurse/mainNurse');
 });
 
 Route::get('/recordPatientGeneralDetail', function () {
@@ -190,7 +188,7 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');

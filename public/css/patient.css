@@ -1,3 +1,9 @@
+.centerBtn {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+
 #patientLabel {
   margin-top: 7px;
 }
@@ -5,9 +11,16 @@
 .btn-success {
   float: right;
 }
-
+#appointmentTable {
+  width: 90%;  
+}
 .panel-heading{
 	background-color: #c3e6cd !important;
+}
+.panel-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
 }
 .textbox{background-color: #fff;
   background-image: none;
@@ -54,4 +67,22 @@
 }
 .textbox150px{
   width :150px;
+}
+#createAppointmentForm{
+  margin-left: 40px;
+}
+#symptomArea{
+  width: 260px;  
+}
+#editProfile{
+  margin-left: 40px;
+}
+#editButton{
+  margin-right: 130px;
+}
+#searchButton{
+  margin-left: -80px;
+}
+.header{
+  font-weight: bold;
 }
