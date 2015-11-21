@@ -4,16 +4,24 @@
   position: relative;
 }
 
+.linkBtn {
+  display: inline-block;
+}
+
 #patientLabel {
   margin-top: 7px;
 }
 
-.btn-success {
-  float: right;
+.btn-left{
+  float: left;
 }
 #appointmentTable {
   width: 90%;  
 }
+#diagnosisTable {
+  width: 50%;  
+}
+
 .panel-heading{
 	background-color: #c3e6cd !important;
 }

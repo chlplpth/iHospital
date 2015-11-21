@@ -25,13 +25,17 @@ Route::get('/register', function () {
 Route::get('/changePassword', function () {
     return view('general/changePassword');
 });
-
+    
 Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
 
 Route::get('mainStaff', function() {
     return view('staff/mainStaff');
+});
+
+Route::get('mainPatient', function() {
+    return view('patient/mainPatient');
 });
 
 Route::get('createAppointmentForPatient', function() {
@@ -44,6 +48,14 @@ Route::get('diagnosisRecord', function() {
 
 Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
+});
+
+Route::get('rescheduleAppointment', function() {
+    return view('patient/rescheduleAppointment');
+});
+
+Route::get('confirmAppointment', function() {
+    return view('patient/confirmAppointment');
 });
 
 Route::get('manageAppointmentForPatient', function() {
@@ -196,3 +208,7 @@ Route::post('/register', 'Auth\AuthController@register');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
 Route::get('/testModel', 'Auth\AuthController@testModel');
+
+
+// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
+Route::post('/editProfile', 'SmurfController@editProfileValidate');
