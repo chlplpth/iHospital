@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\appointment;
+
 class appointmentController extends Controller
 {
     public function home()
@@ -53,16 +55,13 @@ class appointmentController extends Controller
         return redirect('appointment');
     }
 
-    public function viewAppointmentPatient(Request $request)
+    public function viewPatientAppointment(Request $request)
     {
-        $patient = $request->patientId
-
-        $appointments = App\appointment::where('patientId', $patient)
-               //->orderBy('name', 'desc')
-               //->take(10)
-               ->get();
-
-        return view('appointment.all',compact(appointments);
+        $patientId = $request->patient;
+        $appointments = appointment::viewPatientAppointment($patientId);
+        
+        // if(sizeof($appointments)==0) echo "not found";
+        // else echo "found";
     }
 
     public function delayAppointmentRequest(Request $request)

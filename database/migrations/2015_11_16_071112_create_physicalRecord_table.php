@@ -24,15 +24,7 @@ class CreatePhysicalRecordTable extends Migration
             $table->timestamps();
         });
 
-<<<<<<< HEAD
-            // $table->foreign('nurseId')
-            //       ->references('userId')
-            //       ->on('nurse');
 
-            // $table->foreign('diagRecordId')
-            //       ->references('diagRecordId')
-            //       ->on('diagnosisRecord');
-=======
         Schema::table('physicalRecord', function (Blueprint $table) {
             $table->foreign('nurseId')
                   ->references('userId')
@@ -41,7 +33,6 @@ class CreatePhysicalRecordTable extends Migration
             $table->foreign('appointmentId')
                   ->references('appointmentId')
                   ->on('appointment');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
         });
     }
 

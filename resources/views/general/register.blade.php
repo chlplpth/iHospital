@@ -125,7 +125,7 @@
 				<div class= "row">
 					<div class="col-md-1">
 					</div>
-					<div class="col-md-11 drugAllergy" >
+					<div class="col-md-11" >
 						{!!Form::label('email','อีเมล');!!}&nbsp
 						{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
 					</div>
@@ -140,10 +140,13 @@
 				<div class= "row">
 					<div class="col-md-1">
 					</div>
-					<div class="col-md-11 drugAllergy" >
+					<div class="col-md-4 drugAllergy" >
 						{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา']);!!}
-						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug']);!!}
+						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+					</div>
+					<div class="col-md-7" >
+						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug','onclick'=>'addDrug()','disabled'=>'true']);!!}
+
 					</div>
 				</div>
 			</div>

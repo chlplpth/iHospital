@@ -19,16 +19,22 @@
 		
 		<div class="row">
 			<div class="col-md-4"> {!! Form::label('name', 'ชื่อจริง'); !!} &nbsp
-				{!! Form::text('name', 'ชื่อจริง', ['class'=>'textbox']);!!} 
+				{!! Form::text('name', 'ณภัทร', ['class'=>'textbox']);!!} 
+				@if( $errors->has('name') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('name') }} </p> 
+        		@endif
 			</div>
 			<div class="col-md-8">{!! Form::label('lastname', 'นามสกุล'); !!} &nbsp
-				{!! Form::text('lastname', 'นามสกุล', ['class'=>'textbox']); !!}
+				{!! Form::text('lastname', 'ช่างผาสุข', ['class'=>'textbox']); !!}
+				@if( $errors->has('lastname') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('lastname') }} </p> 
+        		@endif
 			</div>
 		</div>
 		<br>
 
 		<div class ="row">
-			<div class ="col-md-2">
+			<div class ="col-md-3">
 				{!!Form::label('sex', 'เพศ');!!} &nbsp
 				{!! Form::text('sex','ชาย', ['class'=>'textbox textbox50px','disabled'=>'true' ]); !!} 
 			</div>
@@ -36,7 +42,7 @@
 				{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!} &nbsp
 				{!! Form::text('bloodGroup','O', ['class'=>'textbox textbox50px','disabled'=>'true' ]); !!} 
 			</div>	
-			<div class ="col-md-8">
+			<div class ="col-md-7">
 				{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด');!!}
 				{!!Form::text('dateOfBirth','วัน/เดือน/ปี เกิด',['class'=>'textbox','disabled'=>'true' ]);!!}
 
@@ -46,23 +52,27 @@
 		<br>
 		<div class ="row">
 
-			<div class ="col-md-2">
-				{!!Form::label('address1', 'บ้านเลข');!!}&nbsp
-				{!!Form::text('address1','บ้านเลขที่',['class'=>'textbox textbox70px']);!!}<br><br>
+			<div class ="col-md-3">
+				{!!Form::label('address1', 'บ้านเลขที่');!!}&nbsp
+				{!!Form::text('address1','199/36',['class'=>'textbox textbox70px']);!!}
+				@if( $errors->has('address1') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('address1') }} </p> 
+        		@endif
 			</div>
 			<div class ="col-md-2">
 				{!!Form::label('address2', 'หมู่');!!}&nbsp
-				{!!Form::text('address2','หมู่',['class'=>'textbox textbox70px']);!!}<br><br>
+				{!!Form::text('address2','1',['class'=>'textbox textbox70px']);!!}<br><br>
 			</div>	
 			<div class ="col-md-3">
 				{!!Form::label('address3', 'ถนน');!!}&nbsp
-				{!!Form::text('address3','ถนน',['class'=>'textbox textbox150px']);!!}<br><br>
+				{!!Form::text('address3','สมภารคง',['class'=>'textbox textbox150px']);!!}<br><br>
 			</div>
 			<div class ="col-md-4">
 				{!!Form::label('address4', 'แขวง/ตำบล');!!}&nbsp
-				{!!Form::text('address4','แขวง/ตำบล',['class'=>'textbox textbox150px']);!!}<br><br>
-			</div>
-			<div class ="col-md-1">
+				{!!Form::text('address4','รั้วใหญ่',['class'=>'textbox textbox150px']);!!}
+				@if( $errors->has('address4') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('address4') }} </p> 
+        		@endif
 			</div>
 		</div>
 		<br>
@@ -70,7 +80,10 @@
 
 			<div class ="col-md-4">
 				{!!Form::label('address5', 'เขต/อำเภอ');!!}&nbsp
-				{!!Form::text('address5','เขต/อำเภอ',['class'=>'textbox textbox150px']);!!}<br><br>
+				{!!Form::text('address5','เมือง',['class'=>'textbox textbox150px']);!!}
+				@if( $errors->has('address5') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('address5') }} </p> 
+        		@endif
 			</div>
 			<div class ="col-md-3 form-inline province">
 				{!!Form::label('address6', 'จังหวัด');!!}&nbsp
@@ -78,7 +91,10 @@
 			</div>	
 			<div class ="col-md-4">
 				{!!Form::label('address7', 'รหัสไปรษณีย์');!!}&nbsp
-				{!!Form::text('address7','รหัสไปรษณีย์',['class'=>'textbox textbox150px']);!!}<br><br>
+				{!!Form::text('address7','72000',['class'=>'textbox textbox150px']);!!}
+				@if( $errors->has('address7') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('address7') }} </p> 
+        		@endif
 			</div>
 			<div class ="col-md-1">
 			</div>
@@ -88,11 +104,17 @@
 
 			<div class ="col-md-5">
 				{!!Form::label('telHome','โทรศัพท์บ้าน');!!}&nbsp
-				{!!Form::text('telHome','โทรศัพท์บ้าน',['class'=>'textbox']);!!}
+				{!!Form::text('telHome','029127811',['class'=>'textbox']);!!}
+				@if( $errors->has('telHome') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('telHome') }} </p> 
+        		@endif
 			</div>
 			<div class ="col-md-6">
 				{!!Form::label('telMobile','โทรศัพท์มือถือ');!!}&nbsp
-				{!!Form::text('telMobile','โทรศัพท์มือถือ',['class'=>'textbox']);!!}
+				{!!Form::text('telMobile','0877928482',['class'=>'textbox']);!!}
+				@if( $errors->has('telMobile') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('telMobile') }} </p> 
+        		@endif
 			</div>
 			<div class ="col-md-1">
 			</div>
@@ -102,17 +124,14 @@
 
 		{!! Form::label('email', 'อีเมล'); !!} &nbsp
 		{!! Form::text('email', 'kamdekdee@hotmail.com', ['class'=>'textbox textbox300px']);!!}
-
+		@if( $errors->has('email') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('email') }} </p> 
+        		@endif
 		<br><br>
 		<div id = "editButton">
 		{!! Form::submit('แก้ไข', ["class" => "btn btn-success edit"]) !!}
 		{!! Form::close() !!}
 
-		@if($errors->has())
-			@foreach ($errors->all() as $error)
-				<p class="text-danger">{{ $error }}</p>
-			@endforeach
-		@endif
 	</div>
 	</div>
 

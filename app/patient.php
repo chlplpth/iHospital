@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 use App\user;
 use DB;
 
@@ -31,15 +32,15 @@ class patient extends Model
         'bloodGroup'];
 
     //-------------  relationship
-    public function user()
-    {
-        return $this->belongsTo('App\User', 'userId');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\User', 'userId');
+    // }
 
-      public function appointments()
-      {
-      	return $this->hasMany('App/Appointment');
-      }
+    //   public function appointments()
+    //   {
+    //   	return $this->hasMany('App/Appointment');
+    //   }
 
     //-------------  accessor
 
@@ -56,6 +57,27 @@ class patient extends Model
                     ->where('users.userId',$userId)
                     ->join('patient','users.userId','=','patient.userId')
                     ->first();
+
+        return $patient;
+    }
+
+    public static function createUser(Request $request)
+    {
+        $user = new user($request->all());
+        $user->userType = "patient";
+        $user->save();
+
+        $patient = createPatient($request,$user->userId);
+
+        return $user;
+
+    }
+
+    public static function createPatient(Request $request, $userId)
+    {
+        $patient = new patient($request->all());
+        $patient->userId = $userId;
+        $patient->save();
 
         return $patient;
     }

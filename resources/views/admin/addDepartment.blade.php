@@ -9,16 +9,14 @@
   		<div class="panel-heading">
     		<h3 class="panel-title">เพิ่มแผนก</h3>
   		</div>
-  		<div class="panel-body">
-  			{!! Form::label('name', 'ชื่อแผนก'); !!} &nbsp
-    		{!! Form::text('name', '', ["class" => "form-control"]) !!} <br>
-    		
-    		<br>
-    		{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}
-
-
-  		</div>
-	</div>
+  		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
+  			<div class="form-group row">
+          <label class="col-xs-1" style="margin-top: 7px;">ชื่อแผนก</label>
+          <div class="col-xs-3">{!! Form::text('department', '', ["class" => "form-control"]) !!}</div>
+          <div class="col-xs-2">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
+        </div>
+      </div>
+    </div>
 
 	{!! Form::close() !!}
 @stop

@@ -23,20 +23,15 @@ class CreateHospitalStaffTable extends Migration
             $table->primary('userId');
         });
 
-<<<<<<< HEAD
-            // $table->foreign('userId')
-            //       ->references('userId')
-            //       ->on('user');
-=======
+
         Schema::table('hospitalStaff', function (Blueprint $table) {
             $table->foreign('userId')
                   ->references('userId')
                   ->on('users');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
 
-            // $table->foreign('departmentId')
-            //       ->references('departmentId')
-            //       ->on('department');
+            $table->foreign('departmentId')
+                  ->references('departmentId')
+                  ->on('department');
         });
     }
 

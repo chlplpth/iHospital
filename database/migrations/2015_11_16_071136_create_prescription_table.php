@@ -24,15 +24,9 @@ class CreatePrescriptionTable extends Migration
                   ->references('appointmentId')
                   ->on('appointment');
 
-<<<<<<< HEAD:database/migrations/2015_11_16_071206_create_prescription_table.php
-            // $table->foreign('diaRecordId')
-            //       ->references('diagRecordId')
-            //       ->on('diagnosisRecord');
-=======
             $table->foreign('pharmacistId')
                   ->references('userId')
                   ->on('hospitalStaff');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af:database/migrations/2015_11_16_071136_create_prescription_table.php
         });
     }
 

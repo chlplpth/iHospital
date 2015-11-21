@@ -22,16 +22,10 @@ class CreateDoctorTable extends Migration
             $table->primary('userId');
         });
 
-<<<<<<< HEAD:database/migrations/2015_11_16_071226_create_doctor_table.php
-            // $table->foreign('userId')
-            //       ->references('userId')
-            //       ->on('user');
-=======
         Schema::table('doctor', function (Blueprint $table) {
             $table->foreign('userId')
                   ->references('userId')
                   ->on('hospitalStaff');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af:database/migrations/2015_11_16_070826_create_doctor_table.php
         });
     }
 

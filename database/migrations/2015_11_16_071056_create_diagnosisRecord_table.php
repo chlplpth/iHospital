@@ -21,24 +21,11 @@ class CreateDiagnosisRecordTable extends Migration
             $table->timestamps();
         });
 
-<<<<<<< HEAD
-            // $table->foreign('appointmentId')
-            //       ->references('appointmentId')
-            //       ->on('appointment');
 
-            // $table->foreign('prescriptionId')
-            //       ->references('prescriptionId')
-            //       ->on('prescription');
-
-            // $table->foreign('physicalRecordId')
-            //       ->references('physicalRecordId')
-            //       ->on('physicalRecord');
-=======
         Schema::table('diagnosisRecord', function (Blueprint $table) {
             $table->foreign('appointmentId')
                   ->references('appointmentId')
                   ->on('appointment');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
         });
     }
 
