@@ -28,6 +28,7 @@ class patient extends Model
         'telHome',
         'telMobile',
         'address',
+        'citizenNo',
         'sex',
         'bloodGroup'];
 
@@ -61,40 +62,28 @@ class patient extends Model
         return $patient;
     }
 
-    public static function createUser(Request $request)
-    {
-        $user = new user($request->all());
-        $user->userType = "patient";
-        $user->save();
-
-        $patient = createPatient($request,$user->userId);
-
-        return $user;
-
-    }
-
-    public static function createPatient(Request $request, $userId)
-    {
-        $patient = new patient($request->all());
-        $patient->userId = $userId;
-        $patient->save();
-
-        return $patient;
-    }
 
     public static function editPatientProfile($request)
     {
-        $userId = $request->userId;
-        $patient = patient::where('userId', $userId);
-        $user = user::where('userId', $userId);
+        $userId = $request['userId'];
+    
 
-        //$user->email         = $request->email;
-        if($request->address!=null)
-            $patient->address       = $request->address;
-        //$patient->allergyRecord = $request->allergyRecord;
+        if($request['addressNo']!=null)
+            $addressSet = array($request['addressNo'], $request['moo'], $request['street'], $request['subdistrict'], $request['district'], $request['province'], $request['zipcode']);
 
-        // $user->save();
-        //$patient->save();
+
+        User::where('userId',$userId)->update(array(
+                'email'     => $request['email'],
+                'name'      => $request['name'],
+                'lastname'  => $request['lastname']
+            ));
+
+        patient::where('userId',$userId)->update(array(
+                'telHome'     => $request['telHome'],
+                'telMobile'   => $request['telMobile'],
+                'address'     => $addressSet,
+                'bloodGroup'  => $request['bloodGroup']
+            ));
 
     }
 

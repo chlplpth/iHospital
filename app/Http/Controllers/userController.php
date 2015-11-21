@@ -16,35 +16,30 @@ class userController extends Controller
    
     public function registerOldPatient(Request $request)
     {
-    	$idNo = $request->idNo;
-    	$patient = App/user::where('idNo',$idNo)	->get();
-    	$user = App/user::find($patient->userId);
-    	$user->username = $request->username;
-    	$user->password = $request->password;
-    	$user->save();
+    	$input = $request->all();
+        $citizenNo = $input['citizenNo'];
+    	$patient = patient::where('citizenNo',$citizenNo)	->first();
+        $userId = $patient['userId'];
+    	User::where('userId',$userId)->update(array(
+                'username'     => $input['username'],
+                'password'      => $input['password']
+            ));
 
-    	return view('register.success',compact($user));
+    	//return view('register.success',compact($user));
     }
 
     public function registerNewPatient(Request $request)
     {
     	
-        // $user = patient::createUser($request);
+        $input = $request->all();
+        //$input['password'] = Hash::make($request['password']);
+        $user = User::create($input);
 
-        echo "register";
-
-        $user = new user($request->all());
-    	$user->userType	= 'patient';
-    	$user->save();
-
-        echo "user added";
-
-    	$patient = new patient();
-        $patient->hospitalNo = $request->hospitalNo;        
-        //$patient->save();
-        $patient->userId = $user->userId;
-        //$user->user()->save($patient);
-        $patient->save();
+        $patient = $input;
+        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        //$patient['address'] = join(',,', $addressSet);
+        $patient['userId'] = $user->userId;
+        $patient = patient::create($patient);
 
         echo "patient added";
 
@@ -78,8 +73,8 @@ class userController extends Controller
     //user type is not patient    edit by other
     public function editPatientProfile(Request $request)
     {
-    	
-        $patient = patient::editPatientProfile($request);
+    	$input = $request->all();
+        $patient = patient::editPatientProfile($input);
         echo "update";
 
     	//return view('patient.profile',compact($patient));
@@ -147,9 +142,21 @@ class userController extends Controller
 
     public function addHospitalStaff(Request $request)
     {
-    	$hospitalStaff = new hospitalStaff($request->all());
-    	$hospitalStaff->save();
+    	$input = $request->all();
+        //$input['password'] = Hash::make($request['password']);
+        $user = User::create($input);
 
-        return redirect('hospitalStaff');	
+        $hospitalStaff = $input;
+        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        //$patient['address'] = join(',,', $addressSet);
+        $hospitalStaff['userId'] = $user->userId;
+        //$hospitalStaff['staffId'] = Auth::user['userId'];
+        $hospitalStaff = hospitalStaff::create($hospitalStaff);	
+        if($input['userType']=="doctor")
+        {
+            $doctor = $input;
+            $doctor['userId'] = $user->userId;
+            $doctor = doctor::create($doctor); 
+        }
     }
 }
