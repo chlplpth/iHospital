@@ -99,4 +99,8 @@ class AuthController extends Controller
     {
         echo $text . "   =   " . Hash::make($text);
     }
+
+    public function testModel(){
+        echo "testModel";
+    }
 }
