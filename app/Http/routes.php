@@ -117,7 +117,7 @@ Route::get('/searchPatientProfileByPharmacist', function () {
 });
 
 Route::get('/mainNurse', function () {
-    return view('nurse/main');
+    return view('nurse/mainNurse');
 });
 
 Route::get('/recordPatientGeneralDetail', function () {
@@ -147,7 +147,7 @@ Route::get('sendemail', function () {
     );
     
 
-    Mail::send('emails.confirmAppointmentEmail',$data,function ($message) {
+    Mail::send('emails.createStaffEmail',$data,function ($message) {
 
         $message->from('ihospital.se@gmail.com', 'iHospital');
 

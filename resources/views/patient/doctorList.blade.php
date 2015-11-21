@@ -36,7 +36,7 @@
 			'20' => 'ออโธปิดิกส์',
 			'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
 			<div class="col-md-4">{!! Form::label('doctorOrDepartment', 'ชื่อแพทย์ / แผนก'); !!} &nbsp
-				{!! Form::text('firstname', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์ / แผนก']);!!}
+				{!! Form::text('doctor', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์ / แผนก']);!!}
 			</div>
 			<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-warning"]) !!}
 			</div>

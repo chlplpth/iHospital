@@ -70,6 +70,7 @@
 		หากท่านต้องการทำการเปลี่ยนแปลงการนัดหมายทำได้โดย<br>
 		1. เปล่ยนแปลงการนัดหมายโดยตรงกับเจ้าหน้าที่ทางโทรศัพท์ 02-xxx-xxxx<br>
 		2. ทำการเปลี่ยนแปลงด้วยตนเองผ่านเว็บไซต์ {link}
-	</div>
+	</div><br><br><br>
+	<img src="<?php echo $message->embed('image/iHospitalfooter.png'); ?>" style ="width:800px;">
 </body>
 </html>
