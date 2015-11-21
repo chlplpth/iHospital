@@ -82,6 +82,10 @@ Route::get('addStaffByStaff', function() {
     return view('staff/addStaffByStaff');
 });
 
+Route::get('manageStaffByStaff', function() {
+    return view('staff/manageStaffByStaff');
+});
+
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
