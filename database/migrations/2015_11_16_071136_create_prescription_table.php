@@ -14,12 +14,19 @@ class CreatePrescriptionTable extends Migration
     {
         Schema::create('prescription', function (Blueprint $table) {
             $table->increments('prescriptionId');
-            $table->integer('diagRecordId');
+            $table->integer('appointmentId')->unsigned();
+            $table->integer('pharmacistId')->unsigned()->nullable();
             $table->timestamps();
+        });
 
-            $table->foreign('diaRecordId')
-                  ->references('diagRecordId')
-                  ->on('diagnosisRecord');
+        Schema::table('prescription', function (Blueprint $table) {
+            $table->foreign('appointmentId')
+                  ->references('appointmentId')
+                  ->on('appointment');
+
+            $table->foreign('pharmacistId')
+                  ->references('userId')
+                  ->on('hospitalStaff');
         });
     }
 

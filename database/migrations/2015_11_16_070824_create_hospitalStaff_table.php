@@ -13,13 +13,19 @@ class CreateHospitalStaffTable extends Migration
     public function up()
     {
         Schema::create('hospitalStaff', function (Blueprint $table) {
-            $table->integer('userId');
-            $table->integer('departmentId');
+            $table->integer('userId')->unsigned();
+            $table->integer('departmentId')->unsigned();
             $table->timestamps();
+        });
 
+        Schema::table('hospitalStaff', function (Blueprint $table) {
+            $table->primary('userId');
+        });
+
+        Schema::table('hospitalStaff', function (Blueprint $table) {
             $table->foreign('userId')
                   ->references('userId')
-                  ->on('user');
+                  ->on('users');
 
             $table->foreign('departmentId')
                   ->references('departmentId')
