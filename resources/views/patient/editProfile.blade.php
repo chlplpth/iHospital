@@ -4,7 +4,7 @@
 @stop
 @section('content')
 
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/editProfile')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -107,6 +107,12 @@
 		<div id = "editButton">
 		{!! Form::submit('แก้ไข', ["class" => "btn btn-success edit"]) !!}
 		{!! Form::close() !!}
+
+		@if($errors->has())
+			@foreach ($errors->all() as $error)
+				<p class="text-danger">{{ $error }}</p>
+			@endforeach
+		@endif
 	</div>
 	</div>
 

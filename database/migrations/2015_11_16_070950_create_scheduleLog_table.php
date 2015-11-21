@@ -14,12 +14,22 @@ class CreateScheduleLogTable extends Migration
     {
         Schema::create('scheduleLog', function (Blueprint $table) {
             $table->increments('scheduleLogId');
-            $table->integer('doctorId');
-            $table->integer('staffId');
+            $table->integer('doctorId')->unsigned();
+            $table->integer('staffId')->unsigned();
             $table->string('startDate');
             $table->string('endDate');
             $table->string('diagDateList');
             $table->timestamps();
+        });
+
+        Schema::table('scheduleLog', function (Blueprint $table) {
+            $table->foreign('doctorId')
+                  ->references('userId')
+                  ->on('doctor');
+
+            $table->foreign('staffId')
+                  ->references('userId')
+                  ->on('hospitalStaff');
         });
     }
 

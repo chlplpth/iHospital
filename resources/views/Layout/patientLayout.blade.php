@@ -51,7 +51,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <h3>iHospital</h3>
+            <h3><a href="{{ url('/') }}">iHospital</a></h3>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
@@ -67,11 +67,21 @@
         <div class="row">
           <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-              <li class="active"><a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a></li>
-              <li><a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a></li>
-              <li><a href="{{ url('/patientAppointmentSchedule') }}">ตารางการนัดหมาย</a></li>
-              <li><a href="{{ url('/doctorList') }}">ดูข้อมูลแพทย์</a></li>
-              <li><a href="{{ url('/diagnosisRecord') }}">ประวัติการรักษา</a></li>
+              <li class="{{ Request::is('createAppointment') ? 'active' : '' }}">
+                <a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a>
+              </li>
+              <li class="{{ Request::is('editProfile') ? 'active' : '' }}">
+                <a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a>
+              </li>
+              <li class="{{ Request::is('patientAppointmentSchedule') ? 'active' : '' }}">
+                <a href="{{ url('/patientAppointmentSchedule') }}">รายการนัดหมาย</a>
+              </li>
+              <li class="{{ Request::is('doctorList') ? 'active' : '' }}">
+                <a href="{{ url('doctorList') }}">ดูข้อมูลแพทย์</a>
+              </li>
+              <li class="{{ Request::is('#') ? 'active' : '' }}">
+                <a href="#">ประวัติการรักษา</a>
+              </li>
             </ul>
           </div>
           <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

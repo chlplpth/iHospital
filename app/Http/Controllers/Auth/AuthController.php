@@ -99,4 +99,13 @@ class AuthController extends Controller
     {
         echo $text . "   =   " . Hash::make($text);
     }
+
+    public function testModel(){
+        echo "testModel";
+    }
+
+    public function renewPasswordEmail(){
+        $verifyCode = str_random(60);
+        echo $verifyCode;
+    }
 }
