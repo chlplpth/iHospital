@@ -33,21 +33,21 @@
               <td>John</td>
               <td>Doe</td>
               <td>Doctor</td>
-              <td><span class="glyphicon glyphicon-ok"></span></td>
+              <td>{!! Form::checkbox('grant', 1, true) !!}</td>
             </tr>
             <tr>
               <td>002</td>
               <td>Mary</td>
               <td>Moe</td>
               <td>Nurse</td>
-              <td><span class="glyphicon glyphicon-ok"></span></td>
+              <td>{!! Form::checkbox('grant', 1) !!}</td>
             </tr>
             <tr>
               <td>003</td>
               <td>July</td>
               <td>Dooley</td>
               <td>Staff</td>
-              <td><span class="glyphicon glyphicon-remove"></span></td>
+              <td>{!! Form::checkbox('grant', 1) !!}</td>
             </tr>
           </tbody>
         </table>
