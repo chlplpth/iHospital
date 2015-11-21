@@ -7,7 +7,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">เปลื่ยนแปลงการนัดหมาย</h3>
+		<h3 class="panel-title">เลื่อนการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
@@ -26,57 +26,11 @@
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">แผนก</label>
-				<div class="col-xs-3">{!! Form::select('departmentName', array(
-					'0' => 'ไม่ระบุ',
-					'1' => 'กายวิภาคศาสตร์', 
-					'2' => 'กุมารเวชศาสตร์',
-					'3' => 'จิตเวชศาสตร์',
-					'4' => 'จุลชีววิทยา',
-					'5' => 'จักษุวิทยา',
-					'6' => 'ชีวเคมี',
-					'7' => 'นิติเวชศาสตร์',
-					'8' => 'ปรสิตวิทยา',
-					'9' => 'พยาธิวิทยา',
-					'10' => 'เภสัชวิทยา',
-					'11' => 'รังสีวิทยา',
-					'12' => 'วิสัญญีวิทยา',
-					'13' => 'เวชศาสตร์ชันสูตร',
-					'14' => 'เวชศาสตร์ป้องกันและสังคม',
-					'15' => 'เวชศาสตร์ฟื้นฟู',
-					'16' => 'ศัลยศาสตร์',
-					'17' => 'สรีรวิทยา',
-					'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-					'19' => 'โสต คอ นาสิกวิทยา',
-					'20' => 'ออโธปิดิกส์',
-					'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
-				</div>
+				<label class="col-xs-10" id="patientLabel">โสต นาสิก</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">แพทย์</label>
-				<div class="col-xs-3">{!! Form::select('doctorname', array(
-					'0' => 'ไม่ระบุ',
-					'1' => 'กายวิภาคศาสตร์', 
-					'2' => 'กุมารเวชศาสตร์',
-					'3' => 'จิตเวชศาสตร์',
-					'4' => 'จุลชีววิทยา',
-					'5' => 'จักษุวิทยา',
-					'6' => 'ชีวเคมี',
-					'7' => 'นิติเวชศาสตร์',
-					'8' => 'ปรสิตวิทยา',
-					'9' => 'พยาธิวิทยา',
-					'10' => 'เภสัชวิทยา',
-					'11' => 'รังสีวิทยา',
-					'12' => 'วิสัญญีวิทยา',
-					'13' => 'เวชศาสตร์ชันสูตร',
-					'14' => 'เวชศาสตร์ป้องกันและสังคม',
-					'15' => 'เวชศาสตร์ฟื้นฟู',
-					'16' => 'ศัลยศาสตร์',
-					'17' => 'สรีรวิทยา',
-					'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-					'19' => 'โสต คอ นาสิกวิทยา',
-					'20' => 'ออโธปิดิกส์',
-					'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
-				</div>
+				<label class="col-xs-10" id="patientLabel">ญานิกา</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">วันนัด</label>
@@ -92,11 +46,7 @@
 
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
-				<div class="col-xs-10">
-					<div id = "symptomArea">
-						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
-					</div>
-				</div>
+				<label class="col-xs-10" id="patientLabel">ง่อยรับประทาน</label>
 			</div>
 			
 
