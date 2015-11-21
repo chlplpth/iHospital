@@ -37,17 +37,21 @@
 						{!!Form::text('lastname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
 					</div>
 				</div>
-				<div class ="row">
+				<div class ="row form-inline">
 					<div class ="col-md-1">
 					</div>
-					<div class ="col-md-2"><br>
-						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp{!!Form::radio('sex', 'M', true);!!}&nbsp{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp{!!Form::radio('sex', 'F', false);!!}&nbsp{!!Form::label('female', 'หญิง');!!}
+					<div class ="col-xs-2" style="margin-top: 6px;"></br>
+						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp
+						{!!Form::radio('sex', 'M', true, ['class' => 'radio']);!!}&nbsp
+						{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp
+						{!!Form::radio('sex', 'F', false, ['class' => 'radio']);!!}&nbsp
+						{!!Form::label('female', 'หญิง');!!}
 					</div>
 					<div class ="col-md-2"><br>
 						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
-						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'));!!}
+						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'), '0', ['class' => 'form-control']);!!}
 					</div><br>
-					<div class ="col-md-5 form-inline">
+					<div class ="col-md-5">
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
 						<div class="input-group date" id="datepicker">
 							{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}

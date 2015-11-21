@@ -18,6 +18,12 @@
 	}*/
 
 }
+.datepicker table tr th.next:hover,
+.datepicker table tr th.prev:hover,
+.datepicker table tr th.datepicker-switch:hover {
+  background: #eeeeee;
+  cursor: pointer;
+}
 .datepicker-inline {
   width: 220px;
 }
@@ -446,4 +452,7 @@
   border: 1px solid #ccc;
   margin-left: -5px;
   margin-right: -5px;
+}
+.input-group.date .input-group-addon {
+  cursor: pointer;
 }
