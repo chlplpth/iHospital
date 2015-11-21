@@ -216,3 +216,22 @@ Route::get('/testModel', 'Auth\AuthController@testModel');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
+
+
+
+
+
+Route::post('/importSchedule', 'scheduleController@importSchedule');
+Route::post('/addDepartment', 'departmentController@addDepartment');
+Route::post('/register', 'userController@registerNewPatient');
+Route::post('/editPatientProfile', 'userController@editPatientProfile');
+Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
+Route::post('/registerOld', 'userController@registerOldPatient');
+Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
+
+Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
+
+Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
+
+Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
+

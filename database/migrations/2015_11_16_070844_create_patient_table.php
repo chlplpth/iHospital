@@ -13,6 +13,7 @@ class CreatePatientTable extends Migration
     public function up()
     {
         Schema::create('patient', function (Blueprint $table) {
+
             $table->integer('userId')->unsigned();
             $table->integer('hospitalNo');
             $table->string('telMobile');
@@ -45,4 +46,5 @@ class CreatePatientTable extends Migration
     {
         Schema::drop('patient');
     }
+
 }

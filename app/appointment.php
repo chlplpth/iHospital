@@ -54,6 +54,29 @@ class appointment extends Model
 
         return $appointments;
     }
+
+    public static function createAppointment($input)
+    {
+        $appointment = new appointment($input);
+        $appointment ->save();
+
+        //Auth::user()->appointment()->save($appointment);
+        return $appointment;
+    }
+
+    public static function delayAppointment($request)
+    {
+        $appointmentId = $request['appointmentId'];
+        
+
+        appointment::where('appointmentId',$appointmentId)->update(array(
+                'scheduleId'     => $request['scheduleId']
+            ));
+
+        $appointment = appointment::where('appointmentId',$appointmentId)->first();
+        return $appointment;
+
+    }
 }
 	
     
