@@ -14,22 +14,24 @@ class CreatePhysicalRecordTable extends Migration
     {
         Schema::create('physicalRecord', function (Blueprint $table) {
             $table->increments('physicalRecordId');
-            $table->integer('nurseId');
-            $table->integer('diagRecordId');
+            $table->integer('nurseId')->unsigned();
+            $table->integer('appointmentId')->unsigned();
             $table->integer('weight');
             $table->integer('height');
             $table->integer('sysBlood');
             $table->integer('diBlood');
             $table->integer('heartRate');
             $table->timestamps();
+        });
 
+        Schema::table('physicalRecord', function (Blueprint $table) {
             $table->foreign('nurseId')
                   ->references('userId')
-                  ->on('nurse');
+                  ->on('hospitalStaff');
 
-            $table->foreign('diagRecordId')
-                  ->references('diagRecordId')
-                  ->on('diagnosisRecord');
+            $table->foreign('appointmentId')
+                  ->references('appointmentId')
+                  ->on('appointment');
         });
     }
 
