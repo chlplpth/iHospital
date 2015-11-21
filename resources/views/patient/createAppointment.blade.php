@@ -103,9 +103,6 @@
 			<div class="form-group">
 				{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 			</div>
-
-
-<<<<<<< HEAD
 				    <div class="form-group row">
 				        <label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
 			          	<div class="col-xs-10">
@@ -118,7 +115,6 @@
 		        		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 		        	</div>
 	        	</div>
-=======
 			<!-- Script to construct datepicker -->
 			<script type="text/javascript">
             // When the document is ready
@@ -127,8 +123,6 @@
             });
             </script>
         </div>
->>>>>>> 3d5752f725a78a3c5dace073c0a585c0548a0731
-
     </div>
 </div>
 
