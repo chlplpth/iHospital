@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
     @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,6 +27,16 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/datepicker.js"></script>
+
+
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </head>
 
   <body>
@@ -39,7 +50,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <h3>iHospital</h3>
+          <h3><a href="{{ url('/') }}">iHospital</a></h3>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
@@ -55,10 +66,18 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="{{ url('/searchPatientProfileByDoctor') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a></li>
-            <li><a href="{{ url('/diagnose') }}">บันทึกการการวินิจฉัย</a></li>
-            <li><a href="{{ url('/doctorScheduleByDoctor') }}">ตารางการออกตรวจ</a></li>
-            <li><a href="{{ url('/diagnosisHistory') }}">สถิติการออกตรวจ</a></li>
+            <li class="{{ Request::is('searchPatientProfileByDoctor') ? 'active' : '' }}">
+              <a href="{{ url('/searchPatientProfileByDoctor') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="{{ Request::is('diagnose') ? 'active' : '' }}">
+              <a href="{{ url('/diagnose') }}">บันทึกการวินิจฉัย</a>
+            </li>
+            <li class="{{ Request::is('doctorScheduleByDoctor') ? 'active' : '' }}">
+              <a href="{{ url('/doctorScheduleByDoctor') }}">ตารางการออกตรวจ</a>
+            </li>
+            <li class="{{ Request::is('diagnosisHistory') ? 'active' : '' }}">
+              <a href="{{ url('/diagnosisHistory') }}">สถิติการออกตรวจ</a>
+            </li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -66,15 +85,5 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

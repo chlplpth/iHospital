@@ -21,4 +21,9 @@ class hospitalStaff extends Model
     protected $fillable = [
         'userId',
         'departmentId'];
+
+    public function user()
+    {
+        return $this->belongsTo('App\User', 'userId');
+    }
 }

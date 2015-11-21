@@ -13,10 +13,6 @@
 
 // Route::get('/home', 'appointmentController@home');
 
-Route::get('/', function () {
-    return view('general/login');
-});
-
 Route::get('/index', function () {
     return view('index');
 });
@@ -29,7 +25,7 @@ Route::get('/register', function () {
 Route::get('/changePassword', function () {
     return view('general/changePassword');
 });
-
+    
 Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
@@ -38,8 +34,28 @@ Route::get('mainStaff', function() {
     return view('staff/mainStaff');
 });
 
+Route::get('mainPatient', function() {
+    return view('patient/mainPatient');
+});
+
 Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
+});
+
+Route::get('diagnosisRecord', function() {
+    return view('patient/diagnosisRecord');
+});
+
+Route::get('diagnosisRecord2', function() {
+    return view('patient/diagnosisRecord2');
+});
+
+Route::get('rescheduleAppointment', function() {
+    return view('patient/rescheduleAppointment');
+});
+
+Route::get('confirmAppointment', function() {
+    return view('patient/confirmAppointment');
 });
 
 Route::get('manageAppointmentForPatient', function() {
@@ -70,7 +86,8 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-Route::post('searchPatientProfileByStaff','userController@searchPatient' );
+
+
 
 Route::get('createAppointment', function() {
 	return view('patient/createAppointment');
@@ -86,6 +103,10 @@ Route::get('patientProfile', function() {
 
 Route::get('patientAppointmentSchedule', function() {
     return view('patient/patientAppointmentSchedule');
+});
+
+Route::get('mainAdmin', function () {
+    return view('admin/mainAdmin');
 });
 
 Route::get('/addDepartment', function () {
@@ -179,10 +200,15 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
-Route::get('/main', 'Auth\AuthController@getMainPage');
+Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
+Route::get('/testModel', 'Auth\AuthController@testModel');
+
+
+// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
+Route::post('/editProfile', 'SmurfController@editProfileValidate');

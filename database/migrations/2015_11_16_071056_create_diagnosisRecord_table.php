@@ -14,14 +14,14 @@ class CreateDiagnosisRecordTable extends Migration
     {
         Schema::create('diagnosisRecord', function (Blueprint $table) {
             $table->increments('diagRecordId');
-            $table->integer('appointmentId');
+            $table->integer('appointmentId')->unsigned();
             $table->string('diseaseCode');
             $table->string('doctorAdvice');
             $table->string('diagnonsisDetail');
-            $table->integer('prescriptionId');
-            $table->integer('physicalRecordId');
             $table->timestamps();
+        });
 
+<<<<<<< HEAD
             // $table->foreign('appointmentId')
             //       ->references('appointmentId')
             //       ->on('appointment');
@@ -33,6 +33,12 @@ class CreateDiagnosisRecordTable extends Migration
             // $table->foreign('physicalRecordId')
             //       ->references('physicalRecordId')
             //       ->on('physicalRecord');
+=======
+        Schema::table('diagnosisRecord', function (Blueprint $table) {
+            $table->foreign('appointmentId')
+                  ->references('appointmentId')
+                  ->on('appointment');
+>>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
         });
     }
 

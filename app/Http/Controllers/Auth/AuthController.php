@@ -35,14 +35,10 @@ class AuthController extends Controller
     public function authenticate(LoginRequest $request)
     {
         $user = User::where('username', $request['username'])->first();
-        if(Auth::attempt(['userId' => $user->userId, 'password' => $request['password']]))
-        {
-            return redirect('/main');
+        if(Auth::attempt(['userId' => $user->userId, 'password' => $request['password']])) {
+            // logged in ... :)
         }
-        else
-        {
-            return redirect('/');
-        }
+        return redirect('/');
     }
 
     public function register(Request $request)
@@ -89,7 +85,7 @@ class AuthController extends Controller
         }
         else
         {
-            return redirect('/');
+            return view('general.login');
         }
     }
 
@@ -102,5 +98,9 @@ class AuthController extends Controller
     public function genPassword($text)
     {
         echo $text . "   =   " . Hash::make($text);
+    }
+
+    public function testModel(){
+        echo "testModel";
     }
 }
