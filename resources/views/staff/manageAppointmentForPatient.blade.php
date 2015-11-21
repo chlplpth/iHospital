@@ -21,7 +21,7 @@
 			</div>
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
+					<div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสผู้ป่วย'); !!}</div>
 					<div class="col-xs-2" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
 				</div>
 				<div class="row">
