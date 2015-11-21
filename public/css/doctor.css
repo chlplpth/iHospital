@@ -21,3 +21,12 @@ th {
   font-weight: bold;
   color: gray;
 }
+#doctorRadio {
+	margin-top: 3px;
+}
+table tr td {
+	text-align: center;
+}
+table thead tr {
+	/*background: #c3e6cd;*/
+}
