@@ -358,9 +358,6 @@
 .bootstrap-datetimepicker-widget .datepicker-decades .decade {
   line-height: 1.8em !important;
 }
-.input-group.date .input-group-addon {
-  cursor: pointer;
-}
 .sr-only {
   position: absolute;
   width: 1px;

@@ -16,7 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
-    <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- <link href="css/bootstrap-datetimepicker.css" rel="stylesheet"> -->
     <link href="css/datepicker.css" rel="stylesheet">
     @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->

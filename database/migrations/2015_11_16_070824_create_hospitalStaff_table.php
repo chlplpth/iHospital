@@ -14,6 +14,7 @@ class CreateHospitalStaffTable extends Migration
     {
         Schema::create('hospitalStaff', function (Blueprint $table) {
             $table->integer('userId')->unsigned();
+            $table->integer('staffId')->unsigned();
             $table->integer('departmentId')->unsigned();
             $table->timestamps();
         });
