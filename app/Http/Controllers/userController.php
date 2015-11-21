@@ -37,83 +37,83 @@ class userController extends Controller
     	return view('register.success',compact($user));
     }
 
-    //return profile of user that log in
-    public function viewProfile(Request $request)
+    //user == patient  view own profile 
+    public function viewMyProfilePatient(Request $request)
     {
-    	$patient = Auth::user();
-    	return view('user.profile',compact($user));
+        $userId = Auth::user()->userId;
+        $patient = patient::viewPatientProfile($userId);
+        
+        if(sizeof($patient)==0) echo "not found";
+        else echo $patient->name;
+
+    	
     }
 
+
+    //user == other  view patient profile
     public function viewPatientProfile(Request $request)
     {
-    	$patient = App/patient::find($request->userId);
-    	return view('patient.profile',compact($patient));	
+    	$userId = $request->input('userId');
+        $patient = patient::viewPatientProfile($userId);
+        
+        if(sizeof($patient)==0) echo "not found";
+        else echo $patient->name;
+    		
     }
 
+    //user type is not patient    edit by other
     public function editPatientProfile(Request $request)
     {
-    	if(Auth::user()->userType = staff)
-    		$patient = App/patient::find($request->userId);
-    	//if user is patient -> no form to fill patientId -> use directly from log in
-    	else if(Auth::user()->userType = patient)
-    		$patient = Auth::user();
+    	
+        $patient = patient::editPatientProfile($request);
+        echo "update";
 
-    	$patient->email 		= $request->email;
-    	$patient->address 		= $request->address;
-    	$patient->allergyRecord	= $request->allergyRecord;
-    	$patient->save();
-
-    	return view('patient.profile',compact($patient));
+    	//return view('patient.profile',compact($patient));
     }
     
     //get list of doctor in department
     public function getDoctorList(Request $request)
     {
     	$department = $request->departmentId;
-    	$doctors = App\doctor::where('departmentId', $departmant)
-               //->orderBy('name', 'desc')
-               //->take(10)
-               ->get();	
-        return view('department.doctorList',compact($doctors));
+    	$doctors = doctor::getDoctorList($department);
+
+        //if(sizeof($doctors)==0) echo "not found";
+        //else echo"found";
+        
     }
 
     //search doctor that have name or surname contain that request string
     public function searchDoctor(Request $request)
     {
-    	$keyword = $request->doctor;
-    	$doctors = App\doctor::where('name', 'like', '%{$keyword}%')
-    						 ->orwhere('surname', 'like', '%{$keyword}%')
-				             //->orderBy('name', 'desc')
-				             //->take(10)
-				             ->get();	
-		return view('doctor.search',compact($doctors));
+    	$department = $request->input('department');
+        $doctor = $request->input('doctor');
+        $users = doctor::searchDoctor($department, $doctor);
+
+        // if(sizeof($users)==0) echo "not found";
+        // else echo"found";
+		//return view('doctor.search',compact($doctors));
     }
     
     public function searchPatient(Request $request)
     {
     	$keyword = $request->input('patient');
+        $users = patient::searchPatient($keyword);
 
-        $users = user::where(function ($query){
-                             $query->where('name', 'like', '%{$keyword}%')
-                                   ->orwhere('surname', 'like', '%{$keyword}%');
-                            })
-                     ->where('userType',"patient")
-                     ->leftJoin('patient','hospinalNo','=','hospinalNo')
-                     ->get();   
-        
-        // $patients = patient::where('userId',$users->userId)
-				    //        ->get();	
+        // if(sizeof($users)==0) echo "not found";
+        // else echo"found";
 
-        if(sizeof($patients)==0) echo "aaa";
-
-		//return view('patient.search',compact($patiens));
     }
     
     public function viewDoctorProfile(Request $request)
     {
-    	$doctor = App\doctor::find($request->doctor);
+    	
+        $doctorId = $request->doctorId;
+        $doctor = doctor::viewDoctorProfile($doctorId);
 
-    	return view('Doctor.profile',compact($doctor));
+        // if(sizeof($doctor)==0) echo "not found";
+        // else echo $doctor->departmentId;
+
+    	
     }
 
     //manual add by staff   no username no password

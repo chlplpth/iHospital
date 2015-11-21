@@ -70,9 +70,18 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-Route::post('searchPatientProfileByStaff','userController@searchPatient' );
+Route::post('searchPatient','userController@searchPatient' );
 
-Route::post('search','userController@searchPatient' );
+Route::post('searchDoctor','userController@searchDoctor' );
+
+Route::post('viewPatient','userController@viewPatientProfile');
+
+Route::post('editPatientProfile','userController@editPatientProfile');
+
+Route::post('getDoctorList','userController@getDoctorList');
+
+Route::post('viewDoctorProfile','userController@viewDoctorProfile');
+
 
 Route::get('createAppointment', function() {
 	return view('patient/createAppointment');

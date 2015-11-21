@@ -24,9 +24,9 @@ class CreatePatientTable extends Migration
             $table->string('citizenNo');
             $table->timestamps();
 
-            $table->foreign('userId')
-                  ->references('userId')
-                  ->on('users');
+            // $table->foreign('userId')
+            //       ->references('userId')
+            //       ->on('users');
 
         });
     }
