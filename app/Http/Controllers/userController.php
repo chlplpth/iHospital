@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\doctor;
 use App\patient;
+use App\hospitalStaff;
 use App\user;
 
 class userController extends Controller
@@ -27,14 +28,27 @@ class userController extends Controller
 
     public function registerNewPatient(Request $request)
     {
-    	$user = new user($request->all());
+    	
+        // $user = patient::createUser($request);
+
+        echo "register";
+
+        $user = new user($request->all());
     	$user->userType	= 'patient';
     	$user->save();
-    	$patient = new patient($request->all());
+
+        echo "user added";
+
+    	$patient = new patient();
+        $patient->hospitalNo = $request->hospitalNo;        
+        //$patient->save();
         $patient->userId = $user->userId;
+        //$user->user()->save($patient);
         $patient->save();
 
-    	return view('register.success',compact($user));
+        echo "patient added";
+
+    	//return view('register.success',compact($user));
     }
 
     //user == patient  view own profile 

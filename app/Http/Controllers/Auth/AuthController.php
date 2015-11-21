@@ -103,4 +103,9 @@ class AuthController extends Controller
     public function testModel(){
         echo "testModel";
     }
+
+    public function renewPasswordEmail(){
+        $verifyCode = str_random(60);
+        echo $verifyCode;
+    }
 }

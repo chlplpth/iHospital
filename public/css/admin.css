@@ -1,16 +1,36 @@
+.panel-heading{
+	background-color: #c3e6cd !important;
+}
+.panel-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
+}
 .btn-success {
 	float:right;
 }
-
 .btn-primary {
 	float:right;
 }
-
 #buttonGroup {
 	margin-top: 30px;
 }
-
 #adminLabel {
 	margin-top: 7px;
 	text-indent: 7px;
+}
+table, table thead tr th {
+	text-align: center;
+}
+table#grantStaff {
+	margin-left: 15px;
+	margin-top: 10px;
+}
+table tr td span.glyphicon-remove {
+	color: rgb(256,0,0);
+	cursor: pointer;
+}
+table tr td span.glyphicon-ok {
+	color: rgb(0,256,0);
+	cursor: pointer;
 }
