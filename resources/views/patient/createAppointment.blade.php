@@ -100,21 +100,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-			</div>
-				    <div class="form-group row">
-				        <label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
-			          	<div class="col-xs-10">
-			          		<div id = "symptomArea">
-			          		{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
-			          	</div>
-			          	</div>
-			        </div>
-			        <div class="form-group" id = "editButton">
-		        		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-		        	</div>
-	        	</div>
+			
+
 			<!-- Script to construct datepicker -->
 			<script type="text/javascript">
             // When the document is ready
@@ -122,6 +109,9 @@
             	$('#datepicker').datepicker();
             });
             </script>
+        </div>
+        <div class="form-group col-xs-6">
+        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
         </div>
     </div>
 </div>
