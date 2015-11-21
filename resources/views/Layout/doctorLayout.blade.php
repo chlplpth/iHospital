@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/dashboard.css" rel="stylesheet">
+    <link href="css/datepicker.css" rel="stylesheet">
     @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -26,6 +27,16 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- Bootstrap core JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/datepicker.js"></script>
+
+
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </head>
 
   <body>
@@ -59,7 +70,7 @@
               <a href="{{ url('/searchPatientProfileByDoctor') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a>
             </li>
             <li class="{{ Request::is('diagnose') ? 'active' : '' }}">
-              <a href="{{ url('/diagnose') }}">บันทึกการการวินิจฉัย</a>
+              <a href="{{ url('/diagnose') }}">บันทึกการวินิจฉัย</a>
             </li>
             <li class="{{ Request::is('doctorScheduleByDoctor') ? 'active' : '' }}">
               <a href="{{ url('/doctorScheduleByDoctor') }}">ตารางการออกตรวจ</a>
@@ -74,15 +85,5 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
 </html>

@@ -10,13 +10,14 @@
 		<h3 class="panel-title">จัดการการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
+		<div id = "createAppointmentForm" >
 		<form role="form">
 			<div class="form-group">
 				<div class="row">
-					<div class="col-xs-2">{!! Form::label('name', 'กรอกชื่อหรือรหัสผู้ป่วย'); !!}</div>
+					<div class="col-xs-3">{!! Form::label('name', 'กรอกชื่อ / รหัสผู้ป่วย'); !!}</div>
 				</div>
 				<div class="row">
-					<div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control"]) !!}</div>
+					<div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชื่อ / รหัสผู้ป่วย']) !!}</div>
 					<div class="col-xs-9">{!! Form::submit('ค้นหา', ["class" => "btn btn-primary"]) !!}</div>
 				</div>
 			</div>
@@ -100,6 +101,7 @@
 			</div>
 		</form>
 	</div>
+</div>
 </div>
 
 {!! Form::close() !!}

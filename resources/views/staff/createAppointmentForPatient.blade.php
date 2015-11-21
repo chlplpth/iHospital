@@ -12,11 +12,14 @@
 		<h3 class="panel-title">สร้างการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "createAppointmentForm">
+		<div id = "createAppointmentForm" >
 			
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
-				<label class="col-xs-3" id="patientLabel">XXX</label>
+				<div class="col-xs-6">
+					{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'รหัสประจำตัวผู้ป่วย']);!!}
+					{!! Form::submit('ค้นหา', ["class" => "btn btn-default","id" =>"searchButton2"]) !!}
+				</div>
 			</div>
 			<div class="form-group row">  
 				<label class="col-xs-2" id="patientLabel">ชื่อ</label>
@@ -100,10 +103,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-group">
-				{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-			</div>
-
+			
 
 			<!-- Script to construct datepicker -->
 			<script type="text/javascript">
@@ -113,7 +113,9 @@
             });
             </script>
         </div>
-
+        <div class="form-group col-xs-6">
+        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+        </div>
     </div>
 </div>
 

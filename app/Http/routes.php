@@ -25,13 +25,17 @@ Route::get('/register', function () {
 Route::get('/changePassword', function () {
     return view('general/changePassword');
 });
-
+    
 Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
 
 Route::get('mainStaff', function() {
     return view('staff/mainStaff');
+});
+
+Route::get('mainPatient', function() {
+    return view('patient/mainPatient');
 });
 
 Route::get('createAppointmentForPatient', function() {
@@ -44,6 +48,14 @@ Route::get('diagnosisRecord', function() {
 
 Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
+});
+
+Route::get('rescheduleAppointment', function() {
+    return view('patient/rescheduleAppointment');
+});
+
+Route::get('confirmAppointment', function() {
+    return view('patient/confirmAppointment');
 });
 
 Route::get('manageAppointmentForPatient', function() {
@@ -74,21 +86,6 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-Route::post('searchPatient','userController@searchPatient' );
-
-Route::post('searchDoctor','userController@searchDoctor' );
-
-Route::post('viewPatient','userController@viewPatientProfile');
-
-Route::post('editPatientProfile','userController@editPatientProfile');
-
-Route::post('getDoctorList','userController@getDoctorList');
-
-Route::post('viewDoctorProfile','userController@viewDoctorProfile');
-
-Route::post('register','userController@registerNewPatient');
-
-Route::post('viewAppointment','appointmentController@viewPatientAppointment');
 
 
 
@@ -210,3 +207,8 @@ Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
+Route::get('/testModel', 'Auth\AuthController@testModel');
+
+
+// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
+Route::post('/editProfile', 'SmurfController@editProfileValidate');

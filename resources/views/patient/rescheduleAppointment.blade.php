@@ -1,15 +1,13 @@
 @extends('layout/patientLayout')
 @section('css')
 <link href="css/patient.css" rel="stylesheet">
-
 @stop
 @section('content')
-
 {!! Form::open(array('url' => 'foo/bar')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">สร้างการนัดหมาย</h3>
+		<h3 class="panel-title">เปลื่ยนแปลงการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
@@ -109,11 +107,9 @@
             	$('#datepicker').datepicker();
             });
             </script>
-            <div class="form-group row">
-            	<div class="col-xs-10" id = "symptomArea">
-            		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-            	</div>
-            </div>
+        </div>
+        <div class="form-group col-xs-6">
+        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
         </div>
         <div class="panel-body">
 		<form>

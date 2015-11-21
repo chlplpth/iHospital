@@ -13,13 +13,19 @@ class CreateDoctorTable extends Migration
     public function up()
     {
         Schema::create('doctor', function (Blueprint $table) {
-            $table->integer('userId');
+            $table->integer('userId')->unsigned();
             $table->string('proficiency');
             $table->timestamps();
+        });
 
-            // $table->foreign('userId')
-            //       ->references('userId')
-            //       ->on('users');
+        Schema::table('doctor', function (Blueprint $table) {
+            $table->primary('userId');
+        });
+
+        Schema::table('doctor', function (Blueprint $table) {
+            $table->foreign('userId')
+                  ->references('userId')
+                  ->on('hospitalStaff');
         });
     }
 
