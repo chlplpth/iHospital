@@ -24,6 +24,10 @@ th {
 #doctorRadio {
 	margin-top: 3px;
 }
+#addHover:hover {
+	color: #999999;
+	cursor: pointer;
+}
 table tr td {
 	text-align: center;
 }

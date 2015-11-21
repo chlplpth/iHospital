@@ -38,7 +38,9 @@
 		          	</div>
 		        </div>
 		        <div class="form-group row">
-		        	<label class="col-xs-2" id="doctorLabel">รายการยา</label>
+		        	<label class="col-xs-2" id="doctorLabel">รายการยา
+		        		<div id="addHover" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>
+		        	</label>
 		        	<div class="col-xs-7">
 		        		<table class="table table-bordered table-hover">
 		        			<thead>
@@ -78,7 +80,6 @@
 		        				</tr>
 		        			</tbody>
 		        		</table>
-		        		<button style="float: left;" type="button" class="btn btn-info" data-toggle="collapse" data-target="#addMed">เพิ่มรายการยา</button>
 		        	</div>
 		        </div>
 		        <div id="addMed" class="collapse form-group row">
@@ -91,7 +92,7 @@
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">รหัสหรือชื่อยา</label>
 		        				<div class="col-xs-5">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
-		        				<div class="col-xs-2">{!! Form::submit('ค้นหา', ["class" => "btn btn-info", 'id' => 'buttonGroup']) !!}</div>
+		        				<div class="col-xs-2">{!! Form::submit('ค้นหา', ["class" => "btn btn-default", 'id' => 'buttonGroup']) !!}</div>
 		        			</div>
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">รหัสยา</label>
@@ -131,8 +132,10 @@
 		        	</div>
 	        	</div>
 		        <div class="form-group row">
-			        <label class="col-xs-2" id="doctorLabel">วันที่นัดเพิ่ม</label>
-		          	<label class="col-xs-7" id="doctorLabel"><button style="float: left;" type="button" class="btn btn-info" data-toggle="collapse" data-target="#addNewApp">นัดหมายเพิ่มเติม</button></label>
+			        <label class="col-xs-2" id="doctorLabel">วันที่นัดเพิ่ม
+			        	<div id="addHover" data-toggle="collapse" data-target="#addNewApp" class="glyphicon glyphicon-plus-sign"></div>
+			        </label>
+			        <label class="col-xs-7" id="doctorLabel">วันที่ 5 สิงหาคม พ.ศ.2558 (13.00 - 15.30)</label>
 		        </div>
 	        	<div id="addNewApp" class="collapse form-group row">
 		        	<label class="col-xs-2" id="doctorLabel"></label>
