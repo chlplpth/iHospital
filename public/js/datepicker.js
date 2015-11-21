@@ -1626,7 +1626,7 @@
 		datesDisabled: [],
 		endDate: Infinity,
 		forceParse: true,
-		format: 'dd/mm/yyyy',
+		format: 'dd/mm/yy',
 		keyboardNavigation: true,
 		language: 'th',
 		minViewMode: 0,
@@ -1825,8 +1825,8 @@
 				m: date.getUTCMonth() + 1,
 				M: dates[language].monthsShort[date.getUTCMonth()],
 				MM: dates[language].months[date.getUTCMonth()],
-				yy: date.getUTCFullYear().toString().substring(2),
-				yyyy: date.getUTCFullYear()
+				yy: (date.getUTCFullYear() + 543).toString().substring(2),
+				yyyy: date.getUTCFullYear() + 543
 			};
 			val.dd = (val.d < 10 ? '0' : '') + val.d;
 			val.mm = (val.m < 10 ? '0' : '') + val.m;
