@@ -32,7 +32,6 @@ class CreatePhysicalRecordTable extends Migration
             $table->foreign('appointmentId')
                   ->references('appointmentId')
                   ->on('appointment');
-
         });
     }
 

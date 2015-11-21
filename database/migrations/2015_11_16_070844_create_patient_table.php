@@ -45,12 +45,4 @@ class CreatePatientTable extends Migration
     {
         Schema::drop('patient');
     }
-
-
-    //patient has appointments
-    // public function appointments()
-    // {
-
-    //     return $this->hasMany('App\Appointment');
-    // }
 }
