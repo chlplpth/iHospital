@@ -109,9 +109,11 @@
             	$('#datepicker').datepicker();
             });
             </script>
-        </div>
-        <div class="form-group col-xs-6">
-        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+            <div class="form-group row">
+            	<div class="col-xs-10" id = "symptomArea">
+            		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+            	</div>
+            </div>
         </div>
     </div>
 </div>

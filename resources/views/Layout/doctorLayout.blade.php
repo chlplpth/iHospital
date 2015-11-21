@@ -59,7 +59,7 @@
               <a href="{{ url('/searchPatientProfileByDoctor') }}"> ค้นหาผู้ป่วย<span class="sr-only">(current)</span></a>
             </li>
             <li class="{{ Request::is('diagnose') ? 'active' : '' }}">
-              <a href="{{ url('/diagnose') }}">บันทึกการการวินิจฉัย</a>
+              <a href="{{ url('/diagnose') }}">บันทึกการวินิจฉัย</a>
             </li>
             <li class="{{ Request::is('doctorScheduleByDoctor') ? 'active' : '' }}">
               <a href="{{ url('/doctorScheduleByDoctor') }}">ตารางการออกตรวจ</a>

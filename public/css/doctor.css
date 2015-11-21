@@ -1,19 +1,23 @@
 #doctorLabel {
 	margin-top: 7px;
 }
-
 .indent7 {
 	text-indent: 7px;
 }
-
 th {
 	text-align: center;
 }
-
 #buttonGroup {
 	float: right;
 }
-
 .btn-info {
 	float: right;
+}
+.panel-heading{
+	background-color: #c3e6cd !important;
+}
+.panel-title{
+  font-size: 20px;
+  font-weight: bold;
+  color: gray;
 }
