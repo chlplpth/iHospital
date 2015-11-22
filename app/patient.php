@@ -55,6 +55,20 @@ class patient extends Model
         patient::create($input);
     }    
 
+    public static function getNewHospitalNo()
+    {
+        $maxHN = Patient::max('hospitalNo');
+        if($maxHN == null)
+        {
+            $newHN = 1;
+        }
+        else
+        {
+            $newHN = $maxHN + 1;
+        }
+        return $newHN;
+    }
+
     //-------------  accessor
 
     public function getHospitalNoAttribute($value)
@@ -87,6 +101,7 @@ class patient extends Model
         $arr['district'] = $tmp[4];
         $arr['province'] = $province[$tmp[5]];
         $arr['zipcode'] = $tmp[6];
+        $arr['provinceNo'] = $tmp[5];
         return $arr;
     }
 
@@ -112,22 +127,25 @@ class patient extends Model
     public static function editPatientProfile($request)
     {
         $userId = $request['userId'];
-    
+        $addressStr = "";
 
         if($request['addressNo']!=null)
+        {
             $addressSet = array($request['addressNo'], $request['moo'], $request['street'], $request['subdistrict'], $request['district'], $request['province'], $request['zipcode']);
+            $addressStr = join(",,", $addressSet);
+        }
 
 
         User::where('userId',$userId)->update(array(
                 'email'     => $request['email'],
                 'name'      => $request['name'],
-                'lastname'  => $request['lastname']
+                'surname'  => $request['surname']
             ));
 
         patient::where('userId',$userId)->update(array(
                 'telHome'     => $request['telHome'],
                 'telMobile'   => $request['telMobile'],
-                'address'     => $addressSet,
+                'address'     => $addressStr,
                 'bloodGroup'  => $request['bloodGroup']
             ));
 

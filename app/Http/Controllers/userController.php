@@ -49,18 +49,19 @@ class userController extends Controller
 
     public function registerNewPatient(Request $request)
     {
-    	
         $input = $request->all();
-        //$input['password'] = Hash::make($request['password']);
+        $input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
         $patient = $input;
-        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        //$patient['address'] = join(',,', $addressSet);
+        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        $patient['address'] = join(',,', $addressSet);
+        $patient['drugAllergy'] = join(", ", $input['drugAllergy']);
         $patient['userId'] = $user->userId;
+        $patient['hospitalNo'] = patient::getNewHospitalNo();
         $patient = patient::create($patient);
 
-        echo "patient added";
+        return redirect('/');
 
     	//return view('register.success',compact($user));
     }
@@ -73,6 +74,24 @@ class userController extends Controller
         $user = user::where('userId', $userId)->first();
         $address = $user->patient->addressDetail();
         return view('patient.patientProfile')->with('user', $user)->with('address', $address);
+    }
+
+    //user == patient  edit own profile
+    public function editMyProfilePatientShow(Request $request)
+    {
+        $userId = Auth::user()->userId;
+        // $patient = patient::viewPatientProfile($userId);
+        $user = user::where('userId', $userId)->first();
+        $address = $user->patient->addressDetail();
+        return view('patient.editProfile')->with('user', $user)->with('address', $address);
+    }
+
+    public function editMyProfilePatientStore(Request $request)
+    {
+        $input = $request->all();
+        $input['userId'] = Auth::user()->userId;
+        patient::editPatientProfile($input);
+        return redirect('/');
     }
 
 
@@ -92,8 +111,8 @@ class userController extends Controller
     {
     	$input = $request->all();
         $patient = patient::editPatientProfile($input);
-        echo "update";
 
+        return redirect('/');
     	//return view('patient.profile',compact($patient));
     }
     

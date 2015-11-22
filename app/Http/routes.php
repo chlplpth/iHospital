@@ -206,6 +206,8 @@ Route::get('/diagnosisHistory', function () {
 // ================= PATIENT =================
 
 Route::get('patientProfile', 'userController@viewMyProfilePatient');
+Route::get('editProfile', 'userController@editMyProfilePatientShow');
+Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
 // ================= STAFF =================
 
@@ -213,6 +215,10 @@ Route::get('/addPatient', function() {
     return view('staff.addPatient');
 });
 Route::post('/addPatient', 'userController@addPatient');
+
+// ================= ADMIN =================
+
+Route::post('/addDepartment', 'departmentController@addDepartment');
 
 // ================= AUTHENTICATE =================
 
@@ -233,9 +239,9 @@ Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGe
 Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
-Route::post('/editProfile', 'SmurfController@editProfileValidate');
-Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-Route::post('/doctorList', 'SmurfController@doctorListValidate');
+// Route::post('/editProfile', 'SmurfController@editProfileValidate');
+// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+// Route::post('/doctorList', 'SmurfController@doctorListValidate');
 
 
 
