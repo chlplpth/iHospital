@@ -165,6 +165,9 @@ Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
 
+Route::get('/showDiagnosisHistory', function () {
+    return view('doctor/showDiagnosisHistory');
+});
 
 Route::get('sendemail', function () {
     $data = array(
