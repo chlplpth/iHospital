@@ -226,27 +226,31 @@ Route::get('/testModel', 'Auth\AuthController@testModel');
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
 Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
 Route::post('/doctorList', 'SmurfController@doctorListValidate');
+Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
+Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
+Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
+Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
 
 
 
 //------------------------------------ postman --------------------------------
-Route::post('/importSchedule', 'scheduleController@importSchedule');
-Route::post('/addDepartment', 'departmentController@addDepartment');
-Route::post('/register', 'userController@registerNewPatient');
-Route::post('/editPatientProfile', 'userController@editPatientProfile');
-Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
-Route::post('/registerOld', 'userController@registerOldPatient');
-//Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
+// Route::post('/importSchedule', 'scheduleController@importSchedule');
+// Route::post('/addDepartment', 'departmentController@addDepartment');
+// Route::post('/register', 'userController@registerNewPatient');
+// Route::post('/editPatientProfile', 'userController@editPatientProfile');
+// Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
+// Route::post('/registerOld', 'userController@registerOldPatient');
+// //Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
 
-Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
+// Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
 
-Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
+// Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
 
-Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
+// Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
 
 
-Route::post('/cancelApp', 'appointmentController@cancelAppointment');
+// Route::post('/cancelApp', 'appointmentController@cancelAppointment');
 
-Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
+// Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
 
 

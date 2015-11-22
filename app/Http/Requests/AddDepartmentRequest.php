@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateAppointmentRequest extends Request
+class AddDepartmentRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,17 +24,14 @@ class CreateAppointmentRequest extends Request
     public function rules()
     {
         return [
-            
-            'symptom' => 'required',
-            
-
+            'department' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'symptom.required' => 'กรุณาระบุอาการเบื้องต้น',
+            'department.required' => 'กรุณาระบุชื่อแผนกที่ต้องการเพิ่ม',
             
         ];
     }
