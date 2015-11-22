@@ -9,7 +9,7 @@
   		<div class="panel-heading">
     		<h3 class="panel-title">เพิ่มบุคลากร</h3>
   		</div>
-  		<div class="panel-body" style="margin-left: 40px; margin-top: 10px;">
+  		<div class="panel-body" style="margin-left: 40px; margin-top:2%;">
 	        <form role="form">
 	            <div class="form-group row">
 	              <div class="col-xs-1" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>

@@ -184,7 +184,7 @@
 	    <script type="text/javascript">
 	    // When the document is ready
 	    $(document).ready(function () {
-	    	$('#datepicker').datepicker({language:'th-th',format:'dd/mm/yyyy'});
+	    	$('#datepicker').datepicker({language:'th-th',format:'dd/mm/yy'});
 	    });
 	    </script>
 	</div>

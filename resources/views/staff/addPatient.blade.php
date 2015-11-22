@@ -42,9 +42,14 @@
 						{!!Form::label('bloodType', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodType', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'),'0',["class" => "form-control"]);!!}
 					</div>	
-					<div class ="col-md-7 birthDate"><br>
-						{!!Form::label('birthDate', 'วัน/เดือน/ปี เกิด');!!}
-						{!!Form::text('birthDate','',['class'=>'textbox','placeholder'=>'วว/ดด/ปป']);!!}
+					<div class ="col-md-5 birthDate form-inline"><br>
+						{!!Form::label('birthDate', 'วัน/เดือน/ปี เกิด');!!}&nbsp
+						<div class="input-group date">
+    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+    						<div class="input-group-addon">
+    							<span class="glyphicon glyphicon-calendar"></span>
+    						</div>
+    					</div>
 					</div>
 				</div>
 			</div>

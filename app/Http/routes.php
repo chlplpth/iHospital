@@ -94,8 +94,9 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-
-
+Route::get('searchDoctorScheduleByStaff', function() {
+    return view('staff/searchDoctorScheduleByStaff');
+});
 
 Route::get('createAppointment', function() {
 	return view('patient/createAppointment');
