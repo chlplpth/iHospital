@@ -5,7 +5,7 @@
 @stop
 @section('content')
 
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/createAppointment')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -13,7 +13,7 @@
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
-			
+			<br>
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
 				<label class="col-xs-3" id="patientLabel">XXX</label>
@@ -83,8 +83,8 @@
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">วันนัด</label>
 				<div class="col-xs-3">
-					<div class="input-group date" id="datepicker">
-						{!! Form::text('date', '', ["class" => "form-control"]) !!}
+					<div class="input-group date">
+						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
@@ -97,6 +97,9 @@
 				<div class="col-xs-10">
 					<div id = "symptomArea">
 						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
+						@if( $errors->has('symptom') )<br>
+          					<p class="text-danger"> {{ $errors->first('symptom') }} </p> 
+        				@endif
 					</div>
 				</div>
 			</div>
@@ -112,6 +115,7 @@
             <div class="form-group row">
             	<div class="col-xs-10" id = "symptomArea">
             		{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+            		
             	</div>
             </div>
         </div>
@@ -136,7 +140,9 @@
 								<td>9.00 น. - 12.00 น.</td>
 								<td>จักษุวิทยา</td>
 								<td>กรภพ</td>
-								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a></td>
+								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a>
+									
+								</td>
 							</tr>
 
 							<tr>

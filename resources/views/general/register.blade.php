@@ -63,19 +63,18 @@
 							{!!Form::radio('sex', 'F', false, ['class' => 'radio']);!!}&nbsp
 							{!!Form::label('female', 'หญิง');!!}
 						</div>
-						<div class ="col-md-2"><br>
-							{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
-							{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'), '0', ['class' => 'form-control']);!!}
-						</div><br>
-						<div class ="col-md-5">
-							{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
-							<div class="input-group date" id="datepicker">
-								{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}
-								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-calendar"></span>
-								</div>
-							</div>
-						</div>
+					<div class ="col-md-2"><br>
+						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
+						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'), '0', ['class' => 'form-control']);!!}
+					</div><br>
+					<div class ="col-md-5">
+						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
+						<div class="input-group date">
+    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+    						<div class="input-group-addon">
+    							<span class="glyphicon glyphicon-calendar"></span>
+    						</div>
+    					</div>
 					</div>
 				</div>
 			</div>

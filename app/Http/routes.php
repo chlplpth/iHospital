@@ -58,6 +58,10 @@ Route::get('confirmAppointment', function() {
     return view('patient/confirmAppointment');
 });
 
+Route::get('cancleAppointment', function() {
+    return view('patient/cancleAppointment');
+});
+
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
@@ -157,6 +161,9 @@ Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
 
+Route::get('/showDiagnosisHistory', function () {
+    return view('doctor/showDiagnosisHistory');
+});
 
 Route::get('sendemail', function () {
     $data = array(
@@ -227,11 +234,12 @@ Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
+Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+Route::post('/doctorList', 'SmurfController@doctorListValidate');
 
 
 
-
-
+//------------------------------------ postman --------------------------------
 // Route::post('/importSchedule', 'scheduleController@importSchedule');
 // Route::post('/addDepartment', 'departmentController@addDepartment');
 // Route::post('/register', 'userController@registerNewPatient');
@@ -245,4 +253,10 @@ Route::post('/editProfile', 'SmurfController@editProfileValidate');
 // Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
 
 // Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
+
+
+// Route::post('/cancelApp', 'appointmentController@cancelAppointment');
+
+// Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
+
 

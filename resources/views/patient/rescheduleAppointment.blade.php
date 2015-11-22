@@ -35,8 +35,8 @@
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">วันนัด</label>
 				<div class="col-xs-3">
-					<div class="input-group date" id="datepicker">
-						{!! Form::text('date', '', ["class" => "form-control"]) !!}
+					<div class="input-group date">
+						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>

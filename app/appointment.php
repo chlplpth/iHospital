@@ -47,9 +47,23 @@ class appointment extends Model
     public static function viewPatientAppointment($patientId)
     {
         $appointments = appointment::where('patientId',$patientId)
-                                   ->join('users','appointment.doctorId','=','users.userId')
-                                   ->join('hospitalStaff','appointment.doctorId','=','hospitalStaff.userId')
+                                   ->join('schedule','schedule.scheduleId','=','appointment.scheduleId')
+                                   ->join('scheduleLog','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
+                                   ->join('users','scheduleLog.doctorId','=','users.userId')
+                                   ->join('hospitalStaff','scheduleLog.doctorId','=','hospitalStaff.userId')
                                    ->join('department','hospitalStaff.departmentId','=','department.departmentId')
+                                   ->first();
+
+        return $appointments;
+    }
+
+    public static function viewDoctorAppointment($doctorId)
+    {
+        $appointments = doctor::where('doctor.userId',$doctorId)
+                                   ->join('scheduleLog','doctor.userId','=','scheduleLog.doctorId')
+                                   ->join('schedule','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
+                                   ->join('appointment','schedule.scheduleId','=','appointment.scheduleId')
+                                   ->join('users','appointment.patientId','=','users.userId')
                                    ->get();
 
         return $appointments;
