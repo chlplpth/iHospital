@@ -208,7 +208,7 @@ Route::post('/register', 'Auth\AuthController@register');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
 Route::get('/testModel', 'Auth\AuthController@testModel');
-
+Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');

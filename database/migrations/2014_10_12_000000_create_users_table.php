@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->enum('sex', ['  M', 'F']);
             $table->string('dateOfBirth');
             $table->enum('userType', ['patient', 'doctor', 'staff', 'nurse', 'pharmacist', 'admin']);
+            $table->string('verifyCode')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

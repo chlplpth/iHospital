@@ -47,11 +47,11 @@ class AuthController extends Controller
         $input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
-        // $patient = $input;
-        // $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        // $patient['address'] = join(',,', $addressSet);
-        // $patient['userId'] = $user->id;
-        // $patient = Patient::create($patient);
+        $patient = $input;
+        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        $patient['address'] = join(',,', $addressSet);
+        $patient['userId'] = $user->userId;
+        $patient = Patient::create($patient);
     }
 
     public function getMainPage()
@@ -104,8 +104,16 @@ class AuthController extends Controller
         echo "testModel";
     }
 
-    public function renewPasswordEmail(){
-        $verifyCode = str_random(60);
-        echo $verifyCode;
+    public function forgetPassword(Request $request){
+        $user = User::where('email', $request['email'])->first();
+        if($user != null){
+            $verifyCode = str_random(60);
+            $user->verifyCode = $verifyCode;
+            $user->save();
+        }
+    }
+
+    public function changePassword($verifyCode){
+
     }
 }
