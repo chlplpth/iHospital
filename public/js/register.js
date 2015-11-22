@@ -25,7 +25,7 @@ function isNumber(evt) {
 	return true;
 }
 function addDrug(){
-	$('.drugAllergy').append("<br><br><input class='textbox' placeholder='ยา' onkeyup='enableAddDrugButton()' name='drugAllergy[]' type='text' value='' style ='margin-left:40px'>");
+	$('.drugAllergy').append("<br><br><input class='textbox drugTextbox' placeholder='ยา' onkeyup='enableAddDrugButton()' name='drugAllergy[]' type='text' value='' style ='margin-left:40px'>");
 	$('.addDrug').prop('disabled', true);
 }
 function enableAddDrugButton(){

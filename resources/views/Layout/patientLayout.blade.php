@@ -77,13 +77,13 @@
                 <a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a>
               </li>
               <li class="{{ Request::is('patientAppointmentSchedule') ? 'active' : '' }}">
-                <a href="{{ url('/patientAppointmentSchedule') }}">รายการนัดหมาย</a>
+                <a href="{{ url('/patientAppointmentSchedule') }}">ตารางการนัดหมาย</a>
               </li>
               <li class="{{ Request::is('doctorList') ? 'active' : '' }}">
-                <a href="{{ url('doctorList') }}">ดูข้อมูลแพทย์</a>
+                <a href="{{ url('doctorList') }}">ข้อมูลแพทย์</a>
               </li>
-              <li class="{{ Request::is('#') ? 'active' : '' }}">
-                <a href="#">ประวัติการรักษา</a>
+              <li class="{{ Request::is('diagnosisRecord') ? 'active' : '' }}">
+                <a href="{{ url('diagnosisRecord') }}">ประวัติการรักษา</a>
               </li>
             </ul>
           </div>
