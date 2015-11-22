@@ -24,6 +24,7 @@ class CreateAppointmentRequest extends Request
     public function rules()
     {
         return [
+            
             'symptom' => 'required',
             
 
@@ -33,7 +34,7 @@ class CreateAppointmentRequest extends Request
     public function messages()
     {
         return [
-            'symptom.required' => 'กรุณาระบุ อาการเบื้องต้น',
+            'symptom.required' => 'กรุณาระบุอาการเบื้องต้น',
             
         ];
     }

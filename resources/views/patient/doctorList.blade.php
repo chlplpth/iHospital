@@ -44,7 +44,7 @@
 
 			
 			<div class="col-md-4">{!! Form::label('name', 'ชื่อแพทย์'); !!} &nbsp
-				{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์']);!!}
+				{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'ณภัทร']);!!}
 				@if( $errors->has('name') )<br><br>
           			<p class="text-danger"> {{ $errors->first('name') }} </p> 
         	@endif
