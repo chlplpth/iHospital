@@ -142,7 +142,7 @@
 					</div>
 					<div class="col-md-4 drugAllergy" >
 						{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+						{!!Form::text('drugAllergy[]','',['class'=>'textbox drugTextbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
 					</div>
 					<div class="col-md-7" >
 						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug','onclick'=>'addDrug()','disabled'=>'true']);!!}

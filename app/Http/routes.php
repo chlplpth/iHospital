@@ -58,6 +58,10 @@ Route::get('confirmAppointment', function() {
     return view('patient/confirmAppointment');
 });
 
+Route::get('cancleAppointment', function() {
+    return view('patient/cancleAppointment');
+});
+
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
@@ -216,7 +220,8 @@ Route::get('/testModel', 'Auth\AuthController@testModel');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
-
+Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+Route::post('/doctorList', 'SmurfController@doctorListValidate');
 
 
 
@@ -227,7 +232,7 @@ Route::post('/register', 'userController@registerNewPatient');
 Route::post('/editPatientProfile', 'userController@editPatientProfile');
 Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
 Route::post('/registerOld', 'userController@registerOldPatient');
-Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
+//Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
 
 Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
 

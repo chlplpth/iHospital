@@ -12,10 +12,10 @@
 	</div>
 	<div class="panel-body">
 		<div id = "editProfile">
-
+			<br>
 		{!! Form::label('hospitalNo', 'รหัสประจำตัวผู้ป่วย'); !!} &nbsp
 		{!! Form::text('hospitalNo','Patient ID', ['class'=>'textbox textbox100px','disabled'=>'true' ]); !!} 
-		<br> <br>
+		<br><br><br>
 		
 		<div class="row">
 			<div class="col-md-4"> {!! Form::label('name', 'ชื่อจริง'); !!} &nbsp
@@ -31,7 +31,7 @@
         		@endif
 			</div>
 		</div>
-		<br>
+		<br><br>
 
 		<div class ="row">
 			<div class ="col-md-3">
@@ -49,7 +49,7 @@
 			</div>
 		</div>
 
-		<br>
+		<br><br>
 		<div class ="row">
 
 			<div class ="col-md-3">

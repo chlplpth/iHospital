@@ -31,9 +31,8 @@
 								<td>จักษุวิทยา</td>
 								<td>กรภพ</td>
 								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
-								<td>{!! Form::submit('ยกเลิก', ["class" => "btn btn-danger centerBtn"]) !!}</td>
-							</tr>
-
+								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger centerBtn linkBtn">ยกเลิก</a></td>
+								</tr>
 							<tr>
 								<td>21/11/2558</td>
 								<td>13.00 น. - 16.00 น.</td>
