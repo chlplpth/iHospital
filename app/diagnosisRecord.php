@@ -36,4 +36,29 @@ class diagnosisRecord extends Model
         'doctorAdvice',
         'diagnosisDetail',
         'physicalRecordId'];
+
+    //------------------   function -------------------------
+
+    public static function viewDiagnosisHistoryPatient($input)
+    {
+
+        $diagnosisRecords = diagnosisRecord::join('appointment','diagnosisRecord.appointmentId','=','appointment.appointmentId')
+                                           ->where('patientId',$input['patientId'])
+                                           ->get();
+
+        return $diagnosisRecords;
+    }
+
+    public static function viewDiagnosisHistoryDoctor($input)
+    {
+
+        $diagnosisRecords = diagnosisRecord::join('appointment','diagnosisRecord.appointmentId','=','appointment.appointmentId')
+                                           ->join('schedule','appointment.scheduleId','=','schedule.scheduleId')
+                                           ->join('scheduleLog','schedule.scheduleLogId','=','scheduleLog.scheduleLogId')
+                                           ->where('doctorId',$input['doctorId'])
+                                           ->get();
+
+        return $diagnosisRecords;
+    }
+}
 }

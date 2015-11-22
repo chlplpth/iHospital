@@ -24,3 +24,21 @@ function isNumber(evt) {
 	}
 	return true;
 }
+function addDrug(){
+	$('.drugAllergy').append("<br><br><input class='textbox' placeholder='ยา' onkeyup='enableAddDrugButton()' name='drugAllergy[]' type='text' value='' style ='margin-left:40px'>");
+	$('.addDrug').prop('disabled', true);
+}
+function enableAddDrugButton(){
+	var x = document.getElementsByName("drugAllergy[]");
+	var check=0;
+	for(i=0;i<x.length;i++){
+		if(x[i].value==""){
+			check=1;
+		}
+	}
+	if(check==1){
+		$('.addDrug').prop('disabled', true);
+	}else{
+		$('.addDrug').prop('disabled', false);
+	}
+}

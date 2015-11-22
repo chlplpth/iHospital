@@ -4,7 +4,7 @@
 {!! HTML::script('js/register.js') !!}
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/register')) !!}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
@@ -34,7 +34,7 @@
 						{!!Form::label('name', 'ชื่อ');!!}&nbsp
 						{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
 						{!!Form::label('lastname', 'นามสกุล');!!}&nbsp
-						{!!Form::text('lastname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
+						{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
 					</div>
 				</div>
 				<div class ="row form-inline">
@@ -125,7 +125,7 @@
 				<div class= "row">
 					<div class="col-md-1">
 					</div>
-					<div class="col-md-11 drugAllergy" >
+					<div class="col-md-11" >
 						{!!Form::label('email','อีเมล');!!}&nbsp
 						{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
 					</div>
@@ -140,10 +140,13 @@
 				<div class= "row">
 					<div class="col-md-1">
 					</div>
-					<div class="col-md-11 drugAllergy" >
+					<div class="col-md-4 drugAllergy" >
 						{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา']);!!}
-						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug']);!!}
+						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+					</div>
+					<div class="col-md-7" >
+						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug','onclick'=>'addDrug()','disabled'=>'true']);!!}
+
 					</div>
 				</div>
 			</div>

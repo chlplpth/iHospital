@@ -3,8 +3,8 @@
 <head>
 	<meta charset="utf-8">
 </head>
-<body style ="max-width:800px;">
-	{!! HTML::image('image/iHospitalBanner.png','',['style'=>'max-width: 800px']) !!}
+<body style ="max-width:800px; border:2px solid black;">
+	 <img src="<?php echo $message->embed('image/iHospitalBanner.png'); ?>" style ="width:800px;">
 	<br><br><br>
 	<div style ="margin-left :50px;">
 		เรียนคุณ {name}{lastname} <br>
@@ -67,9 +67,10 @@
 	</table>
 	<br><br>
 	<div style ="margin-left :50px;">
-		หากท่านต้องการทำการเปลี่ยนแปลง่การนัดหมายทำได้โดย<br>
+		หากท่านต้องการทำการเปลี่ยนแปลงการนัดหมายทำได้โดย<br>
 		1. เปล่ยนแปลงการนัดหมายโดยตรงกับเจ้าหน้าที่ทางโทรศัพท์ 02-xxx-xxxx<br>
 		2. ทำการเปลี่ยนแปลงด้วยตนเองผ่านเว็บไซต์ {link}
-	</div><br><br>
+	</div><br><br><br>
+	<img src="<?php echo $message->embed('image/iHospitalfooter.png'); ?>" style ="width:800px;">
 </body>
 </html>

@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\appointment;
+use App\schedule;
 
 class appointmentController extends Controller
 {
@@ -19,86 +20,67 @@ class appointmentController extends Controller
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
     {
-        $date = $request->date;
-        $department = $request->departmentId;
-        $doctor = $request->doctorId;
-
-        if(doctor!=null)
-        {
-            $availableDate = App\schedule::where('doctorId',$doctor)
-                                         ->where('date',$date)
-                                         ->get();
-        }
-        else
-        {
-            $availableDate = App\schedule::where('departmentId',$department)
-                                         ->where('date',$date)
-                                         ->get();
-        }
         
-        return view('appointment.availableDate',compact($availableDate));
+        $input = $request->all();
+        $schedules = schedule::requestDate($input);
+        if(sizeof($schedules)==0) echo "not found";
+
     }   
-
-    // show everything user fill in confirmation page
-    public function createAppointmentConfirm(Request $request)
-    {
-
-        return view('appointment.confirm',compact($request));
-    }
 
     //user enter confirm and store data of appointment in database
     public function createAppointmentStore(Request $request)
     {
-        $appointment = new appointment($request->all());
-        Auth::user()->appointment()->save($appointment);
+        $input = $request->all();
+        $appointment = appointment::createAppointment($input);
 
-        return redirect('appointment');
+        // return redirect('appointment');
+    }
+
+    public function delayAppointmentRequest(Request $request)
+    {
+        
+        $input = $request->all();
+        $schedules = schedule::requestDate($input);
+
+        if(sizeof($schedules)==0) echo "not found";
+
+    }   
+
+    public function delayAppointmentStore(Request $request)
+    {
+        $input = $request->all();
+        $appointment = appointment::delayAppointment($input);
     }
 
     public function viewPatientAppointment(Request $request)
     {
-        $patientId = $request->patient;
+        if(Auth::user()->userType == "patient")
+            $patientId = Auth::user()->userId;
+        else $patientId = $request->patient;
+        
         $appointments = appointment::viewPatientAppointment($patientId);
         
         // if(sizeof($appointments)==0) echo "not found";
         // else echo "found";
     }
 
-    public function delayAppointmentRequest(Request $request)
+    public function viewDoctorAppointment(Request $request)
     {
-        $appointment = App\Appointment::find($request->appointmentId);
-        $date = $appointment->date;
-        $department = $appointment->departmentId;
-        $doctor = $appointment->doctorId;
+        // if(Auth::user()->userType == "doctor")
+        //     $doctorId = Auth::user()->userId;
+        // else $doctorId = $request->doctor;
 
-        if($doctor!=null)
-        {
-            $availableDate = App\schedule::where('doctorId',$doctor)
-                                         ->where('date',$date)
-                                         ->get();
-        }
-        else
-        {
-            $availableDate = App\schedule::where('departmentId',$department)
-                                         ->where('date',$date)
-                                         ->get();
-        }
+        $doctorId = $request->doctor;
         
-        return view('appointment.availableDate',compact($availableDate));
+        $appointments = appointment::viewDoctorAppointment($doctorId);
+        
     }
 
-    public function delayAppointmentStore(Request $request)
-    {
-        $appointment = App\Appointment::find($request->appointmentId);
-        $appointment->date = $request->date;
-        $appointment->time = $request->time;
-        $appointment->doctorId = $request->doctorId;
-        $appointment->save();
-        return redirect('appointment');
-    }
-
+    
     public function cancelAppointment(Request $request)
     {
-        
+        $appointmentId = $request->appointmentId;
+        $appointment = appointment::where('appointmentId',$appointmentId)->first();
+        $appointment ->delete(); 
     }
 }

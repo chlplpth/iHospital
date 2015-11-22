@@ -24,6 +24,7 @@ class CreatePhysicalRecordTable extends Migration
             $table->timestamps();
         });
 
+
         Schema::table('physicalRecord', function (Blueprint $table) {
             $table->foreign('nurseId')
                   ->references('userId')

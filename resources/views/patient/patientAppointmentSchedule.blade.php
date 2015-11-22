@@ -20,7 +20,7 @@
 								<th style="width: 24%;text-align:center;">เวลา</th>
 								<th style="width: 26%; text-align:center;">แผนก</th>
 								<th style="width: 46%; text-align:center;">แพทย์</th>
-								<th style="width: 10%; text-align:center;">เปลื่ยนแปลง</th>
+								<th style="width: 10%; text-align:center;">เลื่อน</th>
 								<th style="width: 10%; text-align:center;">ยกเลิก</th>
 							</tr>
 						</thead>
@@ -30,7 +30,7 @@
 								<td>9.00 น. - 12.00 น.</td>
 								<td>จักษุวิทยา</td>
 								<td>กรภพ</td>
-								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เปลื่ยนแปลง</a></td>
+								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
 								<td>{!! Form::submit('ยกเลิก', ["class" => "btn btn-danger centerBtn"]) !!}</td>
 							</tr>
 
@@ -39,7 +39,7 @@
 								<td>13.00 น. - 16.00 น.</td>
 								<td>กุมารเวชรศาสตร์</td>
 								<td>ญานิกา</td>
-								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เปลื่ยนแปลง</a></td>
+								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
 								<td>{!! Form::submit('ยกเลิก', ["class" => "btn btn-danger centerBtn"]) !!}</td>
 							</tr>
 
