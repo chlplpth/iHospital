@@ -6,7 +6,16 @@
 #staffLabel {
   margin-top: 7px;
 }
+.moveDown2 {
+  margin-top: 2%;
+}
+#calendar {
+  /*font-size: 150%;*/
+}
 table, table thead tr th {
+  text-align: center;
+}
+table, table tbody tr th {
   text-align: center;
 }
 .btn-success {
@@ -21,6 +30,20 @@ table, table thead tr th {
 
 .panel-heading{
 	background-color: #c3e6cd !important;
+}
+#infoBtnColor {
+  color: #fff !important;
+  background-color: #5bc0de !important;
+  border-color: #46b8da !important;
+  font-weight: normal;
+}
+#dangerBtnColor {
+  color: #fff !important;
+  background-color: #d9534f !important;
+  border-color: #d43f3a !important;
+  font-weight: normal;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 .panel-title{
   font-size: 20px;

@@ -4,16 +4,17 @@
 @stop
 @section('content')
 
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => 'doctorList')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">บุคลากร</h3>
+		<h3 class="panel-title">ข้อมูลแพทย์</h3>
 	</div>
-	<br>
+	<br><br>
 	<div class="row">
 		<div class="col-md-1"></div>
 		<div class="col-md-4 form-inline">{!! Form::label('department', 'แผนก'); !!} &nbsp
+
 			{!! Form::select('department', array(
 			'0' => 'ไม่ระบุ',
 			'1' => 'กายวิภาคศาสตร์', 
@@ -36,11 +37,19 @@
 			'18' => 'สุติศาสตร์-นารีเวชวิทยา',
 			'19' => 'โสต คอ นาสิกวิทยา',
 			'20' => 'ออโธปิดิกส์',
-			'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
+			'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
+			@if( $errors->has('department') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('department') }} </p>
+        	@endif</div>
 
-			<div class="col-md-4">{!! Form::label('doctor', 'ชื่อแพทย์'); !!} &nbsp
-				{!! Form::text('firstname', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์']);!!}
+			
+			<div class="col-md-4">{!! Form::label('name', 'ชื่อแพทย์'); !!} &nbsp
+				{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'ณภัทร']);!!}
+				@if( $errors->has('name') )<br><br>
+          			<p class="text-danger"> {{ $errors->first('name') }} </p> 
+        	@endif
 			</div>
+			
 			<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-defalut", "id" => "searchButton"]) !!}
 			</div>
 

@@ -31,8 +31,10 @@
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/datepicker.js"></script>
-
+    <!-- // <script src="js/datepicker.js"></script> -->
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/locales/bootstrap-datepicker.th.js"></script>
+    <script src="js/bootstrap-datepicker-thai.js"></script>
 
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/vendor/holder.min.js"></script>
@@ -80,7 +82,7 @@
               <a href="{{ url('importDoctorSchedule') }}">นำเข้าตารางการออกตรวจ</a>
             </li>
             <li class="{{ Request::is('') ? 'active' : '' }}">
-              <a href="{{ url('#') }}">ยกเลิกตารางการออกตรวจ</a>
+              <a href="{{ url('/searchDoctorScheduleByStaff') }}">ตารางการออกตรวจ</a>
             </li>
             <li class="{{ Request::is('addStaffByStaff') ? 'active' : '' }}">
               <a href="{{ url('/addStaffByStaff') }}">เพิ่มบุคลากร</a>

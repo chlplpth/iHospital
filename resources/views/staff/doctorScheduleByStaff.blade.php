@@ -6,20 +6,36 @@
 	{!! Form::open(array('url' => 'foo/bar')) !!}
 
 	<div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">ยกเลิกตารางการออกตรวจ</h3>
+    <div class="panel-heading">
+      <h3 class="panel-title">ตารางการออกตรวจ</h3>
+    </div>
+    <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
+      <form role="form">
+        <div class="form-group row">
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชลัมพล'); !!}</div>
+        </div>
+        <div class="form-group row">
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
+          <div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
+        </div>
+        <div class="form-group row">
+        <div class="col-xs-2" id="staffLabel">{!! Form::label('day', 'วันออกตรวจ'); !!}</div>
+        <div class="col-xs-7">
+          <div id="calendar" data-date-language="th-th"></div>
+        </div>
       </div>
-      <div class="panel-body">
-        <form role="form">
-          <div class="form-group row">
-            <div class="col-xs-12">{!! Form::label('name', 'กรอกชื่อหรือรหัสแพทย์'); !!}</div>
-            <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control"]) !!}</div>
-            <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-primary"]) !!}</div>
-          </div>
-          <div class="form-group row">
-            <div class="col-xs-12"><h1>ตาราง ยังไม่ได้คิด ปฏิทิน?</h1></div>
-          </div>
-        </form>
+      </form>
+      <script type="text/javascript">
+      // When the document is ready
+      $(document).ready(function () {
+        $('#calendar').datepicker();
+      });
+      </script>
       </div>
   </div>
 

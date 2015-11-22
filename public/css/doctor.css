@@ -1,3 +1,14 @@
+.centerBtn {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+}
+.linkBtn {
+  display: inline-block;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc
+}
 #doctorLabel {
 	margin-top: 7px;
 }
@@ -24,9 +35,14 @@ th {
 #doctorRadio {
 	margin-top: 3px;
 }
-#addHover:hover {
-	color: #999999;
+#addBtn:hover {
+	color: #449d44;
+	border-color: #398439;
 	cursor: pointer;
+}
+#addBtn {
+	color: #5cb85c;
+	border-color: #4cae4c;
 }
 table tr td {
 	text-align: center;

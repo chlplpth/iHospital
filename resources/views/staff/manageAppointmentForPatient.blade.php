@@ -9,34 +9,29 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">จัดการการนัดหมาย</h3>
 	</div>
-	<div class="panel-body" style="margin-left:40px;">
-		<div id = "createAppointmentForm" >
+	<div class="panel-body" style="margin-top:2%; margin-left:40px;">
 		<form role="form">
-			<div class="form-group">
-				<div class="row">
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ / รหัสผู้ป่วย'); !!}</div>
-					<div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชื่อ / รหัสผู้ป่วย']) !!}</div>
-					<div class="col-xs-6">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
-				</div>
+			<div class="form-group row">
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ / รหัสผู้ป่วย'); !!}</div>
+				<div class="col-xs-3" >{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชื่อ / รหัสผู้ป่วย']) !!}</div>
+				<div class="col-xs-6" >{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
 			</div>
-			<div class="form-group">
-				<div class="row">
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสผู้ป่วย'); !!}</div>
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชลัมพล'); !!}</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
-					<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
-				</div>
+			<div class="form-group row">
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสผู้ป่วย'); !!}</div>
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชลัมพล'); !!}</div>
+			</div>
+			<div class=" form-group row">
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2" id="staffLabel">{!! Form::label('appointmentList', 'รายการนัดหมาย'); !!}</div>
 			</div>
-			<div class="form-group row">
+			<div class="row">
 				<div class="col-xs-10">
 					<table class="table table-bordered">
 						<thead>
@@ -44,7 +39,7 @@
 								<th style="width: 5%;">ลำดับ</th>
 								<th style="width: 10%;">วัน</th>
 								<th style="width: 14%;">เวลา</th>
-								<th style="width: 25%;">แพทย์</th>
+								<th style="width: 20%;">แพทย์</th>
 								<th style="width: 15%;">แผนก</th>
 								<th style="width: 10%;">รายละเอียด</th>
 							</tr>
@@ -96,12 +91,10 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 			</div>
 		</form>
 	</div>
-</div>
 </div>
 
 {!! Form::close() !!}
