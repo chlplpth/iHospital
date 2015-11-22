@@ -3,7 +3,7 @@
 <link href="css/admin.css" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/grantStaff')) !!}
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -12,7 +12,11 @@
   <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
     <div class="form-group row">
       <div class="col-xs-2" id="adminLabel">{!! Form::label('keyword', 'ชื่อ / รหัสบุคลากร'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control"]) !!}</div>
+      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'ชลัมพล / 55321']) !!}
+        @if( $errors->has('keyword') )<br>
+        <p class="text-danger"> {{ $errors->first('keyword') }} </p> 
+        @endif
+      </div>
       <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
     </div>
     <div class="form-group row" style="margin-bottom: 0px;">
