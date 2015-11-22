@@ -53,12 +53,12 @@
 					</div><br>
 					<div class ="col-md-5">
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
-						<div class="input-group date" id="datepicker">
-							{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}
-							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
-							</div>
-						</div>
+						<div class="input-group date">
+    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+    						<div class="input-group-addon">
+    							<span class="glyphicon glyphicon-calendar"></span>
+    						</div>
+    					</div>
 					</div>
 				</div>
 			</div>

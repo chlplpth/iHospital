@@ -9,7 +9,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">ให้สิทธิ์เจ้าหน้าที่</h3>
   </div>
-  <div class="panel-body" style="margin-top: 10px; margin-left: 40px;">
+  <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
     <div class="form-group row">
       <div class="col-xs-2" id="adminLabel">{!! Form::label('keyword', 'ชื่อ / รหัสบุคลากร'); !!}</div>
       <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control"]) !!}</div>

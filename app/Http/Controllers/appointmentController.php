@@ -54,16 +54,33 @@ class appointmentController extends Controller
 
     public function viewPatientAppointment(Request $request)
     {
-        $patientId = $request->patient;
+        if(Auth::user()->userType == "patient")
+            $patientId = Auth::user()->userId;
+        else $patientId = $request->patient;
+        
         $appointments = appointment::viewPatientAppointment($patientId);
         
         // if(sizeof($appointments)==0) echo "not found";
         // else echo "found";
     }
 
+    public function viewDoctorAppointment(Request $request)
+    {
+        // if(Auth::user()->userType == "doctor")
+        //     $doctorId = Auth::user()->userId;
+        // else $doctorId = $request->doctor;
+
+        $doctorId = $request->doctor;
+        
+        $appointments = appointment::viewDoctorAppointment($doctorId);
+        
+    }
+
     
     public function cancelAppointment(Request $request)
     {
-        
+        $appointmentId = $request->appointmentId;
+        $appointment = appointment::where('appointmentId',$appointmentId)->first();
+        $appointment ->delete(); 
     }
 }

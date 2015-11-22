@@ -11,7 +11,7 @@
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
-			<br>
+			
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
 				<label class="col-xs-3" id="patientLabel">XXX</label>
@@ -35,25 +35,20 @@
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">วันนัด</label>
 				<div class="col-xs-3">
-					<div class="input-group date" id="datepicker">
-						{!! Form::text('date', '', ["class" => "form-control"]) !!}
-						
+					<div class="input-group date">
+						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
 				<label class="col-xs-10" id="patientLabel">ง่อยรับประทาน</label>
 			</div>
-			<div class="form-group row">
-        		<div class= "col-xs-2">{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!} </div>
-        	</div>
-
+			
 
 			<!-- Script to construct datepicker -->
 			<script type="text/javascript">
@@ -63,7 +58,10 @@
             });
             </script>
         </div>
-                <div class="panel-body">
+        <div class="form-group col-xs-6">
+        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+        </div>
+        <div class="panel-body">
 		<form>
 			<div class="form-group row">
 				<div class="col-xs-12">
