@@ -21,7 +21,7 @@
 						<thead >
 							<tr>
 								<th style="width: 20%; text-align:center;">วัน/เดือน/ปี</th>
-								<th style="width: 20%;text-align:center;">เช้า</th>
+								<th style="width: 20%; text-align:center;">เช้า</th>
 								<th style="width: 20%; text-align:center;">บ่าย</th>
 								<th style="width: 20%; text-align:center;">รวม</th>
 							</tr>

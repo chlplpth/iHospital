@@ -39,7 +39,7 @@
 		        </div>
 		        <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">รายการยา
-		        		<div id="addHover" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>
+		        		<div id="addBtn" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>
 		        	</label>
 		        	<div class="col-xs-7">
 		        		<table class="table table-bordered table-hover">
@@ -133,7 +133,7 @@
 	        	</div>
 		        <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">วันที่นัดเพิ่ม
-			        	<div id="addHover" data-toggle="collapse" data-target="#addNewApp" class="glyphicon glyphicon-plus-sign"></div>
+			        	<div id="addBtn" data-toggle="collapse" data-target="#addNewApp" class="glyphicon glyphicon-plus-sign"></div>
 			        </label>
 			        <label class="col-xs-7" id="doctorLabel">วันที่ 5 สิงหาคม พ.ศ.2558 (13.00 - 15.30)</label>
 		        </div>
@@ -147,13 +147,13 @@
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">วันที่</label>
 		        				<div class="col-xs-4">
-		        				<div class="input-group date" id="datepicker">
-		        					{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}
-		        					<div class="input-group-addon">
-		        						<span class="glyphicon glyphicon-calendar"></span>
+		        					<div class="input-group date">
+		        						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+		        						<div class="input-group-addon">
+		        							<span class="glyphicon glyphicon-calendar"></span>
+		        						</div>
 		        					</div>
 		        				</div>
-		        			</div>
 		        			</div>
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">ช่วงเวลา</label>
@@ -184,7 +184,7 @@
 	    <script type="text/javascript">
 	    // When the document is ready
 	    $(document).ready(function () {
-	    	$('#datepicker').datepicker();
+	    	$('#datepicker').datepicker({language:'th-th',format:'dd/mm/yyyy'});
 	    });
 	    </script>
 	</div>
