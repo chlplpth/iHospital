@@ -31,9 +31,9 @@
 				</div>
 				<div class="form-group row">
 					<div class="col-xs-2" id="staffLabel">{!! Form::label('appointmentList', 'รายการนัดหมาย'); !!}</div>
-				<!-- </div> -->
-				<!-- <div class="form-group row"> -->
-					<div class="col-xs-7">
+				</div>
+				<div class="row">
+					<div class="col-xs-10">
 						<table class="table table-bordered">
 							<thead>
 								<tr>
@@ -93,7 +93,7 @@
 							</div>
 						</div>
 					</div>
-				<!-- </div> -->
+				</div>
 			</form>
 		</div>
 	</div>
