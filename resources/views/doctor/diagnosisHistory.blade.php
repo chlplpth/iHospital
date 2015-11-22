@@ -9,11 +9,11 @@
   		<div class="panel-heading">
     		<h3 class="panel-title">สถิติการออกตรวจ</h3>
   		</div>
-  		<div class="panel-body">
+  		<div class="panel-body" style="margin-top:2%; margin-left: 40px;">
   			<form role="form">
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7" id="doctorLabel">{!! Form::label('year', 'ปี'); !!}</div>
-	              <div class="col-xs-3">{!! Form::selectRange('year', 2500, 2600, 2558, ["class" => "form-control"]) !!}</div>
+	              <div class="col-xs-3">{!! Form::selectRange('year', 2550, 2568, 2558, ["class" => "form-control"]) !!}</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7" id="doctorLabel">{!! Form::label('month', 'เดือน'); !!}</div>
@@ -23,7 +23,7 @@
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7"></div>
-	              <div class="col-xs-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-info"]) !!}</div>
+	              <div class="col-xs-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-default", 'style'=>'float:right;']) !!}</div>
 	            </div>
         	</form>
   		</div>
