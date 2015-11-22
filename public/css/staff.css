@@ -3,11 +3,12 @@
   margin: 0 auto;
   position: relative;
 }
-
-#patientLabel {
+#staffLabel {
   margin-top: 7px;
 }
-
+table, table thead tr th {
+  text-align: center;
+}
 .btn-success {
   float: right;
 }
@@ -89,9 +90,6 @@
 }
 .header{
   font-weight: bold;
-}
-#staffLabel {
-	margin-top: 7px;
 }
 #searchButton2 {
   margin-top: -2px;

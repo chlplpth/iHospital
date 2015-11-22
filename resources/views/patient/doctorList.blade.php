@@ -37,6 +37,7 @@
 			'19' => 'โสต คอ นาสิกวิทยา',
 			'20' => 'ออโธปิดิกส์',
 			'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!} <br><br></div>
+
 			<div class="col-md-4">{!! Form::label('doctor', 'ชื่อแพทย์'); !!} &nbsp
 				{!! Form::text('firstname', '', ['class'=>'textbox', 'placeholder'=>'ชื่อแพทย์']);!!}
 			</div>

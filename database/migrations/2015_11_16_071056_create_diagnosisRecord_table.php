@@ -21,6 +21,7 @@ class CreateDiagnosisRecordTable extends Migration
             $table->timestamps();
         });
 
+
         Schema::table('diagnosisRecord', function (Blueprint $table) {
             $table->foreign('appointmentId')
                   ->references('appointmentId')

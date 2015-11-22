@@ -104,16 +104,28 @@ class AuthController extends Controller
         echo "testModel";
     }
 
-    public function forgetPassword(Request $request){
+    public function forgetPassword(Request $request)
+    {
         $user = User::where('email', $request['email'])->first();
-        if($user != null){
-            $verifyCode = str_random(60);
-            $user->verifyCode = $verifyCode;
-            $user->save();
+        if($user != null)
+        {
+            $verifyCode = $user->genVerifyCode();
+            echo $verifyCode;
         }
     }
 
-    public function changePassword($verifyCode){
+    public function changePasswordGet($verifyCode)
+    {
+        $user = User::where('verifyCode', $verifyCode)->first();
+        if($user != null)
+        {
+            return view('general.changePassword')->with('verifyCode', $verifyCode);
+        }
+    }
 
+    public function changePasswordPost(Request $request)
+    {
+        User::setNewPassword($request['verifyCode'], Hash::make($request['newPassword']));
+        return redirect('/');
     }
 }

@@ -83,7 +83,10 @@
               <a href="{{ url('#') }}">ยกเลิกตารางการออกตรวจ</a>
             </li>
             <li class="{{ Request::is('addStaffByStaff') ? 'active' : '' }}">
-              <a href="{{ url('/addStaffByStaff') }}">จัดการบุคลากร</a>
+              <a href="{{ url('/addStaffByStaff') }}">เพิ่มบุคลากร</a>
+            </li>
+            <li class="{{ Request::is('manageStaffByStaff') ? 'active' : '' }}">
+              <a href="{{ url('/manageStaffByStaff') }}">จัดการบุคลากร</a>
             </li>
           </ul>
         </div>

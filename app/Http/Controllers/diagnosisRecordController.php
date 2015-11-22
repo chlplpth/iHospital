@@ -7,63 +7,61 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\diagnosisRecord;
+use App\physicalRecord;
+use App\medicinePrescription;
+
 class diagnosisRecordController extends Controller
 {
     public function recordDiagnosis(Request $request)
 	{
-		$diagnosisRecord = new diagnosisRecord($request->all());
-		$diagnosisRecord->doctorId = Auth::user()->userId;
+		$input = $request->all();
+        $diagnosisRecord = new diagnosisRecord($input);
         $diagnosisRecord->save();
 
-        return redirect('diagnosisRecord');
+        //return redirect('diagnosisRecord');
     }
 
     //add by nurse
     public function recordPatiantGeneralDetail(Request $request)
     {
-    	$physicalRecord = new physicalRecord($request->all());
-    	$diagnosisRecord->nurseId = Auth::user()->userId;
+    	$input = $request->all();
+        $physicalRecord = new physicalRecord($input);
 
-    	return redirect('physicalRecord');
+    	//return redirect('physicalRecord');
     }
     
 
-    public function recordPrescriptionHistory(Request $request){
+    public function recordPrescriptionHistory(Request $request)
+    {
+        $input = $request->all();
+        $prescription = new prescription($input);
+    }
 
+    public function addMedicineInPrescription(Request $request)
+    {
+        $input = $request->all();
+        $medicine = medicinePrescription::addMedicine($input);
     }
     
     //if doctor  -> view own history , other send doctorId to rq
     public function viewDiagnosisHistoryDoctor(Request $request)
     {
-    	$userType = Auth::user()->userType;
-    	if(userType == 'doctor') 
-    		$doctor = Auth::user->userId;
-    	else
-    		$doctor = $request->doctorId;
-
-    	$diagnosisHistory = App\diagnosisRecord::where('doctorId',$doctor)->get();
-
-    	return view('doctor.diagnosisHistory',compact($diagnosisHistory);
+    	
     }
     
     public function viewDiagnosisHistoryPatient(Request $request)
     {
-    	$userType = Auth::user()->userType;
-    	if(userType == 'patient') 
-    		$patient = Auth::user->userId;
-    	else
-    		$patient = $request->doctorId;
-
-    	$diagnosisHistory = App\diagnosisRecord::where('patientId',$patient)->get();
-
-    	return view('patient.diagnosisHistory',compact($diagnosisHistory);
+    	$input = $request->all();
+        $diagnosisRecords = diagnosisRecord::viewDiagnosisHistoryPatient($input);
     }
 
     //click from user profile-> diagnosisHistory to view detail
     public function viewDiagnosisResult(Request $request)
     {
-    	$diagnosisRecord = App\diagnosisRecord::find($request->diagRecordId);
+    	$input = $request->all();
+        $diagnosisRecord = diagnosisRecord::find($input['diagRecordId']);
 
-    	return view('diagnosisRecord',compact($diagnosisRecord));
+    	//return view('diagnosisRecord',compact($diagnosisRecord));
     }
 }

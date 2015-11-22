@@ -13,18 +13,14 @@ class CreatePatientTable extends Migration
     public function up()
     {
         Schema::create('patient', function (Blueprint $table) {
-<<<<<<< HEAD
-            $table->integer('userId');
-            $table->integer('hospitalNo')->unique();
-=======
+
             $table->integer('userId')->unsigned();
             $table->integer('hospitalNo');
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
             $table->string('telMobile');
             $table->string('telHome');
             $table->string('address');
             $table->string('sex');
-            $table->string('bloodGroup');
+            $table->enum('bloodGroup', ['A', 'AB', 'B', 'O']);
             $table->string('drugAllergy');
             $table->string('citizenNo');
             $table->timestamps();
@@ -50,22 +46,5 @@ class CreatePatientTable extends Migration
     {
         Schema::drop('patient');
     }
-<<<<<<< HEAD
 
-    //-------------  relationship
-    // public function user()
-    // {
-    //     return $this->belongsTo('App\User', 'userId');
-    // }
-    
-
-
-    // //patient has appointments
-    // public function appointments()
-    // {
-
-    //     return $this->hasMany('App\Appointment');
-    // }
-=======
->>>>>>> 6b56f5942c0982b9e2264742d109d5604668d8af
 }

@@ -38,11 +38,36 @@ class User extends Model implements AuthenticatableContract,
         'username',
         'password',
         'name',
-        'lastname',
+        'surname',
         'email',
         'sex',
         'dateOfBirth',
-        'userType' ];
+        'userType',
+        'verifyCode' ];
+
+    public function genVerifyCode()
+    {
+        $verifyCode = str_random(60);
+        $this->verifyCode = $verifyCode;
+        $this->save();
+        return $verifyCode;
+    }
+
+    public static function setNewPassword($verifyCode, $newPassword)
+    {
+        $user = User::where('verifyCode', $verifyCode)->first();
+        if($user != null)
+        {
+            $user->password = $newPassword;
+            $user->verifyCode = null;
+            $user->save();
+        }
+    }
+
+    public function patient()
+    {
+        return $this->hasOne('App\patient', 'userId', 'userId');
+    }
 
     /**
      * The attributes excluded from the model's JSON form.

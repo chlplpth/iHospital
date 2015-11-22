@@ -70,16 +70,16 @@ Route::get('doctorScheduleByStaff', function() {
     return view('staff/doctorScheduleByStaff');
 });
 
-Route::get('addPatient', function() {
-	return view('staff/addPatient');
-});
-
 Route::get('doctorList', function () {
     return view('patient/doctorList');
 });
 
 Route::get('addStaffByStaff', function() {
     return view('staff/addStaffByStaff');
+});
+
+Route::get('manageStaffByStaff', function() {
+    return view('staff/manageStaffByStaff');
 });
 
 Route::get('searchPatientProfileByStaff', function() {
@@ -95,10 +95,6 @@ Route::get('createAppointment', function() {
 
 Route::get('editProfile', function() {
 	return view('patient/editProfile');
-});
-
-Route::get('patientProfile', function() {
-	return view('patient/patientProfile');
 });
 
 Route::get('patientAppointmentSchedule', function() {
@@ -168,11 +164,11 @@ Route::get('sendemail', function () {
     );
     
 
-    Mail::send('emails.confirmAppointmentEmail',$data,function ($message) {
+    Mail::send('emails.createStaffEmail',$data,function ($message) {
 
         $message->from('ihospital.se@gmail.com', 'iHospital');
 
-        $message->to('melodiiz_noon@hotmail.com')->subject('Learning Laravel test email');
+        $message->to('tonkung49031@gmail.com')->subject('Learning Laravel test email');
 
     });
 
@@ -200,15 +196,53 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
+// ================= PATIENT =================
+
+Route::get('patientProfile', 'userController@viewMyProfilePatient');
+
+// ================= STAFF =================
+
+Route::get('/addPatient', function() {
+    return view('staff.addPatient');
+});
+Route::post('/addPatient', 'userController@addPatient');
+
+// ================= AUTHENTICATE =================
+
 Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
 Route::post('/register', 'Auth\AuthController@register');
+Route::post('/register', 'userController@checkPatientStatus');
+Route::post('/registerOld', 'userController@registerOldPatient');
+Route::post('/registerNew', 'userController@registerNewPatient');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
 Route::get('/testModel', 'Auth\AuthController@testModel');
+
 Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
+Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGet');
+Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
+
+
+
+
+
+// Route::post('/importSchedule', 'scheduleController@importSchedule');
+// Route::post('/addDepartment', 'departmentController@addDepartment');
+// Route::post('/register', 'userController@registerNewPatient');
+// Route::post('/editPatientProfile', 'userController@editPatientProfile');
+// Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
+// Route::post('/registerOld', 'userController@registerOldPatient');
+// Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
+
+// Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
+
+// Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
+
+// Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
+

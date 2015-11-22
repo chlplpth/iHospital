@@ -79,8 +79,8 @@
               <li class="{{ Request::is('doctorList') ? 'active' : '' }}">
                 <a href="{{ url('doctorList') }}">ดูข้อมูลแพทย์</a>
               </li>
-              <li class="{{ Request::is('#') ? 'active' : '' }}">
-                <a href="#">ประวัติการรักษา</a>
+              <li class="{{ Request::is('diagnosisRecord') ? 'active' : '' }}">
+                <a href="{{ url('/diagnosisRecord') }}">ประวัติการรักษา</a>
               </li>
             </ul>
           </div>
