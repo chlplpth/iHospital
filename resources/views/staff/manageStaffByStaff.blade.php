@@ -9,7 +9,7 @@
   <div class="panel-heading">
     <h3 class="panel-title">จัดการบุคลากร</h3>
   </div>
-  <div class="panel-body" style="margin-top: 10px; margin-left: 40px;">
+  <div class="panel-body" style="margin-top:2%; margin-left: 40px;">
     <div class="form-group row">
       <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อ / รหัสบุคลากร'); !!}</div>
       <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control"]) !!}</div>
@@ -38,12 +38,12 @@
     		<div class="panel-heading">
     			<h3 class="panel-title">นัดหมายเพิ่มเติม</h3>
     		</div>
-    		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
+    		<div class="panel-body form" style="margin-left:40px; margin-top:2%;">
     			<div class="form-group row">
     				<label class="col-xs-3" id="doctorLabel">วันที่</label>
     				<div class="col-xs-4">
-    					<div class="input-group date" id="datepicker">
-    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control', 'placeholder'=>'วว/ดด/ปป']) !!}
+    					<div class="input-group date">
+    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
     						<div class="input-group-addon">
     							<span class="glyphicon glyphicon-calendar"></span>
     						</div>
@@ -67,9 +67,14 @@
     		</div>
     	</div>
     </div>
-    
+    <!-- Script to construct datepicker -->
+	    <script type="text/javascript">
+	    // When the document is ready
+	    $(document).ready(function () {
+	    	$('#datepicker').datepicker();
+	    });
+	    </script>
 </div>
 </div>
-
 {!! Form::close() !!}
 @stop

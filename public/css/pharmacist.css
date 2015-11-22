@@ -6,6 +6,9 @@
   font-weight: bold;
   color: gray;
 }
+table, table thead tr th {
+  text-align: center;
+}
 .btn-info{
 	float:right;
 }
@@ -20,5 +23,8 @@
 }
 
 #prescription{
-	margin-top: 30px;
+	margin-top: 5%;
+}
+.moveDown2 {
+	margin-top: 2%;
 }

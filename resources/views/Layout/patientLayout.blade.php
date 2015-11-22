@@ -31,7 +31,10 @@
       <!-- Bootstrap core JavaScript -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
       <script src="js/bootstrap.min.js"></script>
-      <script src="js/datepicker.js"></script>
+      <!-- // <script src="js/datepicker.js"></script> -->
+      <script src="js/bootstrap-datepicker.js"></script>
+      <script src="js/locales/bootstrap-datepicker.th.js"></script>
+      <script src="js/bootstrap-datepicker-thai.js"></script>
       
       
       <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
