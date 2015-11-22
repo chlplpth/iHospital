@@ -220,7 +220,7 @@ Route::post('/editProfile', 'SmurfController@editProfileValidate');
 
 
 
-
+//------------------------------------ postman --------------------------------
 Route::post('/importSchedule', 'scheduleController@importSchedule');
 Route::post('/addDepartment', 'departmentController@addDepartment');
 Route::post('/register', 'userController@registerNewPatient');
@@ -234,4 +234,10 @@ Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
 Route::post('/recordDiag', 'diagnosisRecordController@recordDiagnosis');
 
 Route::post('/viewDiag', 'diagnosisRecordController@viewDiagnosisHistoryDoctor');
+
+
+Route::post('/cancelApp', 'appointmentController@cancelAppointment');
+
+Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
+
 
