@@ -20,7 +20,7 @@
   <link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
   @yield('css')
   <!-- Bootstrap core JavaScript -->
-  <script src="{{asset('js/bootstrap.min.js')"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </head>
 
 <body>

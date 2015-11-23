@@ -52,11 +52,10 @@ body {
 a, a:hover, a:active, a:visited {
   color: white;
   text-decoration: none;
-  font-size: 25px;
 }
 .navbar-nav>li>a:hover{
   background-color: #44434b;
-  font-size: 20px;
+  font-size: 30px;
 }
 h2 {
   color: white;
