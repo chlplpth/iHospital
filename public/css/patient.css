@@ -81,7 +81,7 @@
 #findAppointmentButton{
 
 }
-#editProfileButton{
+#goToEdit{
 
 }
 #diagnosisTable {
@@ -93,6 +93,10 @@
 }
 #doctorData{
 
+}
+#patientProfile{
+  margin-left: 40px;
+  margin-top: 20px;
 }
 table{
   text-align: center;
