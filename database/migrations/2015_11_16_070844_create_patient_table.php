@@ -19,8 +19,9 @@ class CreatePatientTable extends Migration
             $table->string('telMobile');
             $table->string('telHome');
             $table->string('address');
-            $table->string('sex');
-            $table->string('bloodGroup');
+            $table->enum('sex', ['M', 'F']);
+            $table->string('dateOfBirth');
+            $table->enum('bloodGroup', ['A', 'AB', 'B', 'O']);
             $table->string('drugAllergy');
             $table->string('citizenNo');
             $table->timestamps();

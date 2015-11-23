@@ -11,9 +11,8 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">สร้างการนัดหมาย</h3>
 	</div>
-	<div class="panel-body">
+	<div class="panel-body" style="margin-top:2%;">
 		<div id = "createAppointmentForm">
-			<br>
 			<div class="form-group row">
 				<label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
 				<label class="col-xs-3" id="patientLabel">XXX</label>

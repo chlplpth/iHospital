@@ -54,7 +54,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <h3><a href="{{ url('/') }}">iHospital</a></h3>
+            <h2>iHospital</h2>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">

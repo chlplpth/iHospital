@@ -4,44 +4,66 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\doctor;
 use App\patient;
 use App\hospitalStaff;
 use App\user;
+use App\department;
+
+use Hash;
 
 class userController extends Controller
 {
    
+    // check whether a patient is old or new patient
+    public function checkPatientStatus(Request $request)
+    {
+        $patient = patient::where('citizenNo', $request['citizenNo'])->first();
+        if($patient != null)
+        {
+            $userStatus = 'old';
+        }
+        else
+        {
+            $userStatus = 'new';
+        }
+        return view('general.register')->with('userStatus', $userStatus)->with('citizenNo', $request['citizenNo']);
+    }
+
     public function registerOldPatient(Request $request)
     {
     	$input = $request->all();
         $citizenNo = $input['citizenNo'];
-    	$patient = patient::where('citizenNo',$citizenNo)	->first();
+    	$patient = patient::where('citizenNo', $citizenNo)->first();
+
         $userId = $patient['userId'];
     	User::where('userId',$userId)->update(array(
+                'email'         => $input['email'],
                 'username'     => $input['username'],
-                'password'      => $input['password']
+                'password'      => Hash::make($input['password'])
             ));
 
-    	//return view('register.success',compact($user));
+    	return redirect('/');
     }
 
     public function registerNewPatient(Request $request)
     {
-    	
         $input = $request->all();
-        //$input['password'] = Hash::make($request['password']);
+        $input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
         $patient = $input;
-        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        //$patient['address'] = join(',,', $addressSet);
+        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        $patient['address'] = join(',,', $addressSet);
+        $patient['drugAllergy'] = join(", ", $input['drugAllergy']);
         $patient['userId'] = $user->userId;
+        $patient['hospitalNo'] = patient::getNewHospitalNo();
         $patient = patient::create($patient);
 
-        echo "patient added";
+        return redirect('/');
 
     	//return view('register.success',compact($user));
     }
@@ -50,12 +72,28 @@ class userController extends Controller
     public function viewMyProfilePatient(Request $request)
     {
         $userId = Auth::user()->userId;
-        $patient = patient::viewPatientProfile($userId);
-        
-        if(sizeof($patient)==0) echo "not found";
-        else echo $patient->name;
+        // $patient = patient::viewPatientProfile($userId);
+        $user = user::where('userId', $userId)->first();
+        $address = $user->patient->addressDetail();
+        return view('patient.patientProfile')->with('user', $user)->with('address', $address);
+    }
 
-    	
+    //user == patient  edit own profile
+    public function editMyProfilePatientShow(Request $request)
+    {
+        $userId = Auth::user()->userId;
+        // $patient = patient::viewPatientProfile($userId);
+        $user = user::where('userId', $userId)->first();
+        $address = $user->patient->addressDetail();
+        return view('patient.editProfile')->with('user', $user)->with('address', $address);
+    }
+
+    public function editMyProfilePatientStore(Request $request)
+    {
+        $input = $request->all();
+        $input['userId'] = Auth::user()->userId;
+        patient::editPatientProfile($input);
+        return redirect('/');
     }
 
 
@@ -75,8 +113,8 @@ class userController extends Controller
     {
     	$input = $request->all();
         $patient = patient::editPatientProfile($input);
-        echo "update";
 
+        return redirect('/');
     	//return view('patient.profile',compact($patient));
     }
     
@@ -125,25 +163,32 @@ class userController extends Controller
     	
     }
 
-    //manual add by staff   no username no password
+    // manual add by staff no username no password
     public function addPatient(Request $request)
     {	
     	$user = new user($request->all());
     	$user->userType	= 'patient';
     	$user->save();
 
-    	$patient = new patient($request->all());
-        $patient->userId = $user->userId;
-        $patient->save();
+        patient::createNewPatient($user->userId, $request->all());
+        // return redirect('/');
+    }
 
-        return redirect('patient');
+    public function addHospitalStaffShow()
+    {  
+        $department = department::all();
+        $depList = array();
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+        return view('staff/addStaffByStaff')->with('department', $depList);
     }
 
 
-    public function addHospitalStaff(Request $request)
+    public function addHospitalStaffStore(Request $request)
     {
     	$input = $request->all();
-        //$input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
         $hospitalStaff = $input;
@@ -158,5 +203,8 @@ class userController extends Controller
             $doctor['userId'] = $user->userId;
             $doctor = doctor::create($doctor); 
         }
+
+        // send set password e-mail
+        return redirect('/');
     }
 }
