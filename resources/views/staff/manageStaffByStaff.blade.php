@@ -85,7 +85,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">ตกลง</button></div>
+                <div class="col-xs-10">{!! Form::submit('ตกลง', ["class" => "btn btn-success", 'style'=>'float: right;']) !!}</div>
               </div>
             </div>
           </div>
@@ -95,10 +95,6 @@
     </div>
   </div>
 </div>
-
-</div>
-<div class="form-group row">
-   <div class="col-xs-10"><button style="float: right;" type="button">{!! Form::submit('ยืนยัน', ["class" => "btn btn-danger"]) !!}</button></div>
 </div>
 </div>
 </div>
