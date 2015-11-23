@@ -1,31 +1,8 @@
-.centerBtn {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-}
-
-.linkBtn {
-  display: inline-block;
-}
-#patientLabel {
-  margin-top: 7px;
-}
-
-.btn-left{
-  float: left;
-}
-#appointmentTable {
-  width: 90%;  
-}
-#diagnosisTable {
-  width: 50%;  
-}
-
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
 .panel-title{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: gray;
 }
@@ -95,4 +72,13 @@
 }
 .glyphicon-calendar{
   font-size: 15px;
+}
+.btn-left{
+  float: left;
+}
+#findAppointmentButton{
+
+}
+#diagnosisTable {
+  width: 50%;  
 }
