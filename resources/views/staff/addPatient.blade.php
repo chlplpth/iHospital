@@ -1,6 +1,7 @@
 @extends('layout/staffLayout')
 @section('css')
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
+{!! HTML::script('js/staff.js') !!}
 @stop
 @section('content')
 <div class="panel panel-default">
@@ -34,23 +35,22 @@
 					</div>
 				</div>
 				<div class ="row">
-					<div class ="col-md-1">
-					</div>
-					<div class ="col-md-2"><br>
+					<div class ="col-md-1"></div>
+					<div class ="col-md-3">
 						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp{!!Form::radio('sex', 'M', true);!!}&nbsp{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp{!!Form::radio('sex', 'F', false);!!}&nbsp{!!Form::label('female', 'หญิง');!!}
 					</div>
-					<div class ="col-md-2 form-inline bloodType"><br>
+					<div class ="col-md-2 form-inline" id="bloodTypeField">
 						{!!Form::label('bloodType', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodType', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'),'0',["class" => "form-control"]);!!}
 					</div>	
-					<div class ="col-md-5 birthDate form-inline"><br>
+					<div class ="col-md-4 form-inline" id="birthDateField">
 						{!!Form::label('birthDate', 'วัน/เดือน/ปี เกิด');!!}&nbsp
 						<div class="input-group date">
-    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
-    						<div class="input-group-addon">
-    							<span class="glyphicon glyphicon-calendar"></span>
-    						</div>
-    					</div>
+							{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -123,15 +123,18 @@
 				<div class= "row">
 					<div class="col-md-1">
 					</div>
-					<div class="col-md-11 drugAllergy" >
+					<div class="col-md-4 drugAllergy" >
 						{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-						{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา']);!!}
-						{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug']);!!}
+						{!!Form::text('drugAllergy[]','',['class'=>'textbox drugTextbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+					</div>
+					<div class="col-md-7" >
+						{!!Form::button('เพิ่ม',['class'=>'btn btn-success','onclick'=>'addDrug()','disabled'=>'true','id'=>'addDrugButton']);!!}
+
 					</div>
 				</div>
 			</div>
-		</div>
-		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
+		</div>	
+		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success','id'=>'registerButton']);!!}	
 	</div>
 
 	{!! Form::close() !!}

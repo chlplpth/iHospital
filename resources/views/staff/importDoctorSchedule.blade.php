@@ -9,27 +9,27 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">นำเข้าตารางการออกตรวจ</h3>
 	</div>
-	<div class="panel-body" style="margin-left:40px; margin-top:2%;">
-		<form role="form">
+	<div class="panel-body" >
+		<div id="importScheduleForm">
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div>
 				<div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}</div>
-				<div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
+				<div class="col-xs-1">{!! Form::button('ค้นหา', ["class" => "btn btn-info"]) !!}</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('id', '12345678'); !!}</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชลัมพล'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('name', 'ชื่อ'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('name', 'ชลัมพล'); !!}</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">ตั้งแต่วันที่</label>
+				<label class="col-xs-2">ตั้งแต่วันที่</label>
 				<div class="col-xs-3">
 					<div class="input-group date">
 						{!! Form::text('startDate', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
@@ -39,7 +39,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('day', 'วันออกตรวจ'); !!}</div>
+				<div class="col-xs-2">{!! Form::label('day', 'วันออกตรวจ'); !!}</div>
 				<div class="col-xs-7">
 					<table class="table table-bordered table-hover">
 						<thead>
@@ -57,34 +57,35 @@
 						<tbody>
 							<tr>
 								<th>เช้า</th>
-								<td>{!! Form::checkbox('m1', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m2', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m3', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m4', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m5', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m6', 1, true) !!}</td>
-								<td>{!! Form::checkbox('m7', 1, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 0, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 1, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 2, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 3, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 4, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 5, true) !!}</td>
+								<td>{!! Form::checkbox('m[]', 6, true) !!}</td>
 							</tr>
 							<tr>
 								<th>บ่าย</th>
-								<td>{!! Form::checkbox('a1', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a2', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a3', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a4', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a5', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a6', 1, true) !!}</td>
-								<td>{!! Form::checkbox('a7', 1, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 0, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 1, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 2, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 3, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 4, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 5, true) !!}</td>
+								<td>{!! Form::checkbox('a[]', 6, true) !!}</td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-9">
+				<div class="col-xs-8"></div>
+				<div class="col-xs-4">
 					{!! Form::submit('ตกลง', ["class" => "btn btn-success"]) !!}
 				</div>
 			</div>
-		</form>
+		</div>
 	</div>
 </div>
 
