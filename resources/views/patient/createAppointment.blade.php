@@ -52,7 +52,7 @@ doctor[ {{ $index }} ] = opt;
                 <label class="col-xs-2">อาการเบื้องต้น</label>
                 <div class="col-xs-10">
                     <div id = "symptomArea">
-                        {!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5", 'placeholder'=>'ปวดหัว ตัวร้อน ไข้ขึ้น']) !!}
+                        {!! Form::textarea('symptom', '', ['class' => 'form-control', 'rows' => '5', 'placeholder'=>'ปวดหัว ตัวร้อน ไข้ขึ้น']) !!}
                         @if( $errors->has('symptom') )<br>
                         <p class="text-danger"> {{ $errors->first('symptom') }} </p> 
                         @endif
@@ -70,14 +70,14 @@ doctor[ {{ $index }} ] = opt;
             </script>
             <div class="form-group row">
                 <div class="col-xs-5"></div>
-                <div class="col-xs-2">{!! Form::submit('ยืนยัน', ['class' => 'btn btn-success','id'=>'findAppointmentButton']) !!}</div> 
+                <div class="col-xs-2">{!! Form::submit('ยืนยัน', ['class' => 'btn btn-success']) !!}</div> 
                 <div class="col-xs-1"></div>
             </div>
 
             <div class="form-group row">
                 <div class="col-xs-1"></div>
                 <div class="col-xs-10">
-                    <table class="table table-bordered" style = "text-align:center;">
+                    <table class="table table-bordered">
                         <thead >
                             <tr>
                                 <th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>

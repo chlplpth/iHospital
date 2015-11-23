@@ -44,8 +44,8 @@
                   </div>
                   <div class="col-xs-3">
                     <fieldset id="checkboxField" disabled>
-                    <div class="checkbox-inline checkboxEditTime">{!! Form::checkbox('m[]', 1, true) !!}  เช้า</div>
-                    <div class="checkbox-inline checkboxEditTime">{!! Form::checkbox('m[]', 2, false) !!}  บ่าย</div>
+                    <div class="checkbox-inline checkboxEditTime">{!! Form::checkbox('m[]', 0, false, ['id'=>'ckb1']) !!}  เช้า</div>
+                    <div class="checkbox-inline checkboxEditTime">{!! Form::checkbox('m[]', 1, false, ['id'=>'ckb2']) !!}  บ่าย</div>
                     </fieldset>
                   </div>
                   <!-- <div class="col-xs-5">
@@ -155,8 +155,12 @@
         });
 
         //============ Javascript - Make modal ============//
+        var dateOfModal = '';
         $('.cal-cell').click(function() {
+
+          // make title date
           var date = $('[data-cal-date]', this).data('cal-date');
+          dateOfModal = date;
           var day = date.substring(8,10);
           var month = date.substring(5,7);
           var year = parseInt(date.substring(0,4)) + 543;
@@ -165,6 +169,20 @@
           console.log(day);
           console.log(month);
           console.log(year);
+
+          // make tick in checkboxes
+          var morning = date + '-morning';
+          var afternoon = date + '-afternoon';
+          var id_m = arrEdited.indexOf(morning);
+          var id_a = arrEdited.indexOf(afternoon);
+          morning = '#' + morning;
+          afternoon = '#' + afternoon;
+          if(id_m != -1) {              
+            $('#ckb1').prop('checked', true);
+          }
+          if(id_a != -1) {
+            $('#ckb2').prop('checked', true);
+          }
 
           // Code Area for Kamkam
           // ...
@@ -201,6 +219,23 @@
         //     calendar.view($this.data('calendar-view'));
         //   });
         // });
+
+        // pass value using hidden
+        $(':checkbox').click(function() {
+          $('#hiddenMr').prop('value', $('#ckb1').checked);
+          $('#hiddenAf').prop('value', $('#ckb2').checked);
+          $('#hiddenDate').prop('value', dateOfModal);
+          console.log('AAAAAA');
+        });
+        
+        // set default when Modal is cloesed
+        $('#myModal').on('hidden.bs.modal', function () {
+          console.log('setDeafault');
+          $('#ckb1').prop('checked', false);
+          $('#ckb2').prop('checked', false);
+          $('#checkboxField').attr('disabled', true);
+        })
+
       });
       </script>
     </div>
