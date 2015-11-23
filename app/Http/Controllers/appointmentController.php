@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Session;
 use App\appointment;
 use App\schedule;
 use App\department;
+use App\doctor;
 
 class appointmentController extends Controller
 {
@@ -21,20 +23,18 @@ class appointmentController extends Controller
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
     {
-        
         $input = $request->all();
-        $schedules = schedule::requestDate($input);
-        if(sizeof($schedules)==0) echo "not found";
-
+        $appointments = schedule::requestDate($input);
+        $input['doctorName'] = doctor::find(int($input['doctorId']));
+        $input['departmentName'] = doctor::find(int($input['departmentId']));
+        return view('patient.createAppointment')->with('appointments', $appointments)->with('input', $input);
     }   
 
     //user enter confirm and store data of appointment in database
     public function createAppointmentStore(Request $request)
     {
         $input = $request->all();
-        $appointment = appointment::createAppointment($input);
-
-        // return redirect('appointment');
+        $appointments = appointment::createAppointment($input);
     }
 
     public function delayAppointmentRequest(Request $request)

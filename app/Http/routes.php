@@ -203,6 +203,7 @@ Route::get('editProfile', 'userController@editMyProfilePatientShow');
 Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
 Route::get('createAppointment', 'appointmentController@createAppointmentShow');
+Route::post('/createAppointmentRequest', 'appointmentController@createAppointmentRequest');
 
 // ================= DOCTOR =================
 
