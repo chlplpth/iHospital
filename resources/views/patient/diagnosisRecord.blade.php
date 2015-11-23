@@ -12,14 +12,14 @@
 		<form>
 			<div class="form-group row">
 				<div class="col-xs-12">
-					<table class="table table-bordered centerBtn" id="appointmentTable" style = "text-align:center;">
+					<table class="table table-bordered">
 						<thead >
 							<br>
 							<tr>
-								<th style="width: 13%; text-align:center;">วัน/เดือน/ปี</th>
-								<th style="width: 13%; text-align:center;">แผนก</th>
-								<th style="width: 25%; text-align:center;">แพทย์</th>
-								<th style="width: 10%; text-align:center;">ดูผลการตรวจ</th>
+								<th style="width: 15%; text-align:center;">วัน/เดือน/ปี</th>
+								<th style="width: 20%; text-align:center;">แผนก</th>
+								<th style="width: 50%; text-align:center;">แพทย์</th>
+								<th style="width: 15%; text-align:center;">ดูผลการตรวจ</th>
 							</tr>
 						</thead>
 						<tbody>

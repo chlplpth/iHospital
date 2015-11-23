@@ -65,9 +65,7 @@ class appointmentController extends Controller
         else $patientId = $request->patient;
         
         $appointments = appointment::viewPatientAppointment($patientId);
-        
-        // if(sizeof($appointments)==0) echo "not found";
-        // else echo "found";
+        return view('patient.patientAppointmentSchedule')->with('appointments', $appointments);
     }
 
     public function viewDoctorAppointment(Request $request)

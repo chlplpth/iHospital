@@ -216,6 +216,8 @@ Route::get('createAppointment', 'appointmentController@createAppointmentShow');
 Route::post('/createAppointment', 'appointmentController@createAppointmentRequest');
 Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
+Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
+
 // ================= DOCTOR =================
 
 
