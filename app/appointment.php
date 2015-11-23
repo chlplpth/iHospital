@@ -23,9 +23,11 @@ class appointment extends Model
      * @var array
      */
     protected $fillable = [
-        'date',
-        'time',
-        'symptom'];
+        'patientId',
+        'staffId',
+        'scheduleId',
+        'symptom',
+        'walkIn'];
 
     //relationship
 

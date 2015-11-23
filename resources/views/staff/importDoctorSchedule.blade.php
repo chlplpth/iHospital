@@ -18,16 +18,12 @@
 		{!! Form::open(array('url' => '/importDoctorSchedule')) !!}
 		{!! Form::hidden('doctorId', $doctor->userId) !!}
 		<div class="form-group row">
-			<div class="col-xs-2">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
-			<div class="col-xs-2">{!! Form::label('id', '12345678'); !!}</div>
-		</div>
-		<div class="form-group row">
 			<div class="col-xs-2">{!! Form::label('name', 'ชื่อ'); !!}</div>
-			<div class="col-xs-2">{!! Form::label('name', 'ชลัมพล'); !!}</div>
+			<div class="col-xs-2">{{ $doctor->name }}</div>
 		</div>
 		<div class="form-group row">
 			<div class="col-xs-2">{!! Form::label('lastname', 'นามสกุล'); !!}</div>
-			<div class="col-xs-2">{!! Form::label('lastname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
+			<div class="col-xs-2">{{ $doctor->surname }}</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-xs-2">ตั้งแต่วันที่</label>

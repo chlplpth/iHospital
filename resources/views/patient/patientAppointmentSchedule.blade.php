@@ -25,22 +25,16 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($appointments as $app)
 							<tr>
-								<td>20/11/2558</td>
-								<td>9.00 น. - 12.00 น.</td>
-								<td>จักษุวิทยา</td>
-								<td>กรภพ</td>
+								<td>{{ 20/11/2558 }}</td>
+								<td>{{ $app->diagTime }}</td>
+								<td>{{ $app->departmentName }}</td>
+								<td>{{ $app->name }} {{ $app->surname }}</td>
 								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning">เลื่อน</a></td>
 								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger">ยกเลิก</a></td>
 							</tr>
-							<tr>
-								<td>21/11/2558</td>
-								<td>13.00 น. - 16.00 น.</td>
-								<td>กุมารเวชรศาสตร์</td>
-								<td>ญานิกา</td>
-								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger">ยกเลิก</a></td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
