@@ -19,7 +19,8 @@ class prescription extends Model
      * @var array
      */
     protected $fillable = [
-        'diagnosisId'];
+        'appointementId',
+        'pharmacistId'];
 
     //--------------- relationship
 

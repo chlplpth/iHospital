@@ -32,6 +32,7 @@ class diagnosisRecord extends Model
      * @var array
      */
     protected $fillable = [
+        'appointmentId',
         'diseaseCode',
         'doctorAdvice',
         'diagnonsisDetail',
