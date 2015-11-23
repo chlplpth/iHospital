@@ -21,7 +21,7 @@
 				{!! Form::open(array('url' => '/register')) !!}
 				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
 				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน','onkeyup'=>'citizenNoCheck()','onkeydown'=>'return isNumber(event)']);!!}
-				{!!Form::submit('submit',['class'=>'btn btn-default submitCitizenNo','disabled'=>'true']);!!}
+				{!!Form::submit('submit',['class'=>'btn btn-success','disabled'=>'true','id'=>'submitCitizenNo']);!!}
 				@endif
 				{!! Form::close() !!}
 				<span id="citizenError"></span>

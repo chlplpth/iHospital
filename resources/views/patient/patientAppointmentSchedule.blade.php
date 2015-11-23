@@ -11,40 +11,34 @@
 	<div class="panel-body">
 		<form>
 			<div class="form-group row">
-				<div class="col-xs-12">
-					<table class="table table-bordered centerBtn" id="appointmentTable" style = "text-align:center;">
+				<div class="col-xs-1"></div>
+				<div class="col-xs-10">
+					<table class="table table-bordered">
 						<thead >
-							<br>
 							<tr>
-								<th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
-								<th style="width: 24%;text-align:center;">เวลา</th>
-								<th style="width: 26%; text-align:center;">แผนก</th>
-								<th style="width: 46%; text-align:center;">แพทย์</th>
+								<th style="width: 8%; text-align:center;">วัน/เดือน/ปี</th>
+								<th style="width: 20%;text-align:center;">เวลา</th>
+								<th style="width: 18%; text-align:center;">แผนก</th>
+								<th style="width: 34%; text-align:center;">แพทย์</th>
 								<th style="width: 10%; text-align:center;">เลื่อน</th>
 								<th style="width: 10%; text-align:center;">ยกเลิก</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($appointments as $app)
 							<tr>
-								<td>20/11/2558</td>
-								<td>9.00 น. - 12.00 น.</td>
-								<td>จักษุวิทยา</td>
-								<td>กรภพ</td>
-								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger centerBtn linkBtn">ยกเลิก</a></td>
-								</tr>
-							<tr>
-								<td>21/11/2558</td>
-								<td>13.00 น. - 16.00 น.</td>
-								<td>กุมารเวชรศาสตร์</td>
-								<td>ญานิกา</td>
-								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger centerBtn linkBtn">ยกเลิก</a></td>
-								</tr>
-
+								<td>{{ 20/11/2558 }}</td>
+								<td>{{ $app->diagTime }}</td>
+								<td>{{ $app->departmentName }}</td>
+								<td>{{ $app->name }} {{ $app->surname }}</td>
+								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning">เลื่อน</a></td>
+								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger">ยกเลิก</a></td>
+							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
+				<div class="col-xs-1"></div>
 			</div>
 		</form>
 	</div>

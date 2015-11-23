@@ -14,7 +14,7 @@
 			<div class="form-group row">
 				<div class="col-xs-2">{!! Form::label('name', 'ชื่อ / รหัสผู้ป่วย'); !!}</div>
 				<div class="col-xs-3" >{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชื่อ / รหัสผู้ป่วย']) !!}</div>
-				<div class="col-xs-6" >{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
+				<div class="col-xs-6" >{!! Form::submit('ค้นหา', ["class" => "btn btn-info"]) !!}</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2">{!! Form::label('id', 'รหัสผู้ป่วย'); !!}</div>

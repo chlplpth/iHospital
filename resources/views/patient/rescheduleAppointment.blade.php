@@ -13,92 +13,96 @@
 		<div id = "createAppointmentForm">
 			
 			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">รหัสประจำตัวผู้ป่วย</label>
-				<label class="col-xs-3" id="patientLabel">XXX</label>
+				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
+				<label class="col-xs-3">XXX</label>
 			</div>
 			<div class="form-group row">  
-				<label class="col-xs-2" id="patientLabel">ชื่อ</label>
-				<label class="col-xs-10" id="patientLabel">ชลัมพล</label>
-			</div>
-			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">นามสกุล</label>
-				<label class="col-xs-10" id="patientLabel">ไก๊ไก่ไก๊ไก่</label>
-			</div>
-			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">แผนก</label>
-				<label class="col-xs-10" id="patientLabel">โสต นาสิก</label>
-			</div>
-			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">แพทย์</label>
-				<label class="col-xs-10" id="patientLabel">ญานิกา</label>
-			</div>
-			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">วันนัด</label>
-				<div class="col-xs-3">
-					<div class="input-group date">
-						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
-						<div class="input-group-addon">
-							<span class="glyphicon glyphicon-calendar"></span>
+				<label class="col-xs-2">ชื่อ</label>
+				<label class="col-xs-10">ชลัมพล</label>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2">นามสกุล</label>
+					<label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2">แผนก</label>
+					<label class="col-xs-10">โสต นาสิก</label>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2">แพทย์</label>
+					<label class="col-xs-10">ญานิกา</label>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2">วันนัด</label>
+					<div class="col-xs-3">
+						<div class="input-group date">
+							{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<div class="form-group row">
-				<label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
-				<label class="col-xs-10" id="patientLabel">ง่อยรับประทาน</label>
-			</div>
-			
+				<div class="form-group row">
+					<label class="col-xs-2">อาการเบื้องต้น</label>
+					<label class="col-xs-10">ง่อยรับประทาน</label>
+				</div>
 
-			<!-- Script to construct datepicker -->
-			<script type="text/javascript">
+
+				<!-- Script to construct datepicker -->
+				<script type="text/javascript">
             // When the document is ready
             $(document).ready(function () {
             	$('#datepicker').datepicker();
             });
             </script>
         </div>
-        <div class="form-group col-xs-6">
-        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
+        <div class="row">
+        	<div class="col-xs-4"></div>
+        	<div class="col-xs-2">
+        		{!! Form::submit('ยืนยัน', ['class' => 'btn btn-success']) !!}
+        	</div>
+        	<div class="col-xs-6"></div>
         </div>
         <div class="panel-body">
-		<form>
-			<div class="form-group row">
-				<div class="col-xs-12">
-					<table class="table table-bordered centerBtn" id="appointmentTable" style = "text-align:center;">
-						<thead >
-							<br>
-							<tr>
-								<th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
-								<th style="width: 24%;text-align:center;">เวลา</th>
-								<th style="width: 26%; text-align:center;">แผนก</th>
-								<th style="width: 46%; text-align:center;">แพทย์</th>
-								<th style="width: 20%; text-align:center;">นัดหมาย</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>20/11/2558</td>
-								<td>9.00 น. - 12.00 น.</td>
-								<td>จักษุวิทยา</td>
-								<td>กรภพ</td>
-								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a></td>
-							</tr>
+        	<div class="row">
+        		<div class="col-xs-1"></div>
+        		<div class="col-xs-10">
+        			<table class="table table-bordered">
+        				<thead >
+        					<br>
+        					<tr>
+        						<th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+        						<th style="width: 20%; text-align:center;">เวลา</th>
+        						<th style="width: 20%; text-align:center;">แผนก</th>
+        						<th style="width: 40%; text-align:center;">แพทย์</th>
+        						<th style="width: 10%; text-align:center;">นัดหมาย</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					<tr>
+        						<td>20/11/2558</td>
+        						<td>9.00 น. - 12.00 น.</td>
+        						<td>จักษุวิทยา</td>
+        						<td>กรภพ</td>
+        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
+        					</tr>
 
-							<tr>
-								<td>21/11/2558</td>
-								<td>13.00 น. - 16.00 น.</td>
-								<td>กุมารเวชรศาสตร์</td>
-								<td>ญานิกา</td>
-								<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-success centerBtn linkBtn">เลือก</a></td>
-							</tr>
-
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</form>
-	</div>
+        					<tr>
+        						<td>21/11/2558</td>
+        						<td>13.00 น. - 16.00 น.</td>
+        						<td>กุมารเวชรศาสตร์</td>
+        						<td>ญานิกา</td>
+        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
+        					</tr>
+        				</tbody>
+        			</table>
+        		</div>
+        		<div class="col-xs-1"></div>
+        	</div>
+        	
+        </div>
     </div>
 </div>
 

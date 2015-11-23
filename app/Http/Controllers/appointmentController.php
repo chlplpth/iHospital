@@ -7,9 +7,12 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
+use Session;
 use App\appointment;
 use App\schedule;
 use App\department;
+use App\doctor;
 
 class appointmentController extends Controller
 {
@@ -21,20 +24,22 @@ class appointmentController extends Controller
     // user fill form and return available date for make appointment
     public function createAppointmentRequest(Request $request)
     {
-        
         $input = $request->all();
-        $schedules = schedule::requestDate($input);
-        if(sizeof($schedules)==0) echo "not found";
-
+        if($input['departmentId'] == '0')
+        {
+            return redirect('createAppointment');
+        }
+        $appointments = schedule::requestDate($input);
+        return view('patient.createAppointment')->with('appointments', $appointments)->with('symptom', $input['symptom']);
     }   
 
     //user enter confirm and store data of appointment in database
     public function createAppointmentStore(Request $request)
     {
         $input = $request->all();
-        $appointment = appointment::createAppointment($input);
-
-        // return redirect('appointment');
+        $input['patientId'] = Auth::user()->userId;
+        $appointments = appointment::createAppointment($input);
+        return redirect('/');
     }
 
     public function delayAppointmentRequest(Request $request)
@@ -60,9 +65,7 @@ class appointmentController extends Controller
         else $patientId = $request->patient;
         
         $appointments = appointment::viewPatientAppointment($patientId);
-        
-        // if(sizeof($appointments)==0) echo "not found";
-        // else echo "found";
+        return view('patient.patientAppointmentSchedule')->with('appointments', $appointments);
     }
 
     public function viewDoctorAppointment(Request $request)

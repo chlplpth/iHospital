@@ -59,8 +59,8 @@ Route::get('confirmAppointment', function() {
     return view('patient/confirmAppointment');
 });
 
-Route::get('cancleAppointment', function() {
-    return view('patient/cancleAppointment');
+Route::get('cancelAppointment', function() {
+    return view('patient/cancelAppointment');
 });
 
 Route::get('manageAppointmentForPatient', function() {
@@ -220,6 +220,10 @@ Route::get('editProfile', 'userController@editMyProfilePatientShow');
 Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
 Route::get('createAppointment', 'appointmentController@createAppointmentShow');
+Route::post('/createAppointment', 'appointmentController@createAppointmentRequest');
+Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
+
+Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
 
 // ================= DOCTOR =================
 
