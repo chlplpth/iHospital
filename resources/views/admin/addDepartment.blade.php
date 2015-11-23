@@ -3,49 +3,48 @@
 <link href="{{asset('css/admin.css')}}" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => '/addDepartment')) !!}
+{!! Form::open(array('url' => '/addDepartment')) !!}
 
-	<div class="panel panel-default">
-  		<div class="panel-heading">
-    		<h3 class="panel-title">เพิ่มแผนก</h3>
-  		</div>
-  		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
-  			<div class="form-group row">
-          <label class="col-xs-2" style="margin-top: 7px;">ชื่อแผนก</label>
-          <div class="col-xs-3">{!! Form::text('department', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
-
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
-            @endif
-          </div>
-          <div class="col-xs-2"></div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xs-2" style="margin-top: 7px;">อาคาร/ชั้น</label>
-          <div class="col-xs-3">{!! Form::text('place', '', ['class' => 'form-control', 'placeholder'=>'ตึก 4 ชั้น 17']) !!}
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
-            @endif
-          </div>
-          <div class="col-xs-2"></div>
-        </div>
-        <div class="form-group row">
-          <label class="col-xs-2" style="margin-top: 7px;">เบอร์โทรศัพท์</label>
-          <div class="col-xs-3">{!! Form::text('tel', '', ['class' => 'form-control', 'placeholder'=>'(+66) 0-2218-6956-7']) !!}
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
-            @endif
-          </div>
-          <div class="col-xs-2"></div>
-        </div>
-        <div class="form-group row">
-          <div class="col-xs-4"></div>
-          <div class="col-xs-2" style="margin-left:30px;">{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}</div>
-        </div>
-      </div>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">เพิ่มแผนก</h3>
+  </div>
+  <div class="panel-body form" style="margin-left:40px; margin-top:10px;">
+   <div class="form-group row">
+    <label class="col-xs-1" style="margin-top: 7px;">ชื่อแผนก</label>
+    <div class="col-xs-3">{!! Form::text('departmentName', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
+      @if( $errors->has('department') )<br>
+      <p class="text-danger"> {{ $errors->first('department') }} </p> 
+      @endif
     </div>
-    
-	{!! Form::close() !!}
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="form-group row">
+    <label class="col-xs-2" style="margin-top: 7px;">อาคาร/ชั้น</label>
+    <div class="col-xs-3">{!! Form::text('departmentBuilding', '', ['class' => 'form-control', 'placeholder'=>'ตึก 4 ชั้น 17']) !!}
+      @if( $errors->has('department') )<br>
+      <p class="text-danger"> {{ $errors->first('department') }} </p> 
+      @endif
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="form-group row">
+    <label class="col-xs-2" style="margin-top: 7px;">เบอร์โทรศัพท์</label>
+    <div class="col-xs-3">{!! Form::text('departmentTel', '', ['class' => 'form-control', 'placeholder'=>'(+66) 0-2218-6956-7']) !!}
+      @if( $errors->has('department') )<br>
+      <p class="text-danger"> {{ $errors->first('department') }} </p> 
+      @endif
+    </div>
+    <div class="col-xs-2"></div>
+  </div>
+  <div class="form-group row">
+    <div class="col-xs-4"></div>
+    <div class="col-xs-2" style="margin-left:30px;">{!! Form::submit('เพิ่ม', ["class" => "btn btn-success"]) !!}</div>
+  </div>
+</div>
+</div>
+
+{!! Form::close() !!}
 @stop
 
 <!-- array(

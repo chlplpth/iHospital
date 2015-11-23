@@ -6,7 +6,7 @@
   position: absolute;
   visibility: hidden;
   text-align: center;
-  font-size: 10px;
+  font-size: 15px;
 }
 .scheduleSign2 {
   display: inline-block;
@@ -16,7 +16,7 @@
   position: absolute;
   visibility: hidden;
   text-align: center;
-  font-size: 10px;
+  font-size: 15px;
 }
 [class*="cal-cell"] {
   float: left;

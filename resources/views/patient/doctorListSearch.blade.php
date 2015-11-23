@@ -58,6 +58,8 @@
 		<br><br>
 		
 
+		
+		@foreach ($doctors as $d) 
 			<div class="row">
 				
 				<div class="col-md-3">
@@ -66,13 +68,13 @@
 					</a>
 				</div>
 				<div class="col-md-6">
-					<span class ="header">ชื่อแพทย์ : </span> <br><br>
-					<span class ="header">แผนก : </span> <br><br>
-					<span class ="header">ความเชี่ยวชาญ : </span><br><br>
+					<span class ="header">ชื่อแพทย์ : </span> {{ $d->name }} <br><br>
+					<span class ="header">แผนก : </span>{{ $d->departmentName }} <br><br>
+					<span class ="header">ความเชี่ยวชาญ : </span>{{$d->proficiency}}<br><br>
 					<span class ="header">ประวัติการศึกษา : </span>Chulalongkorn University 
 				</div>
 			</div>
-		
+		@endforeach
 		
 		
 
