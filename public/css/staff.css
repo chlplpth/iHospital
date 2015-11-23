@@ -98,3 +98,8 @@ width: 180px;
 #deleteStaffButton{
 width: 180px;
 }
+.modal-header{
+  background-color: red;
+  color:white;
+  border-radius: 5px;
+}
