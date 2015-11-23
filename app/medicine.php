@@ -12,6 +12,7 @@ class medicine extends Model
      * @var string
      */
     protected $table = 'medicine';
+    protected $primaryKey = 'medicineId';
 
     /**
      * The attributes that are mass assignable.
@@ -19,6 +20,9 @@ class medicine extends Model
      * @var array
      */
     protected $fillable = [
-        'userId',
-        'hospitalNo'];
-}
+        'medicineId',
+        'medicinName',
+        'medicineType',
+        'decsription'];
+
+ 

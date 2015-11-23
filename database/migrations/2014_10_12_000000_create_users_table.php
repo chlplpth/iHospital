@@ -18,10 +18,9 @@ class CreateUsersTable extends Migration
             $table->string('password', 60);
             $table->string('name');
             $table->string('surname');
-            $table->string('email')->unique();
-            $table->enum('sex', ['  M', 'F']);
-            $table->string('dateOfBirth');
+            $table->string('email')->unique()->nullable();
             $table->enum('userType', ['patient', 'doctor', 'staff', 'nurse', 'pharmacist', 'admin']);
+            $table->string('verifyCode')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

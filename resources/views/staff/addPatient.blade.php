@@ -1,19 +1,20 @@
 @extends('layout/staffLayout')
 @section('css')
-<link href="css/register.css" rel="stylesheet">
+<link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
 	</div>
+	
+	{!! Form::open(array('url' => '/addPatient')) !!}
 	<div class="panel-body">
 		<div class ="row">
 			<div class ="col-md-1"></div>
 			<div class ="col-md-11">
 				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
 				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน']);!!}
-				{!!Form::button('ยืนยัน',['class'=>'btn btn-default submitCitizenNo']);!!}
 			</div>
 		</div>
 		<br>
@@ -28,8 +29,8 @@
 					<div class ="col-md-11">
 						{!!Form::label('name', 'ชื่อ');!!}&nbsp
 						{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-						{!!Form::label('lastname', 'นามสกุล');!!}&nbsp
-						{!!Form::text('lastname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
+						{!!Form::label('surname', 'นามสกุล');!!}&nbsp
+						{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
 					</div>
 				</div>
 				<div class ="row">
@@ -93,7 +94,7 @@
 					</div>	
 					<div class ="col-md-3">
 						{!!Form::label('zipcode', 'รหัสไปรษณีย์');!!}&nbsp
-						{!!Form::text('street','',['class'=>'textbox textbox150px','placeholder'=>'รหัสไปรษณีย์']);!!}<br><br>
+						{!!Form::text('zipcode','',['class'=>'textbox textbox150px','placeholder'=>'รหัสไปรษณีย์']);!!}<br><br>
 					</div>
 					<div class ="col-md-3">
 					</div>
@@ -130,7 +131,9 @@
 				</div>
 			</div>
 		</div>
-		{!!Form::button('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
+		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
 	</div>
+
+	{!! Form::close() !!}
 </div>
 @stop

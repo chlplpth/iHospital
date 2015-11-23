@@ -12,85 +12,70 @@
   <title>iHospital</title>
 
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="css/dashboard.css" rel="stylesheet">
-  <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
-  <link href="css/datepicker.css" rel="stylesheet">
+  <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
+  <link href="{{asset('css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
+  <link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
   @yield('css')
-  <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-  <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-  <script src="js/ie-emulation-modes-warning.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <!-- // <script src="js/datepicker.js"></script> -->
+  <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+  <script src="{{asset('js/locales/bootstrap-datepicker.th.js')}}"></script>
+  <script src="{{asset('js/bootstrap-datepicker-thai.js')}}"></script>
+</head>
 
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-      <![endif]-->
-      <!-- Bootstrap core JavaScript -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <!-- // <script src="js/datepicker.js"></script> -->
-      <script src="js/bootstrap-datepicker.js"></script>
-      <script src="js/locales/bootstrap-datepicker.th.js"></script>
-      <script src="js/bootstrap-datepicker-thai.js"></script>
-      
-      
-      <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-      <script src="js/vendor/holder.min.js"></script>
-      <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-      <script src="js/ie10-viewport-bug-workaround.js"></script>
-    </head>
+<body>
 
-    <body>
-
-      <nav class="navbar navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <h3><a href="{{ url('/') }}">iHospital</a></h3>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
-              <li><a href="{{ url('/patientProfile') }}">ข้อมูลส่วนตัว</a></li>
-              <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-sm-3 col-md-2 sidebar">
-            <ul class="nav nav-sidebar">
-              <li class="{{ Request::is('createAppointment') ? 'active' : '' }}">
-                <a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a>
-              </li>
-              <li class="{{ Request::is('editProfile') ? 'active' : '' }}">
-                <a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a>
-              </li>
-              <li class="{{ Request::is('patientAppointmentSchedule') ? 'active' : '' }}">
-                <a href="{{ url('/patientAppointmentSchedule') }}">ตารางการนัดหมาย</a>
-              </li>
-              <li class="{{ Request::is('doctorList') ? 'active' : '' }}">
-                <a href="{{ url('doctorList') }}">ข้อมูลแพทย์</a>
-              </li>
-              <li class="{{ Request::is('diagnosisRecord') ? 'active' : '' }}">
-                <a href="{{ url('diagnosisRecord') }}">ประวัติการรักษา</a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            @yield('content')
-          </div>
-        </div>
+  <nav class="navbar navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <h2>iHospital</h2>
       </div>
-    </body>
-    </html>
+      <div id="navbar" class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
+          <li><a href="{{ url('/patientProfile') }}">ข้อมูลส่วนตัว</a></li>
+          <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-3 col-md-2 sidebar">
+        <ul class="nav nav-sidebar">
+          <li class="{{ Request::is('createAppointment') ? 'active' : '' }}">
+            <a href="{{ url('/createAppointment') }}">สร้างนัดหมาย<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="{{ Request::is('editProfile') ? 'active' : '' }}">
+            <a href="{{ url('/editProfile') }}">แก้ไขข้อมูลส่วนตัว</a>
+          </li>
+          <li class="{{ Request::is('patientAppointmentSchedule') ? 'active' : '' }}">
+            <a href="{{ url('/patientAppointmentSchedule') }}">ตารางการนัดหมาย</a>
+          </li>
+          <li class="{{ Request::is('doctorList') ? 'active' : '' }}">
+            <a href="{{ url('doctorList') }}">ข้อมูลแพทย์</a>
+          </li>
+          <li class="{{ Request::is('diagnosisRecord') ? 'active' : '' }}">
+            <a href="{{ url('diagnosisRecord') }}">ประวัติการรักษา</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        @yield('content')
+      </div>
+    </div>
+  </div>
+</body>
+</html>
