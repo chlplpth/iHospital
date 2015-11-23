@@ -12,12 +12,12 @@
     <title>iHospital</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/dashboard.css" rel="stylesheet">
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     <!-- <link href="css/bootstrap-datetimepicker.css" rel="stylesheet"> -->
-    <link href="css/datepicker.css" rel="stylesheet">
+    <link href="{{ asset('css/datepicker.css') }}" rel="stylesheet">
     @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->

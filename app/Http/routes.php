@@ -216,6 +216,9 @@ Route::get('/addPatient', function() {
 });
 Route::post('/addPatient', 'userController@addPatient');
 
+Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
+Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
+
 // ================= ADMIN =================
 
 Route::post('/addDepartment', 'departmentController@addDepartment');
@@ -238,6 +241,11 @@ Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
 Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGet');
 Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
+
+Route::get('/testSearch', function() {
+    return view('testSearch');
+});
+Route::get('/api/search', 'searchController@searchPatient');
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 // Route::post('/editProfile', 'SmurfController@editProfileValidate');
 // Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');

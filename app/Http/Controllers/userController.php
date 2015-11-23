@@ -11,6 +11,7 @@ use App\doctor;
 use App\patient;
 use App\hospitalStaff;
 use App\user;
+use App\department;
 
 use Hash;
 
@@ -40,6 +41,7 @@ class userController extends Controller
 
         $userId = $patient['userId'];
     	User::where('userId',$userId)->update(array(
+                'email'         => $input['email'],
                 'username'     => $input['username'],
                 'password'      => Hash::make($input['password'])
             ));
@@ -172,11 +174,21 @@ class userController extends Controller
         // return redirect('/');
     }
 
+    public function addHospitalStaffShow()
+    {  
+        $department = department::all();
+        $depList = array();
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+        return view('staff/addStaffByStaff')->with('department', $depList);
+    }
 
-    public function addHospitalStaff(Request $request)
+
+    public function addHospitalStaffStore(Request $request)
     {
     	$input = $request->all();
-        //$input['password'] = Hash::make($request['password']);
         $user = User::create($input);
 
         $hospitalStaff = $input;
@@ -191,5 +203,8 @@ class userController extends Controller
             $doctor['userId'] = $user->userId;
             $doctor = doctor::create($doctor); 
         }
+
+        // send set password e-mail
+        return redirect('/');
     }
 }

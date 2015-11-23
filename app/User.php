@@ -40,8 +40,6 @@ class User extends Model implements AuthenticatableContract,
         'name',
         'surname',
         'email',
-        'sex',
-        'dateOfBirth',
         'userType',
         'verifyCode' ];
 

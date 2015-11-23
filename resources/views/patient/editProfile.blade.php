@@ -45,8 +45,8 @@
 			</div>	
 			<div class ="col-md-7">
 				{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด');!!}
-				{!!Form::hidden('dateOfBirth', $user->dateOfBirth) !!}
-				{!!Form::text('dateOfBirth', $user->dateOfBirth ,['class'=>'textbox','disabled'=>'true' ]);!!}
+				{!!Form::hidden('dateOfBirth', $user->patient->dateOfBirth) !!}
+				{!!Form::text('dateOfBirth', $user->patient->dateOfBirth ,['class'=>'textbox','disabled'=>'true' ]);!!}
 
 			</div>
 		</div>

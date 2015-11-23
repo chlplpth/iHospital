@@ -30,7 +30,7 @@
 			<span class ="header">กรุ๊ปเลือด : </span> {{ $user->patient->bloodGroup }}
   		</div>	
   		<div class ="col-md-8">
-  			<span class ="header">วัน/เดือน/ปี เกิด : </span> {{ $user->dateOfBirth }}
+  			<span class ="header">วัน/เดือน/ปี เกิด : </span> {{ $user->patient->dateOfBirth }}
   		</div>
   	</div>
 

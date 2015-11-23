@@ -29,6 +29,7 @@ class patient extends Model
         'telMobile',
         'address',
         'citizenNo',
+        'dateOfBirth',
         'sex',
         'bloodGroup'];
 
@@ -160,8 +161,8 @@ class patient extends Model
                                    ->orwhere('surname', 'like', '%'.$keyword.'%')
                                    ->orwhere('hospitalNo', 'like', '%'.$keyword.'%');
                             })
-                     ->where('userType',"patient")
-                     ->get();   
+                     ->where('userType',"patient");
+                     // ->get();   
         return $users;
     }
 }
