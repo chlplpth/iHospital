@@ -78,6 +78,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 			<div class="panel panel-default contact">
 				<div class="panel-heading">
 					<h3 class="panel-title">ข้อมูลการติดต่อ</h3>

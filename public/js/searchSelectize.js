@@ -11,15 +11,11 @@ $(document).ready(function(){
                 return '<div>' + escape(item.name + " " + item.surname) +'</div>';
             }
         },
-        // optgroups: [
-        //     {value: 'patient', label: 'Patients'}
-        // ],
-        // optgroupField: 'class',
-        // optgroupOrder: ['patient'],
+        
         load: function(query, callback) {
             if (!query.length) return callback();
             $.ajax({
-                url: root+'/api/search',
+                url: root+searchAddress,
                 type: 'GET',
                 dataType: 'json',
                 data: {

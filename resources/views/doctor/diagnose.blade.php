@@ -3,7 +3,7 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => 'foo/bar')) !!}
+	{!! Form::open(array('url' => '/diagnose')) !!}
 
 	<div class="panel panel-default">
   		<div class="panel-heading">
@@ -25,18 +25,41 @@
 			    </div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">รหัสโรค</label>
-			        <div class="col-xs-2">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
+			        <div class="col-xs-2">{!! Form::text('disid', '', ["class" => "form-control", 'placeholder' => 'AOE2342']) !!}
+			        	
+			        </div>
 			    </div>
 			    <div class="form-group row">
+			    		<div class="col-xs-2"></div>
+			    		<div class="col-xs-10">@if( $errors->has('disid') )
+       						<p class="text-danger"> {{ $errors->first('disid') }} </p> 
+        				@endif
+        			</div>
+        		</div>
+			    <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">ชื่อโรค</label>
-			        <div class="col-xs-2">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
+			        <div class="col-xs-2">{!! Form::text('disname', '', ["class" => "form-control", 'placeholder' => 'นิ่วในถุงน้ำดี']) !!}</div>
 			    </div>
+			    <div class="form-group row">
+			    		<div class="col-xs-2"></div>
+			    		<div class="col-xs-10">@if( $errors->has('disname') )
+       						<p class="text-danger"> {{ $errors->first('disname') }} </p> 
+        				@endif
+        			</div>
+        		</div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">รายละเอียดการตรวจ</label>
 		          	<div class="col-xs-7">
-		          		{!! Form::textarea('id', '', ["class" => "form-control", "rows" => "5"]) !!}
+		          		{!! Form::textarea('description', '', ["class" => "form-control", "rows" => "5", 'placeholder' => 'ปวดหัว ตัวร้อน เป็นไข้']) !!}
 		          	</div>
 		        </div>
+		        <div class="form-group row">
+			    		<div class="col-xs-2"></div>
+			    		<div class="col-xs-10">@if( $errors->has('description') )
+       						<p class="text-danger"> {{ $errors->first('description') }} </p> 
+        				@endif
+        			</div>
+        		</div>
 		        <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">รายการยา
 		        		<div id="addBtn" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>

@@ -16,6 +16,9 @@ use App\Http\Requests\GrantStaffRequest;
 use App\Http\Requests\SearchPatientProfileByNurseRequest;
 use App\Http\Requests\RecordPatientGeneralDetailRequest;
 use App\Http\Requests\DoctorScheduleByNurseRequest;
+use App\Http\Requests\RecordPrescriptionHistoryRequest;
+use App\Http\Requests\SearchPatientProfileByDoctorRequest;
+use App\Http\Requests\DiagnoseRequest;
 
 class SmurfController extends Controller
 {
@@ -52,5 +55,17 @@ class SmurfController extends Controller
     public function doctorScheduleByNurseValidate(DoctorScheduleByNurseRequest $request){
     
     }
+    // ================= Pharmacist ====================
+    public function recordPrescriptionHistoryValidate(RecordPrescriptionHistoryRequest $request){
+    
+    }
+    // ================= Doctor ====================
+    public function searchPatientProfileByDoctorValidate(SearchPatientProfileByDoctorRequest $request){
+    
+    }
+    public function diagnoseValidate(DiagnoseRequest $request){
+    
+    }
+    
 }
 

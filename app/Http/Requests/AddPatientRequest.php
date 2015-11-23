@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SearchPatientProfileByNurseRequest extends Request
+class PatientAppointmentScheduleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class SearchPatientProfileByNurseRequest extends Request
     public function rules()
     {
         return [
-            'patient' => 'required|alpha_num',
+            'date' => 'required',
             
 
         ];
@@ -33,8 +33,8 @@ class SearchPatientProfileByNurseRequest extends Request
     public function messages()
     {
         return [
-            'patient.required' => 'กรุณาระบุชื่อหรือรหัสผู้ป่วย',
-            'patient.alpha_num' => 'รหัสผู้ป่วยต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
+            'date.required' => 'กรุณาระบุ วันที่ต้องการนัด',
+            
         ];
     }
 }

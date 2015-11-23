@@ -81,6 +81,11 @@
         @yield('content')
       </div>
     </div>
-  </div>
-</body>
+  </body>
+
+  <script>
+     var root = '{{url("/")}}';
+  </script>
+
+  <script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
 </html>
