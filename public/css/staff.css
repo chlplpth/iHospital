@@ -6,12 +6,30 @@
 #staffLabel {
   margin-top: 7px;
 }
+.checkboxEditTime {
+  font-weight: normal;
+  width: 40%;
+}
+div.starInSchedule {
+  position: relative;
+}
+span.starInSchedule {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+.skyColor {block
+  /*background-color: #95b6fd;*/
+  color: #000000;
+  background-color: #b4cdff;
+  border-color: #b4cdff;
+}
 .moveDown2 {
   margin-top: 2%;
 }
-#calendar {
-  /*font-size: 150%;*/
-}
+/*#calendar {
+  font-size: 150%;
+}*/
 table, table thead tr th {
   text-align: center;
 }
@@ -22,7 +40,7 @@ table, table tbody tr th {
   float: right;
 }
 #appointmentTable {
-  width: 90%;  
+  width: 100%;  
 }
 #diagnosisTable {
   width: 50%;  
@@ -117,4 +135,8 @@ table, table tbody tr th {
 #searchButton2 {
   margin-top: -2px;
   margin-left: 20px;
+}
+.smallPanel {
+  background: transparent !important;
+  color: black;
 }

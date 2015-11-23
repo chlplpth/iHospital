@@ -18,6 +18,7 @@
     <link href="css/dashboard.css" rel="stylesheet">
     <link href="css/bootstrap-datetimepicker.css" rel="stylesheet">
     <link href="css/datepicker.css" rel="stylesheet">
+    <link href="css/calendar.css" rel="stylesheet">
     @yield('css')
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -29,12 +30,20 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <!-- Bootstrap core JavaScript -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+    <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <!-- // <script src="js/datepicker.js"></script> -->
     <script src="js/bootstrap-datepicker.js"></script>
     <script src="js/locales/bootstrap-datepicker.th.js"></script>
     <script src="js/bootstrap-datepicker-thai.js"></script>
+
+    <!-- Calendar core JavaScript -->
+    <script src="js/underscore-min.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/language/th-TH.js"></script>
+    <script src="js/jstimezonedetect/jstz.min.js"></script>
+    <!-- // <script src="js/app.js"></script> -->
 
     <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
     <script src="js/vendor/holder.min.js"></script>
