@@ -13,19 +13,23 @@ use App\Http\Requests\AddDepartmentRequest;
 use App\Http\Requests\AddMedicineRequest;
 use App\Http\Requests\AddStaffByAdminRequest;
 use App\Http\Requests\GrantStaffRequest;
-
+use App\Http\Requests\SearchPatientProfileByNurseRequest;
+use App\Http\Requests\RecordPatientGeneralDetailRequest;
+use App\Http\Requests\DoctorScheduleByNurseRequest;
 
 class SmurfController extends Controller
 {
+    // ================= Patient ==================
     public function editProfileValidate(EditProfileRequest $request){
     	
     }
     public function createAppointmentValidate(CreateAppointmentRequest $request){
-    	echo "test";
+
     }
   	public function doctorListValidate(DoctorListRequest $request){
     	
     }
+    // ================= Admin ====================
     public function addDepartmentValidate(AddDepartmentRequest $request){
     
     }
@@ -38,4 +42,15 @@ class SmurfController extends Controller
     public function grantStaffValidate(GrantStaffRequest $request){
     
     }
+    // ================= Nurse ====================
+    public function searchPatientProfileByNurseValidate(SearchPatientProfileByNurseRequest $request){
+    
+    }
+    public function recordPatientGeneralDetailValidate(RecordPatientGeneralDetailRequest $request){
+    
+    }
+    public function doctorScheduleByNurseValidate(DoctorScheduleByNurseRequest $request){
+    
+    }
 }
+

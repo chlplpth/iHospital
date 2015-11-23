@@ -76,7 +76,7 @@
 				<label class="col-xs-2" id="patientLabel">อาการเบื้องต้น</label>
 				<div class="col-xs-10">
 					<div id = "symptomArea">
-						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
+						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5", 'placeholder'=>'ปวดหัว ตัวร้อน ไข้ขึ้น']) !!}
 						@if( $errors->has('symptom') )<br>
 						<p class="text-danger"> {{ $errors->first('symptom') }} </p> 
 						@endif

@@ -175,7 +175,7 @@ Route::get('/showDiagnosisHistory', function () {
 
 Route::get('sendemail', function () {
     $data = array(
-        'name' => "Noon",
+        'name' => "Smurf",
     );
     
 
@@ -183,7 +183,7 @@ Route::get('sendemail', function () {
 
         $message->from('ihospital.se@gmail.com', 'iHospital');
 
-        $message->to('tonkung49031@gmail.com')->subject('Learning Laravel test email');
+        $message->to('earthnapat12@gmail.com')->subject('Learning Laravel test email');
 
     });
 
@@ -222,13 +222,20 @@ Route::get('/testModel', 'Auth\AuthController@testModel');
 
 
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
+// ================= Patient ==================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
 Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
 Route::post('/doctorList', 'SmurfController@doctorListValidate');
+// ================= Admin ====================
 Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
 Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
 Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
 Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
+// ================= Nurse ====================
+Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
+Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
+Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
+
 
 
 
