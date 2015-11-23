@@ -13,13 +13,17 @@
 		<div id="recordGeneralData">
 			<div class="form-group row">
 				<div class="col-xs-2" id="nurseLabel">{!! Form::label('hospitalId', 'รหัสผู้ป่วย') !!}</div>
-				<div class="col-xs-3">{!! Form::text('hospitalId', '', ['class' => 'form-control', 'placeholder' => '12345678']) !!}
-					@if( $errors->has('hospitalId') )<br>
-					<p class="text-danger"> {{ $errors->first('hospitalId') }} </p> 
+
+				<div class="col-xs-3">{!! Form::text('patient', '', ["class" => "form-control", 'placeholder' => '12345678']) !!}
+					@if( $errors->has('patient') )<br>
+					<p class="text-danger"> {{ $errors->first('patient') }} </p> 
 					@endif
 				</div>
-				<div class="col-xs-7">{!! Form::submit('ค้นหา', ['class' => 'btn btn-info']) !!}</div>
-			</div>
+				<div class="col-xs-7">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
+			
+						{!! Form::close() !!}
+						@stop
+
 			<div class="form-group row">  
 				<label class="col-xs-2">ชื่อ</label>
 				<label class="col-xs-10">ชลัมพล</label>
@@ -112,3 +116,4 @@
 
 {!! Form::close() !!}
 @stop
+

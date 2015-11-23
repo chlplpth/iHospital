@@ -60,11 +60,21 @@
         				@endif
         			</div>
         		</div>
+
+        		<div class="form-group row">
+		        	<div class="col-xs-9">
+	        			{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}
+	        		</div>
+	        	</div>
+
+	        	{!! Form::close() !!}
+
+
 		        <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">รายการยา
 		        		<div id="addBtn" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>
 		        	</label>
-		        	<div class="col-xs-7">
+		        	<!-- <div class="col-xs-7">
 		        		<table class="table table-bordered table-hover">
 		        			<thead>
 		        				<tr>
@@ -103,7 +113,7 @@
 		        				</tr>
 		        			</tbody>
 		        		</table>
-		        	</div>
+		        	</div> -->
 		        </div>
 		        <div id="addMed" class="collapse form-group row">
 		        	<label class="col-xs-2" id="doctorLabel"></label>
@@ -113,9 +123,11 @@
 		        		</div>
 		        		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
 		        			<div class="form-group row">
+		        				{!! Form::open(array('url' => '/searchMedicine')) !!}
 		        				<label class="col-xs-3" id="doctorLabel">รหัสหรือชื่อยา</label>
-		        				<div class="col-xs-5">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
+		        				<div class="col-xs-5">{!! Form::text('medicineId', '', ["class" => "form-control"]) !!}</div>
 		        				<div class="col-xs-2">{!! Form::submit('ค้นหา', ["class" => "btn btn-default", 'id' => 'buttonGroup']) !!}</div>
+		        				{!! Form::close() !!}
 		        			</div>
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">รหัสยา</label>
@@ -155,10 +167,11 @@
 		        	</div>
 	        	</div>
 		        <div class="form-group row">
+		        	{!! Form::open(array('url' => '/addAppointment')) !!}
 			        <label class="col-xs-2" id="doctorLabel">วันที่นัดเพิ่ม
 			        	<div id="addBtn" data-toggle="collapse" data-target="#addNewApp" class="glyphicon glyphicon-plus-sign"></div>
 			        </label>
-			        <label class="col-xs-7" id="doctorLabel">วันที่ 5 สิงหาคม พ.ศ.2558 (13.00 - 15.30)</label>
+			       <!--  <label class="col-xs-7" id="doctorLabel">วันที่ 5 สิงหาคม พ.ศ.2558 (13.00 - 15.30)</label> -->
 		        </div>
 	        	<div id="addNewApp" class="collapse form-group row">
 		        	<label class="col-xs-2" id="doctorLabel"></label>
@@ -192,14 +205,12 @@
 		        			<div class="form-group row">
 		        				<div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">ตกลง</button></div>
 		        			</div>
+
+		        			
 		        		</div>
 		        	</div>
 	        	</div>
-	        	<div class="form-group row">
-		        	<div class="col-xs-9">
-	        			{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}
-	        		</div>
-	        	</div>
+	        	
 	        </form>
 	    </div>
 
