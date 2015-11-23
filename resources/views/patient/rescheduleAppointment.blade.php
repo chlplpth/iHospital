@@ -3,35 +3,26 @@
 <link href="{{asset('css/patient.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">เลื่อนการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
+        {!! Form::open(array('url' => '/rescheduleAppointment')) !!}
 		<div id = "createAppointmentForm">
-			
-			<div class="form-group row">
-				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
-				<label class="col-xs-3">XXX</label>
-			</div>
-			<div class="form-group row">  
-				<label class="col-xs-2">ชื่อ</label>
-				<label class="col-xs-10">ชลัมพล</label>
-				</div>
-				<div class="form-group row">
-					<label class="col-xs-2">นามสกุล</label>
-					<label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
-				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แผนก</label>
-					<label class="col-xs-10">โสต นาสิก</label>
+					<label class="col-xs-10">{{ $appointment->departmentName }}</label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แพทย์</label>
-					<label class="col-xs-10">ญานิกา</label>
+					<label class="col-xs-10">{{ $appointment->name }} {{ $appointment->surname }} </label>
 				</div>
+                <div class="form-group row">
+                    <label class="col-xs-2">วันนัดเดิม</label>
+                    <label class="col-xs-10">{{ $appointment->diagDate }}</label>
+                </div>
 				<div class="form-group row">
 					<label class="col-xs-2">วันนัด</label>
 					<div class="col-xs-3">
@@ -46,7 +37,7 @@
 
 				<div class="form-group row">
 					<label class="col-xs-2">อาการเบื้องต้น</label>
-					<label class="col-xs-10">ง่อยรับประทาน</label>
+					<label class="col-xs-10">{{ $appointment->symptom }}</label>
 				</div>
 
 
@@ -61,10 +52,16 @@
         <div class="row">
         	<div class="col-xs-4"></div>
         	<div class="col-xs-2">
+                {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+                {!! Form::hidden('departmentId', $appointment->departmentId) !!}
+                {!! Form::hidden('doctorId', $appointment->userId) !!}
         		{!! Form::submit('ยืนยัน', ['class' => 'btn btn-success']) !!}
         	</div>
         	<div class="col-xs-6"></div>
         </div>
+        {!! Form::close() !!}
+
+        @if(isset($newAppointments))
         <div class="panel-body">
         	<div class="row">
         		<div class="col-xs-1"></div>
@@ -81,21 +78,19 @@
         					</tr>
         				</thead>
         				<tbody>
-        					<tr>
-        						<td>20/11/2558</td>
-        						<td>9.00 น. - 12.00 น.</td>
-        						<td>จักษุวิทยา</td>
-        						<td>กรภพ</td>
-        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
+        					@foreach($newAppointments as $app)
+                            <tr>
+        						<td>{{ $app->diagDate }}</td>
+        						<td>{{ $app->diagTime }}</td>
+        						<td>{{ $app->departmentName }}</td>
+        						<td>{{ $app->name }} {{ $app->surname }}</td>
+                                {!! Form::open(array('url' => '/confirmDelayAppointment')) !!}
+                                    {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+                                    {!! Form::hidden('scheduleId', $app->scheduleId) !!}
+        						<td>{!! Form::submit("เลือก", ['class' => 'btn btn-info']) !!}</td>
+                                {!! Form::close() !!}
         					</tr>
-
-        					<tr>
-        						<td>21/11/2558</td>
-        						<td>13.00 น. - 16.00 น.</td>
-        						<td>กุมารเวชรศาสตร์</td>
-        						<td>ญานิกา</td>
-        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
-        					</tr>
+                            @endforeach
         				</tbody>
         			</table>
         		</div>
@@ -103,8 +98,8 @@
         	</div>
         	
         </div>
+        @endif
     </div>
 </div>
 
-{!! Form::close() !!}
 @stop

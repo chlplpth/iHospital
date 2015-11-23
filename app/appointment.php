@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\patient;
 use App\User;
 use App\doctor;
+use Carbon\Carbon;
 
 class appointment extends Model
 {
@@ -50,11 +51,14 @@ class appointment extends Model
     {
         $appointments = appointment::where('patientId',$patientId)
                                    ->join('schedule','schedule.scheduleId','=','appointment.scheduleId')
+                                   ->where('schedule.diagDate', '>', Carbon::now())
                                    ->join('scheduleLog','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
                                    ->join('users','scheduleLog.doctorId','=','users.userId')
                                    ->join('hospitalStaff','scheduleLog.doctorId','=','hospitalStaff.userId')
                                    ->join('department','hospitalStaff.departmentId','=','department.departmentId')
-                                   ->first();
+                                   ->orderBy('schedule.diagDate', 'asc')
+                                   ->orderBy('schedule.diagTime', 'asc')
+                                   ->get();
 
         return $appointments;
     }
@@ -69,6 +73,18 @@ class appointment extends Model
                                    ->get();
 
         return $appointments;
+    }
+
+    public static function getAppointmentDetail($appId)
+    {
+        $appointment = appointment::where('appointment.appointmentId', $appId)
+                            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                            ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+                            ->join('hospitalStaff', 'scheduleLog.doctorId', '=', 'hospitalStaff.userId')
+                            ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
+                            ->join('users', 'hospitalStaff.userId', '=', 'users.userId')
+                            ->first();
+        return $appointment;
     }
 
     public static function createAppointment($input)

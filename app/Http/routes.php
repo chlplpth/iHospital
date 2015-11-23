@@ -217,6 +217,10 @@ Route::post('/createAppointment', 'appointmentController@createAppointmentReques
 Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
 Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
+Route::get('/cancelAppointment/{appId}', 'appointmentController@cancelAppointment');
+Route::get('/rescheduleAppointment/{appId}', 'appointmentController@delayAppointmentShow');
+Route::post('/rescheduleAppointment', 'appointmentController@delayAppointmentRequest');
+Route::post('/confirmDelayAppointment', 'appointmentController@delayAppointmentStore');
 
 // ================= DOCTOR =================
 
