@@ -66,10 +66,6 @@ Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
 
-Route::get('importDoctorSchedule', function() {
-    return view('staff/importDoctorSchedule');
-});
-
 Route::get('doctorScheduleByStaff', function() {
     return view('staff/doctorScheduleByStaff');
 });
@@ -210,6 +206,10 @@ Route::get('patientProfile', 'userController@viewMyProfilePatient');
 Route::get('editProfile', 'userController@editMyProfilePatientShow');
 Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
+// ================= DOCTOR =================
+
+
+
 // ================= STAFF =================
 
 Route::get('/addPatient', function() {
@@ -219,6 +219,12 @@ Route::post('/addPatient', 'userController@addPatient');
 
 Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
 Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
+
+Route::get('/importDoctorSchedule/', function() {
+    return view('staff.importDoctorSchedule');
+});
+Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
+Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 
 // ================= ADMIN =================
 
@@ -230,7 +236,6 @@ Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
-Route::post('/register', 'Auth\AuthController@register');
 Route::post('/register', 'userController@checkPatientStatus');
 Route::post('/registerOld', 'userController@registerOldPatient');
 Route::post('/registerNew', 'userController@registerNewPatient');
@@ -247,7 +252,8 @@ Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 Route::get('/testSearch', function() {
     return view('testSearch');
 });
-Route::get('/api/search', 'searchController@searchPatient');
+Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
+Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 // Route::post('/editProfile', 'SmurfController@editProfileValidate');
 // Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');

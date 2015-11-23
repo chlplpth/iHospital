@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\schedule;
 use Illuminate\Database\Eloquent\Model;
 
 class scheduleLog extends Model
@@ -12,6 +13,7 @@ class scheduleLog extends Model
      * @var string
      */
     protected $table = 'scheduleLog';
+    protected $primaryKey = 'scheduleLogId';
 
     /**
      * The attributes that are mass assignable.
@@ -25,12 +27,79 @@ class scheduleLog extends Model
         'endDate',
         'diagDateList'];
 
+
     public static function importSchedule($request)
     {
+        $morning = scheduleLog::getDiagDateString($request['m']);
+        $afternoon = scheduleLog::getDiagDateString($request['a']);
+        $request['diagDateList'] = $morning . $afternoon;
+
+        $request['startDate'] = scheduleLog::changeDateFormat($request['startDate']);
+        $request['endDate'] = scheduleLog::changeDateFormat($request['endDate']);
+
         $scheduleLog = new scheduleLog($request);
         $scheduleLog -> save();
+        $scheduleLog->createSchedule();
 
         return $scheduleLog;
+    }
+
+    public static function changeDateFormat($date)
+    {
+        $tmp = explode('/', $date);
+        $newYear = (2500+intval($tmp[2])) - 543;
+        return $newYear . '-' . $tmp[1] . '-' . $tmp[0];
+    }
+
+    public static function getCheckedArray($text)
+    {   
+        $i = 0;
+        $check = array();
+        while($i < strlen($text))
+        {
+            if($text[$i] == "1")
+            {
+                $check[$i] = true;
+            }
+            else
+            {
+                $check[$i] = false;
+            }
+            $i++;
+        }
+        return $check;
+    }
+
+    public function createSchedule(){
+        $date = $this->startDate;
+        $morning = scheduleLog::getCheckedArray(substr($this->diagDateList, 0, 7));
+        $afternoon = scheduleLog::getCheckedArray(substr($this->diagDateList, 7, 7));
+
+        while(strtotime($date) <= strtotime($this->endDate))
+        {
+            $dayOfWeek = date("w", strtotime($date));
+            if($morning[$dayOfWeek])
+            {
+                schedule::storeSchedule($this->scheduleLogId, $date, 'morning');
+            }
+            if($afternoon[$dayOfWeek])
+            {
+                schedule::storeSchedule($this->scheduleLogId, $date, 'afternoon');
+            }
+            // next date
+            $date = date ("Y-m-d", strtotime("+1 day", strtotime($date)));
+
+        }
+    }
+
+    public static function getDiagDateString($diagDate)
+    {
+        $text = array('0' => '0', '1' => '0', '2' => '0', '3' => '0', '4' => '0', '5' => '0', '6' => '0');
+        foreach($diagDate as $date)
+        { 
+            $text[$date] = '1';
+        }
+        return join('', $text);
     }    
       
 }
