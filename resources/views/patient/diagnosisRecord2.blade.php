@@ -79,12 +79,11 @@
 			</table>	
 			<div class ="row">
 				<div class ="col-md-5"></div>
-			<div class ="col-md-2">{!! Form::submit('ส่งออก', ["class" => "btn btn-warning"]) !!}</div>
-			<div class ="col-md-5"></div>
-			<br><br>
+				<div class ="col-md-2">{!! Form::submit('ส่งออก', ['class' => 'btn btn-warning']) !!}</div>
+				<div class ="col-md-5"></div>
+				<br><br>
+			</div>
 		</div>
 	</div>
-
-</div>
 </div>
 @stop
