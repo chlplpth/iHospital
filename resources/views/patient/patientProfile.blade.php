@@ -9,8 +9,7 @@
 		<h3 class="panel-title">ข้อมูลผู้ป่วย</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "createAppointmentForm">
-			<br>
+		<div id = "patientProfile">
 		<span class ="header">รหัสประจำตัวผู้ป่วย : </span> {{ $user->patient->hospitalNo }}
 		<br> <br>
 		
@@ -82,8 +81,14 @@
 				</div>
 				<br>
 				<span class ="header">อีเมล : </span> {{ $user->email }}
-
-	<br><br>
+				<div class ="row">
+					
+					<div class ="col-md-8"></div>
+					<div class ="col-md-2">
+						<a href = "{{ url('/editProfile') }}" class="btn btn-warning" id="goToEdit">แก้ไข</a>
+					</div>
+					<div class ="col-md-2"></div>
+				</div>
 </div>
 
 </div>
