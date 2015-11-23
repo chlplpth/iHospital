@@ -64,8 +64,9 @@
 #contact{
   margin-left: 40px;
 }
-#searchButton{
+#searchDoctorButton{
   margin-left: -80px;
+  margin-top: -3px;
 }
 .header{
   font-weight: bold;
@@ -84,4 +85,11 @@
 }
 #diagnosisTable {
   width: 50%;  
+}
+#doctorList{
+  margin-left: 40px;
+  margin-top: 20px;
+}
+#doctorData{
+
 }
