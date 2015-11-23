@@ -31,71 +31,47 @@
 			<div class="form-group row">
 				<div class="col-xs-2">{!! Form::label('appointmentList', 'รายการนัดหมาย'); !!}</div>
 			</div>
-			<div class="row">
+			<div class="form-group row">
+				<div class="col-xs-1"></div>
 				<div class="col-xs-10">
-					<table class="table table-bordered" id="appointmentTable">
-						<thead>
+					<table class="table table-bordered">
+						<thead >
 							<tr>
-								<th style="width: 5%;">ลำดับ</th>
-								<th style="width: 10%;">วัน</th>
-								<th style="width: 14%;">เวลา</th>
-								<th style="width: 20%;">แพทย์</th>
-								<th style="width: 15%;">แผนก</th>
-								<th style="width: 10%;">รายละเอียด</th>
+								<th style="width: 8%; text-align:center;">วัน/เดือน/ปี</th>
+								<th style="width: 20%;text-align:center;">เวลา</th>
+								<th style="width: 18%; text-align:center;">แผนก</th>
+								<th style="width: 34%; text-align:center;">แพทย์</th>
+								<th style="width: 10%; text-align:center;">เลื่อน</th>
+								<th style="width: 10%; text-align:center;">ยกเลิก</th>
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($appointments as $app)
 							<tr>
-								<td>1</td>
-								<td>01 ต.ค. 58</td>
-								<td>09.00 - 11.30 น.</td>
-								<td>John Kaikai</td>
-								<td>หู</td>
-								<td>{!! Form::button('เพิ่มเติม', ["class" => "btn btn-info", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
+								<td>{{ 20/11/2558 }}</td>
+								<td>{{ $app->diagTime }}</td>
+								<td>{{ $app->departmentName }}</td>
+								<td>{{ $app->name }} {{ $app->surname }}</td>
+								<td ><a href="{{ url('/rescheduleAppointmentByStaff') }}" class="btn btn-warning">เลื่อน</a></td>
+								<td ><button class="btn btn-danger">ยกเลิก</button></td>
 							</tr>
-							<tr>
-								<td>2</td>
-								<td>01 ต.ค. 58</td>
-								<td>09.00 - 11.30 น.</td>
-								<td>Mary Marry</td>
-								<td>ตา</td>
-								<td>{!! Form::button('เพิ่มเติม', ["class" => "btn btn-info", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>01 ต.ค. 58</td>
-								<td>13.00 - 15.30 น.</td>
-								<td>July Doodo</td>
-								<td>จมูก</td>
-								<td>{!! Form::button('เพิ่มเติม', ["class" => "btn btn-info", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
-
-					<!-- Modal -->
-					<div class="modal fade" id="myModal" role="dialog">
-						<div class="modal-dialog">
-
-							<!-- Modal content-->
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Modal Header</h4>
-								</div>
-								<div class="modal-body">
-									<p>Some text in the modal.</p>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
+				<div class="col-xs-1"></div>
 			</div>
 		</form>
 	</div>
 </div>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+		$('.btn-danger').click(function() {
+			swal({   title: "ต้องการลบการนัดหมายนี้หรือไม่",   text: "หากยืนยันรการนัดหมายนี้จะถูกลบทันที",   type: "warning",   showCancelButton: true,   confirmButtonColor: "#DD6B55",   confirmButtonText: "ยืนยัน",   closeOnConfirm: true });
+		});
+	});
+</script>
 
 {!! Form::close() !!}
 @stop
