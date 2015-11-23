@@ -1,6 +1,6 @@
 @extends('layout/unregisteredLayout')
 @section('css')
-<link href="css/register.css" rel="stylesheet">
+<link href="{{asset('css/register.css')}}" rel="stylesheet">
 {!! HTML::script('js/register.js') !!}
 @stop
 
@@ -15,15 +15,15 @@
 			<div class ="col-md-1"></div>
 			<div class ="col-md-11">
 				@if(isset($citizenNo))
-					{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
-					{!!Form::text('citizenNo', $citizenNo ,['class'=>'textbox',  'disabled']);!!}
+				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
+				{!!Form::text('citizenNo', $citizenNo ,['class'=>'textbox',  'disabled']);!!}
 				@else
-					{!! Form::open(array('url' => '/register')) !!}
-					{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
-					{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน','onkeyup'=>'citizenNoCheck()','onkeydown'=>'return isNumber(event)']);!!}
-					{!!Form::submit('submit',['class'=>'btn btn-default submitCitizenNo','disabled'=>'true']);!!}
-					@endif
-					{!! Form::close() !!}
+				{!! Form::open(array('url' => '/register')) !!}
+				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
+				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน','onkeyup'=>'citizenNoCheck()','onkeydown'=>'return isNumber(event)']);!!}
+				{!!Form::submit('submit',['class'=>'btn btn-default submitCitizenNo','disabled'=>'true']);!!}
+				@endif
+				{!! Form::close() !!}
 				<span id="citizenError"></span>
 			</div>
 		</div>
@@ -31,50 +31,50 @@
 		@if(isset($userStatus))
 
 		@if($userStatus == "new")
-			{!! Form::open(array('url' => '/registerNew')) !!}
+		{!! Form::open(array('url' => '/registerNew')) !!}
 		@elseif($userStatus == "old")
-			{!! Form::open(array('url' => '/registerOld')) !!}
+		{!! Form::open(array('url' => '/registerOld')) !!}
 		@endif
 		
 		{!! Form::hidden('citizenNo', $citizenNo) !!}
 		@if($userStatus == "new")
-			<div class="panel panel-default profile">
-				<div class="panel-heading">
-					<h3 class="panel-title">ประวัติส่วนตัว</h3>
-				</div>
-				<div class="panel-body">
-					<div class ="row">
-						<div class ="col-md-1">
-						</div>
-						<div class ="col-md-11">
-							{!!Form::label('name', 'ชื่อ');!!}&nbsp
-							{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-							{!!Form::label('surname', 'นามสกุล');!!}&nbsp
-							{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
-						</div>
+		<div class="panel panel-default profile">
+			<div class="panel-heading">
+				<h3 class="panel-title">ประวัติส่วนตัว</h3>
+			</div>
+			<div class="panel-body">
+				<div class ="row">
+					<div class ="col-md-1">
 					</div>
-					<div class ="row form-inline">
-						<div class ="col-md-1">
-						</div>
-						<div class ="col-xs-2" style="margin-top: 6px;"></br>
-							{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp
-							{!!Form::radio('sex', 'M', true, ['class' => 'radio']);!!}&nbsp
-							{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp
-							{!!Form::radio('sex', 'F', false, ['class' => 'radio']);!!}&nbsp
-							{!!Form::label('female', 'หญิง');!!}
-						</div>
+					<div class ="col-md-11">
+						{!!Form::label('name', 'ชื่อ');!!}&nbsp
+						{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						{!!Form::label('surname', 'นามสกุล');!!}&nbsp
+						{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
+					</div>
+				</div>
+				<div class ="row form-inline">
+					<div class ="col-md-1">
+					</div>
+					<div class ="col-xs-3" style="margin-top: 6px;"></br>
+						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp
+						{!!Form::radio('sex', 'M', true, ['class' => 'radio']);!!}&nbsp
+						{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp
+						{!!Form::radio('sex', 'F', false, ['class' => 'radio']);!!}&nbsp
+						{!!Form::label('female', 'หญิง');!!}
+					</div>
 					<div class ="col-md-2"><br>
 						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'), '0', ['class' => 'form-control']);!!}
 					</div><br>
-					<div class ="col-md-5">
+					<div class ="col-md-6">
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
 						<div class="input-group date">
-    						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
-    						<div class="input-group-addon">
-    							<span class="glyphicon glyphicon-calendar"></span>
-    						</div>
-    					</div>
+							{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+							<div class="input-group-addon">
+								<span class="glyphicon glyphicon-calendar"></span>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -157,48 +157,48 @@
 					</div>
 				</div>
 			</div>	
-		@endif
-		<div class="panel panel-default auth">
-			<div class="panel-heading">
-				<h3 class="panel-title">ข้อมูลการใช้งานระบบ</h3>
+			@endif
+			<div class="panel panel-default auth">
+				<div class="panel-heading">
+					<h3 class="panel-title">ข้อมูลการใช้งานระบบ</h3>
+				</div>
+				<div class="panel-body">
+					<div class= "row">
+						<div class="col-md-1">
+						</div>
+						<div class="col-md-11" >
+							{!!Form::label('email','อีเมล');!!}&nbsp
+							{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
+						</div>
+					</div>
+					<br><br>
+					<div class= "row">
+						<div class="col-md-1">
+						</div>
+						<div class="col-md-11" >
+							{!!Form::label('username','ชื่อผู้ใช้');!!}&nbsp&nbsp&nbsp
+							{!!Form::text('username','',['class'=>'textbox','placeholder'=>'ชื่อผู้ใช้']);!!}
+						</div>
+					</div>
+					<br><br>
+					<div class= "row">
+						<div class="col-md-1">
+						</div>
+						<div class="col-md-4" >
+							{!!Form::label('password','รหัสผ่าน');!!}&nbsp
+							{!!Form::password('password',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
+						</div>
+						<div class="col-md-7" >
+							{!!Form::label('repassword','ยืนยันรหัสผ่าน');!!}&nbsp
+							{!!Form::password('repassword',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="panel-body">
-				<div class= "row">
-					<div class="col-md-1">
-					</div>
-					<div class="col-md-11" >
-						{!!Form::label('email','อีเมล');!!}&nbsp
-						{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
-					</div>
-				</div>
-				<br><br>
-				<div class= "row">
-					<div class="col-md-1">
-					</div>
-					<div class="col-md-11" >
-						{!!Form::label('username','ชื่อผู้ใช้');!!}&nbsp&nbsp&nbsp
-						{!!Form::text('username','',['class'=>'textbox','placeholder'=>'ชื่อผู้ใช้']);!!}
-					</div>
-				</div>
-				<br><br>
-				<div class= "row">
-					<div class="col-md-1">
-					</div>
-					<div class="col-md-4" >
-						{!!Form::label('password','รหัสผ่าน');!!}&nbsp
-						{!!Form::password('password',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
-					</div>
-					<div class="col-md-7" >
-						{!!Form::label('repassword','ยืนยันรหัสผ่าน');!!}&nbsp
-						{!!Form::password('repassword',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
-					</div>
-				</div>
-			</div>
+			{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
+			{!! Form::close() !!}
+			@endif
 		</div>
-		{!!Form::submit('ลงทะเบียน',['class'=>'btn btn-success register']);!!}	
-		{!! Form::close() !!}
-		@endif
-	</div>
 	<!-- Script to construct datepicker
 	<script type="text/javascript">
 	    // When the document is ready

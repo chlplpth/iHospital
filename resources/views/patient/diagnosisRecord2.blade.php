@@ -1,6 +1,6 @@
 @extends('layout/patientLayout')
 @section('css')
-<link href="css/patient.css" rel="stylesheet">
+<link href="{{asset('css/patient.css')}}" rel="stylesheet">
 @stop
 @section('content')
 

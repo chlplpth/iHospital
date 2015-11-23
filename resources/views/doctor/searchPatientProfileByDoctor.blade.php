@@ -1,6 +1,6 @@
 @extends('layout/doctorLayout')
 @section('css')
-<link href="css/doctor.css" rel="stylesheet">
+<link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
   {!! Form::open(array('url' => '/searchPatientProfileByDoctor')) !!}
