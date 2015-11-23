@@ -24,10 +24,12 @@ class appointmentController extends Controller
     public function createAppointmentRequest(Request $request)
     {
         $input = $request->all();
+        if($input['departmentId'] == '0')
+        {
+            return redirect('createAppointment');
+        }
         $appointments = schedule::requestDate($input);
-        $input['doctorName'] = doctor::find(int($input['doctorId']));
-        $input['departmentName'] = doctor::find(int($input['departmentId']));
-        return view('patient.createAppointment')->with('appointments', $appointments)->with('input', $input);
+        return view('patient.createAppointment')->with('appointments', $appointments)->with('symptom', $input['symptom']);
     }   
 
     //user enter confirm and store data of appointment in database

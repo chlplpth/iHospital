@@ -1,3 +1,8 @@
+#dateLabel {
+  font-family: 'superspace_regularregular';
+  font-size: 25px;
+  font-weight: bold;
+}
 .centerBtn {
   display: block;
   margin: 0 auto;

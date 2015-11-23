@@ -106,6 +106,18 @@ class schedule extends Model
         return $appointments;
     }
 
+    public function getDiagTimeAttribute($value)
+    {
+        if($value == 'morning')
+        {
+            return '9.30 น. - 11.30 น.';
+        }
+        else
+        {
+            return '13.00 น. - 15.30 น.';
+        }
+    }
+
     public static function storeSchedule($scheduleLogId, $diagDate, $diagTime)
     {
         $schedule = new Schedule;

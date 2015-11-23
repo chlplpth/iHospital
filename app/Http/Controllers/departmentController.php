@@ -16,5 +16,6 @@ class departmentController extends Controller
     	$input = $request->all();
     	department::create($input);
         return redirect('/addDepartment');
+
     }
 }

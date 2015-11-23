@@ -1,8 +1,13 @@
+#dateLabel {
+  font-family: 'superspace_regularregular';
+  font-size: 25px;
+  font-weight: bold;
+}
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
 .panel-title{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: gray;
 }
@@ -15,12 +20,12 @@
 #buttonGroup {
 	margin-top: 30px;
 }
-
-#margin10 {
-	margin-top: 10px;
+#searchPatient{
+	margin-left:40px;
+	margin-top: 20px;
+}
+#recordGeneralData{
+	margin-left:40px; 
+	margin-top:20px;
 }
 
-#nurseLabel {
-	margin-top: 7px;
-	margin-bottom: 7px;
-}

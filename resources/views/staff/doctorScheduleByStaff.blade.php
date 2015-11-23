@@ -12,12 +12,16 @@
     <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
       <form role="form">
         <div class="form-group row">
-          <div class="col-xs-8">
-            <div class="btn-group" style="margin-bottom: 10px; width:100%; height:100%;">
-              <div style="width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
-              <div style="height:100%;  width:60%;" class="btn btn-primary btn-lg skyColor" id="dateLabel">date</div>
-              <div style="width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next"><span class="glyphicon glyphicon-chevron-right"></span></div>
-            </div><div id="calendar" class="cal-context"></div>
+          <div class="col-xs-8" style="">
+            <div class="btn-group btn-group-lg" style="margin-bottom: 10px; width:100%; height:54px;">
+              <div style="width:20%; height:100%;" class="btn btn-primary btn-lg skyColor glyphicon glyphicon-chevron-left" data-calendar-nav="prev"></div>
+              <div style="width:60%; height:100%;" class="btn btn-primary btn-lg skyColor glyphicon" id="dateLabel">date</div>
+              <div style="width:20%; height:100%;" class="btn btn-primary btn-lg skyColor glyphicon glyphicon-chevron-right" data-calendar-nav="next"></div>
+            </div>
+            <div class="row">
+            <div id="calendar" class="col-xs-12 cal-context" style="height: 100%;">
+            </div>
+          </div>
           </div>
           <div class="col-xs-4">
             <div class="panel panel-default">
@@ -26,7 +30,7 @@
               </div>
               <div class="panel-body" style="margin-left:5%;">
                 <div class="form-group row">
-                  <div class="col-xs-5" id="staffLabel">{!! Form::label('id', 'รหัสแพทย์'); !!}</div>
+                  <div class="col-xs-5" id="staffLabel">{!! Form::label('id', 'รหัส'); !!}</div>
                   <div class="col-xs-7" id="staffLabel">{!! Form::label('id', '12345678'); !!}</div>
                 </div>
                 <div class="form-group row">
@@ -56,7 +60,7 @@
               <form  style="margin-top:2%; margin-left: 2%; margin-right: 2%; border:0px;">
                 <div class="form-group row">
                   <br>
-                  <div class="col-xs-3">
+                  <div class="col-xs-4">
                     {!! Form::label('dateEdited', 'ช่วงเวลาออกตรวจ') !!}
                   </div>
                   <div class="col-xs-3">
@@ -65,13 +69,13 @@
                     <div class="checkbox-inline checkboxEditTime">{!! Form::checkbox('m[]', 2, false) !!}  บ่าย</div>
                     </fieldset>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-xs-5">
                     <div id="editBtn" class="btn btn-info" style="float: right;">แก้ไข</div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <div class="col-xs-12">
-                    <table class="table table-bordered centerBtn" id="appointmentTable" style = "text-align:center;">
+                    <table class="table table-bordered centerBtn" style = "text-align:center;">
                       <thead >
                         <br>
                         <tr>
@@ -127,12 +131,9 @@
           }
         );
 
-
-
         //================ Javascript - Check for Label ================//
-
         // Example array of Doctor Schedule
-        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning'];
+        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning', '2015-12-31-morning'];
 
         // Array for edit, send to Database
         var arrEdited = arrDoctorSchedule;
@@ -145,6 +146,7 @@
             var afternoon = date + '-afternoon';
             var id_m = arrEdited.indexOf(morning);
             var id_a = arrEdited.indexOf(afternoon);
+            console.log(id_m);
             console.log(id_a);
             morning = '#' + morning;
             afternoon = '#' + afternoon;
@@ -180,7 +182,7 @@
           var day = date.substring(8,10);
           var month = date.substring(5,7);
           var year = parseInt(date.substring(0,4)) + 543;
-          $('.modal-title').text(day + '-' + month + '-' + year);
+          $('.modal-title').text('วันออกตรวจ  ' + day + '-' + month + '-' + year);
           console.log(date);
           console.log(day);
           console.log(month);
@@ -188,6 +190,16 @@
 
           // Code Area for Kamkam
           // ...
+        });
+
+        //============ Javascript - Edit mode in modal ============//
+        var editMode = false;
+        var edited = false;
+        $('#editBtn').click(function() {
+          console.log(editMode);
+          edited = true;
+          $('#checkboxField').attr('disabled', editMode);
+          editMode = (editMode) ? false : true;
         });
 
         // $('.cal-cell').dblclick(function() {
@@ -200,16 +212,6 @@
         //     $('#'+day+'-afternoon').prop('class', 'glyphicon glyphicon-star scheduleSign1'); 
         //   }
         // });
-
-        //============ Javascript - Edit mode in modal ============//
-        var editMode = false;
-        var edited = false;
-        $('#editBtn').click(function() {
-          console.log(editMode);
-          edited = true;
-          $('#checkboxField').attr('disabled', editMode);
-          editMode = (editMode) ? false : true;
-        });
 
         // ('.scheduleSight1').click(function() {
         //   self.options.day = $('[data-cal-date]', this).data('cal-date');

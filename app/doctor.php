@@ -81,8 +81,11 @@ class doctor extends Model
                                 $query->where('name', 'like', '%'.$doctor.'%')
                                       ->orwhere('surname', 'like', '%'.$doctor.'%');
                             })
-                     ->where('userType',"doctor");
-                     //->get();   
+                     ->where('userType',"doctor")
+                     ->join('department','hospitalStaff.departmentId','=','department.departmentId')
+                     ->get();   
+
+          
 
         return $doctors;
     }

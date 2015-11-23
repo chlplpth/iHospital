@@ -122,7 +122,8 @@ class userController extends Controller
     //get list of doctor in department
     public function getDoctorList(Request $request)
     {
-    	$department = $request->departmentId;
+    	
+        $department = $request->departmentId;
     	$doctors = doctor::getDoctorList($department);
 
         //if(sizeof($doctors)==0) echo "not found";
@@ -134,12 +135,12 @@ class userController extends Controller
     public function searchDoctor(Request $request)
     {
     	$department = $request->input('department');
+        echo $department;
         $doctor = $request->input('doctor');
-        $users = doctor::searchDoctor($department, $doctor);
+        $doctors = doctor::searchDoctor($department, $doctor);
 
-        // if(sizeof($users)==0) echo "not found";
-        // else echo"found";
-		//return view('doctor.search',compact($doctors));
+       
+		return view('patient.doctorListSearch')->with('doctors',$doctors);
     }
     
     public function searchPatient(Request $request)
@@ -150,6 +151,31 @@ class userController extends Controller
         // if(sizeof($users)==0) echo "not found";
         // else echo"found";
 
+    }
+
+    public function searchStaff(Request $request)
+    {
+        $keyword = $request->input('staff');
+        $users = hospitalStaff::searchStaff($keyword);
+        return view('staff.manageStaffSearch')->with('staff',$users);
+    }
+
+    public function editStaff(Request $request)
+    {
+        $input = $request->all();
+        $staffId = $request->staffId;
+
+        $users = hospitalStaff::editStaff($input,$staffId);
+        
+        return view('staff.manageStaffByStaff')->with('staff',$users);
+    }
+
+    public function deleteStaff(Request $request)
+    {
+        $keyword = $request->deleteStaff;
+        $users = hospitalStaff::deleteStaff($keyword);
+
+        //return redirect('staff.manageStaffByStaff');
     }
     
     public function viewDoctorProfile(Request $request)

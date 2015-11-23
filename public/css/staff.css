@@ -22,6 +22,11 @@
 	line-height: 1.42857143;
 	color: #555;
 }
+#dateLabel {
+  font-family: 'superspace_regularregular';
+  font-size: 25px;
+  font-weight: bold;
+}
 table,th{
   text-align: center;
 }
@@ -98,7 +103,7 @@ width: 180px;
 #deleteStaffButton{
 width: 180px;
 }
-.modal-header{
+#modalHeader{
   background-color: red;
   color:white;
   border-radius: 5px;
