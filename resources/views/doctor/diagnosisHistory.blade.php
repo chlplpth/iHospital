@@ -23,7 +23,8 @@
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7"></div>
-	              <div class="col-xs-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-default", 'style'=>'float:right;']) !!}</div>
+	              <div class="col-xs-3">
+	              	<a href="{{ url('/showDiagnosisHistory') }}" class="btn btn-success centerBtn linkBtn">ค้นหา></a>
 	            </div>
         	</form>
   		</div>
