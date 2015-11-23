@@ -235,7 +235,9 @@ Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
 Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
 Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
 Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
-
+Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
+Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
+Route::post('/diagnose', 'SmurfController@diagnoseValidate');
 
 
 

@@ -39,8 +39,8 @@
 								<td>กุมารเวชรศาสตร์</td>
 								<td>ญานิกา</td>
 								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning centerBtn linkBtn">เลื่อน</a></td>
-								<td>{!! Form::submit('ยกเลิก', ["class" => "btn btn-danger centerBtn"]) !!}</td>
-							</tr>
+								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger centerBtn linkBtn">ยกเลิก</a></td>
+								</tr>
 
 						</tbody>
 					</table>

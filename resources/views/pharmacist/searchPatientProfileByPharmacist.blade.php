@@ -3,7 +3,7 @@
 <link href="css/pharmacist.css" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => 'foo/bar')) !!}
+	{!! Form::open(array('url' => 'searchPatientProfileByPharmacist')) !!}
 
 	<div class="panel panel-default">
       <div class="panel-heading">
