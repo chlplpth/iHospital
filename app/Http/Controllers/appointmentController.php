@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Auth;
 use Session;
 use App\appointment;
 use App\schedule;
@@ -36,7 +37,9 @@ class appointmentController extends Controller
     public function createAppointmentStore(Request $request)
     {
         $input = $request->all();
+        $input['patientId'] = Auth::user()->userId;
         $appointments = appointment::createAppointment($input);
+        return redirect('/');
     }
 
     public function delayAppointmentRequest(Request $request)

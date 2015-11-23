@@ -214,6 +214,7 @@ Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
 Route::get('createAppointment', 'appointmentController@createAppointmentShow');
 Route::post('/createAppointment', 'appointmentController@createAppointmentRequest');
+Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
 // ================= DOCTOR =================
 

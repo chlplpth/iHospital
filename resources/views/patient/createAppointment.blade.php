@@ -79,40 +79,42 @@
         @endif
 
         @if(isset($appointments))
-            <div class="form-group row">
-                <div class="col-xs-1"></div>
-                <div class="col-xs-10">
-                    <table class="table table-bordered" style = "text-align:center;">
-                        <thead >
-                            <tr>
-                                <th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
-                                <th style="width: 20%; text-align:center;">เวลา</th>
-                                <th style="width: 20%; text-align:center;">แผนก</th>
-                                <th style="width: 40%; text-align:center;">แพทย์</th>
-                                <th style="width: 10%; text-align:center;">นัดหมาย</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        	@foreach($appointments as $app)
+        	@if(count($appointments) > 0)
+	            <div class="form-group row">
+	                <div class="col-xs-1"></div>
+	                <div class="col-xs-10">
+	                    <table class="table table-bordered" style = "text-align:center;">
+	                        <thead >
 	                            <tr>
-	                                <td>{{ $app->diagDate }}</td>
-	                                <td>{{ $app->diagTime }}</td>
-	                                <td>{{ $app->departmentName }}</td>
-	                                <td>{{ $app->name }} {{ $app->surname }}</td>
-	                                <td >
-	                                	{!! Form::open(array('url' => '/storeAppointment')) !!}
-	                                	{!! Form::hidden('scheduleId', $app->scheduleId) !!}
-	                                	<!-- {!! Form::hidden('symptom', $symptom) !!} -->
-	                                	{!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
-	                                	{!! Form::close() !!}
-	                                </td>
+	                                <th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+	                                <th style="width: 20%; text-align:center;">เวลา</th>
+	                                <th style="width: 20%; text-align:center;">แผนก</th>
+	                                <th style="width: 40%; text-align:center;">แพทย์</th>
+	                                <th style="width: 10%; text-align:center;">นัดหมาย</th>
 	                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div class="col-xs-1"></div>
-            </div>
+	                        </thead>
+	                        <tbody>
+	                        	@foreach($appointments as $app)
+		                            <tr>
+		                                <td>{{ $app->diagDate }}</td>
+		                                <td>{{ $app->diagTime }}</td>
+		                                <td>{{ $app->departmentName }}</td>
+		                                <td>{{ $app->name }} {{ $app->surname }}</td>
+		                                <td >
+		                                	{!! Form::open(array('url' => '/storeAppointment')) !!}
+		                                	{!! Form::hidden('scheduleId', $app->scheduleId) !!}
+		                                	{!! Form::hidden('symptom', $symptom) !!}
+		                                	{!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
+		                                	{!! Form::close() !!}
+		                                </td>
+		                            </tr>
+	                            @endforeach
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <div class="col-xs-1"></div>
+	            </div>
+            @endif
        @endif
         </div>
     </div>

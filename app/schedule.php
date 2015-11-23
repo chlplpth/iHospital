@@ -44,6 +44,8 @@ class schedule extends Model
             $schedule = DB::table('schedule')
                         ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
                         ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
+                        ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
+                        ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
                         ->join('users', 'doctor.userId', '=', 'users.userId')
                         ->where('doctor.userId', $input['doctorId']);
         }
