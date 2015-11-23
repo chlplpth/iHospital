@@ -9,10 +9,10 @@
 	<div style ="margin-left :50px;">
 		เรียนคุณ {{$name}} {{$surname}} <br>
 	</div><br><br>
-	<div style ="margin-left :120px;">
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ขอขอบคุณที่ลงทะเบียนเพื่อเข้าใช้งานในระบบiHospital ของโรงพยาบาล iHospital<br>
+	<div style ="margin-left :100px;">
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ขอขอบคุณที่ลงทะเบียนเข้าใช้งานในระบบiHospital ของโรงพยาบาล iHospital<br>
 		ชื่อผู้ใช้งานของคุณคือ {{$username}}<br>
-		กรุณาคลิกที่ลิ้งก์ด้านล่างเพื่อทำการสร้างรหัสผ่านของคุณ<br>
+		กรุณาคลิกที่ลิ้งก์ด้านล้างเพื่อทำการยืนยันการลงทะเบียนของท่าน<br>
 		<a href="{{$link}}">{{$link}}</a><br><br>
 	</div>
 	<div style ="margin-left :50px;">
@@ -21,6 +21,6 @@
 	<div style ="margin-left :50px;">
 		หากท่านต้องการข้อมูลเพิ่มเติมโปรดติดต่อทางโรงพยาบาล (+66) 0-2218-6956-7
 	</div><br><br><br>
-	<img src="<?php echo $message->embed('image/iHospitalfooter.png'); ?>" style ="width:800px; padding-bottom:20px">
+	<img src="<?php echo $message->embed('image/iHospitalfooter.png'); ?>" style ="width:800px; padding-bottom:20px;">
 </body>
 </html>

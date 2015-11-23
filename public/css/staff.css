@@ -9,7 +9,13 @@
 .moveDown2 {
   margin-top: 2%;
 }
+#calendar {
+  /*font-size: 150%;*/
+}
 table, table thead tr th {
+  text-align: center;
+}
+table, table tbody tr th {
   text-align: center;
 }
 .btn-success {
