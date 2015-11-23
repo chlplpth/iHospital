@@ -37,7 +37,6 @@ class schedule extends Model
 
     public static function requestDate($input)
     {
-        
         // get appointment from a department or a doctor
         if($input['doctorId'] != '0')
         {
@@ -76,34 +75,6 @@ class schedule extends Model
                                     ->orderBy('diagTime', 'asc')
                                     ->get();
         }
-
-        // choose first 10 schedules or on specific date
-
-        // $input['date'] = scheduleLog::changeDateFormat($input['date']);
-
-        //     $schedules = DB::table('scheduleLog')
-        //                 ->join('hospitalStaff','scheduleLog.doctorId','=','hospitalStaff.userId')
-        //                 ->where('scheduleLog.doctorId',$input['doctorId'])
-        //                 ->join('schedule','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
-        //                 ->where('schedule.diagDate',$input['date'])
-        //                 ->get();
-        // }
-        // else if($input['departmentId']!=0)
-        // {
-        //     $schedules = DB::table('scheduleLog')
-        //                 ->join('hospitalStaff','scheduleLog.doctorId','=','hospitalStaff.userId')
-        //                 ->where('hospitalStaff.departmentId',$input['departmentId'])
-        //                 ->join('schedule','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
-        //                 ->where('schedule.diagDate',$input['date'])
-        //                 ->get();
-        // }
-        
-        // $schedules = DB::table('scheduleLog')
-        //                 ->join('hospitalStaff','scheduleLog.doctorId','=','hospitalStaff.userId')
-        //                 ->join('schedule','scheduleLog.scheduleLogId','=','schedule.scheduleLogId')
-        //                 ->where('schedule.diagDate',$input['date'])
-        //                 ->where('schedule.diagTime',$input['time'])
-        //                 ->get();
 
         return $appointments;
     }

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use DB;
 use Auth;
 use Session;
 use App\appointment;
@@ -42,20 +43,25 @@ class appointmentController extends Controller
         return redirect('/');
     }
 
+    public function delayAppointmentShow($appId)
+    {
+        $appointment = appointment::getAppointmentDetail($appId);
+        return view('patient.rescheduleAppointment')->with('appointment', $appointment);
+    }  
+
     public function delayAppointmentRequest(Request $request)
     {
-        
-        $input = $request->all();
-        $schedules = schedule::requestDate($input);
-
-        if(sizeof($schedules)==0) echo "not found";
-
-    }   
+        $input = $request;
+        $appointment = appointment::getAppointmentDetail($input['appointmentId']);
+        $newAppointments = schedule::requestDate($input);
+        return view('patient.rescheduleAppointment')->with('appointment', $appointment)->with('newAppointments', $newAppointments);
+    } 
 
     public function delayAppointmentStore(Request $request)
     {
         $input = $request->all();
         $appointment = appointment::delayAppointment($input);
+        return redirect('/patientAppointmentSchedule');
     }
 
     public function viewPatientAppointment(Request $request)
@@ -81,11 +87,11 @@ class appointmentController extends Controller
     }
 
     
-    public function cancelAppointment(Request $request)
+    public function cancelAppointment($appId)
     {
-        $appointmentId = $request->appointmentId;
-        $appointment = appointment::where('appointmentId',$appointmentId)->first();
-        $appointment ->delete(); 
+        $appointment = appointment::where('appointmentId',$appId)->first();
+        DB::table('appointment')->where('appointmentId', $appId)->delete();
+        return redirect('/patientAppointmentSchedule');
     }
 
     public function createAppointmentShow()
