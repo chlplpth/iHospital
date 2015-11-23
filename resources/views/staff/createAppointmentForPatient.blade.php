@@ -11,25 +11,25 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">สร้างการนัดหมาย</h3>
 	</div>
-	<div class="panel-body" style="margin-top:2%;">
+	<div class="panel-body">
 		<div id = "createAppointmentForm">
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">รหัสประจำตัวผู้ป่วย</label>
-				<div class="col-xs-6">
-					{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'รหัสประจำตัวผู้ป่วย']);!!}
-					{!! Form::submit('ค้นหา', ["class" => "btn btn-default","id" =>"searchButton2"]) !!}
+				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
+				<div class="col-xs-10">
+					{!! Form::text('HN', '', ['class'=>'textbox', 'placeholder'=>'รหัสประจำตัวผู้ป่วย']);!!}
+					{!! Form::button('ค้นหา', ["class" => "btn btn-info","id" =>"searchButton"]) !!}
 				</div>
 			</div>
 			<div class="form-group row">  
-				<label class="col-xs-2" id="staffLabel">ชื่อ</label>
-				<label class="col-xs-10" id="staffLabel">ชลัมพล</label>
+				<label class="col-xs-2">ชื่อ</label>
+				<label class="col-xs-10">ชลัมพล</label>
 			</div>
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">นามสกุล</label>
-				<label class="col-xs-10" id="staffLabel">ไก๊ไก่ไก๊ไก่</label>
+				<label class="col-xs-2">นามสกุล</label>
+				<label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
 			</div>
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">แผนก</label>
+				<label class="col-xs-2">แผนก</label>
 				<div class="col-xs-3">{!! Form::select('departmentName', array(
 					'0' => 'ไม่ระบุ',
 					'1' => 'กายวิภาคศาสตร์', 
@@ -56,7 +56,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">แพทย์</label>
+				<label class="col-xs-2">แพทย์</label>
 				<div class="col-xs-3">{!! Form::select('doctorname', array(
 					'0' => 'ไม่ระบุ',
 					'1' => 'กายวิภาคศาสตร์', 
@@ -83,7 +83,7 @@
 				</div>
 			</div>
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">วันนัด</label>
+				<label class="col-xs-2">วันนัด</label>
 				<div class="col-xs-3">
 					<div class="input-group date">
 						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
@@ -95,18 +95,20 @@
 			</div>
 
 			<div class="form-group row">
-				<label class="col-xs-2" id="staffLabel">อาการเบื้องต้น</label>
+				<label class="col-xs-2">อาการเบื้องต้น</label>
 				<div class="col-xs-4">
-						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
+					{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
 				</div>
 			</div>
 			<div class="form-group row">
-				<div class="col-xs-6">
-		        	{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
-		        </div>
+				<div class="col-xs-5"></div>
+				<div class="col-xs-1">{!! Form::submit('ยืนยัน', ["class" => "btn btn-success",'id'=>'createAppointmentButton']) !!}
+				</div>
+				<div class="col-xs-6"></div>
 			</div>
-        </div>
-    </div>
+			
+		</div>
+	</div>
 </div>
 
 {!! Form::close() !!}

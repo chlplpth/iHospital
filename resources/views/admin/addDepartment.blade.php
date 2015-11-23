@@ -11,8 +11,13 @@
   		</div>
   		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
   			<div class="form-group row">
+<<<<<<< HEAD
+          <label class="col-xs-1" style="margin-top: 7px;">ชื่อแผนก</label>
+          <div class="col-xs-3">{!! Form::text('departmentName', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
+=======
           <label class="col-xs-2" style="margin-top: 7px;">ชื่อแผนก</label>
           <div class="col-xs-3">{!! Form::text('department', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
+>>>>>>> 0e526e2737ce2840252ac8e7c6b83bb911bfca0f
             @if( $errors->has('department') )<br>
                 <p class="text-danger"> {{ $errors->first('department') }} </p> 
             @endif

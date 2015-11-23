@@ -1,0 +1,15 @@
+<div class="cal-month-day <%= cls %>"  data-toggle="modal" data-target="#myModal">
+	<span id="<%= data_day %>-morning" class="label label-warning scheduleSign1">เช้า</span>
+	<span id="<%= data_day %>-afternoon" class="label label-info scheduleSign2">บ่าย</span>
+	<span class="pull-right" data-cal-date="<%= data_day %>" data-cal-view="day" data-toggle="tooltip" title="<%= tooltip %>"><%= day %></span>
+	<% if (events.length > 0) { %>
+		<div class="events-list" data-cal-start="<%= start %>" data-cal-end="<%= end %>">
+			<% _.each(events, function(event) { %>
+				<a href="<%= event.url ? event.url : 'javascript:void(0)' %>" data-event-id="<%= event.id %>" data-event-class="<%= event['class'] %>"
+					class="pull-left event <%= event['class'] %>"
+					data-toggle="tooltip"
+					title="<%= event.title %>"></a>
+			<% }); %>
+		</div>
+	<% } %>
+</div>
