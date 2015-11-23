@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="panel p<!-- anel-default">
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
 	</div>
@@ -49,8 +49,14 @@
 					<div class ="col-md-11">
 						{!!Form::label('name', 'ชื่อ');!!}&nbsp
 						{!!Form::text('name','',['class'=>'textbox','placeholder'=>'ชื่อ']);!!}&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+						@if( $errors->has('name') )<br>
+            				<p class="text-danger"> {{ $errors->first('name') }} </p> 
+            			@endif
 						{!!Form::label('surname', 'นามสกุล');!!}&nbsp
 						{!!Form::text('surname','',['class'=>'textbox','placeholder'=>'นามสกุล']);!!}<br><br>
+						@if( $errors->has('surname') )<br>
+            				<p class="text-danger"> {{ $errors->first('surname') }} </p> 
+            			@endif
 					</div>
 				</div>
 				<div class ="row form-inline">
@@ -71,6 +77,9 @@
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
 						<div class="input-group date">
 							{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+							@if( $errors->has('dateOfBirth') )<br>
+            				<p class="text-danger"> {{ $errors->first('dateOfBirth') }} </p> 
+            			@endif
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
@@ -90,18 +99,31 @@
 						<div class ="col-md-2">
 							{!!Form::label('addressNo', 'เลขที่');!!}&nbsp
 							{!!Form::text('addressNo','',['class'=>'textbox textbox70px','placeholder'=>'เลขที่']);!!}<br><br>
+							@if( $errors->has('addressNo') )<br>
+            				<p class="text-danger"> {{ $errors->first('addressNo') }} </p> 
+            			@endif
+							
 						</div>
 						<div class ="col-md-2">
 							{!!Form::label('moo', 'หมู่');!!}&nbsp
 							{!!Form::text('moo','',['class'=>'textbox textbox70px','placeholder'=>'หมู่']);!!}<br><br>
+							@if( $errors->has('moo') )<br>
+            				<p class="text-danger"> {{ $errors->first('moo') }} </p> 
+            			@endif
 						</div>	
 						<div class ="col-md-3">
 							{!!Form::label('street', 'ถนน');!!}&nbsp
 							{!!Form::text('street','',['class'=>'textbox textbox150px','placeholder'=>'ถนน']);!!}<br><br>
+							@if( $errors->has('street') )<br>
+            				<p class="text-danger"> {{ $errors->first('street') }} </p> 
+            			@endif
 						</div>
 						<div class ="col-md-4">
 							{!!Form::label('subdistrict', 'แขวง/ตำบล');!!}&nbsp
 							{!!Form::text('subdistrict','',['class'=>'textbox textbox150px','placeholder'=>'แขวง/ตำบล']);!!}<br><br>
+							@if( $errors->has('subdistrict') )<br>
+            				<p class="text-danger"> {{ $errors->first('subdistrict') }} </p> 
+            			@endif
 						</div>
 					</div>
 					<br>
@@ -111,6 +133,9 @@
 						<div class ="col-md-3">
 							{!!Form::label('district', 'เขต/อำเภอ');!!}&nbsp
 							{!!Form::text('district','',['class'=>'textbox textbox150px','placeholder'=>'เขต/อำเภอ']);!!}<br><br>
+							@if( $errors->has('district') )<br>
+            				<p class="text-danger"> {{ $errors->first('district') }} </p> 
+            			@endif
 						</div>
 						<div class ="col-md-3 form-inline province">
 							{!!Form::label('province', 'จังหวัด');!!}&nbsp
@@ -119,6 +144,9 @@
 						<div class ="col-md-3">
 							{!!Form::label('zipcode', 'รหัสไปรษณีย์');!!}&nbsp
 							{!!Form::text('zipcode','',['class'=>'textbox textbox150px','placeholder'=>'รหัสไปรษณีย์']);!!}<br><br>
+							@if( $errors->has('zipcode') )<br>
+            				<p class="text-danger"> {{ $errors->first('zipcode') }} </p> 
+            			@endif
 						</div>
 						<div class ="col-md-3">
 						</div>
@@ -131,10 +159,16 @@
 						<div class ="col-md-5">
 							{!!Form::label('telHome','โทรศัพท์บ้าน');!!}&nbsp
 							{!!Form::text('telHome','',['class'=>'textbox','placeholder'=>'โทรศัพท์บ้าน']);!!}
+							@if( $errors->has('telHome') )<br>
+            				<p class="text-danger"> {{ $errors->first('telHome') }} </p> 
+            			@endif
 						</div>
 						<div class ="col-md-6">
 							{!!Form::label('telMobile','โทรศัพท์มือถือ');!!}&nbsp
 							{!!Form::text('telMobile','',['class'=>'textbox','placeholder'=>'โทรศัพท์มือถือ']);!!}
+							@if( $errors->has('telMobile') )<br>
+            				<p class="text-danger"> {{ $errors->first('telMobile') }} </p> 
+            			@endif
 						</div>
 					</div>
 				</div>
@@ -149,10 +183,10 @@
 						</div>
 						<div class="col-md-4 drugAllergy" >
 							{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-							{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+							{!!Form::text('drugAllergy[]','',['class'=>'textbox drugTextbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
 						</div>
 						<div class="col-md-7" >
-							{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug','onclick'=>'addDrug()','disabled'=>'true']);!!}
+							{!!Form::button('เพิ่ม',['class'=>'btn btn-success','onclick'=>'addDrug()','disabled'=>'true','id'=>'addDrugButton']);!!}
 
 						</div>
 					</div>
@@ -170,6 +204,9 @@
 						<div class="col-md-11" >
 							{!!Form::label('email','อีเมล');!!}&nbsp
 							{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
+							@if( $errors->has('email') )<br>
+            				<p class="text-danger"> {{ $errors->first('email') }} </p> 
+            			@endif
 						</div>
 					</div>
 					<br><br>
@@ -179,6 +216,9 @@
 						<div class="col-md-11" >
 							{!!Form::label('username','ชื่อผู้ใช้');!!}&nbsp&nbsp&nbsp
 							{!!Form::text('username','',['class'=>'textbox','placeholder'=>'ชื่อผู้ใช้']);!!}
+							@if( $errors->has('username') )<br>
+            				<p class="text-danger"> {{ $errors->first('username') }} </p> 
+            			@endif
 						</div>
 					</div>
 					<br><br>
@@ -188,10 +228,16 @@
 						<div class="col-md-4" >
 							{!!Form::label('password','รหัสผ่าน');!!}&nbsp
 							{!!Form::password('password',['class'=>'textbox','placeholder'=>'รหัสผ่าน']);!!}
+							@if( $errors->has('password') )<br>
+            				<p class="text-danger"> {{ $errors->first('password') }} </p> 
+            			@endif
 						</div>
 						<div class="col-md-7" >
 							{!!Form::label('repassword','ยืนยันรหัสผ่าน');!!}&nbsp
 							{!!Form::password('repassword',['class'=>'textbox','placeholder'=>'ยืนยันรหัสผ่าน']);!!}
+							@if( $errors->has('repassword') )<br>
+            				<p class="text-danger"> {{ $errors->first('repassword') }} </p> 
+            			@endif
 						</div>
 					</div>
 				</div>

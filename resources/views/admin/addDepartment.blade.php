@@ -13,17 +13,21 @@
   			<div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">ชื่อแผนก</label>
           <div class="col-xs-3">{!! Form::text('department', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
-            @endif
+            
           </div>
           <div class="col-xs-2"></div>
         </div>
         <div class="form-group row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4">@if( $errors->has('department') )
+                <p class="text-danger"> {{ $errors->first('department') }} </p> 
+            @endif</div>
+        </div>
+        <div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">อาคาร/ชั้น</label>
           <div class="col-xs-3">{!! Form::text('place', '', ['class' => 'form-control', 'placeholder'=>'ตึก 4 ชั้น 17']) !!}
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
+            @if( $errors->has('place') )<br>
+                <p class="text-danger"> {{ $errors->first('place') }} </p> 
             @endif
           </div>
           <div class="col-xs-2"></div>
@@ -31,11 +35,15 @@
         <div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">เบอร์โทรศัพท์</label>
           <div class="col-xs-3">{!! Form::text('tel', '', ['class' => 'form-control', 'placeholder'=>'(+66) 0-2218-6956-7']) !!}
-            @if( $errors->has('department') )<br>
-                <p class="text-danger"> {{ $errors->first('department') }} </p> 
-            @endif
+            
           </div>
           <div class="col-xs-2"></div>
+        </div>
+        <div class="form-group row">
+            <div class="col-xs-2"></div>
+            <div class="col-xs-4">@if( $errors->has('tel') )
+                <p class="text-danger"> {{ $errors->first('tel') }} </p> 
+            @endif</div>
         </div>
         <div class="form-group row">
           <div class="col-xs-4"></div>

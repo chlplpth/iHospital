@@ -3,7 +3,7 @@
 <link href="{{asset('css/forgetAndChangePassword.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => '/forgetPassword')) !!}
+{!! Form::open(array('url' => '/forgetUserPassword22')) !!}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลืมรหัสผ่าน</h3>
@@ -16,11 +16,15 @@
 			<div class="col-md-4" >
 				{!!Form::label('email','อีเมล');!!}&nbsp
 				{!!Form::text('email','',['class'=>'textbox','placeholder'=>'อีเมล']);!!}
+				@if( $errors->has('email') )<br>
+            <p class="text-danger"> {{ $errors->first('email') }} </p> 
+            @endif
 			</div>
 			<div class="col-md-7" >
 				{!!Form::submit('ส่ง',['class'=>'btn btn-warning']);!!}</div>
 			</div>
-			<br><br>
+			<br>
+			
 	</div>
 </div>
 {!! Form::close() !!}

@@ -395,7 +395,9 @@ Route::post('/manageAppointmentForPatient', 'SmurfController@manageAppointmentFo
 Route::post('/importDoctorSchedule', 'SmurfController@ImportDoctorScheduleValidate');
 Route::post('/searchDoctorScheduleByStaff', 'SmurfController@searchDoctorScheduleByStaffValidate');
 Route::post('/manageStaffByStaff', 'SmurfController@manageStaffByStaffValidate');
-
+// ================= General ====================
+Route::post('/forgetUserPassword22', 'SmurfController@forgetUserPasswordValidate');
+Route::post('/register2', 'SmurfController@register2Validate');
 
 
 

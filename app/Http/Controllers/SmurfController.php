@@ -26,6 +26,9 @@ use App\Http\Requests\ManageAppointmentForPatientRequest;
 use App\Http\Requests\ImportDoctorScheduleRequest;
 use App\Http\Requests\SearchDoctorScheduleByStaffRequest;
 use App\Http\Requests\ManageStaffByStaffRequest;
+use App\Http\Requests\ForgetUserPasswordRequest;
+use App\Http\Requests\Register2Request;
+
 
 class SmurfController extends Controller
 {
@@ -95,5 +98,12 @@ class SmurfController extends Controller
     public function manageStaffByStaffValidate(ManageStaffByStaffRequest $request){
         
     }
+    public function forgetUserPasswordValidate(ForgetUserPasswordRequest $request){
+        
+    }
+    public function register2Validate(Register2Request $request){
+        
+    }
+
 }
 
