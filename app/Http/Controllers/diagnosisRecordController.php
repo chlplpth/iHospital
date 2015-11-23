@@ -10,25 +10,43 @@ use App\Http\Controllers\Controller;
 use App\diagnosisRecord;
 use App\physicalRecord;
 use App\medicinePrescription;
+use App\appointment;
+use App\prescription;
 
 class diagnosisRecordController extends Controller
 {
     public function recordDiagnosis(Request $request)
 	{
 		$input = $request->all();
-        $diagnosisRecord = new diagnosisRecord($input);
-        $diagnosisRecord->save();
+        //add appointmentId
+        
+        $input['appointmentId'] =3;
+        //$diagnosisRecord = diagnosisRecord::create($input);
+        $diagnosisRecord = diagnosisRecord::where('diagRecordId',1)
+                                         ->join('appointment','diagnosisRecord.appointmentId','=','appointment.appointmentId')
+                                         ->join('users','appointment.patientId','=','users.userId')
+                                         ->join('patient','users.userId','=','patient.userId')
+                                         ->first();
+        //$prescription = prescription::create($input['appointmentId']);
 
-        //return redirect('diagnosisRecord');
+        return view('doctor.diagnoseNoMedicine')->with('diagnosisRecord',$diagnosisRecord);
     }
 
     //add by nurse
-    public function recordPatiantGeneralDetail(Request $request)
+    public function recordPatientGeneralDetail(Request $request)
     {
     	$input = $request->all();
-        $physicalRecord = new physicalRecord($input);
+        $patient = physicalRecord::recordPatientGeneralDetail($input);
 
-    	//return redirect('physicalRecord');
+    	return view('nurse.recordPatientGeneralDetail2')->with('patient',$patient);
+    }
+
+    public function recordPatientGeneralDetail2(Request $request)
+    {
+        $input = $request->all();
+        $physicalRecord = physicalRecord::recordPatientGeneralDetail2($input);
+
+        return redirect('nurse.recordPatientGeneralDetail');
     }
     
 
@@ -38,11 +56,6 @@ class diagnosisRecordController extends Controller
         $prescription = new prescription($input);
     }
 
-    public function addMedicineInPrescription(Request $request)
-    {
-        $input = $request->all();
-        $medicine = medicinePrescription::addMedicine($input);
-    }
     
     //if doctor  -> view own history , other send doctorId to rq
     public function viewDiagnosisHistoryDoctor(Request $request)
@@ -63,5 +76,21 @@ class diagnosisRecordController extends Controller
         $diagnosisRecord = diagnosisRecord::find($input['diagRecordId']);
 
     	//return view('diagnosisRecord',compact($diagnosisRecord));
+    }
+
+    public function addMedicineToPrescription(Request $request)
+    {
+        
+        $input = $request->all();
+
+        $id = $request->diagnosisRecord;
+        $diagnosisRecord = diagnosisRecord::where('diagRecordId',$id)
+                                         ->join('appointment','diagnosisRecord.appointmentId','=','appointment.appointmentId')
+                                         ->join('users','appointment.patientId','=','users.userId')
+                                         ->join('patient','users.userId','=','patient.userId')
+                                         ->first();
+
+        $medicine = medicinePrescription::addMedicineToPrescription($input);
+        return view('doctor.diagMedicine')->with('medicine',$medicine)->with('diagnosisRecord',$diagnosisRecord);
     }
 }

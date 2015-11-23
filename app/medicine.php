@@ -25,4 +25,4 @@ class medicine extends Model
         'medicineType',
         'decsription'];
 
- 
+ }

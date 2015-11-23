@@ -13,19 +13,19 @@
   			<form role="form">
   				<div class="form-group row">  
 			        <label class="col-xs-2" id="doctorLabel">รหัสผู้ป่วย</label>
-			        <label class="col-xs-10" id="doctorLabel">1011001010</label>
+			        <label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->hospitalNo }}</label>
 			    </div>
 		        <div class="form-group row">  
 			        <label class="col-xs-2" id="doctorLabel">ชื่อ</label>
-			        <label class="col-xs-10" id="doctorLabel">ชลัมพล</label>
+			        <label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->name }}</label>
 			    </div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">นามสกุล</label>
-			        <label class="col-xs-10" id="doctorLabel">ไก๊ไก่ไก๊ไก่</label>
+			        <label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->surname }}</label>
 			    </div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">รหัสโรค</label>
-			        <div class="col-xs-2">{!! Form::text('diseaseCode', '', ["class" => "form-control", 'placeholder' => 'AOE2342']) !!}
+			        <label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->diseaseCode }}</label>
 			        	
 			        </div>
 			    </div>
@@ -38,7 +38,7 @@
         		</div>
 			    <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">รายละเอียดการตรวจ</label>
-			        <div class="col-xs-2">{!! Form::text('diagnosisDetail', '', ["class" => "form-control", 'placeholder' => 'นิ่วในถุงน้ำดี']) !!}</div>
+			        <label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->diagnonsisDetail }}</label>
 			    </div>
 			    <div class="form-group row">
 			    		<div class="col-xs-2"></div>
@@ -49,9 +49,7 @@
         		</div>
 			    <div class="form-group row">
 			        <label class="col-xs-2" id="doctorLabel">คำแนะนำจากแพทย์</label>
-		          	<div class="col-xs-7">
-		          		{!! Form::textarea('doctorAdvice', '', ["class" => "form-control", "rows" => "5", 'placeholder' => 'ปวดหัว ตัวร้อน เป็นไข้']) !!}
-		          	</div>
+		          	<label class="col-xs-10" id="doctorLabel">{{$diagnosisRecord->doctorAdvice }}</label>
 		        </div>
 		        <div class="form-group row">
 			    		<div class="col-xs-2"></div>
@@ -60,11 +58,21 @@
         				@endif
         			</div>
         		</div>
+
+        		<div class="form-group row">
+		        	<div class="col-xs-9">
+	        			{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}
+	        		</div>
+	        	</div>
+
+	        	{!! Form::close() !!}
+
+
 		        <div class="form-group row">
 		        	<label class="col-xs-2" id="doctorLabel">รายการยา
 		        		<div id="addBtn" data-toggle="collapse" data-target="#addMed" class="glyphicon glyphicon-plus-sign"></div>
 		        	</label>
-		        	<div class="col-xs-7">
+		        	<!-- <div class="col-xs-7">
 		        		<table class="table table-bordered table-hover">
 		        			<thead>
 		        				<tr>
@@ -103,7 +111,7 @@
 		        				</tr>
 		        			</tbody>
 		        		</table>
-		        	</div>
+		        	</div> -->
 		        </div>
 		        <div id="addMed" class="collapse form-group row">
 		        	<label class="col-xs-2" id="doctorLabel"></label>
@@ -113,18 +121,25 @@
 		        		</div>
 		        		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
 		        			<div class="form-group row">
+		        				
 		        				<label class="col-xs-3" id="doctorLabel">รหัสหรือชื่อยา</label>
-		        				<div class="col-xs-5">{!! Form::text('id', '', ["class" => "form-control"]) !!}</div>
+		        				<div class="col-xs-5">{!! Form::text('medicineId', '', ["class" => "form-control"]) !!}</div>
 		        				<div class="col-xs-2">{!! Form::submit('ค้นหา', ["class" => "btn btn-default", 'id' => 'buttonGroup']) !!}</div>
+		        				
 		        			</div>
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">รหัสยา</label>
-		        				<label class="col-xs-4" id="doctorLabel">-</label>
+		        				<label class="col-xs-4" id="doctorLabel">{{$medicine->medicineId}}</label>
 		        			</div>
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">ชื่อยา</label>
-		        				<label class="col-xs-4" id="doctorLabel">-</label>
+		        				<label class="col-xs-4" id="doctorLabel">{{$medicine->medicineName}}</label>
 		        			</div>
+
+		        			{!! Form::open(array('url' => '/addMedicineToPrescription')) !!}
+		        			{!! Form::hidden('diagnosisRecord', $diagnosisRecord->diagRecordId) !!}
+		        			{!! Form::hidden('medicine', $medicine->medicineId) !!}
+
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">จำนวน</label>
 		        				<div class="col-xs-2">
@@ -149,8 +164,10 @@
 		        				<div class="col-xs-7" id="doctorLabel">{!! Form::textarea('etc', '', ['class' => 'form-control', 'rows' => '3']) !!}</div>
 		        			</div>
 		        			<div class="form-group row">
-		        				<div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">ตกลง</button></div>
+		        				<div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}</button></div>
 		        			</div>
+
+		        			{!! Form::close() !!}
 		        		</div>
 		        	</div>
 	        	</div>
@@ -190,16 +207,12 @@
 		        				<div class="col-xs-7" id="doctorLabel">{!! Form::textarea('etc', '', ['class' => 'form-control', 'rows' => '3']) !!}</div>
 		        			</div>
 		        			<div class="form-group row">
-		        				<div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">ตกลง</button></div>
+		        				<div class="col-xs-10"><button style="float: right;" type="button" class="btn btn-success">{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}</button></div>
 		        			</div>
 		        		</div>
 		        	</div>
 	        	</div>
-	        	<div class="form-group row">
-		        	<div class="col-xs-9">
-	        			{!! Form::submit('ยืนยัน', ["class" => "btn btn-success", 'id' => 'buttonGroup']) !!}
-	        		</div>
-	        	</div>
+	        	
 	        </form>
 	    </div>
 

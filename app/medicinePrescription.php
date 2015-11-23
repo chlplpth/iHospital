@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\medicine;
+use App\prescription;
 
 class medicinePrescription extends Model
 {
@@ -45,5 +46,20 @@ class medicinePrescription extends Model
         $medicinePrescription = medicinePrescription::create($input);
 
         return $medicinePrescription;
+      }
+
+      public static function addMedicineToPrescription($input)
+      {
+        $diagnosisRecordId = $input['diagnosisRecord'];
+        $diagnosisRecord = diagnosisRecord::where('diagRecordId',$diagnosisRecordId)->first();
+        $prescription = prescription::where('appointmentId',$diagnosisRecord->appointmentId)->first(); 
+       
+        $input['prescriptionId'] = $prescription->prescriptionId;
+        //medicinePrescription::create($input);
+        $medicine = medicinePrescription::where('prescriptionId',$prescription->prescriptionId)
+                                        ->join('medicine','medicinePrescription.medicineId','=','medicine.medicineId')
+                                        ->get();
+        return $medicine;
+        
       }
 }

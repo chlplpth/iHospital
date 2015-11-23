@@ -34,7 +34,7 @@ class diagnosisRecord extends Model
     protected $fillable = [
         'diseaseCode',
         'doctorAdvice',
-        'diagnosisDetail',
+        'diagnonsisDetail',
         'physicalRecordId'];
 
     //------------------   function -------------------------
@@ -60,5 +60,5 @@ class diagnosisRecord extends Model
 
         return $diagnosisRecords;
     }
-}
+
 }
