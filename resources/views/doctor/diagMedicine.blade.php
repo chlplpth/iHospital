@@ -134,8 +134,9 @@
 		        				<div class="col-xs-2">
 		        					{!! Form::text('quantity', '', ["class" => "form-control"]) !!}
 		        				</div>
-		        				<div class="col-xs-2">
-		        					{!!Form::select('unit', array('0' => 'เม็ด', '1' => 'ขวด'),'0',["class" => "form-control", 'style' => 'float: rigth;']);!!}
+			        				<div class="col-xs-2">
+			        					{!!Form::select('unit', array('0' => 'เม็ด', '1' => 'ขวด'),'0',["class" => "form-control", 'style' => 'float: rigth;']);!!}
+			        				</div>
 		        				</div>
 		        			</div>
 		        			<div class="form-group row">
