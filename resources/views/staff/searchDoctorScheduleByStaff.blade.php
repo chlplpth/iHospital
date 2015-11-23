@@ -16,10 +16,6 @@
             <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}</div>
             <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
           </div>
-          <div class="form-group row">
-            <div class="col-xs-12"><h1>ตาราง ยังไม่ได้คิด ปฏิทิน?</h1>
-            </div>
-          </div>
         </form>
         <script type="text/javascript">
       // When the document is ready
