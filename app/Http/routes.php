@@ -90,10 +90,6 @@ Route::get('searchDoctorScheduleByStaff', function() {
     return view('staff/searchDoctorScheduleByStaff');
 });
 
-Route::get('createAppointment', function() {
-    return view('patient/createAppointment');
-});
-
 Route::get('editProfile', function() {
     return view('patient/editProfile');
 });
@@ -206,6 +202,8 @@ Route::get('patientProfile', 'userController@viewMyProfilePatient');
 Route::get('editProfile', 'userController@editMyProfilePatientShow');
 Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
+Route::get('createAppointment', 'appointmentController@createAppointmentShow');
+
 // ================= DOCTOR =================
 
 
@@ -229,6 +227,8 @@ Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 // ================= ADMIN =================
 
 Route::post('/addDepartment', 'departmentController@addDepartment');
+Route::get('/addStaffByAdmin', 'userController@addHospitalStaffByAdminShow');
+Route::post('/addStaffByAdmin', 'userController@addHospitalStaffByAdminStore');
 
 // ================= AUTHENTICATE =================
 
@@ -368,25 +368,25 @@ Route::get('/test', function () {
 });
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 // ================= Patient ==================
-Route::post('/editProfile', 'SmurfController@editProfileValidate');
-Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-Route::post('/doctorList', 'SmurfController@doctorListValidate');
-// ================= Admin ====================
-Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
-Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
-Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
-// ================= Nurse ====================
-Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
-Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
-Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
-// ================= Phar ====================
-Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
-// ================= Doctor ====================
-Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
-Route::post('/diagnose', 'SmurfController@diagnoseValidate');
-// ================= Doctor ====================
-Route::post('/addPatient', 'SmurfController@addPatientValidate');
+// Route::post('/editProfile', 'SmurfController@editProfileValidate');
+// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+// Route::post('/doctorList', 'SmurfController@doctorListValidate');
+// // ================= Admin ====================
+// Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
+// Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
+// Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
+// Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
+// // ================= Nurse ====================
+// Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
+// Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
+// Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
+// // ================= Phar ====================
+// Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
+// // ================= Doctor ====================
+// Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
+// Route::post('/diagnose', 'SmurfController@diagnoseValidate');
+// // ================= Doctor ====================
+// Route::post('/addPatient', 'SmurfController@addPatientValidate');
 
 
 
