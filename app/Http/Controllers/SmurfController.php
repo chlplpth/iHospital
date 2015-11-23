@@ -19,6 +19,13 @@ use App\Http\Requests\DoctorScheduleByNurseRequest;
 use App\Http\Requests\RecordPrescriptionHistoryRequest;
 use App\Http\Requests\SearchPatientProfileByDoctorRequest;
 use App\Http\Requests\DiagnoseRequest;
+use App\Http\Requests\AddPatientByStaffRequest;
+use App\Http\Requests\AddStaffByStaffRequest;
+use App\Http\Requests\CreateAppointmentForPatientRequest;
+use App\Http\Requests\ManageAppointmentForPatientRequest;
+use App\Http\Requests\ImportDoctorScheduleRequest;
+use App\Http\Requests\SearchDoctorScheduleByStaffRequest;
+use App\Http\Requests\ManageStaffByStaffRequest;
 
 class SmurfController extends Controller
 {
@@ -67,5 +74,26 @@ class SmurfController extends Controller
     
     }
     
+    public function addPatientByStaffValidate(AddPatientByStaffRequest $request){
+        
+    }
+    public function addStaffByStaffValidate(AddStaffByStaffRequest $request){
+        
+    }
+    public function createAppointmentForPatientValidate(CreateAppointmentForPatientRequest $request){
+        
+    }
+    public function manageAppointmentForPatientValidate(ManageAppointmentForPatientRequest $request){
+        
+    }
+    public function importDoctorScheduleValidate(ImportDoctorScheduleRequest $request){
+        
+    }
+    public function searchDoctorScheduleByStaffValidate(SearchDoctorScheduleByStaffRequest $request){
+        
+    }
+    public function manageStaffByStaffValidate(ManageStaffByStaffRequest $request){
+        
+    }
 }
 

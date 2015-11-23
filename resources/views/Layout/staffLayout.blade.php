@@ -66,7 +66,7 @@
           <li class="{{ Request::is('importDoctorSchedule') ? 'active' : '' }}">
             <a href="{{ url('importDoctorSchedule') }}">นำเข้าตารางการออกตรวจ</a>
           </li>
-          <li class="{{ Request::is('') ? 'active' : '' }}">
+          <li class="{{ Request::is('searchDoctorScheduleByStaff') ? 'active' : '' }}">
             <a href="{{ url('/searchDoctorScheduleByStaff') }}">ตารางการออกตรวจ</a>
           </li>
           <li class="{{ Request::is('addStaffByStaff') ? 'active' : '' }}">

@@ -3,7 +3,7 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/importDoctorSchedule')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -13,7 +13,11 @@
 		<form role="form">
 			<div class="form-group row">
 				<div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div>
-				<div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}</div>
+				<div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'ณภัทร / 12345678']) !!}
+					@if( $errors->has('keyword') )<br>
+						<p class="text-danger"> {{ $errors->first('keyword') }} </p> 
+						@endif
+				</div>
 				<div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
 			</div>
 			<div class="form-group row">
@@ -32,11 +36,20 @@
 				<label class="col-xs-2" id="staffLabel">ตั้งแต่วันที่</label>
 				<div class="col-xs-3">
 					<div class="input-group date">
-						{!! Form::text('startDate', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+						{!! Form::text('startDate', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}	
 						<span class="input-group-addon" style="font-weight: bold;">ถึง</span>
 						{!! Form::text('endDate', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 					</div>
 				</div>
+			</div>
+			<div class="form-group row">
+					<div class="col-xs-2"></div>
+					<div class="col-xs-3">@if( $errors->has('startDate') )
+						<p class="text-danger"> {{ $errors->first('startDate') }} </p> 
+						@endif 
+					@if( $errors->has('endDate') )
+						<p class="text-danger"> {{ $errors->first('endDate') }} </p> 
+						@endif </div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2" id="staffLabel">{!! Form::label('day', 'วันออกตรวจ'); !!}</div>

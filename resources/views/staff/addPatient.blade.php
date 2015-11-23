@@ -3,6 +3,10 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
+
+{!! Form::open(array('url' => '/addPatientByStaff')) !!}
+
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
@@ -11,11 +15,14 @@
 	{!! Form::open(array('url' => '/addPatient')) !!}
 	<div class="panel-body">
 		<div class ="row">
-			<div class ="col-md-1"></div>
+			<div class ="col-md-1"></div>	
 			<div class ="col-md-11">
-				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp
+				{!!Form::label('citizenNo', 'รหัสประจำตัวประชาชน');!!}&nbsp	
 				{!!Form::text('citizenNo','',['class'=>'textbox','placeholder'=>'รหัสประจำตัวประชาชน']);!!}
-			</div>
+				@if( $errors->has('citizenNo') )<br>
+						<p class="text-danger"> {{ $errors->first('citizenNo') }} </p> 
+						@endif
+				</div>
 		</div>
 		<br>
 		<div class="panel panel-default profile">

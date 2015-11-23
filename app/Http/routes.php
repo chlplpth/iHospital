@@ -215,6 +215,8 @@ Route::post('editProfile', 'userController@editMyProfilePatientStore');
 Route::get('/addPatient', function() {
     return view('staff.addPatient');
 });
+
+
 Route::post('/addPatient', 'userController@addPatient');
 
 Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
@@ -385,10 +387,14 @@ Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHis
 // ================= Doctor ====================
 Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
 Route::post('/diagnose', 'SmurfController@diagnoseValidate');
-// ================= Doctor ====================
-Route::post('/addPatient', 'SmurfController@addPatientValidate');
-
-
+// ================= Staff ====================
+Route::post('/addPatientByStaff', 'SmurfController@addPatientByStaffValidate');
+Route::post('/addStaffByStaff', 'SmurfController@addStaffByStaffValidate');
+Route::post('/createAppointmentForPatient', 'SmurfController@createAppointmentForPatientValidate');
+Route::post('/manageAppointmentForPatient', 'SmurfController@manageAppointmentForPatientValidate');
+Route::post('/importDoctorSchedule', 'SmurfController@ImportDoctorScheduleValidate');
+Route::post('/searchDoctorScheduleByStaff', 'SmurfController@searchDoctorScheduleByStaffValidate');
+Route::post('/manageStaffByStaff', 'SmurfController@manageStaffByStaffValidate');
 
 
 

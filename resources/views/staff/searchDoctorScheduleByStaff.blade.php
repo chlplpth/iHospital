@@ -3,7 +3,7 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-  {!! Form::open(array('url' => 'foo/bar')) !!}
+  {!! Form::open(array('url' => '/searchDoctorScheduleByStaff')) !!}
 
   <div class="panel panel-default">
       <div class="panel-heading">
@@ -12,10 +12,14 @@
       <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
         <form role="form">
           <div class="form-group row">
-            <div class="col-xs-12">{!! Form::label('name', 'ชื่อหรือรหัสแพทย์'); !!}</div>
-            <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}</div>
+            <div class="col-xs-12">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div>
+            <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}
+          </div>
             <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
           </div>
+          @if( $errors->has('keyword') )            
+          <p class="text-danger"> {{ $errors->first('keyword') }} </p> 
+            @endif
           <div class="form-group row">
             <div class="col-xs-12"><h1>ตาราง ยังไม่ได้คิด ปฏิทิน?</h1>
             </div>

@@ -3,7 +3,7 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/manageStaffByStaff')) !!}
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -12,7 +12,11 @@
 <div class="panel-body" style="margin-top:2%; margin-left: 40px;">
     <div class="form-group row">
       <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
+      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}
+        @if( $errors->has('keyword') )<br>
+            <p class="text-danger"> {{ $errors->first('keyword') }} </p> 
+            @endif
+      </div>
       <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
   </div>
   <div class="form-group row">

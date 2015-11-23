@@ -3,7 +3,7 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/manageAppointmentForPatient')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -12,8 +12,12 @@
 	<div class="panel-body" style="margin-top:2%; margin-left:40px;">
 		<form role="form">
 			<div class="form-group row">
-				<div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ / รหัสผู้ป่วย'); !!}</div>
-				<div class="col-xs-3" >{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชื่อ / รหัสผู้ป่วย']) !!}</div>
+				<div class="col-xs-2" id="staffLabel">{!! Form::label('nameOrId', 'ชื่อหรือรหัสผู้ป่วย'); !!}</div>
+				<div class="col-xs-3" >{!! Form::text('nameOrId', '', ["class" => "form-control", 'placeholder'=>'ณภัทร / 12345678']) !!}
+					@if( $errors->has('nameOrId') )<br>
+						<p class="text-danger"> {{ $errors->first('nameOrId') }} </p> 
+						@endif
+				</div>
 				<div class="col-xs-6" >{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
 			</div>
 			<div class="form-group row">

@@ -5,7 +5,7 @@
 @stop
 @section('content')
 
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/createAppointmentForPatient')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -16,8 +16,11 @@
 			<div class="form-group row">
 				<label class="col-xs-2" id="staffLabel">รหัสประจำตัวผู้ป่วย</label>
 				<div class="col-xs-6">
-					{!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'รหัสประจำตัวผู้ป่วย']);!!}
+					{!! Form::text('id', '', ['class'=>'textbox', 'placeholder'=>'12345678']);!!}
 					{!! Form::submit('ค้นหา', ["class" => "btn btn-default","id" =>"searchButton2"]) !!}
+					@if( $errors->has('id') )<br><br>
+						<p class="text-danger"> {{ $errors->first('id') }} </p> 
+						@endif
 				</div>
 			</div>
 			<div class="form-group row">  
@@ -86,18 +89,25 @@
 				<label class="col-xs-2" id="staffLabel">วันนัด</label>
 				<div class="col-xs-3">
 					<div class="input-group date">
-						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
+						
 					</div>
+					@if( $errors->has('date') )
+						<p class="text-danger"> {{ $errors->first('date') }} </p> 
+						@endif
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<label class="col-xs-2" id="staffLabel">อาการเบื้องต้น</label>
 				<div class="col-xs-4">
-						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
+						{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5", 'placeholder'=>'ปวดหัว ตัวร้อน เป็นไข้']) !!}
+						@if( $errors->has('symptom') )<br>
+						<p class="text-danger"> {{ $errors->first('symptom') }} </p> 
+						@endif
 				</div>
 			</div>
 			<div class="form-group row">
