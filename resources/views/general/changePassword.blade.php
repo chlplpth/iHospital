@@ -1,6 +1,6 @@
 @extends('layout/unregisteredLayout')
 @section('css')
-<link href="{{ asset('css/forgetAndChangePassword.css') }}" rel="stylesheet">
+<link href="{{asset('css/forgetAndChangePassword.css')}}" rel="stylesheet">
 @stop
 @section('content')
 {!! Form::open(array('url' => '/changePassword')) !!}

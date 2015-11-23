@@ -91,11 +91,11 @@ Route::get('searchDoctorScheduleByStaff', function() {
 });
 
 Route::get('createAppointment', function() {
-	return view('patient/createAppointment');
+    return view('patient/createAppointment');
 });
 
 Route::get('editProfile', function() {
-	return view('patient/editProfile');
+    return view('patient/editProfile');
 });
 
 Route::get('patientAppointmentSchedule', function() {
@@ -405,5 +405,3 @@ Route::get('/confirmAppointmentEmail', 'emailController@confirmAppointmentEmail'
 // Route::post('/cancelApp', 'appointmentController@cancelAppointment');
 
 // Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
-
-

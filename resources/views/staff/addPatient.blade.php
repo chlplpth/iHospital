@@ -1,6 +1,6 @@
 @extends('layout/staffLayout')
 @section('css')
-<link href="css/register.css" rel="stylesheet">
+<link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
 <div class="panel panel-default">
