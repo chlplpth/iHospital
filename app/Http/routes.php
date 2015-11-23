@@ -58,8 +58,8 @@ Route::get('confirmAppointment', function() {
     return view('patient/confirmAppointment');
 });
 
-Route::get('cancleAppointment', function() {
-    return view('patient/cancleAppointment');
+Route::get('cancelAppointment', function() {
+    return view('patient/cancelAppointment');
 });
 
 Route::get('manageAppointmentForPatient', function() {
