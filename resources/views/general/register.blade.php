@@ -1,6 +1,6 @@
 @extends('layout/unregisteredLayout')
 @section('css')
-<link href="css/register.css" rel="stylesheet">
+<link href="{{asset('css/register.css')}}" rel="stylesheet">
 {!! HTML::script('js/register.js') !!}
 @stop
 @section('content')
@@ -40,7 +40,7 @@
 				<div class ="row form-inline">
 					<div class ="col-md-1">
 					</div>
-					<div class ="col-xs-2" style="margin-top: 6px;"></br>
+					<div class ="col-xs-3" style="margin-top: 6px;"></br>
 						{!!Form::label('sex', 'เพศ');!!}&nbsp&nbsp&nbsp
 						{!!Form::radio('sex', 'M', true, ['class' => 'radio']);!!}&nbsp
 						{!!Form::label('male', 'ชาย');!!}&nbsp&nbsp
@@ -51,7 +51,7 @@
 						{!!Form::label('bloodGroup', 'กรุ๊ปเลือด');!!}
 						{!!Form::select('bloodGroup', array('A' => 'A', 'B' => 'B', 'O' => 'O', 'AB' => 'AB'), '0', ['class' => 'form-control']);!!}
 					</div><br>
-					<div class ="col-md-5">
+					<div class ="col-md-4">
 						{!!Form::label('dateOfBirth', 'วัน/เดือน/ปี เกิด')!!} &nbsp
 						<div class="input-group date">
     						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
