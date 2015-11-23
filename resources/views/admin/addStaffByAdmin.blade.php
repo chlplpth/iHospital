@@ -1,9 +1,9 @@
 @extends('layout/adminLayout')
 @section('css')
-<link href="css/admin.css" rel="stylesheet">
+<link href="{{asset('css/admin.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/addStaffByAdmin')) !!}
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -12,11 +12,19 @@
   <div class="panel-body" style="margin-top: 10px; margin-left: 40px;">
     <div class="form-group row">
       <div class="col-xs-1" id="adminLabel">{!! Form::label('name', 'ชื่อ'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control"]) !!}</div>
+      <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'ชลัมพล']) !!}
+        @if( $errors->has('name') )<br>
+        <p class="text-danger"> {{ $errors->first('name') }} </p> 
+        @endif
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-xs-1" id="adminLabel">{!! Form::label('surname', 'นามสกุล'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('surname', '', ["class" => "form-control"]) !!}</div>
+      <div class="col-xs-3">{!! Form::text('surname', '', ["class" => "form-control", 'placeholder'=>'ไก๊ไก่ไก๊ไก่']) !!}
+        @if( $errors->has('surname') )<br>
+        <p class="text-danger"> {{ $errors->first('surname') }} </p> 
+        @endif
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-xs-1" id="adminLabel">{!! Form::label('role', 'บทบาท'); !!}</div>
@@ -50,7 +58,11 @@
       </div>
       <div class="form-group row">
         <div class="col-xs-1" id="adminLabel">{!! Form::label('username', 'ชื่อผู้ใช้'); !!}</div>
-        <div class="col-xs-3">{!! Form::text('username', '', ["class" => "form-control"]) !!}</div>
+        <div class="col-xs-3">{!! Form::text('username', '', ["class" => "form-control", 'placeholder'=>'pokepokemon']) !!}
+          @if( $errors->has('username') )<br>
+        <p class="text-danger"> {{ $errors->first('username') }} </p> 
+        @endif
+        </div>
       </div> 
       <div class="form-group row">
         <div class="col-xs-1"></div>

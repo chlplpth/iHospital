@@ -1,9 +1,9 @@
 @extends('layout/nurseLayout')
 @section('css')
-<link href="css/nurse.css" rel="stylesheet">
+<link href="{{asset('css/nurse.css')}}" rel="stylesheet">
 @stop
 @section('content')
-  {!! Form::open(array('url' => 'foo/bar')) !!}
+  {!! Form::open(array('url' => 'searchPatientProfileByNurse')) !!}
 
   <div class="panel panel-default">
       <div class="panel-heading">
@@ -12,8 +12,12 @@
       <div class="panel-body" style="margin-left:40px; margin-top:2%;">
         <form role="form">
           <div class="form-group row">
-            <div class="col-xs-12">{!! Form::label('patient', 'กรอกชื่อหรือรหัสผู้ป่วย'); !!}</div>
-            <div class="col-xs-3">{!! Form::text('patient', '', ["class" => "form-control", 'placeholder' => 'กรอกชื่อหรือรหัสผู้ป่วย']) !!}</div>
+            <div class="col-xs-12">{!! Form::label('patient', 'กรอกชื่อ / รหัสผู้ป่วย'); !!}</div><br><br>
+            <div class="col-xs-3">{!! Form::text('patient', '', ["class" => "form-control", 'placeholder' => 'ณภัทร / 12345']) !!}
+              @if( $errors->has('patient') )<br>
+            <p class="text-danger"> {{ $errors->first('patient') }} </p> 
+            @endif
+            </div>
             <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
           </div>
         </form>

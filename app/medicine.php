@@ -19,6 +19,11 @@ class medicine extends Model
      * @var array
      */
     protected $fillable = [
-        'userId',
-        'hospitalNo'];
+        'medicineId',
+        'medicinName',
+        'medicineType',
+        'decsription'];
+
+    //---------------------------------------  function --------------------------------
+   
 }

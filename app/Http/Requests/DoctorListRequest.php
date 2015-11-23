@@ -36,7 +36,7 @@ class DoctorListRequest extends Request
     {
         return [
             'name.required' => 'กรุณาระบุชื่อแพทย์',
-            'department.in' => 'กรุณาระบุ แผนก',
+            'department.in' => 'กรุณาระบุแผนก',
         ];
     }
 }

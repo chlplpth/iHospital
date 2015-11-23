@@ -1,3 +1,18 @@
+
+
+@font-face {
+    font-family: 'superspace_regularregular';
+    src: url('./fonts/superspace_regular_ver_1.00-webfont.eot');
+    src: url('./fonts/superspace_regular_ver_1.00-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/superspace_regular_ver_1.00-webfont.woff2') format('woff2'),
+         url('./fonts/superspace_regular_ver_1.00-webfont.woff') format('woff'),
+         url('./fonts/superspace_regular_ver_1.00-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
 /*
  * Base structure
  */
@@ -5,6 +20,7 @@
 /* Move down content because we have a fixed navbar that is 50px tall */
 body {
   padding-top: 50px;
+  font-family: 'superspace_regularregular';
 }
 
 
@@ -31,18 +47,26 @@ body {
   color:white;
   padding-right: 20px;
   padding-left: 20px;
+  font-size: 15px;
 }
-.navbar-nav>li>a:hover{
-  background-color: #44434b;
-}
-h3 {
-  color: white;
-}
-
 a, a:hover, a:active, a:visited {
   color: white;
   text-decoration: none;
+  font-size: 25px;
 }
+.navbar-nav>li>a:hover{
+  background-color: #44434b;
+  font-size: 20px;
+}
+h2 {
+  color: white;
+}
+table,span,label,div{
+  font-size: 20px;
+}
+
+
+
 
 /*
  * Sidebar
@@ -86,6 +110,7 @@ a, a:hover, a:active, a:visited {
 .nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
+
 }
 
 
