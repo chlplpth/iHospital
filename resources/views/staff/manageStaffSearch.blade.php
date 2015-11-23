@@ -11,11 +11,30 @@
 </div>
 <div class="panel-body" style="margin-top:2%; margin-left: 40px;">
     <div class="form-group row">
-      <div class="col-xs-2" id="staffLabel">{!! Form::label('staff', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('staff', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
+      <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
+      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
       <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
   </div>
-  
+
+
+    <div class="form-group row">
+        <div class="col-xs-2" id="staffLabel">{!! Form::label('id', 'รหัสบุคลากร'); !!}</div>
+        <div class="col-xs-3" id="staffLabel">{!! Form::label('id', $staff->staffId); !!}</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อบุคลากร'); !!}</div>
+        <div class="col-xs-3" id="staffLabel">{!! Form::label('name', $staff->name); !!}</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2" id="staffLabel">{!! Form::label('surname', 'นามสกุล'); !!}</div>
+        <div class="col-xs-3" id="staffLabel">{!! Form::label('surname', $staff->surname); !!}</div>
+    </div>
+    <div class="form-group row">
+        <div class="col-xs-2" id="staffLabel">{!! Form::label('department', 'แผนก'); !!}</div>
+        <div class="col-xs-3" id="staffLabel">{!! Form::label('department', $staff->departmentName); !!}</div>
+    </div>
+{!! Form::close() !!}
+
   <div class="form-group row">
    <div class="col-xs-2"></div>
    <div class="col-xs-3">
@@ -23,29 +42,32 @@
     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" style="float:right; width:45%;">ลบ</button>
 </div>
 </div>
+
+
 <div id="manage" class="collapse form-group row">
    <label class="col-xs-2" id="staffLabel"></label>
    <div class=" col-xs-7 panel panel-default" style="padding: 0px;">
       <div class="panel-heading" id="infoBtnColor">
          <h3 class="panel-title" id="infoBtnColor">แก้ไขข้อมูลบุคลากร</h3>
      </div>
+     {!! Form::open(array('url' => '/manageStaffEdit')) !!}
      <div class="panel-body form" style="margin-left:40px; margin-top:2%;">
          <div class="form-group row">
           <div class="col-xs-2" id="staffLabel">{!! Form::label('name', 'ชื่อ'); !!}
           </div>
-          <div class="col-xs-3">{!! Form::text('name', 'ชลัมพล', ["class" => "form-control", 'placeholder'=>'ชื่อใหม่']) !!}
+          <div class="col-xs-3">{!! Form::text('name', $staff->name, ["class" => "form-control", 'placeholder'=>'ชื่อใหม่']) !!}
           </div>
 <!--                 </div>
     <div class="form-group row"> -->
       <div class="col-xs-2" id="staffLabel">{!! Form::label('surname', 'นามสกุล'); !!}
       </div>
-      <div class="col-xs-3">{!! Form::text('surname', 'ไก๊ไก่ไก๊ไก่', ["class" => "form-control", 'placeholder'=>'นามสกุลใหม่']) !!}
+      <div class="col-xs-3">{!! Form::text('surname', $staff->surname, ["class" => "form-control", 'placeholder'=>'นามสกุลใหม่']) !!}
       </div>
   </div>
   <div class="form-group row">
       <div class="col-xs-2" id="staffLabel">{!! Form::label('department', 'แผนก'); !!}
       </div>
-      <div class="col-xs-3">{!! Form::select('department', array(
+      <div class="col-xs-3">{!! Form::select('departmentId', array(
         '0' => 'ไม่ระบุ',
         '1' => 'กายวิภาคศาสตร์', 
         '2' => 'กุมารเวชศาสตร์',
@@ -67,16 +89,21 @@
         '18' => 'สุติศาสตร์-นารีเวชวิทยา',
         '19' => 'โสต คอ นาสิกวิทยา',
         '20' => 'ออโธปิดิกส์',
-        '21' => 'อายุรศาสตร์'), '9', ["class" => "form-control"]) !!}
+        '21' => 'อายุรศาสตร์'), '$staff->departmentId', ["class" => "form-control"]) !!}
     </div>
 </div>
 </div>
+
+{!!  Form::hidden('staffId', $staff->userId) !!} 
 <div class="form-group row">
    <div class="col-xs-10"><button style="float: right;" type="button">{!! Form::submit('ยืนยัน', ["class" => "btn btn-danger"]) !!}</button></div>
 </div>
 </div>
 </div>
 </div>
+{!! Form::close() !!}
+
+{!! Form::open(array('url' => '/manageStaffDelete')) !!}
 <!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
@@ -90,21 +117,22 @@
       <div class="modal-body" style="margin-top:2%; margin-left: 40px;">
           <div class="form-group row">
               <div class="col-xs-3" id="staffLabel">{!! Form::label('id', 'รหัสบุคลากร'); !!}</div>
-              <div class="col-xs-9" id="staffLabel">{!! Form::label('id', '123456789'); !!}</div>
+              <div class="col-xs-9" id="staffLabel">{!! Form::label('id', $staff->staffId); !!}</div>
           </div>
           <div class="form-group row">
               <div class="col-xs-3" id="staffLabel">{!! Form::label('name', 'ชื่อบุคลากร'); !!}</div>
-              <div class="col-xs-9" id="staffLabel">{!! Form::label('name', 'ชลัมพล'); !!}</div>
+              <div class="col-xs-9" id="staffLabel">{!! Form::label('name', $staff->name); !!}</div>
           </div>
           <div class="form-group row">
               <div class="col-xs-3" id="staffLabel">{!! Form::label('surname', 'นามสกุล'); !!}</div>
-              <div class="col-xs-9" id="staffLabel">{!! Form::label('surname', 'ไก๊ไก่ไก๊ไก่'); !!}</div>
+              <div class="col-xs-9" id="staffLabel">{!! Form::label('surname', $staff->surname); !!}</div>
           </div>
           <div class="form-group row">
               <div class="col-xs-3" id="staffLabel">{!! Form::label('department', 'แผนก'); !!}</div>
-              <div class="col-xs-9" id="staffLabel">{!! Form::label('department', 'พยาธิวิทยา'); !!}</div>
+              <div class="col-xs-9" id="staffLabel">{!! Form::label('department', $staff->departmentName); !!}</div>
           </div>
       </div>
+      {!!  Form::hidden('deleteStaff', $staff->userId) !!} 
       <div class="modal-footer">
         <span style="float:left; margin-top: 1%;">ยืนยันทำการลบข้อมูลของบุคลากร</span>
         <button type="button" class="btn btn-default" data-dismiss="modal">ยกเลิก</button>
@@ -115,5 +143,6 @@
 </div>
 </div>
 </div>
+
 {!! Form::close() !!}
 @stop

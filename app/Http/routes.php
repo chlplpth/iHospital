@@ -82,6 +82,10 @@ Route::get('addStaffByStaff', function() {
 Route::get('manageStaffByStaff', function() {
     return view('staff/manageStaffByStaff');
 });
+Route::post('manageStaffByStaff','userController@searchStaff');
+Route::post('manageStaffEdit','userController@editStaff');
+Route::post('manageStaffDelete','userController@deleteStaff');
+
 
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');

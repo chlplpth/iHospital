@@ -151,6 +151,31 @@ class userController extends Controller
         // else echo"found";
 
     }
+
+    public function searchStaff(Request $request)
+    {
+        $keyword = $request->input('staff');
+        $users = hospitalStaff::searchStaff($keyword);
+        return view('staff.manageStaffSearch')->with('staff',$users);
+    }
+
+    public function editStaff(Request $request)
+    {
+        $input = $request->all();
+        $staffId = $request->staffId;
+
+        $users = hospitalStaff::editStaff($input,$staffId);
+        
+        return view('staff.manageStaffByStaff')->with('staff',$users);
+    }
+
+    public function deleteStaff(Request $request)
+    {
+        $keyword = $request->deleteStaff;
+        $users = hospitalStaff::deleteStaff($keyword);
+
+        //return redirect('staff.manageStaffByStaff');
+    }
     
     public function viewDoctorProfile(Request $request)
     {
