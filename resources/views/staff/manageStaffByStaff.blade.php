@@ -97,7 +97,7 @@
   <div class="modal-dialog">
 
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header" id="modalHeader">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">ลบข้อมูลบุคลากร</h4>
       </div>

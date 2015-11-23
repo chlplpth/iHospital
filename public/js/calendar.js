@@ -128,6 +128,10 @@ if(!String.prototype.formatNum) {
 			// $('.btn-group button').removeClass('active');
 			// $('button[data-calendar-view="' + view + '"]').addClass('active');
 			var title = this.getTitle();
+			var y = title.substring(title.length - 4, title.length);
+			var m = title.substring(0, title.length - 4);
+			y = parseInt(y) + 543;
+			title = m + y;
         	$("#dateLabel").text(title);
 		},
 		onAfterModalShown: function(events) {
