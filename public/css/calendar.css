@@ -1,21 +1,22 @@
 .scheduleSign1 {
   display: inline-block;
-  vertical-align: bottom;
   text-align: bottom;
   bottom: 0px;
   width: 50%;
   position: absolute;
   visibility: hidden;
+  text-align: center;
+  font-size: 10px;
 }
 .scheduleSign2 {
   display: inline-block;
-  vertical-align: bottom;
-  float: right;
   bottom: 0px;
   right: 0px;
   width: 50%;
   position: absolute;
   visibility: hidden;
+  text-align: center;
+  font-size: 10px;
 }
 [class*="cal-cell"] {
   float: left;

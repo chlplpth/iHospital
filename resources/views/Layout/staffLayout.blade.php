@@ -18,13 +18,20 @@
   <link href="{{asset('css/dashboard.css')}}" rel="stylesheet">
   <link href="{{asset('css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
   <link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
+  <link href="{{asset('css/calendar.css')}}" rel="stylesheet">
   @yield('css')
   <!-- Bootstrap core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
   <script src="{{asset('js/locales/bootstrap-datepicker.th.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker-thai.js')}}"></script>
+  <!-- Calendar core JavaScript -->
+  <script src="{{asset('js/underscore-min.js')}}"></script>
+  <script src="{{asset('js/calendar.js')}}"></script>
+  <script src="{{asset('js/language/th-TH.js')}}"></script>
+  <script src="{{asset('js/jstimezonedetect/jstz.min.js')}}"></script>
 </head>
 
 <body>

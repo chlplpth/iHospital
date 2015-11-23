@@ -11,16 +11,12 @@
     </div>
     <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
       <form role="form">
-
         <div class="form-group row">
           <div class="col-xs-8">
-            <div class="btn-group form-inline" style="margin-bottom: 10px; width:100%;">
-              <!-- <div style="width:33.3333%" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span> เดือนที่แล้ว</div>
-              <div style="width:33.3333%" class="btn btn-primary btn-lg skyColor" id="dateLabel"></div>
-              <div style="width:33.3333%" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next">เดือนถัดไป <span class="glyphicon glyphicon-chevron-right"></span></div> -->
-              <div style="width:20%" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span> เดือนที่แล้ว</div>
-              <div style="width:60%" class="btn btn-primary btn-lg skyColor" id="dateLabel"></div>
-              <div style="width:20%" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next">เดือนถัดไป <span class="glyphicon glyphicon-chevron-right"></span></div>
+            <div class="btn-group" style="margin-bottom: 10px; width:100%;">
+              <div style="height:100%; width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
+              <div style="height:100%; width:60%;" class="btn btn-primary btn-lg skyColor" id="dateLabel">date</div>
+              <div style="height:100%; width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next"><span class="glyphicon glyphicon-chevron-right"></span></div>
             </div><div id="calendar" class="cal-context"></div>
           </div>
           <div class="col-xs-4">
@@ -127,7 +123,7 @@
             language: 'th-TH',
             tmpl_path: "./tmplsStaff/",
             events_source: function () { return []; }
-                  // events_source: 'events.json.php'
+            // events_source: 'events.json.php'
           }
         );
 
@@ -139,8 +135,8 @@
             var date = $('[data-cal-date]', this).data('cal-date');
             var morning = date + '-morning';
             var afternoon = date + '-afternoon';
-            var id_m = arr.indexOf(morning);
-            var id_a = arr.indexOf(afternoon);
+            var id_m = arrEdited.indexOf(morning);
+            var id_a = arrEdited.indexOf(afternoon);
             console.log(id_a);
             morning = '#' + morning;
             afternoon = '#' + afternoon;
@@ -168,8 +164,6 @@
             checkForLabel();
           });
         });
-
-
 
         // Javascript - Modal
         $('.cal-cell').click(function() {
