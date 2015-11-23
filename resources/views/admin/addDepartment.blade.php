@@ -12,7 +12,7 @@
   		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
   			<div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">ชื่อแผนก</label>
-          <div class="col-xs-3">{!! Form::text('department', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
+          <div class="col-xs-3">{!! Form::text('departmentName', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
             @if( $errors->has('department') )<br>
                 <p class="text-danger"> {{ $errors->first('department') }} </p> 
             @endif
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">อาคาร/ชั้น</label>
-          <div class="col-xs-3">{!! Form::text('place', '', ['class' => 'form-control', 'placeholder'=>'ตึก 4 ชั้น 17']) !!}
+          <div class="col-xs-3">{!! Form::text('departmentBuilding', '', ['class' => 'form-control', 'placeholder'=>'ตึก 4 ชั้น 17']) !!}
             @if( $errors->has('department') )<br>
                 <p class="text-danger"> {{ $errors->first('department') }} </p> 
             @endif
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group row">
           <label class="col-xs-2" style="margin-top: 7px;">เบอร์โทรศัพท์</label>
-          <div class="col-xs-3">{!! Form::text('tel', '', ['class' => 'form-control', 'placeholder'=>'(+66) 0-2218-6956-7']) !!}
+          <div class="col-xs-3">{!! Form::text('departmentTel', '', ['class' => 'form-control', 'placeholder'=>'(+66) 0-2218-6956-7']) !!}
             @if( $errors->has('department') )<br>
                 <p class="text-danger"> {{ $errors->first('department') }} </p> 
             @endif

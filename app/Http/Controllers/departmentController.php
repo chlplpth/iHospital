@@ -13,8 +13,8 @@ class departmentController extends Controller
 {
     //store department from admin.addDepartment
     public function addDepartment(Request $request){
-    	$department = new department($request->all());
-        $department->save();
-        return redirect('/addDepartment');
+    	$input = $request->all();
+    	department::create($input);
+        return redirect('/');
     }
 }

@@ -121,7 +121,8 @@ class userController extends Controller
     //get list of doctor in department
     public function getDoctorList(Request $request)
     {
-    	$department = $request->departmentId;
+    	
+        $department = $request->departmentId;
     	$doctors = doctor::getDoctorList($department);
 
         //if(sizeof($doctors)==0) echo "not found";
@@ -133,12 +134,12 @@ class userController extends Controller
     public function searchDoctor(Request $request)
     {
     	$department = $request->input('department');
+        echo $department;
         $doctor = $request->input('doctor');
-        $users = doctor::searchDoctor($department, $doctor);
+        $doctors = doctor::searchDoctor($department, $doctor);
 
-        // if(sizeof($users)==0) echo "not found";
-        // else echo"found";
-		//return view('doctor.search',compact($doctors));
+       
+		return view('patient.doctorListSearch')->with('doctors',$doctors);
     }
     
     public function searchPatient(Request $request)

@@ -73,6 +73,7 @@ Route::get('doctorScheduleByStaff', function() {
 Route::get('doctorList', function () {
     return view('patient/doctorList');
 });
+Route::post('doctorList','userController@searchDoctor');
 
 Route::get('addStaffByStaff', function() {
     return view('staff/addStaffByStaff');
@@ -109,10 +110,12 @@ Route::get('mainAdmin', function () {
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
+Route::post('/addDepartment','departmentController@addDepartment');
 
 Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
+Route::post('addMedicine','medicineController@addMedicine');
 
 Route::get('/addStaffByAdmin', function () {
     return view('admin/addStaffByAdmin');
@@ -370,10 +373,10 @@ Route::get('/test', function () {
 // ================= Patient ==================
 Route::post('/editProfile', 'SmurfController@editProfileValidate');
 Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-Route::post('/doctorList', 'SmurfController@doctorListValidate');
+//Route::post('/doctorList', 'SmurfController@doctorListValidate');
 // ================= Admin ====================
-Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
+//Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
+//Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
 Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
 Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
 // ================= Nurse ====================
