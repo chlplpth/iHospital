@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class DoctorListRequest extends Request
+class DoctorScheduleByNurseRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,15 @@ class DoctorListRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required',
-            'department' => 'in:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21',
-            'sub' =>    'required_if:name,required | 
-                            required_if:department.in:1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21'
-
+            'doctor' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'กรุณาระบุชื่อแพทย์',
-            'department.in' => 'กรุณาระบุแผนก',
+            'doctor.required' => 'กรุณาระบุชื่อ / รหัสผู้ป่วย',
+            
         ];
     }
 }

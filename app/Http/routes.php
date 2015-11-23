@@ -66,16 +66,8 @@ Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
 
-Route::get('importDoctorSchedule', function() {
-    return view('staff/importDoctorSchedule');
-});
-
 Route::get('doctorScheduleByStaff', function() {
     return view('staff/doctorScheduleByStaff');
-});
-
-Route::get('addPatient', function() {
-	return view('staff/addPatient');
 });
 
 Route::get('doctorList', function () {
@@ -99,15 +91,11 @@ Route::get('searchDoctorScheduleByStaff', function() {
 });
 
 Route::get('createAppointment', function() {
-	return view('patient/createAppointment');
+    return view('patient/createAppointment');
 });
 
 Route::get('editProfile', function() {
-	return view('patient/editProfile');
-});
-
-Route::get('patientProfile', function() {
-	return view('patient/patientProfile');
+    return view('patient/editProfile');
 });
 
 Route::get('patientAppointmentSchedule', function() {
@@ -212,14 +200,64 @@ Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
 
+// ================= PATIENT =================
+
+Route::get('patientProfile', 'userController@viewMyProfilePatient');
+Route::get('editProfile', 'userController@editMyProfilePatientShow');
+Route::post('editProfile', 'userController@editMyProfilePatientStore');
+
+// ================= DOCTOR =================
+
+
+
+// ================= STAFF =================
+
+Route::get('/addPatient', function() {
+    return view('staff.addPatient');
+});
+Route::post('/addPatient', 'userController@addPatient');
+
+Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
+Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
+
+Route::get('/importDoctorSchedule/', function() {
+    return view('staff.importDoctorSchedule');
+});
+Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
+Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
+
+// ================= ADMIN =================
+
+Route::post('/addDepartment', 'departmentController@addDepartment');
+
+// ================= AUTHENTICATE =================
+
 Route::get('/', 'Auth\AuthController@getMainPage');
 Route::get('/logout', 'Auth\AuthController@logout');
 
 Route::post('/login', 'Auth\AuthController@authenticate');
-Route::post('/register', 'Auth\AuthController@register');
+Route::post('/register', 'userController@checkPatientStatus');
+Route::post('/registerOld', 'userController@registerOldPatient');
+Route::post('/registerNew', 'userController@registerNewPatient');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
 Route::get('/testModel', 'Auth\AuthController@testModel');
+
+
+Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
+Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGet');
+Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
+
+
+Route::get('/testSearch', function() {
+    return view('testSearch');
+});
+Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
+Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
+// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
+// Route::post('/editProfile', 'SmurfController@editProfileValidate');
+// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+// Route::post('/doctorList', 'SmurfController@doctorListValidate');
 
 Route::get('/pdf', function(){
     $data = [
@@ -329,14 +367,13 @@ Route::get('/test', function () {
     return view('doctor/showDiagnosisHistoryPdf',$data);
 });
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
-Route::post('/editProfile', 'SmurfController@editProfileValidate');
-Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-Route::post('/doctorList', 'SmurfController@doctorListValidate');
-Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
-Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
-Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
-
+// Route::post('/editProfile', 'SmurfController@editProfileValidate');
+// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+// Route::post('/doctorList', 'SmurfController@doctorListValidate');
+// Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
+// Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
+// Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
+// Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
 
 
 
@@ -353,6 +390,9 @@ Route::get('/confirmAppointmentEmail', 'emailController@confirmAppointmentEmail'
 // Route::post('/editPatientProfile', 'userController@editPatientProfile');
 // Route::post('/addHospitalStaff', 'userController@addHospitalStaff');
 // Route::post('/registerOld', 'userController@registerOldPatient');
+
+// Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
+
 // //Route::post('/createAppointment', 'appointmentController@createAppointmentStore');
 
 // Route::post('/editAppointment', 'appointmentController@editAppointmentStore');
@@ -365,5 +405,3 @@ Route::get('/confirmAppointmentEmail', 'emailController@confirmAppointmentEmail'
 // Route::post('/cancelApp', 'appointmentController@cancelAppointment');
 
 // Route::post('/viewAppointment', 'appointmentController@viewDoctorAppointment');
-
-
