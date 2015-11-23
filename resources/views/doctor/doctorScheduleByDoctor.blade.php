@@ -90,7 +90,7 @@
             </div>
             <div class="modal-footer">
               <div type="button" class="btn btn-default" data-dismiss="modal">ปิด</div>
-              <!-- {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!} -->
+              {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!}
             </div>
           </div>
         </div>
