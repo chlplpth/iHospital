@@ -13,7 +13,7 @@
 			<div class="form-group row">
 				<div class="col-xs-1"></div>
 				<div class="col-xs-10">
-					<table class="table table-bordered" id="appointmentTable" style = "text-align:center;">
+					<table class="table table-bordered">
 						<thead >
 							<tr>
 								<th style="width: 8%; text-align:center;">วัน/เดือน/ปี</th>

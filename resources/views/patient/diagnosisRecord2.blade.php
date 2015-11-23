@@ -6,7 +6,7 @@
 
 <div class="panel panel-default">
 	<div class="panel-heading">
-		<h3 class="panel-title">ประวัติการรักษา วันที่ : </h3>
+		<h3 class="panel-title">ประวัติการรักษา</h3>
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
@@ -34,54 +34,57 @@
 				</div>
 				<br><br>
 			</div>
-				<div class="row">
-					<div class="col-md-4"><span class ="header">แพทย์ : </span>ชลัมพล 
-					</div>
-					<div class="col-md-8"><span class ="header">แผนก : </span>โปเกม่อนวิทยา
-					</div>
+			<div class="row">
+				<div class="col-md-4"><span class ="header">แพทย์ : </span>ชลัมพล 
 				</div>
-				<br>
-
-				<div class ="row">
-					<div class ="col-md-4">
-						<span class ="header">วันที่รับการตรวจ : </span>19/11/2015 
-					</div>
-					<div class ="col-md-8">
-						<span class ="header">เวลา : </span>9.00 น. -12.00 น. 
-					</div>
+				<div class="col-md-8"><span class ="header">แผนก : </span>โปเกม่อนวิทยา
 				</div>
-
-				<br>
-				<span class ="header">อาการ : </span>ง่อยแดก
-				<br><br>
-				<span class ="header">คำแนะนำจาแพทย์ : </span>กินยาแล้วไปนอนพัก 
-				<br><br>
-				<span class ="header">รายการยา</span> 
-				<br><br>
-				<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
-						<thead >
-							<tr>
-								<th style="width: 33%; text-align:center;">ชื่อยา</th>
-								<th style="width: 16%; text-align:center;">จำนวน</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>paracetamol</td>
-								<td>2 เม็ด</td>
-							</tr>
-							<tr>
-								<td>ยาบ้า</td>
-								<td>5 แผง</td>
-								</tr>
-
-						</tbody>
-					</table>		
-				{!! Form::submit('ส่งออก', ["class" => "btn btn-warning"]) !!}
-				<br><br>
 			</div>
-		</div>
+			<br>
 
+			<div class ="row">
+				<div class ="col-md-4">
+					<span class ="header">วันที่รับการตรวจ : </span>19/11/2015 
+				</div>
+				<div class ="col-md-8">
+					<span class ="header">เวลา : </span>9.00 น. -12.00 น. 
+				</div>
+			</div>
+
+			<br>
+			<span class ="header">อาการ : </span>ง่อยแดก
+			<br><br>
+			<span class ="header">คำแนะนำจาแพทย์ : </span>กินยาแล้วไปนอนพัก 
+			<br><br>
+			<span class ="header">รายการยา</span> 
+			<br><br>
+			<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
+				<thead >
+					<tr>
+						<th style="width: 33%; text-align:center;">ชื่อยา</th>
+						<th style="width: 16%; text-align:center;">จำนวน</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>paracetamol</td>
+						<td>2 เม็ด</td>
+					</tr>
+					<tr>
+						<td>ยาบ้า</td>
+						<td>5 แผง</td>
+					</tr>
+
+				</tbody>
+			</table>	
+			<div class ="row">
+				<div class ="col-md-5"></div>
+			<div class ="col-md-2">{!! Form::submit('ส่งออก', ["class" => "btn btn-warning"]) !!}</div>
+			<div class ="col-md-5"></div>
+			<br><br>
+		</div>
 	</div>
+
+</div>
 </div>
 @stop
