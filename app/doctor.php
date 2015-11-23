@@ -47,6 +47,22 @@ class doctor extends Model
         return $doctor;
     }
 
+    public static function searchDoctorByName($keyword)
+    {
+        $doctors = DB::table('users')
+                     ->join('doctor','users.userId','=','doctor.userId')
+                     ->join('hospitalStaff','users.userId','=','hospitalStaff.userId')
+                     ->where(function ($query) use($keyword){
+                             $query->where('name', 'like', '%'.$keyword.'%')
+                                   ->orwhere('surname', 'like', '%'.$keyword.'%')
+                                   ->orwhere('staffId', 'like', '%'.$keyword.'%');
+                            })
+                     ->where('userType',"doctor");
+                     //->get();   
+
+        return $doctors;
+    }
+
     public static function searchDoctor($department, $doctor)
     {
         $doctors = DB::table('users')
@@ -60,8 +76,8 @@ class doctor extends Model
                                 $query->where('name', 'like', '%'.$doctor.'%')
                                       ->orwhere('surname', 'like', '%'.$doctor.'%');
                             })
-                     ->where('userType',"doctor")
-                     ->get();   
+                     ->where('userType',"doctor");
+                     //->get();   
 
         return $doctors;
     }

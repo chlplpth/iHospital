@@ -69,4 +69,13 @@ class schedule extends Model
 
         return $schedules;
     }
+
+    public static function storeSchedule($scheduleLogId, $diagDate, $diagTime)
+    {
+        $schedule = new Schedule;
+        $schedule->scheduleLogId = $scheduleLogId;
+        $schedule->diagDate = $diagDate;
+        $schedule->diagTime = $diagTime;
+        $schedule->save();
+    }
 }

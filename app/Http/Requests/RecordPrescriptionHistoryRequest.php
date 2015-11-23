@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class SearchPatientProfileByNurseRequest extends Request
+class RecordPrescriptionHistoryRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -34,7 +34,7 @@ class SearchPatientProfileByNurseRequest extends Request
     {
         return [
             'patient.required' => 'กรุณาระบุชื่อหรือรหัสผู้ป่วย',
-            'patient.alpha_num' => 'รหัสผู้ป่วยต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
+            'patient.alpha_num' => 'รหัสผู้ป่วยต้องเป็นตัวอักษรหรือตัวเลข',
         ];
     }
 }

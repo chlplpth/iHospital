@@ -11,24 +11,25 @@
   </div>
   <div class="panel-body form" style="margin-left:40px; margin-top:10px;">
     <div class="form-group row">
-      <div class="col-xs-2 adminLabel">{!! Form::label('id', 'รหัสยา'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('id', '', ["class" => "form-control", 'placeholder'=>'240200']) !!}
+
+      <div class="col-xs-2">{!! Form::label('id', 'รหัสยา'); !!}</div>
+      <div class="col-xs-3">{!! Form::text('medicineId', '', ["class" => "form-control", 'placeholder'=>'240200']) !!}
         @if( $errors->has('id') )<br>
         <p class="text-danger"> {{ $errors->first('id') }} </p> 
         @endif
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-xs-2 adminLabel">{!! Form::label('name', 'ชื่อยา'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'Paracetamol']) !!}
-        @if( $errors->has('name') )<br>
+      <div class="col-xs-2">{!! Form::label('name', 'ชื่อยา'); !!}</div>
+      <div class="col-xs-3">{!! Form::text('medicineName', '', ["class" => "form-control", 'placeholder'=>'Paracetamol']) !!}
+      @if( $errors->has('name') )<br>
         <p class="text-danger"> {{ $errors->first('name') }} </p> 
         @endif
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-xs-2 adminLabel">{!! Form::label('type', 'ประเภทยา'); !!}</div>
-      <div class="col-xs-3">{!! Form::select('type', array('eat' => 'รับประทาน', 'touch' => 'ทา', 'drop' => 'หยอด', 'spray' => 'พ่น', 'injection' => 'ฉีด','other' => 'อื่นๆ'), null, ["class" => "form-control"]) !!}</div>
+      <div class="col-xs-2">{!! Form::label('type', 'ประเภทยา'); !!}</div>
+      <div class="col-xs-3">{!! Form::select('medicineType', array('eat' => 'รับประทาน', 'touch' => 'ทา', 'drop' => 'หยอด', 'spray' => 'พ่น', 'injection' => 'ฉีด','other' => 'อื่นๆ'), null, ["class" => "form-control"]) !!}</div>
     </div>
     <div class="form-group row">
       <div class="col-xs-2 adminLabel">{!! Form::label('description', 'รายละเอียดยา'); !!}</div>

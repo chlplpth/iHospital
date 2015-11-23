@@ -94,9 +94,6 @@ Route::get('createAppointment', function() {
     return view('patient/createAppointment');
 });
 
-Route::get('editProfile', function() {
-    return view('patient/editProfile');
-});
 
 Route::get('patientAppointmentSchedule', function() {
     return view('patient/patientAppointmentSchedule');
@@ -109,10 +106,14 @@ Route::get('mainAdmin', function () {
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
+Route::post('/addDepartment','departmentController@addController');
 
+// addmedicine
 Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
+Route::post('/addMedicine','medicineController@addmedicine');
+
 
 Route::get('/addStaffByAdmin', function () {
     return view('admin/addStaffByAdmin');
@@ -367,13 +368,29 @@ Route::get('/test', function () {
     return view('doctor/showDiagnosisHistoryPdf',$data);
 });
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
-// Route::post('/editProfile', 'SmurfController@editProfileValidate');
-// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-// Route::post('/doctorList', 'SmurfController@doctorListValidate');
-// Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-// Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
-// Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
-// Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
+// ================= Patient ==================
+Route::post('/editProfile', 'SmurfController@editProfileValidate');
+Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
+Route::post('/doctorList', 'SmurfController@doctorListValidate');
+// ================= Admin ====================
+Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
+Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
+Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
+Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
+// ================= Nurse ====================
+Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
+Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
+Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
+// ================= Phar ====================
+Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
+// ================= Doctor ====================
+Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
+Route::post('/diagnose', 'SmurfController@diagnoseValidate');
+// ================= Doctor ====================
+Route::post('/addPatient', 'SmurfController@addPatientValidate');
+
+
+
 
 
 

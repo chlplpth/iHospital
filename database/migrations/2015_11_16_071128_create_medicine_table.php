@@ -13,10 +13,15 @@ class CreateMedicineTable extends Migration
     public function up()
     {
         Schema::create('medicine', function (Blueprint $table) {
-            $table->increments('medicineId');
+            $table->string('medicineId');
             $table->string('medicineName');
-            $table->string('Description');
+            $table->string('description');
+            $table->string('medicineType');
             $table->timestamps();
+        });
+
+        Schema::table('medicine', function (Blueprint $table) {
+            $table->primary('medicineId');
         });
     }
 

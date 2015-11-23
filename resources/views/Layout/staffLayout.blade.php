@@ -25,6 +25,12 @@
   <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
   <script src="{{asset('js/locales/bootstrap-datepicker.th.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker-thai.js')}}"></script>
+
+  <!--Selectize search -->
+   <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
+
+  <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script>
+  <script type="text/javascript" src='{{ asset("selectize/js/standalone/selectize.min.js") }}'></script>
 </head>
 
 <body>
@@ -81,6 +87,11 @@
         @yield('content')
       </div>
     </div>
-  </div>
-</body>
+  </body>
+
+  <script>
+     var root = '{{url("/")}}';
+  </script>
+
+  <script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
 </html>
