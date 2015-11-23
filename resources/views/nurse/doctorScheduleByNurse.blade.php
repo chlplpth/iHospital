@@ -205,6 +205,8 @@
       </script>
     </div>
   </div>
+</div>
 
-  {!! Form::close() !!}
+{!! Form::close() !!}
+
 @stop
