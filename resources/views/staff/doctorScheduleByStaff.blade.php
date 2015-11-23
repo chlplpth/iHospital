@@ -127,9 +127,17 @@
           }
         );
 
-        //Javascript - Check for Label
-        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning']; // Example array of Doctor Schedule
+
+
+        //================ Javascript - Check for Label ================//
+
+        // Example array of Doctor Schedule
+        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning'];
+
+        // Array for edit, send to Database
         var arrEdited = arrDoctorSchedule;
+
+        // Function to make Label
         var checkForLabel = function() {
           $('.cal-cell').each(function() {
             var date = $('[data-cal-date]', this).data('cal-date');
@@ -156,6 +164,7 @@
         };
         checkForLabel();
 
+        //============ Javascript - Click next/prev month ============//
         $('.btn-group div[data-calendar-nav]').each(function() {
           var $this = $(this);
           if($this.prop('id') === 'dateLabel') return;
@@ -165,7 +174,7 @@
           });
         });
 
-        // Javascript - Modal
+        //============ Javascript - Make modal ============//
         $('.cal-cell').click(function() {
           var date = $('[data-cal-date]', this).data('cal-date');
           var day = date.substring(8,10);
@@ -192,7 +201,7 @@
         //   }
         // });
 
-        // Javascript - Edit mode
+        //============ Javascript - Edit mode in modal ============//
         var editMode = false;
         var edited = false;
         $('#editBtn').click(function() {
