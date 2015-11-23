@@ -13,10 +13,10 @@
       <form role="form">
         <div class="form-group row">
           <div class="col-xs-8">
-            <div class="btn-group" style="margin-bottom: 10px; width:100%;">
-              <div style="height:100%; width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
-              <div style="height:100%; width:60%;" class="btn btn-primary btn-lg skyColor" id="dateLabel">date</div>
-              <div style="height:100%; width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next"><span class="glyphicon glyphicon-chevron-right"></span></div>
+            <div class="btn-group" style="margin-bottom: 10px; width:100%; height:100%;">
+              <div style="width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="prev"><span class="glyphicon glyphicon-chevron-left"></span></div>
+              <div style="height:100%;  width:60%;" class="btn btn-primary btn-lg skyColor" id="dateLabel">date</div>
+              <div style="width:20%;" class="btn btn-primary btn-lg skyColor" data-calendar-nav="next"><span class="glyphicon glyphicon-chevron-right"></span></div>
             </div><div id="calendar" class="cal-context"></div>
           </div>
           <div class="col-xs-4">
@@ -76,7 +76,7 @@
                         <br>
                         <tr>
                           <th style="width: 5%; text-align:center;">ลำดับ</th>
-                          <th style="width: 15%;text-align:center;">ช่วงเวลา</th>
+                          <th style="width: 15%; text-align:center;">ช่วงเวลา</th>
                           <th style="width: 25%; text-align:center;">รหัสผู้ป่วย</th>
                           <th style="width: 25%; text-align:center;">ชื่อผู้ป่วย</th>
                           <th style="width: 25%; text-align:center;">นามสกุลผู้ป่วย</th>
