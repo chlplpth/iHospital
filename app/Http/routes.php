@@ -175,7 +175,7 @@ Route::get('/showDiagnosisHistory', function () {
 
 Route::get('sendemail', function () {
     $data = array(
-        'name' => "Smurf",
+        'name' => "Noon",
     );
     
 
