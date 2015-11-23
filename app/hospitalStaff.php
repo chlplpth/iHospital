@@ -15,6 +15,7 @@ class hospitalStaff extends Model
      * @var string
      */
     protected $table = 'hospitalStaff';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -30,6 +31,7 @@ class hospitalStaff extends Model
     {
         return $this->belongsTo('App\User', 'userId');
     }
+
 
     public static function searchStaff($keyword)
     {
@@ -67,5 +69,9 @@ class hospitalStaff extends Model
         //$hospitalStaff->delete();
         $user = user::where('userId',$input)->first();
         $user -> delete();
+    public function department()
+    {
+        return $this->belongsTo('App\department', 'departmentId');
+
     }
 }

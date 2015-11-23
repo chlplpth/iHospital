@@ -25,7 +25,8 @@
   cursor: pointer;
 }
 .datepicker-inline {
-  width: 220px;
+  /*width: 220px;*/
+  width: 100%;
 }
 .datepicker.datepicker-rtl {
   direction: rtl;

@@ -11,8 +11,12 @@
   		</div>
   		<div class="panel-body form" style="margin-left:40px; margin-top:10px;">
   			<div class="form-group row">
-          <label class="col-xs-2" style="margin-top: 7px;">ชื่อแผนก</label>
+
+          <label class="col-xs-1" style="margin-top: 7px;">ชื่อแผนก</label>
           <div class="col-xs-3">{!! Form::text('departmentName', '', ['class' => 'form-control', 'placeholder'=>'จักษุวิทยา']) !!}
+
+         
+
             @if( $errors->has('department') )<br>
                 <p class="text-danger"> {{ $errors->first('department') }} </p> 
             @endif

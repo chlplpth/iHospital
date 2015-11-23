@@ -14,7 +14,8 @@ class CreateStaffTable extends Migration
     {
         Schema::create('staff', function (Blueprint $table) {
             $table->integer('userId')->unsigned();
-            $table->boolean('grant');
+            $table->boolean('grant')->default(false);
+            $table->timestamps();
         });
 
         Schema::table('staff', function (Blueprint $table) {

@@ -16,6 +16,7 @@ class doctor extends Model
      * @var string
      */
     protected $table = 'doctor';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +33,10 @@ class doctor extends Model
         return $this->belongsTo('App\User', 'userId');
     }
 
+    public function department()
+    {
+        return $this->belongsTo('App\hospitalStaff', 'userId');
+    }
 
     //-------------------------  function  -----------------------------------
     

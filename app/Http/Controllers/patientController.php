@@ -8,6 +8,9 @@ use App\patient;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\appointment;
+use App\prescription;
+
 use Carbon;
 
 class patientController extends Controller
@@ -24,5 +27,16 @@ class patientController extends Controller
     	// Patient::create($input);
         Patient::createNewPatient($input);
     	return redirect('');
+    }
+
+    public function showPrescription(Request $request)
+    {
+        $userId = $request['userId'];
+        $prescription = users::where('userId',$userId)
+                        ->join('appointment','users.userId','=','appointment.patientId')
+                        ->join('prescription','appointment.appointmentId','=','prescription.appointmentId')
+                        ->last();
+
+        //return view('pharmacist.recordPrescriptionHistory',compact('prescription'));
     }
 }

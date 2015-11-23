@@ -21,7 +21,8 @@ class medicine extends Model
      */
     protected $fillable = [
         'medicineId',
-        'medicineName',
-        'description',
-        'medicineType'];
-}
+        'medicinName',
+        'medicineType',
+        'decsription'];
+
+ 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="panel p<!-- anel-default">
+<div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ลงทะเบียน</h3>
 	</div>
@@ -149,10 +149,10 @@
 						</div>
 						<div class="col-md-4 drugAllergy" >
 							{!!Form::label('drugAllergy','ชื่อยา');!!}&nbsp
-							{!!Form::text('drugAllergy[]','',['class'=>'textbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
+							{!!Form::text('drugAllergy[]','',['class'=>'textbox drugTextbox','placeholder'=>'ยา','onkeyup'=>'enableAddDrugButton()']);!!}
 						</div>
 						<div class="col-md-7" >
-							{!!Form::button('เพิ่ม',['class'=>'btn btn-default addDrug','onclick'=>'addDrug()','disabled'=>'true']);!!}
+							{!!Form::button('เพิ่ม',['class'=>'btn btn-success','onclick'=>'addDrug()','disabled'=>'true','id'=>'addDrugButton']);!!}
 
 						</div>
 					</div>

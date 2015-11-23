@@ -12,6 +12,7 @@ use App\patient;
 use App\hospitalStaff;
 use App\user;
 use App\department;
+use App\staff;
 
 use Hash;
 
@@ -200,6 +201,43 @@ class userController extends Controller
         // return redirect('/');
     }
 
+    public function addHospitalStaffByAdminShow()
+    {
+        $department = department::all();
+        $depList = array();
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+        return view('admin/addStaffByAdmin')->with('department', $depList);
+    }
+
+    public function addHospitalStaffByAdminStore(Request $request)
+    {
+        $input = $request->all();
+        $user = User::create($input);
+
+        $hospitalStaff = $input;
+        $hospitalStaff['userId'] = $user->userId;
+        $hospitalStaff = hospitalStaff::create($hospitalStaff); 
+        if($input['userType']=="doctor")
+        {
+            $doctor = $input;
+            $doctor['userId'] = $user->userId;
+            $doctor = doctor::create($doctor); 
+        }
+
+        if($input['userType']=="staff")
+        {
+            $staff = $input;
+            $staff['userId'] = $user->userId;
+            $staff = staff::create($staff);
+        }
+
+        // send set password e-mail
+        return redirect('/');
+    }
+
     public function addHospitalStaffShow()
     {  
         $department = department::all();
@@ -228,6 +266,13 @@ class userController extends Controller
             $doctor = $input;
             $doctor['userId'] = $user->userId;
             $doctor = doctor::create($doctor); 
+        }
+
+        if($input['userType']=="staff")
+        {
+            $staff = $input;
+            $staff['userId'] = $user->userId;
+            $staff = staff::create($staff);
         }
 
         // send set password e-mail

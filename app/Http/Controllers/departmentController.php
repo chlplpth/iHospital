@@ -15,6 +15,7 @@ class departmentController extends Controller
     public function addDepartment(Request $request){
     	$input = $request->all();
     	department::create($input);
-        return redirect('/');
+        return redirect('/addDepartment');
+
     }
 }
