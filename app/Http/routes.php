@@ -46,6 +46,7 @@ Route::get('diagnosisRecord', function() {
     return view('patient/diagnosisRecord');
 });
 
+
 Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
 });
@@ -139,7 +140,6 @@ Route::get('/recordPrescriptionHistory', function () {
 Route::get('/searchPatientProfileByPharmacist', function () {
     return view('pharmacist/searchPatientProfileByPharmacist');
 });
-
 Route::get('/mainNurse', function () {
     return view('nurse/mainNurse');
 });
@@ -147,6 +147,10 @@ Route::get('/mainNurse', function () {
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
+Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
+Route::post('/recordPatientGeneralDetail2','diagnosisRecordController@recordPatientGeneralDetail2');
+
+
 
 Route::get('/searchPatientProfileByNurse', function () {
     return view('nurse/searchPatientProfileByNurse');
@@ -161,8 +165,11 @@ Route::get('/mainDoctor', function () {
 });
 
 Route::get('/diagnose', function () {
-    return view('doctor/diagnose');
+    return view('doctor/recordDiag');
 });
+Route::post('/diagnose','diagnosisRecordController@recordDiagnosis');
+Route::post('/searchMedicine','medicineController@searchMedicine');
+Route::post('/addMedicineToPrescription','diagnosisRecordController@addMedicineToPrescription');
 
 Route::get('/showDiagnosisHistory', function () {
     return view('doctor/showDiagnosisHistory');
