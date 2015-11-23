@@ -3,11 +3,12 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
+{!! Form::open(array('url' => '/manageStaffByStaff')) !!}
 
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">จัดการบุคลากร</h3>
+
   </div>
   <div class="panel-body">
     <div id="manageStaffForm">
@@ -15,6 +16,7 @@
         <div class="col-xs-2">{!! Form::label('keyword', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
         <div class="col-xs-3">{!! Form::text('keyword', '', ['class' => 'form-control', 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
         <div class="col-xs-1">{!! Form::submit('ค้นหา', ['class' => 'btn btn-info']) !!}</div>
+
       </div>
       <div class="form-group row">
         <div class="col-xs-2">{!! Form::label('id', 'รหัสบุคลากร'); !!}</div>
@@ -93,6 +95,15 @@
     </div>
   </div>
 </div>
+
+</div>
+<div class="form-group row">
+   <div class="col-xs-10"><button style="float: right;" type="button">{!! Form::submit('ยืนยัน', ["class" => "btn btn-danger"]) !!}</button></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal -->
 <div class="modal fade" id="myModal" role="dialog">
   <div class="modal-dialog">
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\appointment;
 use App\schedule;
+use App\department;
 
 class appointmentController extends Controller
 {
@@ -82,5 +83,21 @@ class appointmentController extends Controller
         $appointmentId = $request->appointmentId;
         $appointment = appointment::where('appointmentId',$appointmentId)->first();
         $appointment ->delete(); 
+    }
+
+    public function createAppointmentShow()
+    {
+        // department name
+        $department = department::all();
+        $depList = array();
+        $depList['0'] = 'ไม่ระบุ';
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+
+        $doctor = department::getDoctorArray();
+
+        return view('patient/createAppointment')->with('department', $depList)->with('doctor', $doctor);
     }
 }

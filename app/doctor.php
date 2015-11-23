@@ -16,6 +16,7 @@ class doctor extends Model
      * @var string
      */
     protected $table = 'doctor';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -32,6 +33,10 @@ class doctor extends Model
         return $this->belongsTo('App\User', 'userId');
     }
 
+    public function department()
+    {
+        return $this->belongsTo('App\hospitalStaff', 'userId');
+    }
 
     //-------------------------  function  -----------------------------------
     
@@ -76,8 +81,11 @@ class doctor extends Model
                                 $query->where('name', 'like', '%'.$doctor.'%')
                                       ->orwhere('surname', 'like', '%'.$doctor.'%');
                             })
-                     ->where('userType',"doctor");
-                     //->get();   
+                     ->where('userType',"doctor")
+                     ->join('department','hospitalStaff.departmentId','=','department.departmentId')
+                     ->get();   
+
+          
 
         return $doctors;
     }
