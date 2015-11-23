@@ -25,8 +25,8 @@ function isNumber(evt) {
 	return true;
 }
 function addDrug(){
-	$('.drugAllergy').append("<br><br><input class='textbox drugTextbox' placeholder='ยา' onkeyup='enableAddDrugButton()' name='drugAllergy[]' type='text' value='' style ='margin-left:40px'>");
-	$('.addDrug').prop('disabled', true);
+	$('.drugAllergy').append("<br><br><input class='textbox drugTextbox' placeholder='ยา' onkeyup='enableAddDrugButton()' name='drugAllergy[]' type='text' value='' style ='margin-left:60px'>");
+	$('#addDrugButton').prop('disabled', true);
 }
 function enableAddDrugButton(){
 	var x = document.getElementsByName("drugAllergy[]");
@@ -37,8 +37,8 @@ function enableAddDrugButton(){
 		}
 	}
 	if(check==1){
-		$('.addDrug').prop('disabled', true);
+		$('#addDrugButton').prop('disabled', true);
 	}else{
-		$('.addDrug').prop('disabled', false);
+		$('#addDrugButton').prop('disabled', false);
 	}
 }

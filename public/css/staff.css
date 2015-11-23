@@ -1,94 +1,38 @@
-.centerBtn {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-}
-#staffLabel {
-  margin-top: 7px;
-}
-.checkboxEditTime {
-  font-weight: normal;
-  width: 40%;
-}
-div.starInSchedule {
-  position: relative;
-}
-span.starInSchedule {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-}
-.skyColor {block
-  /*background-color: #95b6fd;*/
-  color: #000000;
-  background-color: #b4cdff;
-  border-color: #b4cdff;
-}
-.moveDown2 {
-  margin-top: 2%;
-}
-/*#calendar {
-  font-size: 150%;
-}*/
-table, table thead tr th {
-  text-align: center;
-}
-table, table tbody tr th {
-  text-align: center;
-}
-.btn-success {
-  float: right;
-}
-#appointmentTable {
-  width: 100%;  
-}
-#diagnosisTable {
-  width: 50%;  
-}
-
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
-#infoBtnColor {
-  color: #fff !important;
-  background-color: #5bc0de !important;
-  border-color: #46b8da !important;
-  font-weight: normal;
-}
-#dangerBtnColor {
-  color: #fff !important;
-  background-color: #d9534f !important;
-  border-color: #d43f3a !important;
-  font-weight: normal;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-}
 .panel-title{
-  font-size: 20px;
-  font-weight: bold;
-  color: gray;
+	font-size: 30px;
+	font-weight: bold;
+	color: gray;
 }
 .textbox{background-color: #fff;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 
-  height: 34px;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857143;
-  color: #555;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 20px;
+	line-height: 1.42857143;
+	color: #555;
 }
-.textbox:focus {
-  border-color: #66afe9;
-  outline: 0;
-  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
-          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+table,th{
+  text-align: center;
+}
+.glyphicon-calendar{
+	font-size:15px;
+}
+#bloodTypeField{
+	margin-top:-3px;
+}
+#birthDateField{
+	margin-top:-5px;
 }
 .textbox50px{
 	width :50px;
@@ -105,38 +49,57 @@ table, table tbody tr th {
 .textbox200px{
 	width :200px;
 }
-.edit{
-	float: right;
-}
 .textbox70px{
   width :70px;
 }
 .textbox150px{
   width :150px;
 }
+#addDrugButton{
+	margin-left: 20px;
+}
+#registerButton{
+	float:right;
+}
 #createAppointmentForm{
+	margin-top: 10px;
   margin-left: 40px;
-}
-#symptomArea{
-  width: 260px;  
-}
-#editProfile{
-  margin-left: 40px;
-}
-#editButton{
-  margin-right: 130px;
 }
 #searchButton{
-  margin-left: -80px;
+	margin-left: 20px;
 }
-.header{
-  font-weight: bold;
+#createAppointmentButton{
+	margin-left: 20px;
 }
-#searchButton2 {
-  margin-top: -2px;
-  margin-left: 20px;
+#appointmentTable{
+	margin-left: 40px;
 }
-.smallPanel {
-  background: transparent !important;
-  color: black;
+#importScheduleForm{
+	margin-left: 40px;
+	margin-top: 10px;
+}
+#addStaffForm{
+	margin-left:40px;
+	margin-top:10px;
+}
+#addStaffButton{
+	margin-left: 30px;
+}
+#manageStaffPanel{
+	width:500px;
+}
+#manageStaffForm{
+	margin-left:40px;
+	margin-top:10px;
+}
+#editStaffButton{
+width: 180px;
+}
+#deleteStaffButton{
+width: 180px;
+}
+.modal-header{
+  background-color: red;
+  color:white;
+  border-radius: 5px;
 }
