@@ -35,6 +35,7 @@ class hospitalStaff extends Model
 
     public static function searchStaff($keyword)
     {
+       
         $users = hospitalStaff::join('users','hospitalStaff.userId','=','users.userId')
                      ->where(function ($query) use($keyword){
                              $query->where('name', 'like', '%'.$keyword.'%')

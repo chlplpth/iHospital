@@ -11,8 +11,8 @@
 </div>
 <div class="panel-body" style="margin-top:2%; margin-left: 40px;">
     <div class="form-group row">
-      <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
-      <div class="col-xs-3">{!! Form::text('keyword', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
+      <div class="col-xs-2" id="staffLabel">{!! Form::label('staff', 'ชื่อหรือรหัสบุคลากร'); !!}</div>
+      <div class="col-xs-3">{!! Form::text('staff', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสบุคลากร']) !!}</div>
       <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
   </div>
 
