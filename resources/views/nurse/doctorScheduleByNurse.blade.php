@@ -222,10 +222,12 @@
 
         // pass value using hidden
         $(':checkbox').click(function() {
-          $('#hiddenMr').prop('value', $('#ckb1').checked);
-          $('#hiddenAf').prop('value', $('#ckb2').checked);
+          $('#hiddenMr').prop('value', $('#ckb1').prop('checked'));
+          $('#hiddenAf').prop('value', $('#ckb2').prop('checked'));
           $('#hiddenDate').prop('value', dateOfModal);
-          console.log('AAAAAA');
+          console.log($('#hiddenMr'));
+          console.log($('#hiddenAf'));
+          console.log($('#hiddenDate'));
         });
         
         // set default when Modal is cloesed
