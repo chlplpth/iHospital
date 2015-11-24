@@ -13,6 +13,10 @@
 
 // Route::get('/home', 'appointmentController@home');
 
+Route::get('/rescheduleAppointmentByStaff', function () {
+    return view('staff/rescheduleAppointmentByStaff');
+});
+
 Route::get('/index', function () {
     return view('index');
 });

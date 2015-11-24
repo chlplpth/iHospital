@@ -38,7 +38,7 @@ class diagnosisRecordController extends Controller
     	$input = $request->all();
         $patient = physicalRecord::recordPatientGeneralDetail($input);
 
-    	return view('nurse.recordPatientGeneralDetail2')->with('patient',$patient);
+    	return view('nurse\recordPatientGeneralDetail2')->with('patient',$patient);
     }
 
     public function recordPatientGeneralDetail2(Request $request)
@@ -46,7 +46,7 @@ class diagnosisRecordController extends Controller
         $input = $request->all();
         $physicalRecord = physicalRecord::recordPatientGeneralDetail2($input);
 
-        return redirect('nurse.recordPatientGeneralDetail');
+        return redirect('/');
     }
     
 

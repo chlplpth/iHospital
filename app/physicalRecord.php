@@ -23,7 +23,7 @@ class physicalRecord extends Model
      */
     protected $fillable = [
         'nurseId',
-        'diagRecordId',
+        'appointmentId',
         'weight',
         'height',
         'sysBlood',
