@@ -125,9 +125,9 @@
 		        				<label class="col-xs-4" id="doctorLabel">-</label>
 		        			</div>
 
-		        			<!-- {!! Form::open(array('url' => '/addMedicineToPrescription')) !!}
+		        			{!! Form::open(array('url' => '/addMedicineToPrescription')) !!}
 		        			{!! Form::hidden('diagnosisRecord', $diagnosisRecord->diagRecordId) !!}
-		        			{!! Form::hidden('medicine', $medicine->medicineId) !!} -->
+		        			{!! Form::hidden('medicine', $medicine->medicineId) !!}
 
 		        			<div class="form-group row">
 		        				<label class="col-xs-3" id="doctorLabel">จำนวน</label>
