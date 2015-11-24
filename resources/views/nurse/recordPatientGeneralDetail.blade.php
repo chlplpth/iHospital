@@ -14,11 +14,7 @@
 			<div class="form-group row">
 				<div class="col-xs-2" id="nurseLabel">{!! Form::label('hospitalId', 'รหัสผู้ป่วย') !!}</div>
 
-				<div class="col-xs-3">{!! Form::text('patient', '', ["class" => "form-control", 'placeholder' => '12345678']) !!}
-					@if( $errors->has('patient') )<br>
-					<p class="text-danger"> {{ $errors->first('patient') }} </p> 
-					@endif
-				</div>
+				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสแพทย์" class="form-control"></select></div>
 				<div class="col-xs-7">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
 			
 						{!! Form::close() !!}
@@ -117,3 +113,7 @@
 {!! Form::close() !!}
 @stop
 
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/nurseRecord';
+</script>

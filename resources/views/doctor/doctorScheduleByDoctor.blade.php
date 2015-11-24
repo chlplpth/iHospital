@@ -3,14 +3,12 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-  {!! Form::open(array('url' => 'foo/bar')) !!}
 
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">ตารางการออกตรวจ</h3>
     </div>
     <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
-      <form role="form">
         <div class="form-group row">
           <div class="col-xs-8" style="">
             <div class="btn-group btn-group-lg" style="margin-bottom: 10px; width:100%; height:54px;">
@@ -36,7 +34,7 @@
               <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-              <form  style="margin-top:2%; margin-left: 2%; margin-right: 2%; border:0px;">
+              {!! Form::open(array('url' => '/updateScheduleByDoctor')) !!}
                 <div class="form-group row">
                   <br>
                   <div class="col-xs-4">
@@ -86,7 +84,6 @@
                     </table>
                   </div>
                 </div>
-              </form>
             </div>
             <div class="modal-footer">
               <div type="button" class="btn btn-default" data-dismiss="modal">ปิด</div>
@@ -95,10 +92,10 @@
               {!! Form::hidden('hiddenDate', '-1', ['id'=>'date']); !!}
               {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!}
             </div>
+            {!! Form::close() !!}
           </div>
         </div>
       </div>
-    </form>
 
 
       <script type="text/javascript">
@@ -115,7 +112,7 @@
 
         //================ Javascript - Check for Label ================//
         // Example array of Doctor Schedule
-        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning'];
+        var arrDoctorSchedule = {!! $calendar2 !!};
 
         // Array for edit, send to Database
         var arrEdited = arrDoctorSchedule;
@@ -244,5 +241,4 @@
     </div>
   </div>
 
-  {!! Form::close() !!}
 @stop

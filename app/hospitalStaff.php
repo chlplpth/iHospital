@@ -69,6 +69,8 @@ class hospitalStaff extends Model
         //$hospitalStaff->delete();
         $user = user::where('userId',$input)->first();
         $user -> delete();
+    }
+    
     public function department()
     {
         return $this->belongsTo('App\department', 'departmentId');

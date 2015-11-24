@@ -19,9 +19,19 @@ class searchController extends Controller
     	
     // }
 
+    public function searchCreateAppointmentStaff()
+    {
+        return $this->searchPatient('createAppointmentForPatient');
+    }
+
     public function searchImportDoctorSchedule()
     {
     	return $this->searchDoctor('importDoctorSchedule');
+    }
+
+    public function searchForNurseRecord()
+    {
+        return $this->searchPatient('recordPatientGeneralDetail2');
     }
 
     public function searchDoctor($url)
@@ -40,16 +50,16 @@ class searchController extends Controller
 		));
     }
 
-    public function searchPatient()
+    public function searchPatient($url)
     {
     	$query = e(Input::get('q',''));
     	if(!$query && $query == '') return Response::json(array(), 400);
 
     	$patient = patient::searchPatient($query)
     						->take(5)
-    						->get(array('patient.userId', 'hospitalNo', 'name', 'surname'));
+    						->get(array('patient.userId', 'name', 'surname'));
 		$patient = $this->appendClass($patient, 'patient');
-		$patient = $this->appendUrl($patient, '/');
+		$patient = $this->appendUrl($patient, $url);
 
 		return Response::json(array(
 			'data' => $patient

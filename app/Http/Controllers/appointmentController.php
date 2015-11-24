@@ -86,6 +86,12 @@ class appointmentController extends Controller
         
     }
 
+    public function createAppointmentStaff($userId)
+    {
+        $patient = users::where('userId', $userId)->first();
+        return view('staff.createAppointmentForPatient2')->with('patient', $patient);
+    }
+
     
     public function cancelAppointment($appId)
     {

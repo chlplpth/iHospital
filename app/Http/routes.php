@@ -147,8 +147,10 @@ Route::get('/mainNurse', function () {
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
+Route::get('/recordPatientGeneralDetail2', function () {
+    return view('nurse/recordPatientGeneralDetail2');
+});
 Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
-Route::post('/recordPatientGeneralDetail2','diagnosisRecordController@recordPatientGeneralDetail2');
 
 
 
@@ -231,7 +233,8 @@ Route::post('/confirmDelayAppointment', 'appointmentController@delayAppointmentS
 
 // ================= DOCTOR =================
 
-
+Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
+Route::post('/updateScheduleByDoctor', 'scheduleController@updateScheduleDoctor');
 
 // ================= STAFF =================
 
@@ -248,6 +251,11 @@ Route::get('/importDoctorSchedule/', function() {
 });
 Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
 Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
+Route::post('/createAppointmentForPatient/{userId}', 'appointmentController@createAppointmentStaff');
+
+// ================= nurse =================
+
+Route::get('/recordPatientGeneralDetail2/{userId}', 'physicalRecordController@showPatient');
 
 // ================= ADMIN =================
 
@@ -279,6 +287,8 @@ Route::get('/testSearch', function() {
 });
 Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
 Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
+Route::get('/search/staffCreateAppointment', 'searchController@searchCreateAppointmentStaff');
+Route::get('/search/nurseRecord', 'searchController@searchForNurseRecord');
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 // Route::post('/editProfile', 'SmurfController@editProfileValidate');
 // Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');

@@ -26,4 +26,19 @@ class scheduleController extends Controller
     	$input['staffId'] = Auth::user()->userId;
     	$scheduleLog = scheduleLog::importSchedule($input);
     }
+
+    public function showScheduleDoctor()
+    {
+        $userId = Auth::user()->userId;
+        $dt = schedule::getDateTimeToCalendar($userId);
+        return view('doctor.doctorScheduleByDoctor')->with('calendar2', $dt);
+    }
+
+    public function updateScheduleDoctor(Request $request)
+    {
+        // $input = $request;
+        // echo $input['hiddenDate'] . '<br>';
+        // echo $input['hiddenMr'] . '<br>';
+        // echo $input['hiddenAf'] . '<br>';
+    }
 }

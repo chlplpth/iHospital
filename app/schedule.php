@@ -79,17 +79,35 @@ class schedule extends Model
         return $appointments;
     }
 
-    public function getDiagTimeAttribute($value)
+    public static function getDateTimeToCalendar($userId)
     {
-        if($value == 'morning')
+        $query = schedule::join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+                           ->where('scheduleLog.doctorId', $userId)
+                           ->get();
+
+        $arr = [];
+        foreach($query as $schedule)
         {
-            return '9.30 น. - 11.30 น.';
+            $st = "'" . $schedule['diagDate'] . '-' . $schedule['diagTime'] . "'";
+            array_push($arr, $st);
         }
-        else
-        {
-            return '13.00 น. - 15.30 น.';
-        }
+        
+        $textArr = implode(", ", $arr);
+        $textArr = "[" . $textArr . "]";
+        return $textArr;
     }
+
+    // public function getDiagTimeAttribute($value)
+    // {
+    //     if($value == 'morning')
+    //     {
+    //         return '9.30 น. - 11.30 น.';
+    //     }
+    //     else
+    //     {
+    //         return '13.00 น. - 15.30 น.';
+    //     }
+    // }
 
     public static function storeSchedule($scheduleLogId, $diagDate, $diagTime)
     {
