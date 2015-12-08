@@ -10,7 +10,7 @@
 <select id="searchbox" name="q" placeholder="Search patients..." class="form-control"></select>
 <br><br>
 
-test test
+{{ $user->patient->hospitalNo }}
 
 </body>
 <script>

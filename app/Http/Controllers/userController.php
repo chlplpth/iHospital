@@ -198,7 +198,7 @@ class userController extends Controller
     	$user->save();
 
         patient::createNewPatient($user->userId, $request->all());
-        // return redirect('/');
+        return redirect('/');
     }
 
     public function addHospitalStaffByAdminShow()

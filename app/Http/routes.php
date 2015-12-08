@@ -260,6 +260,11 @@ Route::post('/createAppointmentForPatient/{userId}', 'appointmentController@crea
 // ================= nurse =================
 
 Route::get('/recordPatientGeneralDetail2/{userId}', 'physicalRecordController@showPatient');
+Route::get('/recordPatientGeneralDetail', function () {
+    return view('nurse/recordPatientGeneralDetail');
+});
+// Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
+Route::post('/recordPatientGeneralDetail2','diagnosisRecordController@recordPatientGeneralDetail2');
 
 // ================= ADMIN =================
 
@@ -286,6 +291,7 @@ Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGe
 Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 
+Route::get('/testmodel', 'departmentController@testfunc');
 Route::get('/testSearch', function() {
     return view('testSearch');
 });

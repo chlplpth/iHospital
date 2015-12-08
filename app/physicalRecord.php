@@ -42,9 +42,10 @@ class physicalRecord extends Model
     {
         $patientId = $input['patient'];
         $appointment = appointment::where('patientId',$patientId)->first();
-        $input['appointmentId'] = $appointment->appointmentId; 
-        $input['nurseId'] = 5;
-        $physicalRecord = physicalRecord::create($input);
-        return $physicalRecord;
+        // $input['appointmentId'] = $appointment->appointmentId; 
+        $input['nurseId'] = 16;
+        $input['appointmentId'] = 12;
+        // $physicalRecord = physicalRecord::create($input);
+        // return $physicalRecord;
     }
 }

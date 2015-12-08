@@ -109,7 +109,12 @@ class patient extends Model
     //----------------- relationship --------------------
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'userId', 'userId');
+    }
+
+    public function name()
+    {
+        return $this->user->name;
     }
 
     //----------------- function --------------------

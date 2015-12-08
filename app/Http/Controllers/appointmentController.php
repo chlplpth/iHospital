@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use Mail;
 use DB;
 use Auth;
 use Session;
@@ -40,7 +41,33 @@ class appointmentController extends Controller
         $input = $request->all();
         $input['patientId'] = Auth::user()->userId;
         $appointments = appointment::createAppointment($input);
+        $this->confirmAppointmentEmail();
         return redirect('/');
+    }
+
+    public function confirmAppointmentEmail()
+    {
+        $data = [
+        'name'=>'KamKam',
+        'surname'=>'DekDee',
+        'HN'=>'HN-00000000',
+        'date'=>'1/1/58',
+        'time'=>'9.00 น.',
+        'doctor'=>'Dr.KamDekDee',
+        'department'=>'computer',
+        'place'=>'ตึก 4 ชั้น 17',
+        'tel'=>'(+66) 0-2218-6956-7',
+        'remark'=>'-',
+        'link'=>'www.google.com',
+        'email'=>'tonkung49031@gmail.com'
+        ];
+
+        Mail::send('emails.confirmAppointmentEmail', $data, function ($message) use ($data) {
+            $message->from('ihospital.se@gmail.com', 'iHospital');
+            $message->to($data['email']);
+            $message->subject('[iHosptal] You \'ve made an appointment!');
+        });
+        return "success";
     }
 
     public function delayAppointmentShow($appId)

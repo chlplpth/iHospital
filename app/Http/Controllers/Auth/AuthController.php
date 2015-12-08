@@ -110,7 +110,7 @@ class AuthController extends Controller
         if($user != null)
         {
             $verifyCode = $user->genVerifyCode();
-            echo $verifyCode;
+            echo '<a href="' . url('/') . '/changePassword/' . $verifyCode . '"> change password </a>';
         }
     }
 

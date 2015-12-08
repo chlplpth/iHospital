@@ -34,7 +34,6 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $fillable = [
-        'userId',
         'username',
         'password',
         'name',

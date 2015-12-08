@@ -5,6 +5,7 @@
 @section('content')
 {!! Form::open(array('url' => '/recordPatientGeneralDetail2')) !!}
 {!! Form::hidden ('patient',$patient->userId)!!}
+{!! Form::hidden ('appointmentId', 12)!!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
