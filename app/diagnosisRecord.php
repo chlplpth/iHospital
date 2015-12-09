@@ -12,19 +12,7 @@ class diagnosisRecord extends Model
      * @var string
      */
     protected $table = 'diagnosisRecord';
-
-    // -------- relationship ------------
-    public function appointment(){
-        return $this->belongsTo('App\appointment');
-    }
-
-    public function doctor(){
-        return $this->hasManyThrough('App\appointment', 'App\doctor');
-    }
-
-    public function patient(){
-        return $this->hasManyThrough('App\appointment'. 'App\patient');
-    }
+    protected $primaryKey = 'diagRecordId';
 
     /**
      * The attributes that are mass assignable.
@@ -37,6 +25,22 @@ class diagnosisRecord extends Model
         'doctorAdvice',
         'diagnonsisDetail',
         'physicalRecordId'];
+
+    //-------------------------------  relationship -------------------------------
+    public function appointment()
+    {
+        return $this->belongsTo('App\appointment', 'appointmentId', 'appointmentId');
+    }
+
+    public function patient()
+    {
+        return $this->appointment->patient;
+    }
+
+    public function doctor()
+    {
+        return $this->appointment->doctor;
+    }
 
     //------------------   function -------------------------
 

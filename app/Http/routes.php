@@ -283,7 +283,6 @@ Route::post('/registerOld', 'userController@registerOldPatient');
 Route::post('/registerNew', 'userController@registerNewPatient');
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
-Route::get('/testModel', 'Auth\AuthController@testModel');
 
 
 Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
@@ -291,7 +290,7 @@ Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGe
 Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 
-Route::get('/testmodel', 'departmentController@testfunc');
+Route::get('/testmodel', 'testController@testfunc');
 Route::get('/testSearch', function() {
     return view('testSearch');
 });

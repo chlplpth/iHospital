@@ -16,6 +16,7 @@ class schedule extends Model
      * @var string
      */
     protected $table = 'schedule';
+    protected $primaryKey = 'scheduleId';
 
     /**
      * The attributes that are mass assignable.
@@ -27,7 +28,46 @@ class schedule extends Model
         'diagDate',
         'diagTime'];
 
-    
+    //-------------------------------  relationships -------------------------------
+    public function appointments()
+    {
+        return $this->hasMany('App\appointment', 'scheduleId', 'scheduleId');
+    }
+
+    public function scheduleLog()
+    {
+        return $this->belongsTo('App\scheduleLog', 'scheduleLogId', 'scheduleLogId');
+    }
+
+    public function doctor()
+    {
+        return $this->scheduleLog->doctor;
+    }
+
+    //---------------------------------  accessors ---------------------------------
+
+    public function getDiagDateAttribute($value)
+    {
+        return 'วันที่ ' . $value . '  ';
+        // return $value;
+    }
+
+    //-----------------------------------  scope -----------------------------------
+
+    public function scopeDiagDateInRange($query, $year, $month)
+    {
+        $firstDate = Carbon::create($year, $month, 1, 0, 0, 0);
+        return $query->whereRaw('MONTH(diagDate) = ?', [$firstDate->month])
+                     ->whereRaw('YEAR(diagDate) = ?', [$firstDate->year]);
+    }
+
+    //---------------------------------  functions ---------------------------------x
+
+    public function patientsAmount()
+    {
+        return $this->appointments->count();
+    }
+
     //-------------------------  function ---------------------
     public static function importSchedule($request)
     {

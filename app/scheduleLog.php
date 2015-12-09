@@ -28,6 +28,15 @@ class scheduleLog extends Model
         'diagDateList'];
 
 
+    //-------------------------------  relationship -------------------------------
+
+    public function doctor()
+    {
+        return $this->belongsTo('App\doctor', 'doctorId', 'userId');
+    }
+
+    //---------------------------------  function ---------------------------------
+
     public static function importSchedule($request)
     {
         $morning = scheduleLog::getDiagDateString($request['m']);

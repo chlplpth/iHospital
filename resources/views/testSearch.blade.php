@@ -10,7 +10,31 @@
 <select id="searchbox" name="q" placeholder="Search patients..." class="form-control"></select>
 <br><br>
 
-{{ $user->patient->hospitalNo }}
+
+<!-- @foreach($patient->appointments as $app)
+	{{ $app->diagnosisRecord['doctorAdvice'] }} <br>
+@endforeach -->
+
+<!-- @foreach($doctor->schedules as $schedule)
+	{{ $schedule['diagDate'] }} <br>
+@endforeach -->
+
+<!-- @foreach($sc->appointments as $app)
+	{{ $app->patient->fullname() }} <br>
+@endforeach
+ -->
+
+<!-- @foreach($department->doctors as $doc)
+	{{ $doc->fullname() }} <br>
+@endforeach -->
+
+<!-- {{ $ap->diagnosisRecord['doctorAdvice'] }}
+{{ $ap->physicalRecord['weight'] }} <br>
+@foreach($ap->prescription->medicines as $med)
+	{{ $med->medicineName }} <br>
+@endforeach -->
+
+{{ $sc->patientsAmount() }}
 
 </body>
 <script>

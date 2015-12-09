@@ -86,10 +86,10 @@
 	                    <table class="table table-bordered" style = "text-align:center;">
 	                        <thead >
 	                            <tr>
-	                                <th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+	                                <th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
 	                                <th style="width: 20%; text-align:center;">เวลา</th>
-	                                <th style="width: 20%; text-align:center;">แผนก</th>
-	                                <th style="width: 40%; text-align:center;">แพทย์</th>
+	                                <th style="width: 17%; text-align:center;">แผนก</th>
+	                                <th style="width: 37%; text-align:center;">แพทย์</th>
 	                                <th style="width: 10%; text-align:center;">นัดหมาย</th>
 	                            </tr>
 	                        </thead>

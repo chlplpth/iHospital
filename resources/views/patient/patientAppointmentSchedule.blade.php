@@ -27,12 +27,12 @@
 						<tbody>
 							@foreach($appointments as $app)
 							<tr>
-								<td>{{ $app->diagDate }}</td>
+								<td>{{ 20/11/2558 }}</td>
 								<td>{{ $app->diagTime }}</td>
 								<td>{{ $app->departmentName }}</td>
 								<td>{{ $app->name }} {{ $app->surname }}</td>
-								<td ><a href="{{ url('/rescheduleAppointment/' . $app->appointmentId ) }}" class="btn btn-warning">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancelAppointment/' . $app->appointmentId ) }}" class="btn btn-danger">ยกเลิก</a></td>
+								<td ><a href="{{ url('/rescheduleAppointment') }}" class="btn btn-warning">เลื่อน</a></td>
+								<td ><a href="{{ url('/cancleAppointment') }}" class="btn btn-danger">ยกเลิก</a></td>
 							</tr>
 							@endforeach
 						</tbody>

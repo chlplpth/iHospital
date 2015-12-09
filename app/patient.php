@@ -16,6 +16,7 @@ class patient extends Model
      * @var string
      */
     protected $table = 'patient';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -106,16 +107,34 @@ class patient extends Model
         return $arr;
     }
 
-    //----------------- relationship --------------------
+    // -------------------------------  relationship -------------------------------
+    
     public function user()
     {
         return $this->belongsTo('App\User', 'userId', 'userId');
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\appointment', 'patientId', 'userId');
     }
 
     public function name()
     {
         return $this->user->name;
     }
+
+    public function surname()
+    {
+        return $this->user->surname;
+    }
+
+    public function fullname()
+    {
+        return $this->name() . ' ' . $this->surname();
+    }
+
+    // -----------------------------------------------------------------------------
 
     //----------------- function --------------------
     

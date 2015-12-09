@@ -16,7 +16,7 @@
 				<h3 class="panel-title">ประวัติส่วนตัว</h3>
 			</div>
 			<div class="panel-body">
-				<div id = "bio">
+				<div id = "editProfileForm">
 					{!! Form::label('hospitalNo', 'รหัสประจำตัวผู้ป่วย'); !!} &nbsp
 					{!! Form::text('hospitalNo', $user->patient->hospitalNo, ['class'=>'textbox textbox100px','disabled'=>'true' ]); !!} 
 					<br><br>

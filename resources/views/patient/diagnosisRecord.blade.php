@@ -27,14 +27,14 @@
 								<td>20/11/2558</td>
 								<td>จักษุวิทยา</td>
 								<td>กรภพ</td>
-								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning centerBtn linkBtn">ดู</a></td>
+								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning">ดู</a></td>
 							</tr>
 
 							<tr>
 								<td>21/11/2558</td>
 								<td>กุมารเวชรศาสตร์</td>
 								<td>ญานิกา</td>
-								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning centerBtn linkBtn">ดู</a></td>
+								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning">ดู</a></td>
 							</tr>
 
 						</tbody>

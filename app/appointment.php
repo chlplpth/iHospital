@@ -17,6 +17,7 @@ class appointment extends Model
      * @var string
      */
     protected $table = 'appointment';
+    protected $primaryKey = 'appointmentId';
 
     /**
      * The attributes that are mass assignable.
@@ -30,19 +31,37 @@ class appointment extends Model
         'symptom',
         'walkIn'];
 
-    //relationship
+    //-------------------------------  relationship -------------------------------
 
     public function patient()
     {
-        return $this->belongsTo('App\Patient','patientId');
+        return $this->belongsTo('App\patient','patientId', 'userId');
+    }
+    public function schedule()
+    {
+        return $this->belongsTo('App\schedule', 'scheduleId', 'scheduleId');
     }
     public function doctor()
     {
-        return $this->belongsTo('App\Doctor','doctorId');
+        return $this->schedule->scheduleLog->doctor;
     }
+    // public function doctor()
+    // {
+    //     return $this->belongsTo('App\Doctor','doctorId');
+    // }
     public function diagnosisRecord()
     {
-        return $this->belongsTo('App\DiagnosisRecord','diagRecordId');
+        return $this->hasOne('App\diagnosisRecord', 'appointmentId', 'appointmentId');
+    }
+
+    public function physicalRecord()
+    {
+        return $this->hasOne('App\physicalRecord', 'appointmentId', 'appointmentId');
+    }
+
+    public function prescription()
+    {
+        return $this->hasOne('App\prescription', 'appointmentId', 'appointmentId');
     }
 
     //-------------------------------  function --------------------------

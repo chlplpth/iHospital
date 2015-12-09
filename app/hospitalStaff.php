@@ -29,7 +29,12 @@ class hospitalStaff extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'userId');
+        return $this->belongsTo('App\User', 'userId', 'userId');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\department', 'departmentId', 'departmentId');
     }
 
 
@@ -70,11 +75,5 @@ class hospitalStaff extends Model
         //$hospitalStaff->delete();
         $user = user::where('userId',$input)->first();
         $user -> delete();
-    }
-
-    public function department()
-    {
-        return $this->belongsTo('App\department', 'departmentId');
-
     }
 }

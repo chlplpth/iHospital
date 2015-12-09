@@ -12,6 +12,7 @@ class prescription extends Model
      * @var string
      */
     protected $table = 'prescription';
+    protected $primaryKey = 'prescriptionId';
 
     /**
      * The attributes that are mass assignable.
@@ -23,9 +24,14 @@ class prescription extends Model
         'pharmacistId'];
 
     //--------------- relationship
-
-    public function diagRecord()
+    public function appointment()
     {
-        return $this->belongsTo('App\diagnosisRecord', 'diagRecordId');
+        $this->belongsTo('App\appointment', 'appointmentId', 'appointmentId');
     }
+
+    public function medicines()
+    {
+        return $this->hasMany('App\medicinePrescription', 'prescriptionId', 'prescriptionId');
+    }
+    
 }

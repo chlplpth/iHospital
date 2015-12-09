@@ -20,6 +20,17 @@ class department extends Model
      *
      * @var array
      */
+    protected $fillable = [
+        'departmentName',
+        'departmentBuilding',
+        'departmentTel'];
+
+    // -------------------------------  relationship -------------------------------
+    public function doctors()
+    {
+        // return $this->hasManyThrough('App\hospitalStaff', 'App\doctor', 'userId', 'departmentId');
+        return $this->hasManyThrough('App\doctor', 'App\hospitalStaff', 'departmentId', 'userId');
+    }
 
     public static function getDoctorArray()
     {
@@ -43,15 +54,4 @@ class department extends Model
                     ->get();
         return $doctor;
     }
-
-    // ------------- relationships ------------- 
-    public function doctor()
-    {
-        return $this->hasManyThrough('App\hospitalStaff', 'App\doctor', 'userId', 'departmentId');
-    }
-
-    protected $fillable = [
-        'departmentName',
-        'departmentBuilding',
-        'departmentTel'];
 }

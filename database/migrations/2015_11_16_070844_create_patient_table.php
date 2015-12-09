@@ -18,11 +18,11 @@ class CreatePatientTable extends Migration
             $table->integer('hospitalNo');
             $table->string('telMobile');
             $table->string('telHome');
-            $table->string('address');
+            $table->text('address');
             $table->enum('sex', ['M', 'F']);
             $table->string('dateOfBirth');
             $table->enum('bloodGroup', ['A', 'AB', 'B', 'O']);
-            $table->string('drugAllergy');
+            $table->text('drugAllergy');
             $table->string('citizenNo');
             $table->timestamps();
         });
