@@ -36,7 +36,6 @@
 								<td>ญานิกา</td>
 								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning">ดู</a></td>
 							</tr>
-
 						</tbody>
 					</table>
 				</div>

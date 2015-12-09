@@ -13,7 +13,7 @@
 		<div class= "row">
 			<div class="col-md-1">
 			</div>
-			{!! Form::hidden('verifyCode', $verifyCode) !!}
+			
 			<div class="col-md-4" >
 				{!!Form::label('newPassword','รหัสผ่านใหม่');!!}&nbsp
 				{!!Form::password('newPassword',['class'=>'textbox','placeholder'=>'รหัสผ่านใหม่']);!!}

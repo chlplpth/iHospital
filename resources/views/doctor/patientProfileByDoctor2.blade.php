@@ -1,9 +1,9 @@
-@extends('layout/patientLayout')
+@extends('layout/doctorLayout')
 @section('css')
-<link href="{{asset('css/patient.css')}}" rel="stylesheet">
+<link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => '/diagRecordPdf')) !!}
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ประวัติการรักษา</h3>
@@ -53,25 +53,6 @@
 			<br>
 			<span class="bold">อาการ : </span>ไข้สูง
 			<br><br>
-			<div class ="row">
-				<div class ="col-md-4">
-					<span class="bold">น้ำหนัก : </span>50 kg
-				</div>
-				<div class ="col-md-4">
-					<span class="bold">ส่วนสูง : </span>150 cm 
-				</div>
-			</div>
-			<br>
-			<div class ="row">
-				<div class ="col-md-4">
-					<span class="bold">ความดันโลหิต : </span>20/100
-				</div>
-				<div class ="col-md-4">
-					<span class="bold">อัตราการเต้นของหัวใจ : </span>70 bpm 
-				</div>
-			</div>
-
-			<br>
 			<span class="bold">คำแนะนำจากแพทย์ : </span>กินยาแล้วพัก
 			<br><br>
 			<span class="bold">รายการยา</span> 
@@ -90,12 +71,7 @@
 					</tr>
 				</tbody>
 			</table>	
-			<div class ="row">
-				<div class ="col-md-5"></div>
-				<div class ="col-md-2"><a href = "{{ url('/diagRecordPdf') }}" class="btn btn-warning" >ส่งออก</a></div>
-				<div class ="col-md-5"></div>
-				<br><br>
-			</div>
+			
 		</div>
 	</div>
 </div>

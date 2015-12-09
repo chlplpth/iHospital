@@ -52,25 +52,25 @@
 					@endif
 				</div>
 
-				<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-defalut", "id" => "searchButton"]) !!}
+				<div class="col-md-3">{!! Form::submit('ค้นหา', ["class" => "btn btn-info", "id" => "searchButton"]) !!}
 				</div>
 			</div>
 			<br><br>
 			<div id="doctorData">
-				@if(isset($d))
-					@foreach ($doctors as $d) 
-					<div class="row">
-						<div class="col-md-3">
-								{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
-						</div>
-						<div class="col-md-6"><br>
-							<span class ="bold">ชื่อแพทย์ : </span> {{ $d->name }} <br><br>
-							<span class ="bold">แผนก : </span>{{ $d->departmentName }} <br><br>
-							<span class ="bold">ความเชี่ยวชาญและประสบการณ์ : </span>{{$d->proficiency}}<br><br>
-						</div>
+				@if(isset($doctors))
+				@foreach ($doctors as $d) 
+				<div class="row">
+					<div class="col-md-3">
+							{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
 					</div>
-					<br>
-					@endforeach
+					<div class="col-md-6"><br>
+						<span class ="bold">ชื่อแพทย์ : </span> {{ $d->name }} <br><br>
+						<span class ="bold">แผนก : </span>{{ $d->departmentName }} <br><br>
+						<span class ="bold">ความเชี่ยวชาญและประสบการณ์ : </span>{{$d->proficiency}}<br><br>
+					</div>
+				</div>
+				<br>
+				@endforeach
 				@endif
 			</div>
 		</div>

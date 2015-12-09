@@ -13,7 +13,7 @@
 	</div>
 
 	<div class="panel-body" style="margin:2%;">
-		<a style="float:right;" class="btn btn-success btn-lg" id="pdf" data-toggle="tooltip" title="โหลด PDF" data-placement="bottom"><span class="glyphicon glyphicon-print"></span>&nbspPDF</a>
+		<a href = "{{ url('/showDiagnosisHistoryPdf') }}" class="btn btn-warning" style = "float:right;" >ส่งออก<span class="glyphicon glyphicon-print"></span>&nbspPDF</a>
 		<form role="form">
 			<div class="form-group row">
 				<div class="col-xs-9" style="float: top;">

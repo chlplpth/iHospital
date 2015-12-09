@@ -24,7 +24,7 @@
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7"></div>
 	              <div class="col-xs-3">
-	              	<a href="{{ url('/showDiagnosisHistory') }}" class="btn btn-success centerBtn linkBtn">ค้นหา></a>
+	              	<a href="{{ url('/showDiagnosisHistory') }}" class="btn btn-info">ค้นหา</a>
 	            </div>
         	</form>
   		</div>

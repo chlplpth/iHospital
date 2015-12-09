@@ -9,19 +9,10 @@
 		<h3 class="panel-title">ยืนยันการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "confirmAppointmentwindow">
-			<div class ="row">
-				<div class ="col-md-3">
-					<span class ="bold">รหัสผู้ป่วย : </span>HN-00000001 
-				</div>
-				<div class ="col-md-3">
-					<span class ="bold">ชื่อผู้ป่วย : </span> ชลธร
-				</div>	
-				<div class ="col-md-6">
-					<span class ="bold">นามสกุลผู้ป่วย : </span>ขวัญขจรเกียรติ
-				</div>
-			</div>
-			<br>
+		<div id = "confirmAppointmentwindow">	
+			<span class ="bold">รหัสผู้ป่วย : </span>HN-00000001 <br><br>
+			<span class ="bold">ผู้ป่วย : </span> ชลธร ขวัญขจรเกียรติ
+			<br><br>
 			<div class ="row">
 				<div class ="col-md-3">
 					<span class ="bold">แผนก : </span>จักษุวิทยา 

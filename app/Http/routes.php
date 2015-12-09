@@ -13,10 +13,6 @@
 
 // Route::get('/home', 'appointmentController@home');
 
-Route::get('/rescheduleAppointmentByStaff', function () {
-    return view('staff/rescheduleAppointmentByStaff');
-});
-
 Route::get('/index', function () {
     return view('index');
 });
@@ -50,7 +46,6 @@ Route::get('diagnosisRecord', function() {
     return view('patient/diagnosisRecord');
 });
 
-
 Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
 });
@@ -71,6 +66,10 @@ Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
 
+Route::get('manageAppointmentForPatient2', function() {
+    return view('staff/manageAppointmentForPatient2');
+});
+
 Route::get('doctorScheduleByStaff', function() {
     return view('staff/doctorScheduleByStaff');
 });
@@ -86,6 +85,9 @@ Route::get('addStaffByStaff', function() {
 
 Route::get('manageStaffByStaff', function() {
     return view('staff/manageStaffByStaff');
+});
+Route::get('manageStaffByStaff2', function() {
+    return view('staff/manageStaffByStaff2');
 });
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
@@ -140,10 +142,14 @@ Route::get('/mainPharmacist', function () {
 Route::get('/recordPrescriptionHistory', function () {
     return view('pharmacist/recordPrescriptionHistory');
 });
+Route::get('/recordPrescriptionHistory2', function () {
+    return view('pharmacist/recordPrescriptionHistory2');
+});
 
 Route::get('/searchPatientProfileByPharmacist', function () {
     return view('pharmacist/searchPatientProfileByPharmacist');
 });
+
 Route::get('/mainNurse', function () {
     return view('nurse/mainNurse');
 });
@@ -151,16 +157,17 @@ Route::get('/mainNurse', function () {
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
-Route::get('/recordPatientGeneralDetail2', function () {
-    return view('nurse/recordPatientGeneralDetail2');
-});
-Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
-
-
 
 Route::get('/searchPatientProfileByNurse', function () {
     return view('nurse/searchPatientProfileByNurse');
 });
+Route::get('/patientProfileByDoctor', function () {
+    return view('doctor/patientProfileByDoctor');
+});
+Route::get('/patientProfileByDoctor2', function () {
+    return view('doctor/patientProfileByDoctor2');
+});
+
 
 Route::get('/doctorScheduleByNurse', function () {
     return view('nurse/doctorScheduleByNurse');
@@ -171,16 +178,16 @@ Route::get('/mainDoctor', function () {
 });
 
 Route::get('/diagnose', function () {
-    return view('doctor/recordDiag');
+    return view('doctor/diagnose');
 });
-Route::post('/diagnose','diagnosisRecordController@recordDiagnosis');
-Route::post('/searchMedicine','medicineController@searchMedicine');
-Route::post('/addMedicineToPrescription','diagnosisRecordController@addMedicineToPrescription');
 
 Route::get('/showDiagnosisHistory', function () {
     return view('doctor/showDiagnosisHistory');
 });
 
+Route::get('/createAppointmentForPatient2', function(){
+    return view('staff/createAppointmentForPatient2');
+});
 Route::get('sendemail', function () {
     $data = array(
         'name' => "Noon",
@@ -230,15 +237,10 @@ Route::post('/createAppointment', 'appointmentController@createAppointmentReques
 Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
 Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
-Route::get('/cancelAppointment/{appId}', 'appointmentController@cancelAppointment');
-Route::get('/rescheduleAppointment/{appId}', 'appointmentController@delayAppointmentShow');
-Route::post('/rescheduleAppointment', 'appointmentController@delayAppointmentRequest');
-Route::post('/confirmDelayAppointment', 'appointmentController@delayAppointmentStore');
 
 // ================= DOCTOR =================
 
-Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
-Route::post('/updateScheduleByDoctor', 'scheduleController@updateScheduleDoctor');
+
 
 // ================= STAFF =================
 
@@ -255,16 +257,6 @@ Route::get('/importDoctorSchedule/', function() {
 });
 Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
 Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
-Route::post('/createAppointmentForPatient/{userId}', 'appointmentController@createAppointmentStaff');
-
-// ================= nurse =================
-
-Route::get('/recordPatientGeneralDetail2/{userId}', 'physicalRecordController@showPatient');
-Route::get('/recordPatientGeneralDetail', function () {
-    return view('nurse/recordPatientGeneralDetail');
-});
-// Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
-Route::post('/recordPatientGeneralDetail2','diagnosisRecordController@recordPatientGeneralDetail2');
 
 // ================= ADMIN =================
 
@@ -290,14 +282,13 @@ Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGe
 Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
 
 
-Route::get('/testmodel', 'testController@testfunc');
 Route::get('/testSearch', function() {
     return view('testSearch');
 });
 Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
 Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
-Route::get('/search/staffCreateAppointment', 'searchController@searchCreateAppointmentStaff');
-Route::get('/search/nurseRecord', 'searchController@searchForNurseRecord');
+
+Route::get('/testmodel', 'testController@testfunc');
 // ================= FOR SMURF CONTROLLER (VALIDATION) ============================
 // Route::post('/editProfile', 'SmurfController@editProfileValidate');
 // Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');

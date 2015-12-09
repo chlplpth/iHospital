@@ -22,13 +22,11 @@
 	line-height: 1.42857143;
 	color: #555;
 }
-#dateLabel {
-  font-family: 'superspace_regularregular';
-  font-size: 25px;
-  font-weight: bold;
+.bold{
+	font-weight: bold;
 }
 table,th{
-  text-align: center;
+	text-align: center;
 }
 .glyphicon-calendar{
 	font-size:15px;
@@ -55,10 +53,10 @@ table,th{
 	width :200px;
 }
 .textbox70px{
-  width :70px;
+	width :70px;
 }
 .textbox150px{
-  width :150px;
+	width :150px;
 }
 #addDrugButton{
 	margin-left: 20px;
@@ -68,10 +66,12 @@ table,th{
 }
 #createAppointmentForm{
 	margin-top: 10px;
-  margin-left: 40px;
+	margin-left: 40px;
 }
 #searchButton{
 	margin-left: 20px;
+	font-size: 15px;
+	margin-top: -1px;
 }
 #createAppointmentButton{
 	margin-left: 20px;
@@ -95,16 +95,30 @@ table,th{
 }
 #manageStaffForm{
 	margin-left:40px;
-	margin-top:10px;
+	margin-top:20px;
 }
 #editStaffButton{
-width: 180px;
+	width: 180px;
 }
 #deleteStaffButton{
-width: 180px;
+	width: 180px;
 }
 #modalHeader{
-  background-color: red;
-  color:white;
-  border-radius: 5px;
+	background-color: red;
+	color:white;
+	border-radius: 5px;
+}
+#manageAppointmentForm{
+	margin-left:40px;
+	margin-top:20px;
+}
+#importDoctorSchedule{
+	margin-left:40px;
+	margin-top:20px;
+}
+#submitManage{
+	width: 180px;
+}
+#confirmEdit{
+	width: 180px;
 }

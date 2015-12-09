@@ -1,39 +1,11 @@
-#dateLabel {
-  font-family: 'superspace_regularregular';
-  font-size: 25px;
-  font-weight: bold;
-}
-.centerBtn {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-}
-.linkBtn {
-  display: inline-block;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc
-}
-#doctorLabel {
-	margin-top: 7px;
-}
-.indent7 {
-	text-indent: 7px;
-}
 th {
 	text-align: center;
-}
-#buttonGroup {
-	float: right;
-}
-.btn-info {
-	float: right;
 }
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
 .panel-title{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: gray;
 }
@@ -54,4 +26,46 @@ table tr td {
 }
 table thead tr {
 	/*background: #c3e6cd;*/
+}
+#diagnosisForm{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#searchPatientButton{
+	font-size: 15px;
+	margin-top: -1px;
+}
+#addMed{
+	float:right;
+}
+.glyphicon-calendar{
+	font-size: 15px;
+}
+#nextAppointmentTime{
+
+}
+#medOther{
+	display: inline;
+	width:200px;
+}
+#searchPatientForm{
+
+}
+#searchPatientTextbox{
+	width:300px;
+}
+.bold{
+	font-weight: bold;
+}
+#diagnosisRecordWindow{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#patientProfile{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+label{
+	text-decoration: none;
+	font-weight: normal;
 }
