@@ -50,13 +50,19 @@ Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
 });
 
-Route::get('rescheduleAppointment', function() {
-    return view('patient/rescheduleAppointment');
-});
+// Route::get('rescheduleAppointment', function() {
+//     return view('patient/rescheduleAppointment');
+// });
 
-Route::get('confirmAppointment', function() {
-    return view('patient/confirmAppointment');
-});
+Route::get('rescheduleAppointment/{appId}', 'appointmentController@delayAppointmentShow');
+
+Route::post('rescheduleAppointmentRequest', 'appointmentController@delayAppointmentRequest');
+
+// Route::get('confirmAppointment', function() {
+//     return view('patient/confirmAppointment');
+// });
+
+Route::post('confirmReAppointment', 'appointmentController@confirmReAppointment');
 
 Route::get('cancelAppointment', function() {
     return view('patient/cancelAppointment');
@@ -237,6 +243,8 @@ Route::post('/createAppointment', 'appointmentController@createAppointmentReques
 Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
 Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
+
+Route::post('delayAppointment', 'appointmentController@delayAppointmentStore');
 
 // ================= DOCTOR =================
 

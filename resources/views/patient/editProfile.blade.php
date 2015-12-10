@@ -21,13 +21,13 @@
 					<br><br>
 					<div class="row">
 						<div class="col-md-4"> {!! Form::label('name', 'ชื่อจริง :'); !!} &nbsp
-							{!! Form::text('name', $user->name, ['class'=>'textbox']);!!} 
+							{!! Form::text('name', $patient->name(), ['class'=>'textbox']);!!} 
 							@if( $errors->has('name') )<br><br>
 							<p class="text-danger"> {{ $errors->first('name') }} </p> 
 							@endif
 						</div>
 						<div class="col-md-8">{!! Form::label('surname', 'นามสกุล :'); !!} &nbsp
-							{!! Form::text('surname', $user->surname, ['class'=>'textbox']); !!}
+							{!! Form::text('surname', $patient->surname(), ['class'=>'textbox']); !!}
 							@if( $errors->has('lastname') )<br><br>
 							<p class="text-danger"> {{ $errors->first('lastname') }} </p> 
 							@endif
@@ -36,13 +36,16 @@
 					<br>
 					<div class ="row">
 						<div class ="col-md-2">
-							<span class ="bold">เพศ : </span> หญิง
+							<span class ="bold">เพศ : </span> {{ $patient->sex }}
+							{!! Form::hidden('sex', $patient->sex) !!}
 						</div>
 						<div class ="col-md-2">
-							<span class ="bold">กรุ๊ปเลือด : </span> A
+							<span class ="bold">กรุ๊ปเลือด : </span> {{ $patient->bloodGroup }}
+							{!! Form::hidden('bloodGroup', $patient->bloodGroup) !!}
 						</div>	
 						<div class ="col-md-4">
-							<span class ="bold">วัน/เดือน/ปี เกิด : </span> 01/01/01
+							<span class ="bold">วัน/เดือน/ปี เกิด : </span> {{ $patient->dateOfBirth }}
+							{!! Form::hidden('dateOfBirth', $patient->dateOfBirth) !!}
 						</div>
 						<div class ="col-md-4"></div>
 					</div>
@@ -113,14 +116,14 @@
 					<div class ="row">
 						<div class ="col-md-4">
 							{!!Form::label('telHome','โทรศัพท์บ้าน :');!!}&nbsp;
-							{!!Form::text('telHome','029127811',['class'=>'textbox']);!!}
+							{!!Form::text('telHome',$patient->telHome,['class'=>'textbox']);!!}
 							@if( $errors->has('telHome') )<br><br>
 							<p class="text-danger"> {{ $errors->first('telHome') }} </p> 
 							@endif
 						</div>
 						<div class ="col-md-4">
 							{!!Form::label('telMobile','โทรศัพท์มือถือ :');!!}&nbsp;
-							{!!Form::text('telMobile','0877928482',['class'=>'textbox']);!!}
+							{!!Form::text('telMobile',$patient->telMobile,['class'=>'textbox']);!!}
 							@if( $errors->has('telMobile') )<br><br>
 							<p class="text-danger"> {{ $errors->first('telMobile') }} </p> 
 							@endif
@@ -130,7 +133,7 @@
 					</div>
 					<br>
 					{!! Form::label('email', 'อีเมล :'); !!} &nbsp;
-					{!! Form::text('email', $user->email, ['class'=>'textbox textbox300px']);!!}
+					{!! Form::text('email', $patient->user->email, ['class'=>'textbox textbox300px']);!!}
 					@if( $errors->has('email') )<br><br>
 					<p class="text-danger"> {{ $errors->first('email') }} </p> 
 					@endif

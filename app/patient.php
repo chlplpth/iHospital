@@ -90,6 +90,16 @@ class patient extends Model
         }
     }
 
+    public function getDateOfBirthAttribute($value)
+    {
+        // $date = explode('/', $value);
+        // $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
+        // $month = $monthName[$value[1]];
+        // if($value[2] > 60)
+
+        return $value;
+    }
+
     public function addressDetail(){
 
         // just province list, you should skip this to see the detail below...
@@ -138,6 +148,15 @@ class patient extends Model
 
     //----------------- function --------------------
     
+    public function appointmentSorted()
+    {
+        return appointment::where('appointment.patientId', '=', $this->userId)
+                   ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                   ->orderBy('schedule.diagDate', 'asc')
+                   ->orderBy('schedule.diagTime', 'asc')
+                   ->get();
+    }
+
     public static function viewPatientProfile($userId)
     {
         $patient = DB::table('users')

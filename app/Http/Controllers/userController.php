@@ -83,10 +83,11 @@ class userController extends Controller
     public function editMyProfilePatientShow(Request $request)
     {
         $userId = Auth::user()->userId;
+        $patient = patient::where('userId', $userId)->first();
         // $patient = patient::viewPatientProfile($userId);
-        $user = user::where('userId', $userId)->first();
-        $address = $user->patient->addressDetail();
-        return view('patient.editProfile')->with('user', $user)->with('address', $address);
+        // $user = user::where('userId', $userId)->first();
+        $address = $patient->addressDetail();
+        return view('patient.editProfile')->with('patient', $patient)->with('address', $address);
     }
 
     public function editMyProfilePatientStore(Request $request)

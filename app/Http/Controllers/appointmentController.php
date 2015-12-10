@@ -12,9 +12,11 @@ use DB;
 use Auth;
 use Session;
 use App\appointment;
+use App\patient;
 use App\schedule;
 use App\department;
 use App\doctor;
+use App\scheduleLog;
 
 class appointmentController extends Controller
 {
@@ -72,16 +74,22 @@ class appointmentController extends Controller
 
     public function delayAppointmentShow($appId)
     {
-        $appointment = appointment::getAppointmentDetail($appId);
+        // $appointment = appointment::getAppointmentDetail($appId);
+        $appointment = appointment::where('appointmentId', $appId)->first();
         return view('patient.rescheduleAppointment')->with('appointment', $appointment);
     }  
 
     public function delayAppointmentRequest(Request $request)
     {
+        $dateFormat = $request['date'];
         $input = $request;
         $appointment = appointment::getAppointmentDetail($input['appointmentId']);
         $newAppointments = schedule::requestDate($input);
-        return view('patient.rescheduleAppointment')->with('appointment', $appointment)->with('newAppointments', $newAppointments);
+        return view('patient.rescheduleAppointment')
+                ->with('appointment', $appointment)
+                ->with('newAppointments', $newAppointments)
+                ->with('requestedDate', $dateFormat)
+                ->with('formattedDate', schedule::formatDiagDate($input['date']));
     } 
 
     public function delayAppointmentStore(Request $request)
@@ -97,8 +105,19 @@ class appointmentController extends Controller
             $patientId = Auth::user()->userId;
         else $patientId = $request->patient;
         
-        $appointments = appointment::viewPatientAppointment($patientId);
+        $patient = patient::where('userId', $patientId)->first();
+        $appointments = $patient->appointmentSorted();
         return view('patient.patientAppointmentSchedule')->with('appointments', $appointments);
+    }
+
+    public function confirmReAppointment(Request $request)
+    {
+        $input = $request;
+        $appointment = appointment::where('appointmentId', $input['appointmentId'])->first();
+        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
+        return view('patient.confirmReAppointment')
+                ->with('appointment', $appointment)
+                ->with('schedule', $schedule);
     }
 
     public function viewDoctorAppointment(Request $request)

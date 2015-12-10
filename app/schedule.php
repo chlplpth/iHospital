@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 use App\scheduleLog;
+use App\doctor;
 use DB;
 use Carbon\Carbon;
 
@@ -44,12 +45,46 @@ class schedule extends Model
         return $this->scheduleLog->doctor;
     }
 
+    public function department()
+    {
+        return $this->doctor()->department();
+    }
+
     //---------------------------------  accessors ---------------------------------
 
     public function getDiagDateAttribute($value)
     {
-        return 'วันที่ ' . $value . '  ';
+        return schedule::formatDiagDate($value);
         // return $value;
+    }
+
+    public static function formatDiagDate($value)
+    {
+        $date = explode('-', $value);
+        
+        $day = $date[2];
+        if($day[0] == '0')
+        {
+            $day = $day[1];
+        }
+
+        $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
+        
+        $BEyear = $date[0] + 543;
+        
+        return $day . ' ' . $monthName[$date[1]] . ' ' . $BEyear;
+    }
+
+    public function getDiagTimeAttribute($value)
+    {
+        if($value == 'morning')
+        {
+            return 'เช้า (9.30 น. - 11.30 น.)';
+        }
+        else
+        {
+            return 'บ่าย (13.00 น. - 15.30 น.)';
+        }
     }
 
     //-----------------------------------  scope -----------------------------------
@@ -80,13 +115,15 @@ class schedule extends Model
         // get appointment from a department or a doctor
         if($input['doctorId'] != '0')
         {
-            $schedule = DB::table('schedule')
-                        ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
-                        ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
-                        ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
-                        ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
-                        ->join('users', 'doctor.userId', '=', 'users.userId')
-                        ->where('doctor.userId', $input['doctorId']);
+            $doctor = doctor::where('userId', $input['doctorId'])->first();
+            $schedule = $doctor->schedules();
+            // $schedule = DB::table('schedule')
+            //             ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+            //             ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
+            //             ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
+            //             ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
+            //             ->join('users', 'doctor.userId', '=', 'users.userId')
+            //             ->where('doctor.userId', $input['doctorId']);
         }
         else if($input['departmentId'] != '0')
         {
@@ -112,7 +149,7 @@ class schedule extends Model
         {
             $input['date'] = scheduleLog::changeDateFormat($input['date']);
             $appointments = $schedule->where('diagDate', $input['date'])
-                                    ->orderBy('diagTime', 'asc')
+                                    // ->orderBy('diagTime', 'asc')
                                     ->get();
         }
 

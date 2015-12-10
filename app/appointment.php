@@ -64,6 +64,23 @@ class appointment extends Model
         return $this->hasOne('App\prescription', 'appointmentId', 'appointmentId');
     }
 
+    public function department()
+    {
+        return $this->doctor()->department();
+    }
+
+    //-------------------------------  attributes -------------------------------
+
+    public function diagDate()
+    {
+        return $this->schedule->diagDate;
+    }
+
+    public function diagTime()
+    {
+        return $this->schedule->diagTime;
+    }
+
     //-------------------------------  function --------------------------
 
     public static function viewPatientAppointment($patientId)
@@ -118,13 +135,14 @@ class appointment extends Model
     public static function delayAppointment($request)
     {
         $appointmentId = $request['appointmentId'];
-        
-
-        appointment::where('appointmentId',$appointmentId)->update(array(
-                'scheduleId'     => $request['scheduleId']
-            ));
-
         $appointment = appointment::where('appointmentId',$appointmentId)->first();
+        $appointment->scheduleId = $request['scheduleId'];
+        $appointment->save();
+
+        // appointment::where('appointmentId',$appointmentId)->update(array(
+        //         'scheduleId'     => $request['scheduleId']
+        //     ));
+
         return $appointment;
 
     }
