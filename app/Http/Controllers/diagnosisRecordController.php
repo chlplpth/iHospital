@@ -44,6 +44,19 @@ class diagnosisRecordController extends Controller
 
     // ==================================================================================================
 
+    public function showDiagnosisRecordDoctor($appId)
+    {
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        $phys = $appointment->physicalRecord;
+        $diag = $appointment->diagnosisRecord;
+        $prescription = $appointment->prescription;
+        return view('doctor.patientProfileByDoctor2')
+                ->with('app', $appointment)
+                ->with('phys', $phys)
+                ->with('diag', $diag)
+                ->with('prescription', $prescription);
+    }
+
     public function recordDiagnosis(Request $request)
 	{
 		$input = $request->all();

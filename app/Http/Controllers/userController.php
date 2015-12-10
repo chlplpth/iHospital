@@ -13,6 +13,7 @@ use App\hospitalStaff;
 use App\user;
 use App\department;
 use App\staff;
+use App\appointment;
 
 use Hash;
 
@@ -137,7 +138,7 @@ class userController extends Controller
     }
 
     // ==================================================================================================
-    // ============================================ PATIENT =============================================
+    // ============================================ DOCTOR =============================================
     // ==================================================================================================
 
     public function showDoctorProfile()
@@ -157,25 +158,13 @@ class userController extends Controller
         return redirect('doctorProfile');
     }
 
-    //user == other  view patient profile
-    public function viewPatientProfile(Request $request)
+    public function showPatientProfileToDoctor($patientId)
     {
-    	$userId = $request->input('userId');
-        $patient = patient::viewPatientProfile($userId);
-        
-        if(sizeof($patient)==0) echo "not found";
-        else echo $patient->name;
-    		
-    }
-
-    //user type is not patient    edit by other
-    public function editPatientProfile(Request $request)
-    {
-    	$input = $request->all();
-        $patient = patient::editPatientProfile($input);
-
-        return redirect('/');
-    	//return view('patient.profile',compact($patient));
+        $patient = patient::where('userId', $patientId)->first();
+        $appointments = appointment::getRecordedAppointments($patientId);
+        return view('doctor.patientProfileByDoctor')
+                ->with('patient', $patient)
+                ->with('appointments', $appointments);
     }
 
     

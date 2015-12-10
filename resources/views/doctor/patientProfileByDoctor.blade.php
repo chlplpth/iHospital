@@ -9,26 +9,26 @@
 	</div>
 	<div class="panel-body">
 		<div id = "patientProfile">
-			<span class="bold">รหัสประจำตัวผู้ป่วย : </span> 
+			<span class="bold">รหัสประจำตัวผู้ป่วย : </span> {{ $patient->hospitalNo }}
 			<br> <br>
 			
 			<div class="row">
-				<div class="col-md-4"> <span class="bold">ชื่อ : </span> 
+				<div class="col-md-4"> <span class="bold">ชื่อ : </span>  {{ $patient->name() }}
 				</div>
-				<div class="col-md-8"><span class="bold">นามสกุล : </span> 
+				<div class="col-md-8"><span class="bold">นามสกุล : </span> {{ $patient->surname() }} 
 				</div>
 			</div>
 			<br>
 
 			<div class ="row">
 				<div class ="col-md-2">
-					<span class="bold">เพศ : </span>
+					<span class="bold">เพศ : </span> {{ $patient->sex }}
 				</div>
 				<div class ="col-md-2">
-					<span class="bold">กรุ๊ปเลือด : </span> 
+					<span class="bold">กรุ๊ปเลือด : </span> {{ $patient->bloodGroup }}
 				</div>	
 				<div class ="col-md-8">
-					<span class="bold">วัน/เดือน/ปี เกิด : </span> 
+					<span class="bold">วัน/เดือน/ปี เกิด : </span> {{ $patient->dateOfBirth }}
 				</div>
 			</div>
 
@@ -41,6 +41,7 @@
 					<form>
 						<div class="form-group row">
 							<div class="col-xs-12">
+								@if(count($appointments) > 0)
 								<table class="table table-bordered">
 									<thead >
 										<br>
@@ -52,22 +53,19 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>20/11/2558</td>
-											<td>จักษุวิทยา</td>
-											<td>กรภพ</td>
-											<td ><a href="{{ url('/patientProfileByDoctor2') }}" class="btn btn-warning">ดู</a></td>
-										</tr>
-
-										<tr>
-											<td>21/11/2558</td>
-											<td>กุมารเวชรศาสตร์</td>
-											<td>ญานิกา</td>
-											<td ><a href="{{ url('/patientProfileByDoctor2') }}" class="btn btn-warning">ดู</a></td>
-										</tr>
-
+										@foreach($appointments as $app)
+											<tr>
+												<td>{{ $app->diagDate() }}</td>
+												<td>{{ $app->department()->departmentName }}</td>
+												<td>{{ $app->doctor()->fullname() }}</td>
+												<td ><a href="{{ url('/patientDiagRecordByDoctor/' . $app->appointmentId) }}" class="btn btn-warning">ดู</a></td>
+											</tr>
+										@endforeach
 									</tbody>
 								</table>
+								@else
+									ไม่มีประวัติการรักษาของผู้ป่วยท่านนี้
+								@endif
 							</div>
 						</div>
 					</form>

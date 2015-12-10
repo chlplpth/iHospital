@@ -104,6 +104,12 @@ Route::get('/mainDoctor', function () {
 Route::get('/doctorProfile', 'userController@showDoctorProfile');
 Route::post('/editDoctorProfile', 'userController@editDoctorProfile');
 
+Route::get('/searchPatientProfileByDoctor', function () {
+    return view('doctor/searchPatientProfileByDoctor');
+});
+Route::get('/patientProfileByDoctor/{patientId}', 'userController@showPatientProfileToDoctor');
+Route::get('patientDiagRecordByDoctor/{appId}', 'diagnosisRecordController@showDiagnosisRecordDoctor');
+
 Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
@@ -121,9 +127,7 @@ Route::get('/doctorAppointmentSchedule', function () {
     return view('doctor/doctorAppointmentSchedule');
 });
 
-Route::get('/searchPatientProfileByDoctor', function () {
-    return view('doctor/searchPatientProfileByDoctor');
-});
+
 
 Route::get('/doctorScheduleByDoctor', function () {
     return view('doctor/doctorScheduleByDoctor');

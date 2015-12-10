@@ -53,6 +53,8 @@
 			<br>
 			<span class="bold">อาการ : </span> {{ $app->symptom }}
 			<br><br>
+			<span class="bold">คำแนะนำจากแพทย์ : </span> {{ $diag->doctorAdvice }}
+			<br><br>
 			<div class ="row">
 				<div class ="col-md-4">
 					<span class="bold">น้ำหนัก : </span> {{ $phys->weight }}
@@ -76,26 +78,27 @@
 			<br><br>
 			<span class="bold">รายละเอียดการวินิจฉัย : </span> {{ $diag->diagnosisDetail }}
 			<br><br>
-			<span class="bold">คำแนะนำจากแพทย์ : </span> {{ $diag->doctorAdvice }}
-			<br><br>
-			<span class="bold">รายการยา</span> 
-			<br><br>
-			<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
-				<thead >
-					<tr>
-						<th style="width: 33%; text-align:center;">ชื่อยา</th>
-						<th style="width: 16%; text-align:center;">จำนวน</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($prescription->medicines as $med)
-					<tr>
-						<td>{{ $med->medicineName }}</td>
-						<td>{{ $med->quantity }}</td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>	
+			@if(count($prescription->medicines) > 0)
+				<span class="bold">รายการยา</span> 
+				<br><br>
+				<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
+					<thead >
+						<tr>
+							<th style="width: 33%; text-align:center;">ชื่อยา</th>
+							<th style="width: 16%; text-align:center;">จำนวน</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($prescription->medicines as $med)
+						<tr>
+							<td>{{ $med->medicineName }}</td>
+							<td>{{ $med->quantity }}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			@endif
+				
 			<div class ="row">
 				<div class ="col-md-5"></div>
 				<div class ="col-md-2"><a href = "{{ url('/diagRecordPdf') }}" class="btn btn-warning" >ส่งออก</a></div>
