@@ -12,6 +12,7 @@
 		<form>
 			<div class="form-group row">
 				<div class="col-xs-12">
+					@if(count($appointments) > 0)
 					<table class="table table-bordered">
 						<thead >
 							<br>
@@ -35,6 +36,9 @@
 
 						</tbody>
 					</table>
+					@else
+						ไม่พบประวัติการรักษา
+					@endif
 				</div>
 			</div>
 		</form>

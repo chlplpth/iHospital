@@ -62,6 +62,11 @@ class doctor extends Model
         return $this->user->surname;
     }
 
+    public function email()
+    {
+        return $this->user->email;
+    }
+
     public function fullname()
     {
         return $this->name() . ' ' . $this->surname();
@@ -73,24 +78,20 @@ class doctor extends Model
     {
         return doctor::join('users', 'doctor.userId', '=', 'users.userId')
                 ->orderBy('name', 'asc')
-                ->orderBy('surname', 'asc');
+                ->orderBy('surname', 'asc')
+                ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
+                ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId');
     }
 
-    public function getScheduleInRange($year, $month)
+    public function editDoctorProfile($input)
     {
-        // $results = array();
-        // $i = 0;
-        // foreach($index as $d)
-        // {
-        //     $date = $d->diagDate;
-        //     $results[$i]['date'] = $date;
-        //     $results[$i]['morning'] = $d->findFromTime('morning');
-
-        //     echo $results[$i]['date'] . ' ' . $results[$i]['morning'] . '<br>';
-        //     $i++;
-        // }
-
-        // $sc = $this->schedule->where();
+      $this->update(['proficiency' => $input['proficiency']]);
+      $this->user->update([
+          'name' => $input['name'],
+          'surname' => $input['surname'],
+          'email' => $input['email']
+        ]);
+      $this->hospitalStaff->update(['departmentId' => $input['departmentId']]);
     }
 
     public function getDiagStats($year, $month)

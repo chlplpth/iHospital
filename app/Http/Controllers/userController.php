@@ -19,7 +19,13 @@ use Hash;
 class userController extends Controller
 {
    
-    // check whether a patient is old or new patient
+    // ==================================================================================================
+    // ============================================ GENERAL =============================================
+    // ==================================================================================================
+
+    // ------------------------------- register -------------------------------
+    
+    // check whether a patient is an old or new patient
     public function checkPatientStatus(Request $request)
     {
         $patient = patient::where('citizenNo', $request['citizenNo'])->first();
@@ -34,22 +40,24 @@ class userController extends Controller
         return view('general.register')->with('userStatus', $userStatus)->with('citizenNo', $request['citizenNo']);
     }
 
+    // register for old patient (who's already has his/her own info in the database)
     public function registerOldPatient(Request $request)
     {
-    	$input = $request->all();
+        $input = $request->all();
         $citizenNo = $input['citizenNo'];
-    	$patient = patient::where('citizenNo', $citizenNo)->first();
+        $patient = patient::where('citizenNo', $citizenNo)->first();
 
         $userId = $patient['userId'];
-    	User::where('userId',$userId)->update(array(
+        User::where('userId',$userId)->update(array(
                 'email'         => $input['email'],
                 'username'     => $input['username'],
                 'password'      => Hash::make($input['password'])
             ));
 
-    	return redirect('/');
+        return redirect('/');
     }
 
+    // register for new patient
     public function registerNewPatient(Request $request)
     {
         $input = $request->all();
@@ -65,15 +73,18 @@ class userController extends Controller
         $patient = patient::create($patient);
 
         return redirect('/');
+    }    
 
-    	//return view('register.success',compact($user));
-    }
+    // ==================================================================================================
+    // ============================================ PATIENT =============================================
+    // ==================================================================================================
+
+    // ------------------------------- patient's profile -------------------------------
 
     //user == patient  view own profile 
     public function viewMyProfilePatient(Request $request)
     {
         $userId = Auth::user()->userId;
-        // $patient = patient::viewPatientProfile($userId);
         $user = user::where('userId', $userId)->first();
         $address = $user->patient->addressDetail();
         return view('patient.patientProfile')->with('user', $user)->with('address', $address);
@@ -84,8 +95,6 @@ class userController extends Controller
     {
         $userId = Auth::user()->userId;
         $patient = patient::where('userId', $userId)->first();
-        // $patient = patient::viewPatientProfile($userId);
-        // $user = user::where('userId', $userId)->first();
         $address = $patient->addressDetail();
         return view('patient.editProfile')->with('patient', $patient)->with('address', $address);
     }
@@ -98,6 +107,55 @@ class userController extends Controller
         return redirect('/');
     }
 
+    // ------------------------------- search doctors -------------------------------
+    
+    // show department's details & list all doctors in hospital
+    public function searchDoctorShow()
+    {
+        $departments = department::getDepartmentArray();
+        $doctor = doctor::doctorSortByName()->get();
+        return view('patient.doctorList')
+                ->with('departments', $departments)
+                ->with('doctors', $doctor);
+    }
+
+    //search doctor that have name or surname contain that request string
+    public function searchDoctor(Request $request)
+    {
+        $input = $request;
+        $department = $request->input('department');
+        $docQuery = $request->input('doctor');
+        
+        $doctors = doctor::searchDoctor($department, $docQuery);
+        $departments = department::getDepartmentArray();
+       
+        return view('patient.doctorList')
+                ->with('doctors',$doctors)
+                ->with('departments', $departments)
+                ->with('queryName', $input['doctor'])
+                ->with('queryDepartment', $input['department']);
+    }
+
+    // ==================================================================================================
+    // ============================================ PATIENT =============================================
+    // ==================================================================================================
+
+    public function showDoctorProfile()
+    {
+        $doctor = doctor::where('userId', Auth::user()->userId)->first();
+        $departments = department::getDepartmentArray();
+        return view('doctor.doctorProfile')
+                ->with('doctor', $doctor)
+                ->with('departments', $departments);
+    }
+
+    public function editDoctorProfile(Request $request)
+    {
+        $input = $request;
+        $doctor = doctor::where('userId', Auth::user()->userId)->first();
+        $doctor->editDoctorProfile($input);
+        return redirect('doctorProfile');
+    }
 
     //user == other  view patient profile
     public function viewPatientProfile(Request $request)
@@ -119,48 +177,8 @@ class userController extends Controller
         return redirect('/');
     	//return view('patient.profile',compact($patient));
     }
+
     
-    //get list of doctor in department
-    // public function getDoctorList(Request $request)
-    // {
-    	
-    //     $department = $request->departmentId;
-    // 	$doctors = doctor::getDoctorList($department);
-
-    //     //if(sizeof($doctors)==0) echo "not found";
-    //     //else echo"found";
-        
-    // }
-
-    public function searchDoctorShow()
-    {
-        $departments = department::getDepartmentArray();
-        $doctor = doctor::doctorSortByName()->get();
-        return view('patient.doctorList')
-                ->with('departments', $departments)
-                ->with('doctors', $doctor);
-    }
-
-    //search doctor that have name or surname contain that request string
-    public function searchDoctor(Request $request)
-    {
-    	$input = $request;
-        $department = $request->input('department');
-        $docQuery = $request->input('doctor');
-        
-        $doctors = doctor::searchDoctor($department, $docQuery);
-        $departments = department::getDepartmentArray();
-
-        // $doctor = $request->input('doctor');
-        // $doctors = doctor::searchDoctor($department, $doctor);
-
-       
-		return view('patient.doctorList')
-                ->with('doctors',$doctors)
-                ->with('departments', $departments)
-                ->with('queryName', $input['doctor'])
-                ->with('queryDepartment', $input['department']);
-    }
     
     public function searchPatient(Request $request)
     {

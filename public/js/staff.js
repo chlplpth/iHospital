@@ -36,3 +36,28 @@ function cancelEdit(){
 	$('#manageDepartment').html("<label for='department'>พยาธิวิทยา</label>");
 	$('#manageButton').html("<button type='button' class='btn btn-warning' id='editStaffButton' onClick='editStaff()'>แก้ไข</button> <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal' id='deleteStaffButton'>ลบ</button>");
 }
+var name;
+var surname;
+var department;
+var email;
+function editProfile(){
+	name=$('#staffName').text();
+	surname=$('#staffSurname').text();
+	department=$('#staffDepartment').text();
+	proficiency=$('#staffProficiency').text();
+	email=$('#staffEmail').text();
+	$('#staffName').html("<input class='form-control' name='name' type='text' value='name'>");
+	$('#staffSurname').html("<input class='form-control' name='surname' type='text' value='surname'>");
+	$('#staffDepartment').html("<input class='form-control' name='department' type='text' value='department'>");
+	$('#staffProficiency').html("<input class='form-control' name='proficiency' type='text' value='proficiency'>");
+	$('#staffEmail').html("<input class='form-control' name='email' type='text' value='email'>");
+	$('#editProfileButton').html("<button class='btn btn-warning' onclick='cancelEditProfile()'>ยกเลิก</button> <input class='btn btn-success' type='submit' value='ยืนยัน' id='submitEditProfile'>");
+}
+function cancelEditProfile(){
+	$('#staffName').html(name);
+	$('#staffSurname').html(surname);
+	$('#staffDepartment').html(department);
+	$('#staffEmail').html(email);
+	$('#staffProficiency').html(proficiency);
+	$('#editProfileButton').html("<button class ='btn btn-warning' onClick='editProfile()'>แก้ไข</button>");
+}

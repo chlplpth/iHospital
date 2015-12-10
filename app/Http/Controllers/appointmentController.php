@@ -20,9 +20,28 @@ use App\scheduleLog;
 
 class appointmentController extends Controller
 {
-    public function home()
+
+    // ==================================================================================================
+    // ============================================ PATIENT =============================================
+    // ==================================================================================================
+
+    // ------------------------------- create new appointment -------------------------------
+
+    // show department details for makeing a new appointment
+    public function createAppointmentShow()
     {
-        return view('index');
+        // department name
+        $department = department::all();
+        $depList = array();
+        $depList['0'] = 'ไม่ระบุ';
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+
+        $doctor = department::getDoctorArray();
+
+        return view('patient/createAppointment')->with('department', $depList)->with('doctor', $doctor);
     }
 
     // user fill form and return available date for make appointment
@@ -35,8 +54,9 @@ class appointmentController extends Controller
         }
         $appointments = schedule::requestDate($input);
         return view('patient.createAppointment')->with('appointments', $appointments)->with('symptom', $input['symptom']);
-    }   
+    }
 
+    // show information about to-be appointment
     public function confirmAppointmentShow(Request $request)
     {
         $input = $request->all();
@@ -57,6 +77,88 @@ class appointmentController extends Controller
         // // $this->confirmAppointmentEmail();
         return redirect('/');
     }
+
+    // ------------------------------- show current appointment and manage -------------------------------
+
+    // show all appointments
+    public function viewPatientAppointment(Request $request)
+    {
+        if(Auth::user()->userType == "patient")
+            $patientId = Auth::user()->userId;
+        else $patientId = $request->patient;
+        
+        $patient = patient::where('userId', $patientId)->first();
+        $appointments = $patient->appointmentSorted();
+        return view('patient.patientAppointmentSchedule')->with('appointments', $appointments);
+    }
+
+    // show information about the appointment which will be delayed
+    public function delayAppointmentShow(Request $request)
+    {
+        $appId = $request['appointmentId'];
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        return view('patient.rescheduleAppointment')->with('appointment', $appointment);
+    } 
+
+    // show available schedules for changing appointment date
+    public function delayAppointmentRequest(Request $request)
+    {
+        $oldDate = $request['date'];
+        $input = $request;
+        $appointment = appointment::getAppointmentDetail($input['appointmentId']);
+        $newAppointments = schedule::requestDate($input);
+        $formattedDate = '';
+        if($request['date'] != '')
+        {
+            $formattedDate = schedule::formatDiagDate($input['date']);
+        }
+        
+        return view('patient.rescheduleAppointment')
+                ->with('appointment', $appointment)
+                ->with('newAppointments', $newAppointments)
+                ->with('requestedDate', $oldDate)
+                ->with('formattedDate', $formattedDate);
+    } 
+
+    // show information before confirm new date for existing appointment
+    public function confirmReAppointment(Request $request)
+    {
+        $input = $request;
+        $appointment = appointment::where('appointmentId', $input['appointmentId'])->first();
+        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
+        return view('patient.confirmReAppointment')
+                ->with('appointment', $appointment)
+                ->with('schedule', $schedule);
+    }
+
+    // change appointment's date (in real database)
+    public function delayAppointmentStore(Request $request)
+    {
+        $input = $request->all();
+        $appointment = appointment::delayAppointment($input);
+        return redirect('/patientAppointmentSchedule');
+    }
+
+    // show information of the appointment which will be deleted
+    public function cancelAppointmentShow(Request $request)
+    {
+        $appId = $request['appointmentId'];
+        $appointment = appointment::where('appointmentId',$appId)->first();
+        // DB::table('appointment')->where('appointmentId', $appId)->delete();
+        return view('patient.cancelAppointment')->with('appointment', $appointment);
+    }
+
+    // cancel an appointment
+    public function cancelAppointmentStore(Request $request)
+    {
+        $appId = $request['appointmentId'];
+        $appointment = appointment::where('appointmentId',$appId)->first();
+        $appointment->delete();
+        return redirect('patientAppointmentSchedule');
+    }
+
+
+    // ==================================================================================================
 
     public function confirmAppointmentEmail()
     {
@@ -83,60 +185,7 @@ class appointmentController extends Controller
         return "success";
     }
 
-    public function delayAppointmentShow(Request $request)
-    {
-        $appId = $request['appointmentId'];
-        $appointment = appointment::where('appointmentId', $appId)->first();
-        return view('patient.rescheduleAppointment')->with('appointment', $appointment);
-    }  
-
-    public function delayAppointmentRequest(Request $request)
-    {
-        $oldDate = $request['date'];
-        $input = $request;
-        $appointment = appointment::getAppointmentDetail($input['appointmentId']);
-        $newAppointments = schedule::requestDate($input);
-        $formattedDate = '';
-        if($request['date'] != '')
-        {
-            $formattedDate = schedule::formatDiagDate($input['date']);
-        }
-        
-        return view('patient.rescheduleAppointment')
-                ->with('appointment', $appointment)
-                ->with('newAppointments', $newAppointments)
-                ->with('requestedDate', $oldDate)
-                ->with('formattedDate', $formattedDate);
-    } 
-
-    public function delayAppointmentStore(Request $request)
-    {
-        $input = $request->all();
-        $appointment = appointment::delayAppointment($input);
-        return redirect('/patientAppointmentSchedule');
-    }
-
-    public function viewPatientAppointment(Request $request)
-    {
-        if(Auth::user()->userType == "patient")
-            $patientId = Auth::user()->userId;
-        else $patientId = $request->patient;
-        
-        $patient = patient::where('userId', $patientId)->first();
-        $appointments = $patient->appointmentSorted();
-        return view('patient.patientAppointmentSchedule')->with('appointments', $appointments);
-    }
-
-    public function confirmReAppointment(Request $request)
-    {
-        $input = $request;
-        $appointment = appointment::where('appointmentId', $input['appointmentId'])->first();
-        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
-        return view('patient.confirmReAppointment')
-                ->with('appointment', $appointment)
-                ->with('schedule', $schedule);
-    }
-
+  
     public function viewDoctorAppointment(Request $request)
     {
         // if(Auth::user()->userType == "doctor")
@@ -156,35 +205,7 @@ class appointmentController extends Controller
     }
 
     
-    public function cancelAppointmentShow(Request $request)
-    {
-        $appId = $request['appointmentId'];
-        $appointment = appointment::where('appointmentId',$appId)->first();
-        // DB::table('appointment')->where('appointmentId', $appId)->delete();
-        return view('patient.cancelAppointment')->with('appointment', $appointment);
-    }
+    
 
-    public function cancelAppointmentStore(Request $request)
-    {
-        $appId = $request['appointmentId'];
-        $appointment = appointment::where('appointmentId',$appId)->first();
-        $appointment->delete();
-        return redirect('patientAppointmentSchedule');
-    }
-
-    public function createAppointmentShow()
-    {
-        // department name
-        $department = department::all();
-        $depList = array();
-        $depList['0'] = 'ไม่ระบุ';
-        foreach($department as $item)
-        {
-            $depList[$item['departmentId']] = $item['departmentName'];
-        }
-
-        $doctor = department::getDoctorArray();
-
-        return view('patient/createAppointment')->with('department', $depList)->with('doctor', $doctor);
-    }
+    
 }

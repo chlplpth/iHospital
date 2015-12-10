@@ -9,10 +9,11 @@
 		<h3 class="panel-title">ตารางการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<form>
-			<div class="form-group row">
-				<div class="col-xs-1"></div>
-				<div class="col-xs-10">
+		<div class="form-group row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-10">
+				
+				@if(count($appointments) > 0)
 					<table class="table table-bordered">
 						<thead >
 							<tr>
@@ -32,12 +33,12 @@
 								<td>{{ $app->department()->departmentName }}</td>
 								<td>{{ $app->doctor()->fullname() }}</td>
 								<td >
-								{!! Form::open(array('url' => 'rescheduleAppointment')) !!}
+								{!! Form::open(array('url' => 'cancelAppointment')) !!}
 									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
 									{!! Form::submit('เลื่อน', ['class' => 'btn btn-warning']) !!}
 								{!! Form::close() !!}
 								</td>
-								<td >
+								<td>
 								{!! Form::open(array('url' => 'cancelAppointment')) !!}
 									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
 									{!! Form::submit('ยกเลิก', ['class' => 'btn btn-danger']) !!}
@@ -47,10 +48,12 @@
 							@endforeach
 						</tbody>
 					</table>
-				</div>
-				<div class="col-xs-1"></div>
+				@else
+					ไม่มีการนัดหมาย
+				@endif
 			</div>
-		</form>
+			<div class="col-xs-1"></div>
+		</div>
 	</div>
 </div>
 @stop

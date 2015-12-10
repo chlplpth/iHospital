@@ -32,9 +32,10 @@
 								<th style="width: 5%;">ลำดับ</th>
 								<th style="width: 10%;">วัน</th>
 								<th style="width: 14%;">เวลา</th>
-								<th style="width: 20%;">แพทย์</th>
-								<th style="width: 15%;">แผนก</th>
-								<th style="width: 10%;">เลื่อน</th>
+								<th style="width: 19%;">แพทย์</th>
+								<th style="width: 10%;">แผนก</th>
+								<th style="width: 8%;">เลื่อน</th>
+								<th style="width: 8%;">ยกเลิก</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -44,7 +45,8 @@
 								<td>09.00 - 11.30 น.</td>
 								<td>John Kaikai</td>
 								<td>หู</td>
-								<td>{!! Form::button('เลื่อน', ["class" => "btn btn-warning", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
+								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
+								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
 							</tr>
 							<tr>
 								<td>2</td>
@@ -52,15 +54,17 @@
 								<td>09.00 - 11.30 น.</td>
 								<td>Mary Marry</td>
 								<td>ตา</td>
-								<td>{!! Form::button('เลื่อน', ["class" => "btn btn-warning", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
+								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
+								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
 							</tr>
 							<tr>
 								<td>3</td>
 								<td>01 ต.ค. 58</td>
 								<td>13.00 - 15.30 น.</td>
 								<td>July Doodo</td>
-								<td>จมูก</td>
-								<td>{!! Form::button('เลื่อน', ["class" => "btn btn-warning", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
+								<td>จมูก</td> 
+								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
+								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
 							</tr>
 						</tbody>
 					</table>
@@ -71,15 +75,16 @@
 
 							<!-- Modal content-->
 							<div class="modal-content">
-								<div class="modal-header">
+								<div class="modal-header" id = "cancelAppintmentModalTitle">
 									<button type="button" class="close" data-dismiss="modal">&times;</button>
-									<h4 class="modal-title">Modal Header</h4>
+									<h4 class="modal-title" >ยกเลิกการนัดหมาย</h4>
 								</div>
 								<div class="modal-body">
-									<p>Some text in the modal.</p>
+									<p>ท่านต้องการยกเลิกการนัดหมายแพทย์ July Doodo ในวันที่ 01 ต.ค. 58 เวลา 13.00 - 15.30 น. ของ patient หรือไม่</p>
 								</div>
 								<div class="modal-footer">
-									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+									<input type="submit" class="btn btn-success" data-dismiss="modal" value="ยืนยัน">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
 								</div>
 							</div>
 						</div>

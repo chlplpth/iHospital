@@ -16,6 +16,34 @@ use App\prescription;
 
 class diagnosisRecordController extends Controller
 {
+
+    // ==================================================================================================
+    // ============================================ PATIENT =============================================
+    // ==================================================================================================
+
+    public function showDiagnosisRecordList()
+    {
+        $patientId = Auth::user()->userId;
+        $appointments = appointment::getRecordedAppointments($patientId);
+        return view('patient.diagnosisRecord')
+                ->with('appointments', $appointments);
+    }
+
+    public function showDiagnosisRecord($appId)
+    {
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        $phys = $appointment->physicalRecord;
+        $diag = $appointment->diagnosisRecord;
+        $prescription = $appointment->prescription;
+        return view('patient.diagnosisRecord2')
+                ->with('app', $appointment)
+                ->with('phys', $phys)
+                ->with('diag', $diag)
+                ->with('prescription', $prescription);
+    }
+
+    // ==================================================================================================
+
     public function recordDiagnosis(Request $request)
 	{
 		$input = $request->all();
@@ -70,26 +98,7 @@ class diagnosisRecordController extends Controller
         $diagnosisRecords = diagnosisRecord::viewDiagnosisHistoryPatient($input);
     }
 
-    public function showDiagnosisRecordList()
-    {
-        $patientId = Auth::user()->userId;
-        $appointments = appointment::getRecordedAppointments($patientId);
-        return view('patient.diagnosisRecord')
-                ->with('appointments', $appointments);
-    }
-
-    public function showDiagnosisRecord($appId)
-    {
-        $appointment = appointment::where('appointmentId', $appId)->first();
-        $phys = $appointment->physicalRecord;
-        $diag = $appointment->diagnosisRecord;
-        $prescription = $appointment->prescription;
-        return view('patient.diagnosisRecord2')
-                ->with('app', $appointment)
-                ->with('phys', $phys)
-                ->with('diag', $diag)
-                ->with('prescription', $prescription);
-    }
+    
 
     //click from user profile-> diagnosisHistory to view detail
     public function viewDiagnosisResult(Request $request)

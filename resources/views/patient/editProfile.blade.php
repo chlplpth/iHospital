@@ -17,7 +17,7 @@
 			</div>
 			<div class="panel-body">
 				<div id = "editProfileForm">
-					<span class ="bold">รหัสประจำตัวผู้ป่วย : </span> HN-00000001
+					<span class ="bold">รหัสประจำตัวผู้ป่วย : </span> {{ $patient->hospitalNo }}
 					<br><br>
 					<div class="row">
 						<div class="col-md-4"> {!! Form::label('name', 'ชื่อจริง :'); !!} &nbsp

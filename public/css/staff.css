@@ -122,3 +122,22 @@ table,th{
 #confirmEdit{
 	width: 180px;
 }
+#cancelAppintmentModalTitle{
+	background :red;
+}
+#reschedulePatientAppointmentForm{
+	margin-left:40px;
+	margin-top:20px;
+}
+#confirmAppointmentForPatientwindow{
+	margin-left:40px;
+	margin-top:20px;
+}
+#staffProfile{
+	margin-left:40px;
+	margin-top:20px;
+}
+.form-control{
+	width:250px;
+	display :inline;
+}

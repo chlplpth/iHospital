@@ -32,27 +32,7 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    public function authenticate(LoginRequest $request)
-    {
-        $user = User::where('username', $request['username'])->first();
-        if(Auth::attempt(['userId' => $user->userId, 'password' => $request['password']])) {
-            // logged in ... :)
-        }
-        return redirect('/');
-    }
-
-    public function register(Request $request)
-    {
-        $input = $request->all();
-        $input['password'] = Hash::make($request['password']);
-        $user = User::create($input);
-
-        $patient = $input;
-        $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        $patient['address'] = join(',,', $addressSet);
-        $patient['userId'] = $user->userId;
-        $patient = Patient::create($patient);
-    }
+    // ------------------------------- main page -------------------------------
 
     public function getMainPage()
     {
@@ -89,20 +69,24 @@ class AuthController extends Controller
         }
     }
 
+    // ------------------------------- login & logout -------------------------------
+
+    public function authenticate(LoginRequest $request)
+    {
+        $user = User::where('username', $request['username'])->first();
+        if(Auth::attempt(['userId' => $user->userId, 'password' => $request['password']])) {
+            // logged in ... :)
+        }
+        return redirect('/');
+    }
+
     public function logout()
     {
         Auth::logout();
         return redirect('/');
     }
 
-    public function genPassword($text)
-    {
-        echo $text . "   =   " . Hash::make($text);
-    }
-
-    public function testModel(){
-        echo "testModel";
-    }
+    // ------------------------------- forget & change password -------------------------------
 
     public function forgetPassword(Request $request)
     {
@@ -127,5 +111,11 @@ class AuthController extends Controller
     {
         User::setNewPassword($request['verifyCode'], Hash::make($request['newPassword']));
         return redirect('/');
+    }
+
+
+    public function genPassword($text)
+    {
+        echo $text . "   =   " . Hash::make($text);
     }
 }

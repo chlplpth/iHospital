@@ -1,4 +1,9 @@
 var i=0;
+var name;
+var surname;
+var department;
+var proficiency;
+var email;
 function enAddMedButton(){
 	if($('#medicineName').val()!=''
 		&&($('#morningCh').prop("checked") == true
@@ -77,4 +82,28 @@ function nextAppointment(){
 	}
 	var x= "นัดครั้งต่อไปวันที่ "+date+" "+period;
 	$('#nextAppointment').html(x);
+}
+function editProfile(){
+	name=$('#doctorName').text();
+	surname=$('#doctorSurname').text();
+	department=$('#doctorDepartment').text();
+	departmentDropdown=$('#departmentDropdown').html();
+	proficiency=$('#doctorProficiency').text();
+	email=$('#doctorEmail').text();
+	$('#doctorName').html("<input class='form-control' name='name' type='text' value='" + name + "''>");
+	$('#doctorSurname').html("<input class='form-control' name='surname' type='text' value='" + surname + "'>");
+	$('#doctorDepartment').hide();
+	$('#departmentDropdown').show();
+	$('#doctorProficiency').html("<input class='form-control' name='proficiency' type='text' value='" + proficiency + "'>");
+	$('#doctorEmail').html("<input class='form-control' name='email' type='text' value='" + email + "'>");
+	$('#editProfileButton').html("<button class='btn btn-warning' onclick='cancelEditProfile()'>ยกเลิก</button> <input class='btn btn-success' type='submit' value='ยืนยัน' id='submitEditProfile'>");
+}
+function cancelEditProfile(){
+	$('#doctorName').html(name);
+	$('#doctorSurname').html(surname);
+	$('#doctorDepartment').show();
+	$('#departmentDropdown').hide();
+	$('#doctorEmail').html(email);
+	$('#doctorProficiency').html(proficiency);
+	$('#editProfileButton').html("<button class ='btn btn-warning' onClick='editProfile()'>แก้ไข</button>");
 }

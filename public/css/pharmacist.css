@@ -41,3 +41,15 @@ table,th{
 	font-size: 15px;
 	margin-top: -1px;
 }
+#pharmacistProfile{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+.form-control{
+	width:250px;
+	display :inline;
+}
+#searchPatientForm{
+	margin-top: 20px;
+	margin-left: 40px;
+}

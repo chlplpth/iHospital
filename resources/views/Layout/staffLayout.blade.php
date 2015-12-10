@@ -55,7 +55,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
-          <li><a href="#">ข้อมูลส่วนตัว</a></li>
+          <li><a href="{{ url('/staffProfile') }}">ข้อมูลส่วนตัว</a></li>
           <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
         </ul>
       </div>
