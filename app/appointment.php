@@ -81,7 +81,27 @@ class appointment extends Model
         return $this->schedule->diagTime;
     }
 
+    //-------------------------------  scope --------------------------
+
+    public function scopeHasPhysicalRecord($query)
+    {
+        return $query->has('physicalRecord');
+    }
+
+    public function scopeHasDiagnosisRecord($query)
+    {
+        return $query->has('diagnosisRecord');
+    }
+
     //-------------------------------  function --------------------------
+
+    public static function getRecordedAppointments($patientId)
+    {
+        return appointment::where('patientId', $patientId)
+                            ->hasPhysicalRecord()
+                            ->hasDiagnosisRecord()
+                            ->get();
+    }
 
     public static function viewPatientAppointment($patientId)
     {

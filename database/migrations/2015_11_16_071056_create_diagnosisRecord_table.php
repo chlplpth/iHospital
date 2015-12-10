@@ -17,7 +17,7 @@ class CreateDiagnosisRecordTable extends Migration
             $table->integer('appointmentId')->unsigned();
             $table->string('diseaseCode');
             $table->text('doctorAdvice');
-            $table->text('diagnonsisDetail');
+            $table->text('diagnosisDetail');
             $table->timestamps();
         });
 

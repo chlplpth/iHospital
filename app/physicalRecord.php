@@ -31,6 +31,28 @@ class physicalRecord extends Model
         'heartRate'];
 
 
+    //-------------------------------  accessors -------------------------------
+
+    public function getHeightAttribute($value)
+    {
+        return $value . ' เซนติเมตร';
+    }
+
+    public function getWeightAttribute($value)
+    {
+        return $value . ' กิโลกรัม';
+    }
+
+    public function getHeartRateAttribute($value)
+    {
+        return $value . ' ครั้งต่อนาที';
+    }
+
+    public function bloodPresure()
+    {
+        return $this->sysBlood . '/' . $this->diBlood . ' มิลลิเมตรปรอท';
+    }
+
     public static function recordPatientGeneralDetail($input)
     {
         $keyword = $input['patient'];

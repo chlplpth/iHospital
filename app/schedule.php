@@ -79,11 +79,11 @@ class schedule extends Model
     {
         if($value == 'morning')
         {
-            return 'เช้า (9.30 น. - 11.30 น.)';
+            return '9.30 น. - 11.30 น.';
         }
         else
         {
-            return 'บ่าย (13.00 น. - 15.30 น.)';
+            return '13.00 น. - 15.30 น.';
         }
     }
 
@@ -116,22 +116,15 @@ class schedule extends Model
         if($input['doctorId'] != '0')
         {
             $doctor = doctor::where('userId', $input['doctorId'])->first();
-            $schedule = $doctor->schedules();
-            // $schedule = DB::table('schedule')
-            //             ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
-            //             ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
-            //             ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
-            //             ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
-            //             ->join('users', 'doctor.userId', '=', 'users.userId')
-            //             ->where('doctor.userId', $input['doctorId']);
+            $schedule = $doctor->schedules()
+                        ->join('users', 'scheduleLog.doctorId', '=', 'users.userId');
         }
         else if($input['departmentId'] != '0')
         {
-            $schedule = DB::table('schedule')
-                        ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+            $schedule = schedule::join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
                         ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
-                        ->join('users', 'doctor.userId', '=', 'users.userId')
                         ->join('hospitalStaff', 'doctor.userId', '=', 'hospitalStaff.userId')
+                        ->join('users', 'hospitalStaff.userId', '=', 'users.userId')
                         ->join('department', 'hospitalStaff.departmentId', '=', 'department.departmentId')
                         ->where('department.departmentId', $input['departmentId']);
         }
@@ -142,6 +135,8 @@ class schedule extends Model
             $appointments = $schedule->where('diagDate', '>', Carbon::now())
                                     ->orderBy('diagDate', 'asc')
                                     ->orderBy('diagTime', 'asc')
+                                    ->orderBy('name', 'asc')
+                                    ->orderBy('surname', 'asc')
                                     ->take(10)
                                     ->get();
         }
@@ -149,7 +144,9 @@ class schedule extends Model
         {
             $input['date'] = scheduleLog::changeDateFormat($input['date']);
             $appointments = $schedule->where('diagDate', $input['date'])
-                                    // ->orderBy('diagTime', 'asc')
+                                    ->orderBy('diagTime', 'asc')
+                                    ->orderBy('name', 'asc')
+                                    ->orderBy('surname', 'asc')
                                     ->get();
         }
 

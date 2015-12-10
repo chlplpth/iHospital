@@ -10,69 +10,73 @@
 	</div>
 	<div class="panel-body">
 		<div id = "diagnosisRecordWindow">
-			<span class="bold">รหัสประจำตัวผู้ป่วย : </span>PatientID 
+			<span class="bold">รหัสประจำตัวผู้ป่วย : </span>{{ $app->patient->hospitalNo }}
 			<br> <br>
 
 			<div class="row">
-				<div class="col-md-4"> <span class="bold">ชื่อ : </span>ชลธร
+				<div class="col-md-4"> <span class="bold">ชื่อ : </span> {{ $app->patient->name() }}
 				</div>
-				<div class="col-md-8"><span class="bold">นามสกุล : </span>ขวัญขจรเกียรติ
+				<div class="col-md-8"><span class="bold">นามสกุล : </span> {{ $app->patient->surname() }}
 				</div>
 			</div>
 			<br>
 
 			<div class ="row">
 				<div class ="col-md-2">
-					<span class="bold">เพศ : </span>ชาย 
+					<span class="bold">เพศ : </span> {{ $app->patient->sex }}
 				</div>
 				<div class ="col-md-2">
-					<span class="bold">กรุ๊ปเลือด : </span>O
+					<span class="bold">กรุ๊ปเลือด : </span> {{ $app->patient->bloodGroup }}
 				</div>	
 				<div class ="col-md-8">
-					<span class="bold">อายุ : </span> 20 
+					<span class="bold">อายุ : </span> เดี๋ยวค่อยใส่
 				</div>
 				<br><br>
 			</div>
 			<div class="row">
-				<div class="col-md-4"><span class="bold">แพทย์ : </span>ชลัมพล 
+				<div class="col-md-4"><span class="bold">แพทย์ : </span> {{ $app->doctor()->fullname() }} 
 				</div>
-				<div class="col-md-8"><span class="bold">แผนก : </span>เวชกรรม
+				<div class="col-md-8"><span class="bold">แผนก : </span> {{ $app->department()->departmentName }}
 				</div>
 			</div>
 			<br>
 
 			<div class ="row">
 				<div class ="col-md-4">
-					<span class="bold">วันที่รับการตรวจ : </span>19/11/2015 
+					<span class="bold">วันที่รับการตรวจ : </span> {{ $app->diagDate() }}
 				</div>
 				<div class ="col-md-8">
-					<span class="bold">เวลา : </span>9.00 น. -12.00 น. 
+					<span class="bold">เวลา : </span> {{ $app->diagTime() }} 
 				</div>
 			</div>
 
 			<br>
-			<span class="bold">อาการ : </span>ไข้สูง
+			<span class="bold">อาการ : </span> {{ $app->symptom }}
 			<br><br>
 			<div class ="row">
 				<div class ="col-md-4">
-					<span class="bold">น้ำหนัก : </span>50 kg
+					<span class="bold">น้ำหนัก : </span> {{ $phys->weight }}
 				</div>
 				<div class ="col-md-4">
-					<span class="bold">ส่วนสูง : </span>150 cm 
+					<span class="bold">ส่วนสูง : </span> {{ $phys->height }} 
 				</div>
 			</div>
 			<br>
 			<div class ="row">
 				<div class ="col-md-4">
-					<span class="bold">ความดันโลหิต : </span>20/100
+					<span class="bold">ความดันโลหิต : {{ $phys->bloodPresure() }}</span>
 				</div>
 				<div class ="col-md-4">
-					<span class="bold">อัตราการเต้นของหัวใจ : </span>70 bpm 
+					<span class="bold">อัตราการเต้นของหัวใจ : </span> {{ $phys->heartRate }}
 				</div>
 			</div>
 
 			<br>
-			<span class="bold">คำแนะนำจากแพทย์ : </span>กินยาแล้วพัก
+			<span class="bold">รหัสโรค : </span> {{ $diag->diseaseCode }}
+			<br><br>
+			<span class="bold">รายละเอียดการวินิจฉัย : </span> {{ $diag->diagnosisDetail }}
+			<br><br>
+			<span class="bold">คำแนะนำจากแพทย์ : </span> {{ $diag->doctorAdvice }}
 			<br><br>
 			<span class="bold">รายการยา</span> 
 			<br><br>
@@ -84,10 +88,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach($prescription->medicines as $med)
 					<tr>
-						<td>paracetamol</td>
-						<td>2 เม็ด</td>
+						<td>{{ $med->medicineName }}</td>
+						<td>{{ $med->quantity }}</td>
 					</tr>
+					@endforeach
 				</tbody>
 			</table>	
 			<div class ="row">

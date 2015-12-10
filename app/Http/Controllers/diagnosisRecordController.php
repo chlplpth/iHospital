@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -67,6 +68,27 @@ class diagnosisRecordController extends Controller
     {
     	$input = $request->all();
         $diagnosisRecords = diagnosisRecord::viewDiagnosisHistoryPatient($input);
+    }
+
+    public function showDiagnosisRecordList()
+    {
+        $patientId = Auth::user()->userId;
+        $appointments = appointment::getRecordedAppointments($patientId);
+        return view('patient.diagnosisRecord')
+                ->with('appointments', $appointments);
+    }
+
+    public function showDiagnosisRecord($appId)
+    {
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        $phys = $appointment->physicalRecord;
+        $diag = $appointment->diagnosisRecord;
+        $prescription = $appointment->prescription;
+        return view('patient.diagnosisRecord2')
+                ->with('app', $appointment)
+                ->with('phys', $phys)
+                ->with('diag', $diag)
+                ->with('prescription', $prescription);
     }
 
     //click from user profile-> diagnosisHistory to view detail

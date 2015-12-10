@@ -28,7 +28,6 @@ class department extends Model
     // -------------------------------  relationship -------------------------------
     public function doctors()
     {
-        // return $this->hasManyThrough('App\hospitalStaff', 'App\doctor', 'userId', 'departmentId');
         return $this->hasManyThrough('App\doctor', 'App\hospitalStaff', 'departmentId', 'userId');
     }
 

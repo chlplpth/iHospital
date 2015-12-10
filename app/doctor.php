@@ -38,8 +38,6 @@ class doctor extends Model
     public function schedules()
     {
         return $this->hasManyThrough('App\schedule', 'App\scheduleLog', 'doctorId', 'scheduleLogId');
-                    // ->orderBy('diagDate')
-                    // ->orderBy('diagTime');
     }
 
     public function hospitalStaff()

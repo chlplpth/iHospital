@@ -92,12 +92,18 @@ class patient extends Model
 
     public function getDateOfBirthAttribute($value)
     {
-        // $date = explode('/', $value);
-        // $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
-        // $month = $monthName[$value[1]];
-        // if($value[2] > 60)
+        $date = explode('-', $value);
+        $year = $date[0] + 543;
+        $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
+        $month = $monthName[$date[1]];
+        return $date[2] . ' ' . $month . ' ' . $year;
+    }
 
-        return $value;
+    public function setDateOfBirthAttribute($value)
+    {
+        $date = explode('/', $value);
+        $CEyear = intval($date[2]) - 543;
+        $this->attributes['dateOfBirth'] = $CEyear . '-' . $date[1] . '-' . $date[0];
     }
 
     public function addressDetail(){

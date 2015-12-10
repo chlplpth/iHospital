@@ -23,19 +23,16 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>20/11/2558</td>
-								<td>จักษุวิทยา</td>
-								<td>กรภพ</td>
-								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning">ดู</a></td>
-							</tr>
+							
+							@foreach($appointments as $app)
+								<tr>
+									<td>{{ $app->diagDate() }}</td>
+									<td>{{ $app->department()->departmentName }}</td>
+									<td>{{ $app->doctor()->fullname() }}</td>
+									<td ><a href="{{ url('/diagnosisRecord/' . $app->appointmentId) }}" class="btn btn-warning">ดู</a></td>
+								</tr>
+							@endforeach
 
-							<tr>
-								<td>21/11/2558</td>
-								<td>กุมารเวชรศาสตร์</td>
-								<td>ญานิกา</td>
-								<td ><a href="{{ url('/diagnosisRecord2') }}" class="btn btn-warning">ดู</a></td>
-							</tr>
 						</tbody>
 					</table>
 				</div>

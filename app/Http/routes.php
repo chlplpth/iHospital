@@ -42,9 +42,11 @@ Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
 
-Route::get('diagnosisRecord', function() {
-    return view('patient/diagnosisRecord');
-});
+Route::get('diagnosisRecord', 'diagnosisRecordController@showDiagnosisRecordList');
+Route::get('diagnosisRecord/{appId}', 'diagnosisRecordController@showDiagnosisRecord');
+// Route::get('diagnosisRecord', function() {
+//     return view('patient/diagnosisRecord');
+// });
 
 Route::get('diagnosisRecord2', function() {
     return view('patient/diagnosisRecord2');
@@ -54,7 +56,7 @@ Route::get('diagnosisRecord2', function() {
 //     return view('patient/rescheduleAppointment');
 // });
 
-Route::get('rescheduleAppointment/{appId}', 'appointmentController@delayAppointmentShow');
+Route::post('rescheduleAppointment', 'appointmentController@delayAppointmentShow');
 
 Route::post('rescheduleAppointmentRequest', 'appointmentController@delayAppointmentRequest');
 
@@ -240,6 +242,7 @@ Route::post('editProfile', 'userController@editMyProfilePatientStore');
 
 Route::get('createAppointment', 'appointmentController@createAppointmentShow');
 Route::post('/createAppointment', 'appointmentController@createAppointmentRequest');
+Route::post('/confirmAppointment', 'appointmentController@confirmAppointmentShow');
 Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
 
 Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');

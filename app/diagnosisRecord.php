@@ -23,7 +23,7 @@ class diagnosisRecord extends Model
         'appointmentId',
         'diseaseCode',
         'doctorAdvice',
-        'diagnonsisDetail',
+        'diagnosisDetail',
         'physicalRecordId'];
 
     //-------------------------------  relationship -------------------------------

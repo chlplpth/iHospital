@@ -56,7 +56,7 @@ class scheduleLog extends Model
     public static function changeDateFormat($date)
     {
         $tmp = explode('/', $date);
-        $newYear = (2500+intval($tmp[2])) - 543;
+        $newYear = intval($tmp[2]) - 543;
         return $newYear . '-' . $tmp[1] . '-' . $tmp[0];
     }
 

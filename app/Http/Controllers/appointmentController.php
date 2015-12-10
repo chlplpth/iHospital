@@ -37,13 +37,24 @@ class appointmentController extends Controller
         return view('patient.createAppointment')->with('appointments', $appointments)->with('symptom', $input['symptom']);
     }   
 
+    public function confirmAppointmentShow(Request $request)
+    {
+        $input = $request->all();
+        $patient = patient::where('userId', Auth::user()->userId)->first();
+        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
+        return view('patient.confirmAppointment')
+                ->with('patient', $patient)
+                ->with('schedule', $schedule)
+                ->with('symptom', $input['symptom']);
+    }
+
     //user enter confirm and store data of appointment in database
     public function createAppointmentStore(Request $request)
     {
         $input = $request->all();
         $input['patientId'] = Auth::user()->userId;
         $appointments = appointment::createAppointment($input);
-        $this->confirmAppointmentEmail();
+        // // $this->confirmAppointmentEmail();
         return redirect('/');
     }
 
@@ -72,24 +83,30 @@ class appointmentController extends Controller
         return "success";
     }
 
-    public function delayAppointmentShow($appId)
+    public function delayAppointmentShow(Request $request)
     {
-        // $appointment = appointment::getAppointmentDetail($appId);
+        $appId = $request['appointmentId'];
         $appointment = appointment::where('appointmentId', $appId)->first();
         return view('patient.rescheduleAppointment')->with('appointment', $appointment);
     }  
 
     public function delayAppointmentRequest(Request $request)
     {
-        $dateFormat = $request['date'];
+        $oldDate = $request['date'];
         $input = $request;
         $appointment = appointment::getAppointmentDetail($input['appointmentId']);
         $newAppointments = schedule::requestDate($input);
+        $formattedDate = '';
+        if($request['date'] != '')
+        {
+            $formattedDate = schedule::formatDiagDate($input['date']);
+        }
+        
         return view('patient.rescheduleAppointment')
                 ->with('appointment', $appointment)
                 ->with('newAppointments', $newAppointments)
-                ->with('requestedDate', $dateFormat)
-                ->with('formattedDate', schedule::formatDiagDate($input['date']));
+                ->with('requestedDate', $oldDate)
+                ->with('formattedDate', $formattedDate);
     } 
 
     public function delayAppointmentStore(Request $request)
