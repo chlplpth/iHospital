@@ -64,9 +64,9 @@ Route::post('rescheduleAppointmentRequest', 'appointmentController@delayAppointm
 
 Route::post('confirmReAppointment', 'appointmentController@confirmReAppointment');
 
-Route::get('cancelAppointment', function() {
-    return view('patient/cancelAppointment');
-});
+Route::post('cancelAppointment', 'appointmentController@cancelAppointmentShow');
+
+Route::post('cancelAppointmentStore', 'appointmentController@cancelAppointmentStore');
 
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');

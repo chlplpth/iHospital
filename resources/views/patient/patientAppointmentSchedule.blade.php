@@ -32,7 +32,12 @@
 								<td>{{ $app->department()->departmentName }}</td>
 								<td>{{ $app->doctor()->fullname() }}</td>
 								<td ><a href="{{ url('/rescheduleAppointment/' .$app->appointmentId) }}" class="btn btn-warning">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancelAppointment') }}" class="btn btn-danger">ยกเลิก</a></td>
+								<td >
+								{!! Form::open(array('url' => 'cancelAppointment')) !!}
+									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
+									{!! Form::submit('ยกเลิก', ['class' => 'btn btn-danger']) !!}
+								{!! Form::close() !!}
+								</td>
 							</tr>
 							@endforeach
 						</tbody>

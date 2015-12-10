@@ -14,31 +14,31 @@
 		
 		<div class ="row">
     	<div class ="col-md-3">
-    		<span class="bold">แผนก : </span>จักษุวิทยา 
+    		<span class="bold">แผนก : </span> {{ $appointment->department()->departmentName }}
   		</div>
-  		<div class ="col-md-2">
-			<span class="bold">อาคาร : </span>จามจุรี 9
+  		<div class ="col-md-9">
+			<span class="bold">อาคาร : </span> {{ $appointment->department()->departmentBuilding }}
   		</div>	
-  		<div class ="col-md-7">
-  			<span class="bold">ชั้น : </span>4 
-  		</div>
   	</div>
 
 		<br>
-		<span class="bold">แพทย์ : </span>ชลัมพล
+		<span class="bold">แพทย์ : </span> {{ $appointment->doctor()->fullname() }}
 		<br><br>
 		<div class ="row">
 					
 					<div class ="col-md-3">
-						<span class="bold">วันที่ : </span>19/11/2015
+						<span class="bold">วันที่ : </span>{{ $appointment->diagDate() }}
 					</div>
 					<div class ="col-md-9">
-						<span class="bold">เวลา : </span>9.00 น. - 12.00 น.
+						<span class="bold">เวลา : </span> {{ $appointment->diagTime() }}
 					</div>	
 				</div>
 		<br>
 
-	     	<a href="{{ url('/mainPatient') }}" class="btn btn-left btn-danger">ยกเลิก</a>
+			{!! Form::open(array('url' => 'cancelAppointmentStore')) !!}
+				{!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+	     		{!! Form::submit('ยกเลิก', ['class' => 'btn btn-left btn-danger']) !!}
+	     	{!! Form::close() !!}
       <br><br>  
 </div>
 

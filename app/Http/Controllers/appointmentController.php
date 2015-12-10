@@ -139,11 +139,20 @@ class appointmentController extends Controller
     }
 
     
-    public function cancelAppointment($appId)
+    public function cancelAppointmentShow(Request $request)
     {
+        $appId = $request['appointmentId'];
         $appointment = appointment::where('appointmentId',$appId)->first();
-        DB::table('appointment')->where('appointmentId', $appId)->delete();
-        return redirect('/patientAppointmentSchedule');
+        // DB::table('appointment')->where('appointmentId', $appId)->delete();
+        return view('patient.cancelAppointment')->with('appointment', $appointment);
+    }
+
+    public function cancelAppointmentStore(Request $request)
+    {
+        $appId = $request['appointmentId'];
+        $appointment = appointment::where('appointmentId',$appId)->first();
+        $appointment->delete();
+        return redirect('patientAppointmentSchedule');
     }
 
     public function createAppointmentShow()
