@@ -121,27 +121,45 @@ class userController extends Controller
     }
     
     //get list of doctor in department
-    public function getDoctorList(Request $request)
-    {
+    // public function getDoctorList(Request $request)
+    // {
     	
-        $department = $request->departmentId;
-    	$doctors = doctor::getDoctorList($department);
+    //     $department = $request->departmentId;
+    // 	$doctors = doctor::getDoctorList($department);
 
-        //if(sizeof($doctors)==0) echo "not found";
-        //else echo"found";
+    //     //if(sizeof($doctors)==0) echo "not found";
+    //     //else echo"found";
         
+    // }
+
+    public function searchDoctorShow()
+    {
+        $departments = department::getDepartmentArray();
+        $doctor = doctor::doctorSortByName()->get();
+        return view('patient.doctorList')
+                ->with('departments', $departments)
+                ->with('doctors', $doctor);
     }
 
     //search doctor that have name or surname contain that request string
     public function searchDoctor(Request $request)
     {
-    	$department = $request->input('department');
-        echo $department;
-        $doctor = $request->input('doctor');
-        $doctors = doctor::searchDoctor($department, $doctor);
+    	$input = $request;
+        $department = $request->input('department');
+        $docQuery = $request->input('doctor');
+        
+        $doctors = doctor::searchDoctor($department, $docQuery);
+        $departments = department::getDepartmentArray();
+
+        // $doctor = $request->input('doctor');
+        // $doctors = doctor::searchDoctor($department, $doctor);
 
        
-		return view('patient.doctorListSearch')->with('doctors',$doctors);
+		return view('patient.doctorList')
+                ->with('doctors',$doctors)
+                ->with('departments', $departments)
+                ->with('queryName', $input['doctor'])
+                ->with('queryDepartment', $input['department']);
     }
     
     public function searchPatient(Request $request)

@@ -80,9 +80,9 @@ Route::get('doctorScheduleByStaff', function() {
     return view('staff/doctorScheduleByStaff');
 });
 
-Route::get('doctorList', function () {
-    return view('patient/doctorList');
-});
+Route::get('doctorList', 'userController@searchDoctorShow');
+
+// Route::post('doctorListSearch', 'userController@');
 Route::post('doctorList','userController@searchDoctor');
 
 Route::get('addStaffByStaff', function() {

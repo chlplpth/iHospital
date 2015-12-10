@@ -43,6 +43,18 @@ class department extends Model
         return $tmpArr;
     }
 
+    public static function getDepartmentArray()
+    {
+        $department = department::all();
+        $results = array();
+        $results['0'] = 'ไม่ระบุ';
+        foreach($department as $d)
+        {
+            $results[$d->departmentId] = $d->departmentName;
+        }
+        return $results;
+    }
+
     public function getDoctorByDepartment($departmentId)
     {
         $doctor = DB::table('department')

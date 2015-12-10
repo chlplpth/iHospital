@@ -16,29 +16,12 @@
 				<div class="col-md-1"></div>
 				<div class="col-md-4 form-inline">{!! Form::label('department', 'แผนก'); !!} &nbsp
 
-					{!! Form::select('department', array(
-					'0' => 'ไม่ระบุ',
-					'1' => 'กายวิภาคศาสตร์', 
-					'2' => 'กุมารเวชศาสตร์',
-					'3' => 'จิตเวชศาสตร์',
-					'4' => 'จุลชีววิทยา',
-					'5' => 'จักษุวิทยา',
-					'6' => 'ชีวเคมี',
-					'7' => 'นิติเวชศาสตร์',
-					'8' => 'ปรสิตวิทยา',
-					'9' => 'พยาธิวิทยา',
-					'10' => 'เภสัชวิทยา',
-					'11' => 'รังสีวิทยา',
-					'12' => 'วิสัญญีวิทยา',
-					'13' => 'เวชศาสตร์ชันสูตร',
-					'14' => 'เวชศาสตร์ป้องกันและสังคม',
-					'15' => 'เวชศาสตร์ฟื้นฟู',
-					'16' => 'ศัลยศาสตร์',
-					'17' => 'สรีรวิทยา',
-					'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-					'19' => 'โสต คอ นาสิกวิทยา',
-					'20' => 'ออโธปิดิกส์',
-					'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
+					@if(isset($queryDepartment))
+						{!! Form::select('department', $departments, $queryDepartment,["class" => "form-control"])!!}
+					@else
+						{!! Form::select('department', $departments,'0',["class" => "form-control"])!!}
+					@endif
+					
 					@if( $errors->has('department') )<br><br>
 					<p class="text-danger"> {{ $errors->first('department') }} </p>
 					@endif
@@ -46,7 +29,11 @@
 
 
 				<div class="col-md-4">{!! Form::label('name', 'ชื่อแพทย์'); !!} &nbsp
-					{!! Form::text('doctor', '', ['class'=>'textbox', 'placeholder'=>'ณภัทร']);!!}
+					@if(isset($queryName))
+						{!! Form::text('doctor', $queryName, ['class'=>'textbox', 'placeholder'=>'ณภัทร']);!!}
+					@else
+						{!! Form::text('doctor', '', ['class'=>'textbox', 'placeholder'=>'ณภัทร']);!!}
+					@endif
 					@if( $errors->has('name') )<br><br>
 					<p class="text-danger"> {{ $errors->first('name') }} </p> 
 					@endif
@@ -58,19 +45,23 @@
 			<br><br>
 			<div id="doctorData">
 				@if(isset($doctors))
-				@foreach ($doctors as $d) 
-				<div class="row">
-					<div class="col-md-3">
-							{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
-					</div>
-					<div class="col-md-6"><br>
-						<span class ="bold">ชื่อแพทย์ : </span> {{ $d->name }} <br><br>
-						<span class ="bold">แผนก : </span>{{ $d->departmentName }} <br><br>
-						<span class ="bold">ความเชี่ยวชาญและประสบการณ์ : </span>{{$d->proficiency}}<br><br>
-					</div>
-				</div>
-				<br>
-				@endforeach
+					@if(count($doctors) > 0)
+						@foreach ($doctors as $d) 
+						<div class="row">
+							<div class="col-md-3">
+									{!! HTML::image('image/DoctorPicture/smurf.jpg', 'Profile', ['width' => '200px' , 'height' => '200px' ]) !!}
+							</div>
+							<div class="col-md-6"><br>
+								<span class ="bold">ชื่อแพทย์ : </span> {{ $d->name }} {{ $d->surname }} <br><br>
+								<span class ="bold">แผนก : </span>{{ $d->departmentName }} <br><br>
+								<span class ="bold">ความเชี่ยวชาญและประสบการณ์ : </span>{{$d->proficiency}}<br><br>
+							</div>
+						</div>
+						<br>
+						@endforeach
+					@else
+						ไม่พบแพทย์ที่มีเงื่อนไขตามที่ค้นหา
+					@endif
 				@endif
 			</div>
 		</div>

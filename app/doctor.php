@@ -71,6 +71,13 @@ class doctor extends Model
 
     //-------------------------  functions  -----------------------------------
     
+    public static function doctorSortByName()
+    {
+        return doctor::join('users', 'doctor.userId', '=', 'users.userId')
+                ->orderBy('name', 'asc')
+                ->orderBy('surname', 'asc');
+    }
+
     public function getScheduleInRange($year, $month)
     {
         // $results = array();
@@ -191,7 +198,7 @@ class doctor extends Model
                      ->join('hospitalStaff','users.userId','=','hospitalStaff.userId')
                      ->where(function ($query) use($department){
                              if($department!=0)
-                                $query->where('departmentId', $department);
+                                $query->where('hospitalStaff.departmentId', $department);
                             })
                      ->where(function ($query) use($doctor){
                                 $query->where('name', 'like', '%'.$doctor.'%')
