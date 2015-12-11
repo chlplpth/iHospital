@@ -32,6 +32,7 @@ class patient extends Model
         'citizenNo',
         'dateOfBirth',
         'sex',
+        'drugAllergy',
         'bloodGroup'];
 
 
@@ -104,6 +105,19 @@ class patient extends Model
         $date = explode('/', $value);
         $CEyear = intval($date[2]) - 543;
         $this->attributes['dateOfBirth'] = $CEyear . '-' . $date[1] . '-' . $date[0];
+    }
+
+    public function setDrugAllergyAttribute($value)
+    {
+        $drug = '';
+        $checked = false;
+        foreach($value as $med)
+        {
+            if($checked == true) $drug = $drug . ', ';
+            $drug = $drug . $med;
+            $checked = true;
+        }
+        $this->attributes['drugAllergy'] = $drug;
     }
 
     public function addressDetail(){

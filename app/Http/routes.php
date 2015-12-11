@@ -138,6 +138,7 @@ Route::get('/doctorAppointmentSchedule', function () {
     return view('doctor/doctorAppointmentSchedule');
 });
 
+// diagnosis history
 Route::get('/diagnosisHistory', function () {
     return view('doctor/diagnosisHistory');
 });
@@ -150,6 +151,11 @@ Route::post('/showDiagnosisHistory', 'diagnosisRecordController@showDiagnosisHis
 Route::get('mainStaff', function() {
     return view('staff/mainStaff');
 });
+
+Route::get('/addPatient', function() {
+    return view('staff.addPatient');
+});
+Route::post('/addPatient', 'userController@addPatient');
 
 Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
@@ -189,11 +195,6 @@ Route::get('searchPatientProfileByStaff', function() {
 Route::get('searchDoctorScheduleByStaff', function() {
     return view('staff/searchDoctorScheduleByStaff');
 });
-
-Route::get('/addPatient', function() {
-    return view('staff.addPatient');
-});
-Route::post('/addPatient', 'userController@addPatient');
 
 Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
 Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');

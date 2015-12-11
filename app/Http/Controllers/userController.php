@@ -68,11 +68,11 @@ class userController extends Controller
         $patient = $input;
         $addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
         $patient['address'] = join(',,', $addressSet);
-        $patient['drugAllergy'] = join(", ", $input['drugAllergy']);
+        // $patient['drugAllergy'] = join(", ", $input['drugAllergy']);
         $patient['userId'] = $user->userId;
         $patient['hospitalNo'] = patient::getNewHospitalNo();
         $patient = patient::create($patient);
-
+        
         return redirect('/');
     }    
 
