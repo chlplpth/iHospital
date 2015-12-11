@@ -43,6 +43,8 @@ class diagnosisRecordController extends Controller
     }
 
     // ==================================================================================================
+    // ============================================ DOCTOR =============================================
+    // ==================================================================================================
 
     public function showDiagnosisRecordDoctor($appId)
     {
@@ -56,6 +58,25 @@ class diagnosisRecordController extends Controller
                 ->with('diag', $diag)
                 ->with('prescription', $prescription);
     }
+
+    // ==================================================================================================
+    // ============================================ NURSE =============================================
+    // ==================================================================================================
+
+    public function recordPhysicalRecordShow($patientId)
+    {
+        $appointment = appointment::toBeRecordedPhys($patientId);
+        return view('nurse.recordPatientGeneralDetail')
+                ->with('appointment', $appointment);
+    }
+
+    public function recordPhysicalRecordStore(Request $request)
+    {
+        $input = $request->all();
+        physicalRecord::createNewPhysRecord($input, Auth::user()->userId);
+        return redirect('recordPatientGeneralDetail');
+    }
+    
 
     public function recordDiagnosis(Request $request)
 	{

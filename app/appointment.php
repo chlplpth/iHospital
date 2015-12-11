@@ -103,6 +103,26 @@ class appointment extends Model
                             ->get();
     }
 
+    public static function toBeRecordedPhys($patientId)
+    {
+        $apps = appointment::where('patientId', $patientId)
+                            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                            ->where('schedule.diagDate', '>', Carbon::now())
+                            ->orderBy('diagDate', 'asc')
+                            ->orderBy('diagTime', 'asc')
+                            ->get();
+
+        foreach($apps as $a)
+        {
+            if($a->physicalRecord()->count() == 0)
+            {
+                return $a;
+            }
+        }
+
+        return null;
+    }
+
     public static function viewPatientAppointment($patientId)
     {
         $appointments = appointment::where('patientId',$patientId)

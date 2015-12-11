@@ -215,6 +215,9 @@ Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
 
+Route::get('/recordPatientGeneralDetail/{patientId}', 'diagnosisRecordController@recordPhysicalRecordShow');
+Route::post('/recordPatientGeneralDetail', 'diagnosisRecordController@recordPhysicalRecordStore');
+
 Route::get('/searchPatientProfileByNurse', function () {
     return view('nurse/searchPatientProfileByNurse');
 });

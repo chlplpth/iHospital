@@ -53,11 +53,10 @@ class physicalRecord extends Model
         return $this->sysBlood . '/' . $this->diBlood . ' มิลลิเมตรปรอท';
     }
 
-    public static function recordPatientGeneralDetail($input)
+    public static function createNewPhysRecord($input, $nurseId)
     {
-        $keyword = $input['patient'];
-        $patient = patient::searchPatient($keyword)->first();
-        return $patient;
+        $input['nurseId'] = $nurseId;
+        $physRecord = physicalRecord::create($input);
     }
 
     public static function recordPatientGeneralDetail2($input)
