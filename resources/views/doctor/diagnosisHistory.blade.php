@@ -3,7 +3,7 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => 'foo/bar')) !!}
+	{!! Form::open(array('url' => '/showDiagnosisHistory')) !!}
 
 	<div class="panel panel-default">
   		<div class="panel-heading">
@@ -24,7 +24,7 @@
 	            <div class="form-group row">
 	              <div class="col-xs-1 indent7"></div>
 	              <div class="col-xs-3">
-	              	<a href="{{ url('/showDiagnosisHistory') }}" class="btn btn-info">ค้นหา</a>
+	              	{!! Form::submit('ค้นหา', ['class' => 'btn btn-info']) !!}
 	            </div>
         	</form>
   		</div>

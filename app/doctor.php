@@ -100,6 +100,7 @@ class doctor extends Model
                     ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
                     ->join('doctor', 'scheduleLog.doctorId', '=', 'doctor.userId')
                     ->where('doctor.userId', '=', $this->userId)
+                    ->where('schedule.diagDate', '<', Carbon::now())
                     ->orderBy('diagDate')
                     ->get();
 
@@ -121,8 +122,8 @@ class doctor extends Model
             }
 
             $patientNo = $schedule->patientsAmount();
-            $results[$i][$s->diagTime] = $schedule->patientsAmount();
-            $results[$i]['sum'] += $results[$i][$s->diagTime];
+            $results[$i][$s->getOriginal('diagTime')] = $patientNo;
+            $results[$i]['sum'] += $patientNo;
         }
 
         $results['sum']['date'] = 'รวม';
@@ -143,23 +144,6 @@ class doctor extends Model
         $results['sum']['sum'] = $results['sum']['morning'] + $results['sum']['afternoon'];
 
         return $results;
-
-
-        // $firstDate = Carbon::create($year, $month, 1, 0, 0, 0);
-        // $lastDate = Carbon::create($year, $month, 1, 0, 0, 0)->endOfMonth();
-        // $date = $firstDate;
-
-        // $results = array();
-        // $i = 1;
-        // while( $date->lt($lastDate) )
-        // {
-        //     echo $date . '<br>';
-
-
-        //     // iterator
-        //     $date->addDay();
-        //     $i++;
-        // }
     }
 
     public static function viewDoctorProfile($doctorId)

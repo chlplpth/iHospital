@@ -3,12 +3,11 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">
-			สถิติการออกตรวจ - สิงหาคม พ.ศ. 2536
+			สถิติการออกตรวจ - {{ $month }} {{ $year }}
 		</h3>
 	</div>
 
@@ -27,24 +26,14 @@
 							</tr>
 						</thead>
 						<tbody>
+							@foreach($stats as $date)
 							<tr>
-								<td>20/11/2558</td>
-								<td>3</td>
-								<td>9</td>
-								<td>12</td>
+								<td>{{ $date['date'] }}</td>
+								<td>{{ $date['morning'] }}</td>
+								<td>{{ $date['afternoon'] }}</td>
+								<td>{{ $date['sum'] }}</td>
 							</tr>
-							<tr>
-								<td>21/11/2558</td>
-								<td>8</td>
-								<td>1</td>
-								<td>9</td>
-							</tr>
-							<tr>
-								<td>รวม</td>
-								<td>11</td>
-								<td>10</td>
-								<td>21</td>
-							</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>
@@ -52,6 +41,7 @@
 		</form>
 	</div>
 </div>
+{!! Form::open(array('url' => 'foo/bar')) !!}
 <script>
 $(document).ready(function(){
 	$('[id="pdf"]').tooltip();

@@ -68,11 +68,15 @@ class schedule extends Model
             $day = $day[1];
         }
 
-        $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
-        
         $BEyear = $date[0] + 543;
         
-        return $day . ' ' . $monthName[$date[1]] . ' ' . $BEyear;
+        return $day . ' ' . schedule::getMonthName($date[1]) . ' ' . $BEyear;
+    }
+
+    public static function getMonthName($value)
+    {
+        $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
+        return $monthName[$value];
     }
 
     public function getDiagTimeAttribute($value)
@@ -100,7 +104,10 @@ class schedule extends Model
 
     public function patientsAmount()
     {
-        return $this->appointments->count();
+        return $this->appointments()
+                    ->hasPhysicalRecord()
+                    ->hasDiagnosisRecord()
+                    ->count();
     }
 
     //-------------------------  function ---------------------

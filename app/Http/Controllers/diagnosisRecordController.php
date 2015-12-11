@@ -13,6 +13,8 @@ use App\physicalRecord;
 use App\medicinePrescription;
 use App\appointment;
 use App\prescription;
+use App\doctor;
+use App\schedule;
 
 class diagnosisRecordController extends Controller
 {
@@ -77,6 +79,17 @@ class diagnosisRecordController extends Controller
             appointment::newAppointmentByDoctor($input, $doctorId, $input['patientId']);
         }
         return redirect('diagnose');
+    }
+
+    public function showDiagnosisHistory(Request $request)
+    {
+        $input = $request->all();
+        $doctor = doctor::where('userId', Auth::user()->userId)->first();
+        $stats = $doctor->getDiagStats(($input['year'] - 543), $input['month']);
+        return view('doctor.showDiagnosisHistory')
+                ->with('stats', $stats)
+                ->with('year', $input['year'])
+                ->with('month', schedule::getMonthName($input['month']));
     }
 
     // ==================================================================================================
