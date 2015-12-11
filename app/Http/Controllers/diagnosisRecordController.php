@@ -109,7 +109,26 @@ class diagnosisRecordController extends Controller
         physicalRecord::createNewPhysRecord($input, Auth::user()->userId);
         return redirect('recordPatientGeneralDetail');
     }
-    
+     // ==================================================================================================
+    // ============================================ PHARMACIST =============================================
+    // ==================================================================================================
+
+    public function recordPrescriptionShow($patientId)
+    {
+        $appointment = appointment::toBePrescribe($patientId);
+        $prescription = $appointment->prescription;
+        return view('pharmacist.recordPrescriptionHistory2')
+                    ->with('appointment', $appointment)
+                    ->with('prescription', $prescription);
+    }
+
+    public function recordPrescription(Request $request)
+    {
+        $input = $request->all();
+        $prescription = prescription::where('prescriptionId', $input['prescriptionId'])->first();
+        $prescription->confirm(Auth::user()->userId);
+        return redirect('recordPrescriptionHistory');
+    }
 
     public function recordDiagnosis(Request $request)
 	{

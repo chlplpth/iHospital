@@ -247,9 +247,8 @@ Route::get('/mainPharmacist', function () {
 Route::get('/recordPrescriptionHistory', function () {
     return view('pharmacist/recordPrescriptionHistory');
 });
-Route::get('/recordPrescriptionHistory2', function () {
-    return view('pharmacist/recordPrescriptionHistory2');
-});
+Route::get('/recordPrescription/{patientId}', 'diagnosisRecordController@recordPrescriptionShow');
+Route::post('recordPrescription', 'diagnosisRecordController@recordPrescription');
 
 Route::get('/searchPatientProfileByPharmacist', function () {
     return view('pharmacist/searchPatientProfileByPharmacist');

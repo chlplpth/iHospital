@@ -34,4 +34,10 @@ class prescription extends Model
         return $this->hasMany('App\medicinePrescription', 'prescriptionId', 'prescriptionId');
     }
     
+    //--------------- function
+    public function confirm($pharmacistId)
+    {
+        $this->pharmacistId = $pharmacistId;
+        $this->save();
+    }
 }

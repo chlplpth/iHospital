@@ -129,6 +129,8 @@ class appointment extends Model
                             ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
                             ->where('schedule.diagDate', '>', Carbon::now())
                             ->hasPhysicalRecord()
+                            ->orderBy('diagDate', 'asc')
+                            ->orderBy('diagTime', 'asc')
                             ->get();
 
         foreach($apps as $a)
@@ -140,6 +142,19 @@ class appointment extends Model
         }
 
         return null;
+    }
+
+    public static function toBePrescribe($patientId)
+    {
+        $app = appointment::join('prescription', 'appointment.appointmentId', '=', 'prescription.appointmentId')
+                            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                            ->where('appointment.patientId', '=', $patientId)
+                            ->where('schedule.diagDate', '>', Carbon::now())
+                            ->whereNull('prescription.pharmacistId')
+                            ->orderBy('diagDate', 'asc')
+                            ->orderBy('diagTime', 'asc')
+                            ->first();
+        return $app;
     }
 
     public static function newAppointmentByDoctor($input, $doctorId, $patientId)

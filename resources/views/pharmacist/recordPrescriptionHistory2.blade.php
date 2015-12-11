@@ -3,7 +3,7 @@
 <link href="{{asset('css/pharmacist.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => '/recordPrescriptionHistory')) !!}
+{!! Form::open(array('url' => '/recordPrescription')) !!}
 
 <div class="panel panel-default">
   <div class="panel-heading">
@@ -14,17 +14,17 @@
 
       <div class="row">
         <div class="col-xs-2 bold">รหัสผู้ป่วย</div>
-        <div class="col-xs-10">123456789</div>
+        <div class="col-xs-10">{{ $appointment->patient->hospitalNo }}</div>
       </div>
       <br>
       <div class="row">
         <div class="col-xs-2 bold">ผู้ป่วย</div>
-        <div class="col-xs-10">ชลัมพล ไก๊ไก่ไก๊ไก่</div>
+        <div class="col-xs-10"> {{ $appointment->patient->fullname() }}</div>
       </div>
       <br>
       <div class="row">
         <div class="col-xs-2 bold">ประวัติการแพ้ยา</div>
-        <div class="col-xs-10">พารา</div>
+        <div class="col-xs-10"> {{ $appointment->patient->drugAllergy }}</div>
       </div>
       <br>
       <div class="row">
@@ -36,28 +36,22 @@
               <th style="width: 5%;">ลำดับ</th>
               <th style="width: 20%;">ชื่อยา</th>
               <th style="width: 10%;">จำนวน</th>
-              <th style="width: 45%;">วิธีใช้</th>
+              <th style="width: 25%;">วิธีใช้</th>
+              <th style="width: 20%;">ข้อแนะนำ</th>
             </tr>
           </thead>
           <tbody>
+            <?php $i = 1; ?>
+            @foreach($prescription->medicines as $med)
             <tr>
-              <td>1</td>
-              <td>พาราเซตาม่อง</td>
-              <td>10 เม็ด</td>
-              <td>ดม</td>
+              <td>{{ $i }}</td>
+              <td>{{ $med->medicineName }}</td>
+              <td>{{ $med->quantity }}</td>
+              <td>{{ $med->instruction }}</td>
+              <td>{{ $med->note }}</td>
             </tr>
-            <tr>
-              <td>2</td>
-              <td>ไวอากร้า</td>
-              <td>2 ขวด</td>
-              <td>แดก</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>เบตาดีน</td>
-              <td>32 ช้อน</td>
-              <td>ทา</td>
-            </tr>
+            <?php $i++; ?>
+            @endforeach
           </tbody>
         </table>
       </div>
@@ -65,6 +59,7 @@
     <div class="row">
       <div class="col-xs-8"></div>
         <div class="col-xs-4">
+        {!! Form::hidden('prescriptionId', $prescription->prescriptionId) !!}
        {!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
       </div>
     </div>
