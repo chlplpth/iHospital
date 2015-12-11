@@ -97,22 +97,28 @@ Route::get('diagnosisRecord/{appId}', 'diagnosisRecordController@showDiagnosisRe
 // ============================================= DOCTOR =============================================
 // ==================================================================================================
 
+// main page for doctor
 Route::get('/mainDoctor', function () {
     return view('doctor/mainDoctor');
 });
 
+// doctor's profile
 Route::get('/doctorProfile', 'userController@showDoctorProfile');
 Route::post('/editDoctorProfile', 'userController@editDoctorProfile');
 
+// doctor view patient's profile
 Route::get('/searchPatientProfileByDoctor', function () {
     return view('doctor/searchPatientProfileByDoctor');
 });
 Route::get('/patientProfileByDoctor/{patientId}', 'userController@showPatientProfileToDoctor');
 Route::get('patientDiagRecordByDoctor/{appId}', 'diagnosisRecordController@showDiagnosisRecordDoctor');
 
+// record diagnosis results
 Route::get('/diagnose', function () {
     return view('doctor/diagnose');
 });
+Route::get('/diagnose/{patientId}', 'diagnosisRecordController@recordDiagnosisRecordShow');
+Route::post('/diagnose', 'diagnosisRecordController@diagnose');
 
 Route::get('/showDiagnosisHistory', function () {
     return view('doctor/showDiagnosisHistory');

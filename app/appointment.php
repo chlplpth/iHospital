@@ -123,6 +123,45 @@ class appointment extends Model
         return null;
     }
 
+    public static function toBeRecordedDiag($patientId)
+    {
+        $apps = appointment::where('patientId', $patientId)
+                            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                            ->where('schedule.diagDate', '>', Carbon::now())
+                            ->hasPhysicalRecord()
+                            ->get();
+
+        foreach($apps as $a)
+        {
+            if($a->diagnosisRecord()->count() == 0)
+            {
+                return $a;
+            }
+        }
+
+        return null;
+    }
+
+    public static function newAppointmentByDoctor($input, $doctorId, $patientId)
+    {
+        $newDiagDate = scheduleLog::changeDateFormat($input['nextAppDate']);
+        $schedule = schedule::join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+                            ->where('scheduleLog.doctorId', $doctorId)
+                            ->where('schedule.diagDate', $newDiagDate)
+                            ->where('schedule.diagTime', $input['nextAppTime'])
+                            ->first();
+        
+        if($schedule != null)
+        {
+            $appointment = new appointment;
+            $appointment->patientId = $patientId;
+            $appointment->scheduleId = $schedule->scheduleId;
+            $appointment->symptom = $input['nextAppDetail'];
+            $appointment->save();
+        }
+        return $schedule;
+    }
+
     public static function viewPatientAppointment($patientId)
     {
         $appointments = appointment::where('patientId',$patientId)

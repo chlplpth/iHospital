@@ -30,6 +30,7 @@ function addMedicine(){
 		unit = 'ขวด';
 	}
 	var how = '';
+	var medNote = $('#medNote').val();
 	if($('#morningCh').prop("checked") == true){
 		how=how+"เช้า  ";
 	}
@@ -51,7 +52,12 @@ function addMedicine(){
 	if($('#otherCh').prop("checked") == true){
 		how=how+$('#medOther').val();
 	}
-	var x = "<tr><td>"+i+"</td><td>"+name+"</td><td>"+qua+"</td><td>"+unit+"</td><td>"+how+"</td>";
+	var x = "<tr><td>"+i+"</td><td>"+name+"</td><td>"+qua+"</td><td>"+unit+"</td><td>"+how+"</td><td>"+medNote+"</td></tr>";
+	x = x + "<input type='hidden' name='medName[]'' value='" + name + "'>";
+	x = x + "<input type='hidden' name='medQuantity[]'' value='" + qua + "'>";
+	x = x + "<input type='hidden' name='medUnit[]'' value='" + unit + "'>";
+	x = x + "<input type='hidden' name='medInstruction[]'' value='" + how + "'>";
+	x = x + "<input type='hidden' name='medNote[]'' value='" + medNote + "'>";
 	$('#drugTable').append(x);
 	$('#medicineName').val('');
 	$('#quantity').val('');
@@ -63,6 +69,7 @@ function addMedicine(){
 	$('#afterMealCh').removeAttr('checked');
 	$('#otherCh').removeAttr('checked');
 	$('#medOther').val('');
+	$('#medNote').val('');
 	$('#addMed').prop('disabled', true);
 }
 function enNextApp(){
@@ -75,13 +82,22 @@ function enNextApp(){
 function nextAppointment(){
 	var date =$('#date').val();
 	var period='';
+	var periodEnum='';
 	if($('#doctorRadioMorning').is(":checked")){
 		period="เช้า (9.00-11.30)";
+		periodEnum="morning";
 	}else if($('#doctorRadioAfternoon').is(":checked")){
 		period="บ่าย (13.00-15.30)";
+		periodEnum="afternoon";
 	}
+	var detail=$('#nextAppDetail').val();
 	var x= "นัดครั้งต่อไปวันที่ "+date+" "+period;
+	var y= "<input type='hidden' name='nextAppDate' value='"+date+"'>"
+			+ "<input type='hidden' name='nextAppTime' value='"+periodEnum+"'>"
+			+ "<input type='hidden' name='nextAppDetail' value='"+detail+"'>";
+	$('#nextAppointmentForm').html(y);
 	$('#nextAppointment').html(x);
+
 }
 function editProfile(){
 	name=$('#doctorName').text();

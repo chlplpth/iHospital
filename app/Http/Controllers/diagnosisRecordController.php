@@ -59,6 +59,26 @@ class diagnosisRecordController extends Controller
                 ->with('prescription', $prescription);
     }
 
+    public function recordDiagnosisRecordShow($patientId)
+    {
+        $appointment = appointment::toBeRecordedDiag($patientId);
+        $phys = $appointment->physicalRecord;
+        return view('doctor.diagnose')
+                    ->with('appointment', $appointment)
+                    ->with('phys', $phys);
+    }
+
+    public function diagnose(Request $request)
+    {
+        $input = $request->all();
+        $doctorId = Auth::user()->userId;
+        diagnosisRecord::recordDiagnosisResults($input);
+        if($input['nextAppDate'] != ''){
+            appointment::newAppointmentByDoctor($input, $doctorId, $input['patientId']);
+        }
+        return redirect('diagnose');
+    }
+
     // ==================================================================================================
     // ============================================ NURSE =============================================
     // ==================================================================================================

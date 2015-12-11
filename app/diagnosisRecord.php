@@ -44,6 +44,27 @@ class diagnosisRecord extends Model
 
     //------------------   function -------------------------
 
+    public static function recordDiagnosisResults($input)
+    {
+        $diag = diagnosisRecord::create($input);
+        
+        $prescription = new prescription;
+        $prescription->appointmentId = $input['appointmentId'];
+        $prescription->save();
+        $preId = $prescription->prescriptionId;
+
+        for($i = 0; $i < count($input['medName']); $i++)
+        {
+            $med = new medicinePrescription;
+            $med->prescriptionId = $preId;
+            $med->medicineName = $input['medName'][$i];
+            $med->quantity = $input['medQuantity'][$i] . ' ' . $input['medUnit'][$i];
+            $med->instruction = $input['medInstruction'][$i];
+            $med->note = $input['medNote'][$i];
+            $med->save();
+        }
+    }
+
     public static function viewDiagnosisHistoryPatient($input)
     {
 

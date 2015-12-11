@@ -66,7 +66,7 @@
 			<br>
 			<div class ="row">
 				<div class ="col-md-4">
-					<span class="bold">ความดันโลหิต : {{ $phys->bloodPresure() }}</span>
+					<span class="bold">ความดันโลหิต : {{ $phys->bloodPressure() }}</span>
 				</div>
 				<div class ="col-md-4">
 					<span class="bold">อัตราการเต้นของหัวใจ : </span> {{ $phys->heartRate }}

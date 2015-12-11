@@ -48,7 +48,7 @@ class physicalRecord extends Model
         return $value . ' ครั้งต่อนาที';
     }
 
-    public function bloodPresure()
+    public function bloodPressure()
     {
         return $this->sysBlood . '/' . $this->diBlood . ' มิลลิเมตรปรอท';
     }

@@ -11,65 +11,68 @@
 		<h3 class="panel-title">บันทึกการวินิจฉัยผู้ป่วย</h3>
 	</div>
 	<div class="panel-body">
+		@if(!isset($appointment))
+
+		@else
 		<div id="diagnosisForm">
 			<div class="form-group row">  
 				<label class="col-xs-2 bold">รหัสผู้ป่วย</label>
-				<label class="col-xs-10">1011001010</label>
+				<label class="col-xs-10">{{ $appointment->patient->hospitalNo }}</label>
 			</div>
 			<div class="form-group row">  
 				<label class="col-xs-2 bold">ผู้ป่วย</label>
-				<label class="col-xs-10">ชลัมพล ไก๊ไก่ไก๊ไก</label>
+				<label class="col-xs-10">{{ $appointment->patient->fullname() }}</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">น้ำหนัก</label>
-				<label class="col-xs-10">50 kg</label>
+				<label class="col-xs-10">{{ $phys->weight }}</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">ส่วนสูง</label>
-				<label class="col-xs-10">150 cm</label>
+				<label class="col-xs-10">{{ $phys->height }}</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">ความดันโลหิต</label>
-				<label class="col-xs-10">20/120 mmph</label>
+				<label class="col-xs-10">{{ $phys->bloodPressure() }}</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">อัตราการเต้นของหัวใจ</label>
-				<label class="col-xs-10">70 bpm</label>
+				<label class="col-xs-10">{{ $phys->heartRate }}</label>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">รหัสโรค</label>
-				<div class="col-xs-2">{!! Form::text('disid', '', ["class" => "form-control", 'placeholder' => 'AOE2342']) !!}
+				<div class="col-xs-2">{!! Form::text('diseaseCode', '', ["class" => "form-control", 'placeholder' => 'AOE2342']) !!}
 
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2"></div>
-				<div class="col-xs-10">@if( $errors->has('disid') )
-					<p class="text-danger"> {{ $errors->first('disid') }} </p> 
-					@endif
-				</div>
-			</div>
-			<div class="form-group row">
-				<label class="col-xs-2 bold">ชื่อโรค</label>
-				<div class="col-xs-2">{!! Form::text('disname', '', ["class" => "form-control", 'placeholder' => 'นิ่วในถุงน้ำดี']) !!}</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-xs-2"></div>
-				<div class="col-xs-10">@if( $errors->has('disname') )
-					<p class="text-danger"> {{ $errors->first('disname') }} </p> 
+				<div class="col-xs-10">@if( $errors->has('diseaseCode') )
+					<p class="text-danger"> {{ $errors->first('diseaseCode') }} </p> 
 					@endif
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2 bold">รายละเอียดการตรวจ</label>
 				<div class="col-xs-7">
-					{!! Form::textarea('description', '', ["class" => "form-control", "rows" => "5", 'placeholder' => 'ปวดหัว ตัวร้อน เป็นไข้']) !!}
+					{!! Form::textarea('diagnosisDetail', '', ["class" => "form-control", "rows" => "5", 'placeholder' => 'ปวดหัว ตัวร้อน เป็นไข้']) !!}
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2"></div>
-				<div class="col-xs-10">@if( $errors->has('description') )
-					<p class="text-danger"> {{ $errors->first('description') }} </p> 
+				<div class="col-xs-10">@if( $errors->has('diagnosisDetail') )
+					<p class="text-danger"> {{ $errors->first('diagnosisDetail') }} </p> 
+					@endif
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-xs-2 bold">คำแนะนำจากแพทย์</label>
+				<div class="col-xs-2">{!! Form::textarea('doctorAdvice', '', ["class" => "form-control", "rows"=>"5", 'placeholder' => 'นอนพักผ่อนให้เพียงพอ']) !!}</div>
+			</div>
+			<div class="form-group row">
+				<div class="col-xs-2"></div>
+				<div class="col-xs-10">@if( $errors->has('doctorAdvice') )
+					<p class="text-danger"> {{ $errors->first('doctorAdvice') }} </p> 
 					@endif
 				</div>
 			</div>
@@ -85,7 +88,8 @@
 								<th style="width: 20%;">ชื่อยา</th>
 								<th style="width: 5%;">จำนวน</th>
 								<th style="width: 5%;">หน่วย</th>
-								<th style="width: 35%;">วิธีใช้</th>
+								<th style="width: 20%;">วิธีใช้</th>
+								<th style="width: 15%;">เพิ่มเติม</th>
 							</tr>
 						</thead>
 						<tbody id = "drugTable">
@@ -128,7 +132,7 @@
 						</div>
 						<div class="form-group row">
 							<label class="col-xs-3 bold">เพิ่มเติม</label>
-							<div class="col-xs-7" >{!! Form::textarea('etc', '', ['class' => 'form-control', 'rows' => '3']) !!}</div>
+							<div class="col-xs-7" >{!! Form::textarea('etc', '', ['class' => 'form-control', 'rows' => '3', 'id' => 'medNote']) !!}</div>
 						</div>
 						<div class="form-group row">
 							<div class="col-xs-8"></div>
@@ -143,6 +147,11 @@
 					<div id="addBtn" data-toggle="collapse" data-target="#addNewApp" class="glyphicon glyphicon-plus-sign"></div>
 				</label>
 				<label class="col-xs-7" id="nextAppointment">ยังไม่มีการนัดหมายครั้งต่อไป</label>
+				<span id="nextAppointmentForm">
+					{!! Form::hidden('nextAppDate', '') !!}
+					{!! Form::hidden('nextAppTime', '') !!}
+					{!! Form::hidden('nextAppDetail', '') !!}
+				</span>
 			</div>
 			<div id="addNewApp" class="collapse form-group row">
 				<label class="col-xs-2"></label>
@@ -155,7 +164,7 @@
 							<label class="col-xs-3 bold">วันที่</label>
 							<div class="col-xs-4">
 								<div class="input-group date">
-									{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป','id'=>'date','onChange'=>'enNextApp()']) !!}
+									{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปปปป','id'=>'date','onChange'=>'enNextApp()']) !!}
 									<div class="input-group-addon">
 										<span class="glyphicon glyphicon-calendar"></span>
 									</div>
@@ -184,11 +193,14 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-8"></div>
+				{!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+				{!! Form::hidden('patientId', $appointment->patient->userId) !!}
 				<div class="col-xs-4">
 					{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 				</div>
 			</div>
 		</div>
+		@endif
 	</div>
 
 	<!-- Script to construct datepicker -->
