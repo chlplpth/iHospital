@@ -12,12 +12,8 @@
 		<div id="recordGeneralData">
 			@if(!isset($appointment))
 				<div class="form-group row">
-					<div class="col-xs-2" id="nurseLabel">{!! Form::label('hospitalId', 'รหัสผู้ป่วย') !!}</div>
-					<div class="col-xs-3">{!! Form::text('hospitalId', '', ['class' => 'form-control', 'placeholder' => '12345678']) !!}
-						@if( $errors->has('hospitalId') )<br>
-						<p class="text-danger"> {{ $errors->first('hospitalId') }} </p> 
-						@endif
-					</div>
+					<div>{!! Form::label('patient', 'กรอกชื่อหรือนามสกุลผู้ป่วยเพื่อค้นหา'); !!}</div>
+      				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือนามสกุลผู้ป่วย" class="form-control"></select></div>
 				</div>
 			@else
 			{!! Form::open(array('url' => '/recordPatientGeneralDetail')) !!}
@@ -104,3 +100,8 @@
 	</div>
 </div>
 @stop
+
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/recordPhysicalRecord';
+</script>

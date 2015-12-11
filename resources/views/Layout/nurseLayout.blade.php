@@ -33,6 +33,11 @@
   <script src="{{asset('js/language/th-TH.js')}}"></script>
   <script src="{{asset('js/jstimezonedetect/jstz.min.js')}}"></script>
  
+  <!--Selectize search -->
+   <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
+  <!-- // <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script> -->
+  <script type="text/javascript" src='{{ asset("selectize/js/standalone/selectize.min.js") }}'></script>
+
   </head>
 
   <body>
@@ -79,4 +84,8 @@
       </div>
     </div>
   </body>
+
+  <!-- selectize -->
+  <script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
+
 </html>

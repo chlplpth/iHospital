@@ -12,7 +12,6 @@
 		<div id="importDoctorSchedule">
 			@if(!isset($doctor))
 			<div class="form-group row">
-				<!-- <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div> -->
 				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสแพทย์" class="form-control"></select></div>
 			</div>
 			@else

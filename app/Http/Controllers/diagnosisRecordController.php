@@ -64,10 +64,16 @@ class diagnosisRecordController extends Controller
     public function recordDiagnosisRecordShow($patientId)
     {
         $appointment = appointment::toBeRecordedDiag($patientId);
-        $phys = $appointment->physicalRecord;
+        $phys = null;
+        $search = 'yes';
+        if($appointment != null)
+        {
+            $phys = $appointment->physicalRecord;
+        }
         return view('doctor.diagnose')
                     ->with('appointment', $appointment)
-                    ->with('phys', $phys);
+                    ->with('phys', $phys)
+                    ->with('search', $search);
     }
 
     public function diagnose(Request $request)

@@ -11,8 +11,13 @@
 		<h3 class="panel-title">บันทึกการวินิจฉัยผู้ป่วย</h3>
 	</div>
 	<div class="panel-body">
-		@if(!isset($appointment))
-
+		@if(!isset($search))
+			<div id ="searchPatientForm">
+		      <div>{!! Form::label('patient', 'กรอกชื่อหรือนามสกุลผู้ป่วยเพื่อค้นหา'); !!}</div>
+		      <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือนามสกุลผู้ป่วย" class="form-control"></select></div>
+		    </div>
+		@elseif(!isset($appointment))
+			ผู้ป่วยคนดังกล่าวไม่มีการนัดหมายที่ยังไม่ได้รับการวินิจฉัย
 		@else
 		<div id="diagnosisForm">
 			<div class="form-group row">  
@@ -214,3 +219,8 @@
 
 	{!! Form::close() !!}
 	@stop
+
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/patientDiagnoseRecord';
+</script>

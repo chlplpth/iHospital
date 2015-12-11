@@ -19,8 +19,20 @@
   <link href="{{asset('css/bootstrap-datetimepicker.css')}}" rel="stylesheet">
   <link href="{{asset('css/datepicker.css')}}" rel="stylesheet">
   @yield('css')
-  <!-- Bootstrap core JavaScript -->
-  <script src="{{asset('js/bootstrap.min.js')}}"></script>
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="js/vendor/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    
+  <!--Selectize search -->
+   <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
+  <!-- // <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script> -->
+  <script type="text/javascript" src='{{ asset("selectize/js/standalone/selectize.min.js") }}'></script>
 </head>
 
 <body>
@@ -63,15 +75,9 @@
       </div>
     </div>
   </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="js/vendor/holder.min.js"></script>
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
   </body>
+
+    <!-- selectize -->
+    <script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
+
   </html>

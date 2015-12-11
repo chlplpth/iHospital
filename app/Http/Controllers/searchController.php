@@ -19,19 +19,32 @@ class searchController extends Controller
     	
     // }
 
-    public function searchCreateAppointmentStaff()
+    // doctor
+    public function searchPatientProfileByDoctor()
     {
-        return $this->searchPatient('createAppointmentForPatient');
+        return $this->searchPatient('patientProfileByDoctor');
+    }
+    public function searchPatientDiagnoseRecord()
+    {
+        return $this->searchPatient('diagnose');
     }
 
+    // staff
     public function searchImportDoctorSchedule()
     {
     	return $this->searchDoctor('importDoctorSchedule');
     }
 
-    public function searchForNurseRecord()
+    // nurse
+    public function searchRecordPhysicalRecord()
     {
-        return $this->searchPatient('recordPatientGeneralDetail2');
+        return $this->searchPatient('recordPatientGeneralDetail');
+    }
+
+    // pharmacist
+    public function searchPrescribe()
+    {
+        return $this->searchPatient('recordPrescription');
     }
 
     public function searchDoctor($url)

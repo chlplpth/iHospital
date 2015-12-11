@@ -292,15 +292,29 @@ Route::get('/addStaffByAdmin', 'userController@addHospitalStaffByAdminShow');
 Route::post('/addStaffByAdmin', 'userController@addHospitalStaffByAdminStore');
 
 // ==================================================================================================
+// ========================================== SEARCH ===========================================
+// ==================================================================================================
+
+// doctor
+Route::get('/search/patientProfileByDoctor', 'searchController@searchPatientProfileByDoctor');
+
+// staff
+Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
+Route::get('/search/patientDiagnoseRecord', 'searchController@searchPatientDiagnoseRecord');
+
+// nurse
+Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');
+
+// pharmacist
+Route::get('/search/searchPrescribe', 'searchController@searchPrescribe');
+
+// ==================================================================================================
 // ==================== just for test, it should be deleted after job's done ========================
 // ==================================================================================================
 
 Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
-Route::get('/testSearch', function() {
-    return view('testSearch');
-});
-Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
-Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
+// Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
+
 
 Route::get('/testmodel', 'testController@testfunc');
 
