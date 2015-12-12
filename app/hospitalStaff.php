@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
 use App\user;
 use App\hospitalStaff;
 
@@ -75,5 +76,17 @@ class hospitalStaff extends Model
         //$hospitalStaff->delete();
         $user = user::where('userId',$input)->first();
         $user -> delete();
+    }
+
+    public static function searchHospitalStaff($keyword)
+    {
+        $users = DB::table('users')
+                     ->join('hospitalStaff','users.userId','=','hospitalStaff.userId')
+                     ->where(function ($query) use($keyword){
+                             $query->where('name', 'like', '%'.$keyword.'%')
+                                   ->orwhere('surname', 'like', '%'.$keyword.'%');
+                            });
+                     // ->get();   
+        return $users;
     }
 }

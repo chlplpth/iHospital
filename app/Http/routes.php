@@ -121,12 +121,6 @@ Route::get('/diagnose/{patientId}', 'diagnosisRecordController@recordDiagnosisRe
 Route::post('/diagnose', 'diagnosisRecordController@diagnose');
 
 
-
-Route::get('/createAppointmentForPatient2', function(){
-    return view('staff/createAppointmentForPatient2');
-});
-
-
 Route::get('/doctorAppointmentSchedule', function () {
     return view('doctor/doctorAppointmentSchedule');
 });
@@ -152,40 +146,50 @@ Route::get('mainStaff', function() {
     return view('staff/mainStaff');
 });
 
+// staff profile
 Route::get('staffProfile', 'userController@showStaffProfile');
 Route::post('editStaffProfile', 'userController@editStaffProfile');
 
+// add patient
 Route::get('/addPatient', function() {
     return view('staff.addPatient');
 });
 Route::post('/addPatient', 'userController@addPatient');
 
+// create appointment
 Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
+Route::get('/createAppointmentForPatient/{patientId}', 'appointmentController@createAppointmentByStaffShow');
 
+// manage appointment
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
+Route::get('manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
 
-Route::get('manageAppointmentForPatient2', function() {
-    return view('staff/manageAppointmentForPatient2');
+// import doctor schedule
+Route::get('/importDoctorSchedule/', function() {
+    return view('staff.importDoctorSchedule');
 });
+Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
+Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 
-Route::get('doctorScheduleByStaff', function() {
-    return view('staff/doctorScheduleByStaff');
+// view doctor schedule
+Route::get('searchDoctorScheduleByStaff', function() {
+    return view('staff/searchDoctorScheduleByStaff');
 });
+Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@doctorScheduleByStaff');
 
-Route::get('addStaffByStaff', function() {
-    return view('staff/addStaffByStaff');
-});
+// add staff
+Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
+Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
 
+// manage staff
 Route::get('manageStaffByStaff', function() {
     return view('staff/manageStaffByStaff');
 });
-Route::get('manageStaffByStaff2', function() {
-    return view('staff/manageStaffByStaff2');
-});
+Route::get('manageStaffByStaff/{patientId}', 'userController@manageStaffShow');
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
 Route::post('manageStaffDelete','userController@deleteStaff');
@@ -194,19 +198,6 @@ Route::post('manageStaffDelete','userController@deleteStaff');
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
-
-Route::get('searchDoctorScheduleByStaff', function() {
-    return view('staff/searchDoctorScheduleByStaff');
-});
-
-Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
-Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
-
-Route::get('/importDoctorSchedule/', function() {
-    return view('staff.importDoctorSchedule');
-});
-Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
-Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 
 
 // ==================================================================================================
@@ -301,6 +292,10 @@ Route::get('/search/patientProfileByDoctor', 'searchController@searchPatientProf
 // staff
 Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
 Route::get('/search/patientDiagnoseRecord', 'searchController@searchPatientDiagnoseRecord');
+Route::get('/search/createAppointmentByStaff', 'searchController@searchPatientMakeAppointment');
+Route::get('/search/manageAppointmentByStaff', 'searchController@searchPatientManageAppointment');
+Route::get('/search/manageScheduleByStaff', 'searchController@searchDoctorManageAppointmentByStaff');
+Route::get('/search/manageStaffByStaff', 'searchController@searchHospitalStaffManage');
 
 // nurse
 Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');

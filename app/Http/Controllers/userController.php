@@ -188,6 +188,11 @@ class userController extends Controller
         return redirect('staffProfile');
     }
 
+    public function manageStaffShow($patientId)
+    {
+        return view('staff.manageStaffByStaff2');
+    }
+
     public function grantStaffSearch(Request $request)
     {
         $input = $request->all();

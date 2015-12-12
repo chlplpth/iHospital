@@ -10,16 +10,11 @@
         <h3 class="panel-title">ตารางการออกตรวจ</h3>
       </div>
       <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
+        <span class ="bold">ชื่อหรือนามสกุลตัวแพทย์&nbsp;&nbsp;</span>
         <form role="form">
           <div class="form-group row">
-            <div class="col-xs-12">{!! Form::label('name', 'ชื่อหรือรหัสแพทย์'); !!}</div>
-            <div class="col-xs-3">{!! Form::text('name', '', ["class" => "form-control", 'placeholder'=>'กรอกชื่อหรือรหัสแพทย์']) !!}</div>
-            <div class="col-xs-1">{!! Form::submit('ค้นหา', ["class" => "btn btn-default"]) !!}</div>
-          </div>
-          <div class="form-group row">
-            <div class="col-xs-12"><h1>ตาราง ยังไม่ได้คิด ปฏิทิน?</h1>
-            </div>
-          </div>
+        <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสแพทย์" class="form-control"></select></div>
+      </div>
         </form>
         <script type="text/javascript">
       // When the document is ready
@@ -31,3 +26,8 @@
   </div>
   {!! Form::close() !!}
 @stop
+
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/manageScheduleByStaff';
+</script>

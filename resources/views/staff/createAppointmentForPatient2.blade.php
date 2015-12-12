@@ -2,6 +2,23 @@
 @section('css')
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 
+<!-- for generating dropdown -->
+@if(isset($doctor))
+	<script>
+	doctor = [];
+	doctor[0] = "<option value='0'>ไม่ระบุ</option>";
+	
+	@foreach($doctor as $index => $doc)
+		opt = "<option value='0'>ไม่ระบุ</option>";
+		@foreach($doc as $d)
+		opt = opt + '<option value="' + '{{ $d->userId }}' + '">' + '{{ $d ->name }}' + ' ' + '{{ $d->surname }}' + '</option>';
+	@endforeach
+	doctor[ {{ $index }} ] = opt;
+@endforeach
+</script>
+<script type="text/javascript" src="{{ asset('js/doctorDepartment.js') }}"></script>
+@endif
+
 @stop
 @section('content')
 
@@ -15,62 +32,16 @@
 		<div id = "createAppointmentForm">
 			<div class="form-group row">  
 				<label class="col-xs-2">ผู้ป่วย</label>
-				<label class="col-xs-3">ชลัมพล ไก๊ไก่ไก๊ไก</label>
+				<label class="col-xs-3">{{ $patient->fullname() }}</label>
 				<div class="col-xs-7"><input type="checkbox" value="" id='walkinPat'>&nbsp;Walk-In</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2">แผนก</label>
-				<div class="col-xs-3">{!! Form::select('departmentName', array(
-					'0' => 'ไม่ระบุ',
-					'1' => 'กายวิภาคศาสตร์', 
-					'2' => 'กุมารเวชศาสตร์',
-					'3' => 'จิตเวชศาสตร์',
-					'4' => 'จุลชีววิทยา',
-					'5' => 'จักษุวิทยา',
-					'6' => 'ชีวเคมี',
-					'7' => 'นิติเวชศาสตร์',
-					'8' => 'ปรสิตวิทยา',
-					'9' => 'พยาธิวิทยา',
-					'10' => 'เภสัชวิทยา',
-					'11' => 'รังสีวิทยา',
-					'12' => 'วิสัญญีวิทยา',
-					'13' => 'เวชศาสตร์ชันสูตร',
-					'14' => 'เวชศาสตร์ป้องกันและสังคม',
-					'15' => 'เวชศาสตร์ฟื้นฟู',
-					'16' => 'ศัลยศาสตร์',
-					'17' => 'สรีรวิทยา',
-					'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-					'19' => 'โสต คอ นาสิกวิทยา',
-					'20' => 'ออโธปิดิกส์',
-					'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
-				</div>
+				<div class="col-xs-3">{!! Form::select('departmentId', $department,'0',["class" => "form-control", "onchange" => "changeDropdown(this)"])!!}</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2">แพทย์</label>
-				<div class="col-xs-3">{!! Form::select('doctorname', array(
-					'0' => 'ไม่ระบุ',
-					'1' => 'กายวิภาคศาสตร์', 
-					'2' => 'กุมารเวชศาสตร์',
-					'3' => 'จิตเวชศาสตร์',
-					'4' => 'จุลชีววิทยา',
-					'5' => 'จักษุวิทยา',
-					'6' => 'ชีวเคมี',
-					'7' => 'นิติเวชศาสตร์',
-					'8' => 'ปรสิตวิทยา',
-					'9' => 'พยาธิวิทยา',
-					'10' => 'เภสัชวิทยา',
-					'11' => 'รังสีวิทยา',
-					'12' => 'วิสัญญีวิทยา',
-					'13' => 'เวชศาสตร์ชันสูตร',
-					'14' => 'เวชศาสตร์ป้องกันและสังคม',
-					'15' => 'เวชศาสตร์ฟื้นฟู',
-					'16' => 'ศัลยศาสตร์',
-					'17' => 'สรีรวิทยา',
-					'18' => 'สุติศาสตร์-นารีเวชวิทยา',
-					'19' => 'โสต คอ นาสิกวิทยา',
-					'20' => 'ออโธปิดิกส์',
-					'21' => 'อายุรศาสตร์'),'0',["class" => "form-control"])!!}
-				</div>
+				<div class="col-xs-3">{!! Form::select('doctorId',[''],'0',["class" => "form-control", "id" => "doctorName"]) !!}</div>   
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2">วันนัด</label>

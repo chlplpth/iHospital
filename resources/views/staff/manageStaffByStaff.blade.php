@@ -13,10 +13,16 @@
   <div class="panel-body">
     <div id="manageStaffForm">
       <span class ="bold">ชื่อเจ้าหน้าที่&nbsp;&nbsp;</span>
-      {!! Form::text('name', '', ['class'=>'textbox', 'placeholder'=>'ชื่อเจ้าหน้าที่']);!!}
-      {!! Form::submit('ค้นหา', ["class" => "btn btn-info","id" =>"searchButton"]) !!}
+      <div class="form-group row">
+        <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสเจ้าหน้าที่" class="form-control"></select></div>
+      </div>
     </div>
   </div>
 </div>
 {!! Form::close() !!}
 @stop
+
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/manageStaffByStaff';
+</script>

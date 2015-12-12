@@ -12,11 +12,17 @@
 	<div class="panel-body">
 		<div id = "manageAppointmentForm">
 			<span class ="bold">รหัสประจำตัวผู้ป่วย&nbsp;&nbsp;</span>
-			{!! Form::text('HN', '', ['class'=>'textbox', 'placeholder'=>'รหัสประจำตัวผู้ป่วย']);!!}
-			{!! Form::submit('ค้นหา', ["class" => "btn btn-info","id" =>"searchButton"]) !!}
+			<div class="form-group row">
+				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสผู้ป่วย" class="form-control"></select></div>
+			</div>
 		</div>
 	</div>
 </div>
 
 {!! Form::close() !!}
 @stop
+
+<script>
+var root = '{{url("/")}}';
+var searchAddress = '/search/manageAppointmentByStaff';
+</script>

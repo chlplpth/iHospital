@@ -27,6 +27,11 @@ class scheduleController extends Controller
     	$scheduleLog = scheduleLog::importSchedule($input);
     }
 
+    public function doctorScheduleByStaff($patientId)
+    {
+        return view('staff.doctorScheduleByStaff');
+    }
+
     public function showScheduleDoctor()
     {
         $userId = Auth::user()->userId;

@@ -157,6 +157,32 @@ class appointmentController extends Controller
         return redirect('patientAppointmentSchedule');
     }
 
+    // ==================================================================================================
+    // ============================================ STAFF =============================================
+    // ==================================================================================================
+
+    public function createAppointmentByStaffShow($patientId)
+    {
+        $patient = patient::where('userId', $patientId)->first();
+        $department = department::all();
+        $depList = array();
+        $depList['0'] = 'ไม่ระบุ';
+        foreach($department as $item)
+        {
+            $depList[$item['departmentId']] = $item['departmentName'];
+        }
+
+        $doctor = department::getDoctorArray();
+        return view('staff.createAppointmentForPatient2')
+                    ->with('patient', $patient)
+                    ->with('department', $depList)
+                    ->with('doctor', $doctor);
+    }
+
+    public function manageAppointmentShow($patientId)
+    {
+        return view('staff.manageAppointmentForPatient2');
+    }
 
     // ==================================================================================================
 
