@@ -15,7 +15,7 @@ class CreateScheduleLogTable extends Migration
         Schema::create('scheduleLog', function (Blueprint $table) {
             $table->increments('scheduleLogId');
             $table->integer('doctorId')->unsigned();
-            $table->integer('staffId')->unsigned();
+            $table->integer('staffId')->unsigned()->nullable();
             $table->string('startDate');
             $table->string('endDate');
             $table->string('diagDateList');

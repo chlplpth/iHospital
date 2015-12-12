@@ -40,11 +40,12 @@ class scheduleController extends Controller
                 ->with('calendar2', $dt);
     }
 
-    public function updateScheduleDoctor(Request $request)
+    public function editDoctorSchedule(Request $request)
     {
-        // $input = $request;
-        // echo $input['hiddenDate'] . '<br>';
-        // echo $input['hiddenMr'] . '<br>';
-        // echo $input['hiddenAf'] . '<br>';
+        $input = $request->all();
+        $doctorId = Auth::user()->userId;
+        schedule::updateSchedule($input['hiddenDate'], 'morning', $input['hiddenMr'], $doctorId);
+        schedule::updateSchedule($input['hiddenDate'], 'afternoon', $input['hiddenAf'], $doctorId);
+        return redirect('/doctorScheduleByDoctor');
     }
 }

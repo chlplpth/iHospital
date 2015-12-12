@@ -122,7 +122,7 @@ Route::post('/diagnose', 'diagnosisRecordController@diagnose');
 
 // doctor's schedule
 Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
-
+Route::post('/doctorEditSchedule', 'scheduleController@editDoctorSchedule');
 
 // diagnosis history
 Route::get('/diagnosisHistory', function () {

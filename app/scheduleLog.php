@@ -37,6 +37,17 @@ class scheduleLog extends Model
 
     //---------------------------------  function ---------------------------------
 
+    public static function newInstantScheduleLog($diagDate, $doctorId)
+    {
+        $slog = new scheduleLog;
+        $slog->doctorId = $doctorId;
+        $slog->startDate = $diagDate;
+        $slog->endDate = $diagDate;
+        $slog->diagDateList = '00000000000000';
+        $slog->save();
+        return $slog;
+    }
+
     public static function importSchedule($request)
     {
         $morning = scheduleLog::getDiagDateString($request['m']);

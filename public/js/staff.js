@@ -73,3 +73,18 @@ function cancelEditProfile(){
 	$('#staffProficiency').html(proficiency);
 	$('#editProfileButton').html("<button class ='btn btn-warning' onClick='editProfile()'>แก้ไข</button>");
 }
+
+function setDelModal(i){
+	i=i-1;
+	var date = document.getElementsByName('diagDate[]');
+	var time = document.getElementsByName('diagTime[]');
+	var doc = document.getElementsByName('doctorName[]');
+	name=$('#patientName').html(); 
+	date = $(date[i]).html();
+	time = $(time[i]).html();
+	doc = $(doc[i]).html();
+	$('#delDoc').html(doc); 
+	$('#delDate').html(date);
+	$('#delTime').html(time);
+	$('#delName').html(name);
+}
