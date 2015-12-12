@@ -174,6 +174,7 @@
           var $this = $(this);
           if($this.prop('id') === 'dateLabel') return;
           $this.click(function() {
+            console.log('nextMonth is clicked !!!');
             calendar.navigate($this.data('calendar-nav'));
             checkForLabel();
           });
@@ -181,7 +182,7 @@
 
         //============ Javascript - Make modal ============//
         var dateOfModal = '';
-        $('.cal-cell').click(function() {
+        $(document).on('click', '.cal-cell', function() {
 
           // make title date
           var date = $('[data-cal-date]', this).data('cal-date');
@@ -190,6 +191,7 @@
           var month = date.substring(5,7);
           var year = parseInt(date.substring(0,4)) + 543;
           $('.modal-title').text('วันออกตรวจ  ' + day + '-' + month + '-' + year);
+          console.log('.cal-cell is clicked !!!');
           console.log(date);
           console.log(day);
           console.log(month);
