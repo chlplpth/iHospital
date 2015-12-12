@@ -36,7 +36,8 @@ class scheduleController extends Controller
     {
         $userId = Auth::user()->userId;
         $dt = schedule::getDateTimeToCalendar($userId);
-        return view('doctor.doctorScheduleByDoctor')->with('calendar2', $dt);
+        return view('doctor.doctorScheduleByDoctor')
+                ->with('calendar2', $dt);
     }
 
     public function updateScheduleDoctor(Request $request)

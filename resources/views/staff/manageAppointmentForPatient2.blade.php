@@ -14,11 +14,11 @@
 			
 			<div class="form-group row">
 				<div class="col-xs-2 bold">รหัสผู้ป่วย</div>
-				<div class="col-xs-2">12345678</div>
+				<div class="col-xs-2">{{ $patient->hospitalNo }}</div>
 			</div>
 			<div class="form-group row">
 				<div class="col-xs-2 bold">ผู้ป่วย</div>
-				<div class="col-xs-2">ชลัมพล ไก๊ไก่ไก๊ไก่</div>
+				<div class="col-xs-2">{{ $patient->fullname() }}</div>
 			</div>
 		
 				<span class="bold">รายการนัดหมาย</span>
@@ -39,33 +39,19 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>01 ต.ค. 58</td>
-								<td>09.00 - 11.30 น.</td>
-								<td>John Kaikai</td>
-								<td>หู</td>
-								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
-								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
-							</tr>
-							<tr>
-								<td>2</td>
-								<td>01 ต.ค. 58</td>
-								<td>09.00 - 11.30 น.</td>
-								<td>Mary Marry</td>
-								<td>ตา</td>
-								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
-								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td>01 ต.ค. 58</td>
-								<td>13.00 - 15.30 น.</td>
-								<td>July Doodo</td>
-								<td>จมูก</td> 
-								<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
-								<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
-							</tr>
+							<?php $i = 1; ?>
+							@foreach($appointments as $app)
+								<tr>
+									<td>{{ $i }}</td>
+									<td>{{ $app->diagDate }}</td>
+									<td>{{ $app->diagTime }}</td>
+									<td>{{ $app->doctor()->fullname() }}</td>
+									<td>{{ $app->department()->departmentName }}</td>
+									<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
+									<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal"]) !!}</td>
+									<?php $i++; ?>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
 

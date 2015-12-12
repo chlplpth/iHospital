@@ -22,18 +22,19 @@
 @stop
 @section('content')
 
-{!! Form::open(array('url' => 'foo/bar')) !!}
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">สร้างการนัดหมาย</h3>
 	</div>
+	
+	@if(!isset($appointments))
+	{!! Form::open(array('url' => 'createAppointmentForPatient')) !!}
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
 			<div class="form-group row">  
 				<label class="col-xs-2">ผู้ป่วย</label>
 				<label class="col-xs-3">{{ $patient->fullname() }}</label>
-				<div class="col-xs-7"><input type="checkbox" value="" id='walkinPat'>&nbsp;Walk-In</div>
+				<div class="col-xs-7"><input type="checkbox"  name="walkin" value="" id='walkinPat'>&nbsp;Walk-In</div>
 			</div>
 			<div class="form-group row">
 				<label class="col-xs-2">แผนก</label>
@@ -47,7 +48,7 @@
 				<label class="col-xs-2">วันนัด</label>
 				<div class="col-xs-3">
 					<div class="input-group date">
-						{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+						{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปปปป']) !!}
 						<div class="input-group-addon">
 							<span class="glyphicon glyphicon-calendar"></span>
 						</div>
@@ -61,6 +62,7 @@
 					{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
 				</div>
 			</div>
+			{!! Form::hidden('patientId', $patient->userId) !!}
 			<div class="form-group row">
 				<div class="col-xs-5"></div>
 				<div class="col-xs-1">{!! Form::submit('ยืนยัน', ["class" => "btn btn-success",'id'=>'createAppointmentButton']) !!}
@@ -70,7 +72,49 @@
 			
 		</div>
 	</div>
+	{!! Form::close() !!}
+	@endif
+
+	@if(isset($appointments))
+        	@if(count($appointments) > 0)
+	            <div class="form-group row">
+	                <div class="col-xs-1"></div>
+	                <div class="col-xs-10">
+	                    <table class="table table-bordered" style = "text-align:center;">
+	                        <thead >
+	                            <tr>
+	                                <th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
+	                                <th style="width: 20%; text-align:center;">เวลา</th>
+	                                <th style="width: 17%; text-align:center;">แผนก</th>
+	                                <th style="width: 37%; text-align:center;">แพทย์</th>
+	                                <th style="width: 10%; text-align:center;">นัดหมาย</th>
+	                            </tr>
+	                        </thead>
+	                        <tbody>
+	                        	@foreach($appointments as $app)
+		                            <tr>
+		                                <td>{{ $app->diagDate }}</td>
+		                                <td>{{ $app->diagTime }}</td>
+		                                <td>{{ $app->doctor()->department()->departmentName }}</td>
+		                                <td>{{ $app->doctor()->fullname() }}</td>
+		                                <td >
+		                                	{!! Form::open(array('url' => '/confirmAppointmentByStaff')) !!}
+			                                	{!! Form::hidden('scheduleId', $app->scheduleId) !!}
+			                                	{!! Form::hidden('patientId', $patient->userId) !!}
+			                                	{!! Form::hidden('symptom', $symptom) !!}
+			                                	{!! Form::hidden('walkin', $walkin) !!}
+			                                	{!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
+		                                	{!! Form::close() !!}
+		                                </td>
+		                            </tr>
+	                            @endforeach
+	                        </tbody>
+	                    </table>
+	                </div>
+	                <div class="col-xs-1"></div>
+	            </div>
+            @endif
+       @endif
 </div>
 
-{!! Form::close() !!}
 @stop

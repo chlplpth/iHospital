@@ -182,8 +182,13 @@ class patient extends Model
     
     public function appointmentSorted()
     {
-        return appointment::where('appointment.patientId', '=', $this->userId)
-                   ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+        // return appointment::where('appointment.patientId', '=', $this->userId)
+        //            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+        //            ->orderBy('schedule.diagDate', 'asc')
+        //            ->orderBy('schedule.diagTime', 'asc')
+        //            ->get();
+        return schedule::join('appointment', 'schedule.scheduleId', '=', 'appointment.scheduleId')
+                   ->where('appointment.patientId', '=', $this->userId)
                    ->orderBy('schedule.diagDate', 'asc')
                    ->orderBy('schedule.diagTime', 'asc')
                    ->get();

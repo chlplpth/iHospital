@@ -120,17 +120,9 @@ Route::get('/diagnose', function () {
 Route::get('/diagnose/{patientId}', 'diagnosisRecordController@recordDiagnosisRecordShow');
 Route::post('/diagnose', 'diagnosisRecordController@diagnose');
 
+// doctor's schedule
+Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
 
-Route::get('/doctorAppointmentSchedule', function () {
-    return view('doctor/doctorAppointmentSchedule');
-});
-Route::get('/doctorScheduleByDoctor', function () {
-    return view('doctor/doctorScheduleByDoctor');
-});
-
-Route::get('/doctorAppointmentSchedule', function () {
-    return view('doctor/doctorAppointmentSchedule');
-});
 
 // diagnosis history
 Route::get('/diagnosisHistory', function () {
@@ -161,6 +153,9 @@ Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
 Route::get('/createAppointmentForPatient/{patientId}', 'appointmentController@createAppointmentByStaffShow');
+Route::post('/createAppointmentForPatient/', 'appointmentController@createAppointmentStaffRequest');
+Route::post('confirmAppointmentByStaff', 'appointmentController@confirmAppointmentByStaffShow');
+Route::post('createAppointmentByStaffStore', 'appointmentController@createAppointmentByStaffStore');
 
 // manage appointment
 Route::get('manageAppointmentForPatient', function() {

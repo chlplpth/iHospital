@@ -179,9 +179,55 @@ class appointmentController extends Controller
                     ->with('doctor', $doctor);
     }
 
+    public function createAppointmentStaffRequest(Request $request)
+    {
+        $input = $request->all();
+        if($input['departmentId'] == '0')
+        {
+            return redirect('createAppointmentForPatient');
+        }
+        
+        $walkin = 0;
+        if(isset($input['walkin']))
+        {
+            $walkin = 1;
+        }
+
+        $patient = patient::where('userId', $input['patientId'])->first();
+        $appointments = schedule::requestDate($input);
+        return view('staff.createAppointmentForPatient2')
+                    ->with('patient', $patient)
+                    ->with('appointments', $appointments)
+                    ->with('symptom', $input['symptom'])
+                    ->with('walkin', $walkin);
+    }
+
+    public function confirmAppointmentByStaffShow(Request $request)
+    {
+        $input = $request->all();
+        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
+        $patient = patient::where('userId', $input['patientId'])->first();
+        return view('staff.confirmAppointmentForPatient')
+                ->with('schedule', $schedule)
+                ->with('patient', $patient)
+                ->with('symptom', $input['symptom'])
+                ->with('walkin', $input['walkin']);
+    }
+
+    public function createAppointmentByStaffStore(Request $request)
+    {
+        $input = $request->all();
+        $appointments = appointment::createAppointmentStaff($input, Auth::user()->userid, $input['symptom'], $input['walkin']);
+        return redirect('/createAppointmentForPatient');
+    }
+
     public function manageAppointmentShow($patientId)
     {
-        return view('staff.manageAppointmentForPatient2');
+        $patient = patient::where('userId', $patientId)->first();
+        $appointments = $patient->appointmentSorted();
+        return view('staff.manageAppointmentForPatient2')
+                    ->with('patient', $patient)
+                    ->with('appointments', $appointments);
     }
 
     // ==================================================================================================

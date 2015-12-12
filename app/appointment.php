@@ -226,6 +226,17 @@ class appointment extends Model
         return $appointment;
     }
 
+    public static function createAppointmentStaff($input, $staffId, $symptom, $walkin)
+    {
+        $appointment = new appointment($input);
+        $appointment->staffId = $staffId;
+        $appointment->walkin = $walkin;
+        $appointment->symptom = $symptom;
+        $appointment->save();
+
+        return $appointment;
+    }
+
     public static function delayAppointment($request)
     {
         $appointmentId = $request['appointmentId'];

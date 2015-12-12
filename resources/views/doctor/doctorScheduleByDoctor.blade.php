@@ -52,40 +52,6 @@
                     <div id="editBtn" class="btn btn-info" style="float: right;">แก้ไข</div>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-12">
-                    <table class="table table-bordered centerBtn" style = "text-align:center;">
-                      <thead >
-                        <br>
-                        <tr>
-                          <th style="width: 5%; text-align:center;">ลำดับ</th>
-                          <th style="width: 15%; text-align:center;">ช่วงเวลา</th>
-                          <th style="width: 25%; text-align:center;">รหัสผู้ป่วย</th>
-                          <th style="width: 25%; text-align:center;">ชื่อผู้ป่วย</th>
-                          <th style="width: 25%; text-align:center;">นามสกุลผู้ป่วย</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>บ่าย</td>
-                          <td>123456789</td>
-                          <td>ชลัมพวย</td>
-                          <td >กวยเอ้ย</td>
-                        </tr>
-
-                        <tr>
-                          <td>2</td>
-                          <td>เช้า</td>
-                          <td>987654321</td>
-                          <td>แคมแคม</td>
-                          <td >นู้บบี้</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
               </form>
             </div>
             <div class="modal-footer">
@@ -115,7 +81,7 @@
 
         //================ Javascript - Check for Label ================//
         // Example array of Doctor Schedule
-        var arrDoctorSchedule = ['2015-11-01-afternoon', '2015-11-05-morning'];
+        var arrDoctorSchedule = {!! $calendar2 !!};
 
         // Array for edit, send to Database
         var arrEdited = arrDoctorSchedule;

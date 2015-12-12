@@ -169,7 +169,7 @@ class schedule extends Model
         $arr = [];
         foreach($query as $schedule)
         {
-            $st = "'" . $schedule['diagDate'] . '-' . $schedule['diagTime'] . "'";
+            $st = "'" . $schedule->getOriginal('diagDate') . '-' . $schedule->getOriginal('diagTime') . "'";
             array_push($arr, $st);
         }
         
