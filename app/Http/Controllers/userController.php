@@ -188,10 +188,90 @@ class userController extends Controller
         return redirect('staffProfile');
     }
 
-    public function manageStaffShow($patientId)
+    public function manageStaffShow($staffId)
     {
-        return view('staff.manageStaffByStaff2');
+        $staff = hospitalStaff::where('userId', $staffId)->first();
+        $departments = department::getDepartmentArray();
+        return view('staff.manageStaffByStaff2')
+                ->with('staff', $staff)
+                ->with('departments', $departments);
     }
+
+    public function editStaff(Request $request)
+    {
+        $input = $request->all();
+        $staffId = $request->staffId;
+        $staff = hospitalStaff::editStaff($input, $staffId);
+        
+        return redirect('manageStaffByStaff/' . $staffId);
+    }
+
+    public function deleteStaff(Request $request)
+    {
+        $staffId = $request->staffId;
+        $users = hospitalStaff::deleteStaff($staffId);
+        return redirect('manageStaffByStaff');
+    }
+
+    // ==================================================================================================
+    // ============================================ NURSE =============================================
+    // ==================================================================================================
+
+    public function showNurseProfile()
+    {
+        $user = User::where('userId', Auth::user()->userId)->first();
+        $departments = department::getDepartmentArray();
+        return view('nurse.nurseProfile')
+                    ->with('user', $user)
+                    ->with('departments', $departments);
+    }
+
+    public function editNurseProfile(Request $request)
+    {
+        $input = $request->all();
+        $nurse = User::where('userId', Auth::user()->userId)->first();
+        $nurse->editNurseProfile($input);
+        return redirect('nurseProfile');
+    }
+
+    public function patientProfileByNurse($patientId)
+    {
+        $patient = patient::where('userId', $patientId)->first();
+        return view('nurse.patientProfileByNurse')
+                ->with('patient', $patient);
+    }
+
+    // ==================================================================================================
+    // ============================================ PHARMACIST =============================================
+    // ==================================================================================================
+
+    public function showPharmacistProfile()
+    {
+        $user = User::where('userId', Auth::user()->userId)->first();
+        $departments = department::getDepartmentArray();
+        return view('pharmacist.pharmacistProfile')
+                    ->with('user', $user)
+                    ->with('departments', $departments);
+    }
+
+    public function editPharmacistProfile(Request $request)
+    {
+        $input = $request->all();
+        $pharmacist = User::where('userId', Auth::user()->userId)->first();
+        $pharmacist->editPharmacistProfile($input);
+        return redirect('pharmacistProfile');
+    }
+
+    public function patientProfileByPharmacist($patientId)
+    {
+        $patient = patient::where('userId', $patientId)->first();
+        return view('pharmacist.patientProfileByPharmacist')
+                ->with('patient', $patient);
+    }
+
+    // ==================================================================================================
+    // ============================================ ADMIN =============================================
+    // ==================================================================================================
 
     public function grantStaffSearch(Request $request)
     {
@@ -209,40 +289,13 @@ class userController extends Controller
     }
 
     // ==================================================================================================
-    
-    public function searchPatient(Request $request)
-    {
-    	$keyword = $request->input('patient');
-        $users = patient::searchPatient($keyword);
 
-        // if(sizeof($users)==0) echo "not found";
-        // else echo"found";
-
-    }
 
     public function searchStaff(Request $request)
     {
         $keyword = $request->input('staff');
         $users = hospitalStaff::searchStaff($keyword);
         return view('staff.manageStaffSearch')->with('staff',$users);
-    }
-
-    public function editStaff(Request $request)
-    {
-        $input = $request->all();
-        $staffId = $request->staffId;
-
-        $users = hospitalStaff::editStaff($input,$staffId);
-        
-        return view('staff.manageStaffByStaff')->with('staff',$users);
-    }
-
-    public function deleteStaff(Request $request)
-    {
-        $keyword = $request->deleteStaff;
-        $users = hospitalStaff::deleteStaff($keyword);
-
-        //return redirect('staff.manageStaffByStaff');
     }
     
     public function viewDoctorProfile(Request $request)

@@ -57,12 +57,22 @@ class searchController extends Controller
     }
 
     // nurse
+    public function searchPatientProfileByNurse()
+    {
+        return $this->searchPatient('patientProfileByNurse');
+    }
+
     public function searchRecordPhysicalRecord()
     {
         return $this->searchPatient('recordPatientGeneralDetail');
     }
 
     // pharmacist
+    public function searchPatientProfileByPharmacist()
+    {
+        return $this->searchPatient('patientProfileByPharmacist');
+    }
+
     public function searchPrescribe()
     {
         return $this->searchPatient('recordPrescription');

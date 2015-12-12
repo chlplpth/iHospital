@@ -4,7 +4,7 @@
 {!! HTML::script('js/nurse.js') !!}
 @stop
 @section('content')
-{!! Form::open(array('url' => '/')) !!}
+{!! Form::open(array('url' => '/editNurseProfile')) !!}
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">ประวัติส่วนตัว</h3>
@@ -12,16 +12,16 @@
   <div class="panel-body">
     <div id ="nurseProfile">
       <div class="row">
-        <div class="col-md-4"> <span class="bold">ชื่อ : </span> <span id='nurseName'>name</span>
+        <div class="col-md-4"> <span class="bold">ชื่อ : </span> <span id='nurseName'>{{ $user->name }}</span>
         </div>
-        <div class="col-md-8"><span class="bold">นามสกุล : </span> <span id='nurseSurname'>surname</span>
+        <div class="col-md-8"><span class="bold">นามสกุล : </span> <span id='nurseSurname'>{{ $user->surname }}</span>
         </div>
       </div>
       <br>
       <div class="row">
-        <div class="col-md-4"> <span class="bold">แผนก : </span> <span id='nurseDepartment'>department</span>
+        <div class="col-md-4"> <span class="bold">แผนก : </span> <span id='nurseDepartment'>{{ $user->department()->departmentName }}</span> <span id='departmentDropdown' style='display:none'>{!! Form::select('departmentId', $departments, $user->department()->departmentId,["class" => "form-control", "onchange" => "changeDropdown(this)"])!!}</span>
         </div>
-        <div class="col-md-8"><span class="bold">อีเมล : </span> <span id='nurseEmail'>email</span>
+        <div class="col-md-8"><span class="bold">อีเมล : </span> <span id='nurseEmail'>{{ $user->email }}</span>
         </div>
       </div>
       <br>

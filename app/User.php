@@ -66,6 +66,16 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne('App\patient', 'userId', 'userId');
     }
 
+    public function hospitalStaff()
+    {
+        return $this->hasOne('App\hospitalStaff', 'userId', 'userId');
+    }
+
+    public function department()
+    {
+        return $this->hospitalStaff->department;
+    }
+
     public function staff()
     {
         return $this->hasOne('App\staff', 'userId', 'userId');
@@ -74,6 +84,28 @@ class User extends Model implements AuthenticatableContract,
     public function grant()
     {
         return $this->staff->grant;
+    }
+
+    public function editPharmacistProfile($input)
+    {
+        $this->hospitalStaff->departmentId = $input['departmentId'];
+        $this->hospitalStaff->save();
+
+        $this->name = $input['name'];
+        $this->surname = $input['surname'];
+        $this->email = $input['email'];
+        $this->save();
+    }
+
+    public function editNurseProfile($input)
+    {
+        $this->hospitalStaff->departmentId = $input['departmentId'];
+        $this->hospitalStaff->save();
+
+        $this->name = $input['name'];
+        $this->surname = $input['surname'];
+        $this->email = $input['email'];
+        $this->save();
     }
 
     /**

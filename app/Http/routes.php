@@ -189,7 +189,7 @@ Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
 Route::get('manageStaffByStaff', function() {
     return view('staff/manageStaffByStaff');
 });
-Route::get('manageStaffByStaff/{patientId}', 'userController@manageStaffShow');
+Route::get('manageStaffByStaff/{staffId}', 'userController@manageStaffShow');
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
 Route::post('manageStaffDelete','userController@deleteStaff');
@@ -204,9 +204,20 @@ Route::get('searchPatientProfileByStaff', function() {
 // ============================================= NURSE ==============================================
 // ==================================================================================================
 
+
 Route::get('/mainNurse', function () {
     return view('nurse/mainNurse');
 });
+
+// nurse profile
+Route::get('/nurseProfile', 'userController@showNurseProfile');
+Route::post('/editNurseProfile', 'userController@editNurseProfile');
+
+// view patient profile
+Route::get('/searchPatientProfileByNurse', function () {
+    return view('nurse/searchPatientProfileByNurse');
+});
+Route::get('patientProfileByNurse/{patientId}', 'userController@patientProfileByNurse');
 
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
@@ -214,16 +225,6 @@ Route::get('/recordPatientGeneralDetail', function () {
 
 Route::get('/recordPatientGeneralDetail/{patientId}', 'diagnosisRecordController@recordPhysicalRecordShow');
 Route::post('/recordPatientGeneralDetail', 'diagnosisRecordController@recordPhysicalRecordStore');
-
-Route::get('/searchPatientProfileByNurse', function () {
-    return view('nurse/searchPatientProfileByNurse');
-});
-Route::get('/patientProfileByDoctor', function () {
-    return view('doctor/patientProfileByDoctor');
-});
-Route::get('/patientProfileByDoctor2', function () {
-    return view('doctor/patientProfileByDoctor2');
-});
 
 
 Route::get('/doctorScheduleByNurse', function () {
@@ -239,15 +240,21 @@ Route::get('/mainPharmacist', function () {
     return view('pharmacist/mainPharmacist');
 });
 
+Route::get('pharmacistProfile', 'userController@showPharmacistProfile');
+Route::post('editPharmacistProfile', 'userController@editPharmacistProfile');
+
+Route::get('/searchPatientProfileByPharmacist', function () {
+    return view('pharmacist/searchPatientProfileByPharmacist');
+});
+Route::get('patientProfileByPharmacist/{patientId}', 'userController@patientProfileByPharmacist');
+
 Route::get('/recordPrescriptionHistory', function () {
     return view('pharmacist/recordPrescriptionHistory');
 });
 Route::get('/recordPrescription/{patientId}', 'diagnosisRecordController@recordPrescriptionShow');
 Route::post('recordPrescription', 'diagnosisRecordController@recordPrescription');
 
-Route::get('/searchPatientProfileByPharmacist', function () {
-    return view('pharmacist/searchPatientProfileByPharmacist');
-});
+
 
 // ==================================================================================================
 // ============================================= ADMIN ==============================================
@@ -299,8 +306,10 @@ Route::get('/search/manageStaffByStaff', 'searchController@searchHospitalStaffMa
 
 // nurse
 Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');
+Route::get('/search/patientProfileByNurse', 'searchController@searchPatientProfileByNurse');
 
 // pharmacist
+Route::get('/search/patientProfileByPharmacist', 'searchController@searchPatientProfileByPharmacist');
 Route::get('/search/searchPrescribe', 'searchController@searchPrescribe');
 
 // ==================================================================================================

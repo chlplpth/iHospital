@@ -91,6 +91,18 @@ class patient extends Model
         }
     }
 
+    public function getDrugAllergyAttribute($value)
+    {
+        if($value == '')
+        {
+            return '-';
+        }
+        else
+        {
+            return $value;
+        }
+    }
+
     public function getDateOfBirthAttribute($value)
     {
         $date = explode('-', $value);

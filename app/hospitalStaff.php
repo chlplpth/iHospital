@@ -38,6 +38,21 @@ class hospitalStaff extends Model
         return $this->belongsTo('App\department', 'departmentId', 'departmentId');
     }
 
+    public function name()
+    {
+        return $this->user->name;
+    }
+
+    public function surname()
+    {
+        return $this->user->surname;
+    }
+
+    public function fullname()
+    {
+        return $this->name() . ' ' . $this->surname();
+    }
+
 
     public static function searchStaff($keyword)
     {
@@ -55,8 +70,6 @@ class hospitalStaff extends Model
 
     public static function editStaff($input, $userId)
     {
-        
-        
         User::where('userId',$userId)->update(array(
                 'name'      => $input['name'],
                 'surname'   => $input['surname']
@@ -64,17 +77,25 @@ class hospitalStaff extends Model
         hospitalStaff::where('userId',$userId)->update(array(
                 'departmentId'   => $input['departmentId']
             ));
+        return hospitalStaff::where('userId', $userId)->get();
     }
 
-    public static function deleteStaff($input)
+    public static function deleteStaff($staffId)
     {
-        
-        $hospitalStaff = hospitalStaff::where('userId',$input)->first();
-        // //echo $hospitalStaff->userId;
-        $hospitalStaff ->delete();
-        //if(sizeof($hospitalStaff)==0) echo "not found";
-        //$hospitalStaff->delete();
-        $user = user::where('userId',$input)->first();
+        $user = user::where('userId',$staffId)->first();
+        if($user->userType == 'doctor')
+        {
+            $doctor = doctor::where('userId', $staffId)->first();
+            $doctor->delete();
+        }
+        else if($user->userType == 'staff')
+        {
+            $staff = staff::where('userId', $staffId)->first();
+            $staff->delete();
+        }
+
+        $hospitalStaff = hospitalStaff::where('userId', $staffId)->first();
+        $hospitalStaff->delete();
         $user -> delete();
     }
 

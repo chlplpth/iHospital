@@ -24,16 +24,26 @@ function toggleProficiency(){
 		$('#special').prop('hidden',true);
 	}
 }
+
+var name;
+var surname;
+var department;
 function editStaff(){
-	$('#manageFirstname').html("<input class='form-control' name='name' type='text' value='ชลัมพล'>");
-	$('#manageSurname').html("<input class='form-control' name='surname' type='text' value='ไก๊ไก่ไก๊ไก่'>");
-	$('#manageDepartment').html("<select class='form-control' id='department' name='department'><option value='0'>ไม่ระบุ</option><option value='1'>กายวิภาคศาสตร์</option><option value='2'>กุมารเวชศาสตร์</option><option value='3'>จิตเวชศาสตร์</option><option value='4'>จุลชีววิทยา</option><option value='5'>จักษุวิทยา</option><option value='6'>ชีวเคมี</option><option value='7'>นิติเวชศาสตร์</option><option value='8'>ปรสิตวิทยา</option><option value='9' selected='selected'>พยาธิวิทยา</option><option value='10'>เภสัชวิทยา</option><option value='11'>รังสีวิทยา</option><option value='12'>วิสัญญีวิทยา</option><option value='13'>เวชศาสตร์ชันสูตร</option><option value='14'>เวชศาสตร์ป้องกันและสังคม</option><option value='15'>เวชศาสตร์ฟื้นฟู</option><option value='16'>ศัลยศาสตร์</option><option value='17'>สรีรวิทยา</option><option value='18'>สุติศาสตร์-นารีเวชวิทยา</option><option value='19'>โสต คอ นาสิกวิทยา</option><option value='20'>ออโธปิดิกส์</option><option value='21'>อายุรศาสตร์</option></select>");
+	name=$('#manageFirstname').text();
+	surname=$('#manageSurname').text();
+	department=$('#departmentName').text();
+	$('#manageFirstname').html("<input class='form-control' name='name' type='text' value='" + name + "'>");
+	$('#manageSurname').html("<input class='form-control' name='surname' type='text' value='" + surname + "'>");
+	$('#departmentName').hide();
+	$('#departmentDropdown').show();
 	$('#manageButton').html("<button class ='btn btn-warning' id ='confirmEdit' onClick='cancelEdit()'>ยกเลิก</button> <input class='btn btn-success' type='submit' value='ยืนยัน' id='submitManage'>");
 }
 function cancelEdit(){
-	$('#manageFirstname').html("<label for='name'>ชลัมพล</label>");
-	$('#manageSurname').html("<label for='surname'>ไก๊ไก่ไก๊ไก่</label>");
-	$('#manageDepartment').html("<label for='department'>พยาธิวิทยา</label>");
+	$('#manageFirstname').html("<label for='name'>" + name + "</label>");
+	$('#manageSurname').html("<label for='surname'>" + surname +"</label>");
+	$('#departmentName').html("<label for='department'>" + department + "</label>");
+	$('#departmentName').show();
+	$('#departmentDropdown').hide();
 	$('#manageButton').html("<button type='button' class='btn btn-warning' id='editStaffButton' onClick='editStaff()'>แก้ไข</button> <button type='button' class='btn btn-danger' data-toggle='modal' data-target='#myModal' id='deleteStaffButton'>ลบ</button>");
 }
 var name;
