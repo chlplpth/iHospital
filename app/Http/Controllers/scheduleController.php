@@ -48,4 +48,25 @@ class scheduleController extends Controller
         schedule::updateSchedule($input['hiddenDate'], 'afternoon', $input['hiddenAf'], $doctorId);
         return redirect('/doctorScheduleByDoctor');
     }
+
+    public function viewScheduleByStaff($doctorId)
+    {
+        $dt = schedule::getDateTimeToCalendar($doctorId);
+        return view('staff.doctorScheduleByNurse')->with('calendar2', $dt);
+    }
+
+    public function viewDoctorScheduleByStaff($doctorId)
+    {
+        $doctor = doctor::where('userId', $doctorId)->first();
+        $dt = schedule::getDateTimeToCalendar($doctorId);
+        return view('staff.doctorScheduleByStaff')
+                ->with('calendar2', $dt)
+                ->with('doctor', $doctor);
+    }
+
+    public function viewScheduleByNurse($doctorId)
+    {
+        $dt = schedule::getDateTimeToCalendar($doctorId);
+        return view('nurse.doctorScheduleByNurse')->with('calendar2', $dt);
+    }
 }

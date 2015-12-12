@@ -29,10 +29,10 @@
 
   <!-- Calendar core JavaScript -->
   <script src="{{asset('js/underscore-min.js')}}"></script>
-  <script src="{{asset('js/calendar-nondoctor.js')}}"></script>
+  <script src="{{asset('js/calendar.js')}}"></script>
   <script src="{{asset('js/language/th-TH.js')}}"></script>
   <script src="{{asset('js/jstimezonedetect/jstz.min.js')}}"></script>
-
+ 
   <!--Selectize search -->
    <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
   <!-- // <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script> -->
@@ -74,7 +74,7 @@
               <a href="{{ url('/recordPatientGeneralDetail') }}">บันทึกข้อมูลทั่วไปของผู้ป่วย</a>
             </li>
             <li class="{{ Request::is('doctorScheduleByNurse') ? 'active' : '' }}">
-              <a href="{{ url('/doctorScheduleByNurse') }}">ตารางนัดหมาย</a>
+              <a href="{{ url('/doctorScheduleByNurse') }}">ตารางการออกตรวจ</a>
             </li>
           </ul>
         </div>

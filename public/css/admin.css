@@ -15,10 +15,7 @@
 #buttonGroup {
 	margin-top: 30px;
 }
-.adminLabel {
-	margin-top: 7px;
-	text-indent: 7px;
-}
+
 table, table thead tr th {
 	text-align: center;
 }
@@ -33,4 +30,8 @@ table tr td span.glyphicon-remove {
 table tr td span.glyphicon-ok {
 	color: rgb(0,256,0);
 	cursor: pointer;
+}
+#addDepartmentForm,#addMedForm,#addStaffForm,#grantStaffForm{
+	margin-top: 20px;
+	margin-left: 40px;
 }

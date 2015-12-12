@@ -179,7 +179,7 @@ Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 Route::get('searchDoctorScheduleByStaff', function() {
     return view('staff/searchDoctorScheduleByStaff');
 });
-Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@doctorScheduleByStaff');
+Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@viewDoctorScheduleByStaff');
 
 // add staff
 Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
@@ -193,7 +193,6 @@ Route::get('manageStaffByStaff/{staffId}', 'userController@manageStaffShow');
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
 Route::post('manageStaffDelete','userController@deleteStaff');
-
 
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
@@ -219,17 +218,18 @@ Route::get('/searchPatientProfileByNurse', function () {
 });
 Route::get('patientProfileByNurse/{patientId}', 'userController@patientProfileByNurse');
 
+// record patient's general detail
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
-
 Route::get('/recordPatientGeneralDetail/{patientId}', 'diagnosisRecordController@recordPhysicalRecordShow');
 Route::post('/recordPatientGeneralDetail', 'diagnosisRecordController@recordPhysicalRecordStore');
 
-
-Route::get('/doctorScheduleByNurse', function () {
-    return view('nurse/doctorScheduleByNurse');
+// doctor schedule by nurse
+Route::get('doctorScheduleByNurse', function () {
+    return view('nurse/searchDoctorScheduleByNurse');
 });
+Route::get('doctorScheduleByNurse/{doctorId}', 'scheduleController@viewScheduleByNurse');
 
 
 // ==================================================================================================
@@ -307,6 +307,7 @@ Route::get('/search/manageStaffByStaff', 'searchController@searchHospitalStaffMa
 // nurse
 Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');
 Route::get('/search/patientProfileByNurse', 'searchController@searchPatientProfileByNurse');
+Route::get('/search/manageScheduleBynurse', 'searchController@searchDoctorScheduleByNurse');
 
 // pharmacist
 Route::get('/search/patientProfileByPharmacist', 'searchController@searchPatientProfileByPharmacist');
