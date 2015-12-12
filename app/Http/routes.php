@@ -152,6 +152,9 @@ Route::get('mainStaff', function() {
     return view('staff/mainStaff');
 });
 
+Route::get('staffProfile', 'userController@showStaffProfile');
+Route::post('editStaffProfile', 'userController@editStaffProfile');
+
 Route::get('/addPatient', function() {
     return view('staff.addPatient');
 });
@@ -268,27 +271,23 @@ Route::get('/addDepartment', function () {
 });
 Route::post('/addDepartment','departmentController@addDepartment');
 
-
 // addmedicine
 Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
-
-
 Route::post('/addMedicine','medicineController@addmedicine');
-
-
 
 Route::get('/addStaffByAdmin', function () {
     return view('admin/addStaffByAdmin');
 });
 
+// grant staff
 Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
+Route::post('grantStaff', 'userController@grantStaffSearch');
+Route::post('grantStaffStore', 'userController@grantStaffStore');
 
-
-Route::post('/addDepartment', 'departmentController@addDepartment');
 Route::get('/addStaffByAdmin', 'userController@addHospitalStaffByAdminShow');
 Route::post('/addStaffByAdmin', 'userController@addHospitalStaffByAdminStore');
 

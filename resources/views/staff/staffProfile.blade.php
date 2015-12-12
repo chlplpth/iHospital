@@ -4,7 +4,7 @@
 {!! HTML::script('js/staff.js') !!}
 @stop
 @section('content')
-{!! Form::open(array('url' => '/')) !!}
+{!! Form::open(array('url' => '/editStaffProfile')) !!}
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">ประวัติส่วนตัว</h3>
@@ -12,16 +12,17 @@
   <div class="panel-body">
     <div id ="staffProfile">
       <div class="row">
-        <div class="col-md-4"> <span class="bold">ชื่อ : </span> <span id='staffName'>name</span>
+        <div class="col-md-4"> <span class="bold">ชื่อ : </span> <span id='staffName'>{{ $staff->name() }}</span>
         </div>
-        <div class="col-md-8"><span class="bold">นามสกุล : </span> <span id='staffSurname'>surname</span>
+        <div class="col-md-8"><span class="bold">นามสกุล : </span> <span id='staffSurname'>{{ $staff->surname() }}</span>
         </div>
       </div>
       <br>
       <div class="row">
-        <div class="col-md-4"> <span class="bold">แผนก : </span> <span id='staffDepartment'>department</span>
+        <div class="col-md-4"> <span class="bold">แผนก : </span> <span id='staffDepartment'>{{ $staff->department()->departmentName }}</span>
+         <span id='departmentDropdown' style='display:none'>{!! Form::select('departmentId', $departments, $staff->department()->departmentId,["class" => "form-control", "onchange" => "changeDropdown(this)"])!!}</span>
         </div>
-        <div class="col-md-8"><span class="bold">อีเมล : </span> <span id='staffEmail'>email</span>
+        <div class="col-md-8"><span class="bold">อีเมล : </span> <span id='staffEmail'>{{ $staff->email() }}</span>
         </div>
       </div>
       <br>

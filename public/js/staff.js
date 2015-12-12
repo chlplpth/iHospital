@@ -44,13 +44,15 @@ function editProfile(){
 	name=$('#staffName').text();
 	surname=$('#staffSurname').text();
 	department=$('#staffDepartment').text();
+	departmentDropdown=$('#departmentDropdown').html();
 	proficiency=$('#staffProficiency').text();
 	email=$('#staffEmail').text();
-	$('#staffName').html("<input class='form-control' name='name' type='text' value='name'>");
-	$('#staffSurname').html("<input class='form-control' name='surname' type='text' value='surname'>");
-	$('#staffDepartment').html("<input class='form-control' name='department' type='text' value='department'>");
+	$('#staffName').html("<input class='form-control' name='name' type='text' value='" + name + "'>");
+	$('#staffSurname').html("<input class='form-control' name='surname' type='text' value='" + surname + "'>");
+	$('#staffDepartment').hide();
+	$('#departmentDropdown').show();
 	$('#staffProficiency').html("<input class='form-control' name='proficiency' type='text' value='proficiency'>");
-	$('#staffEmail').html("<input class='form-control' name='email' type='text' value='email'>");
+	$('#staffEmail').html("<input class='form-control' name='email' type='text' value='" + email + "'>");
 	$('#editProfileButton').html("<button class='btn btn-warning' onclick='cancelEditProfile()'>ยกเลิก</button> <input class='btn btn-success' type='submit' value='ยืนยัน' id='submitEditProfile'>");
 }
 function cancelEditProfile(){

@@ -167,7 +167,43 @@ class userController extends Controller
                 ->with('appointments', $appointments);
     }
 
-    
+    // ==================================================================================================
+    // ============================================ STAFF =============================================
+    // ==================================================================================================
+
+    public function showStaffProfile()
+    {
+        $staff = staff::where('userId', Auth::user()->userId)->first();
+        $departments = department::getDepartmentArray();
+        return view('staff.staffProfile')
+                ->with('staff', $staff)
+                ->with('departments', $departments);
+    }
+
+    public function editStaffProfile(Request $request)
+    {
+        $input = $request->all();
+        $staff = staff::where('userId', Auth::user()->userId)->first();
+        $staff->editStaffProfile($input);
+        return redirect('staffProfile');
+    }
+
+    public function grantStaffSearch(Request $request)
+    {
+        $input = $request->all();
+        $staffs = staff::searchStaff($input['keyword']);
+        return view('admin.grantStaff')
+                ->with('staffs', $staffs);
+    }
+
+    public function grantStaffStore(Request $request)
+    {
+        $input = $request->all();
+        staff::grantStaff($input);
+        return redirect('grantStaff');
+    }
+
+    // ==================================================================================================
     
     public function searchPatient(Request $request)
     {

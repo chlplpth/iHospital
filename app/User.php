@@ -66,6 +66,16 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasOne('App\patient', 'userId', 'userId');
     }
 
+    public function staff()
+    {
+        return $this->hasOne('App\staff', 'userId', 'userId');
+    }
+
+    public function grant()
+    {
+        return $this->staff->grant;
+    }
+
     /**
      * The attributes excluded from the model's JSON form.
      *
