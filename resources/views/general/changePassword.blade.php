@@ -27,7 +27,9 @@
 			<div class="col-md-8">
 			</div>
 			<div class="col-md-4" >
-				{!!Form::submit('ยืนยัน',['class'=>'btn btn-success']);!!}
+				{!! Form::hidden('verifyCode', $verifyCode) !!}
+				{!!Form::submit('ยืนยัน',['class'=>'btn btn-success'])!!}
+				
 			</div>
 		</div>
 		
