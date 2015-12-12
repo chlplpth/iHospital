@@ -181,7 +181,7 @@
 
         //============ Javascript - Make modal ============//
         var dateOfModal = '';
-        $('.cal-cell').click(function() {
+        $(document).on('click', '.cal-cell', function() {
 
           // make title date
           var date = $('[data-cal-date]', this).data('cal-date');
