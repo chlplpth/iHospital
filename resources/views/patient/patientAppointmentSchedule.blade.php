@@ -28,8 +28,8 @@
 						<tbody>
 							@foreach($appointments as $app)
 							<tr>
-								<td>{{ $app->diagDate() }}</td>
-								<td>{{ $app->diagTime() }}</td>
+								<td>{{ $app->diagDate }}</td>
+								<td>{{ $app->diagTime }}</td>
 								<td>{{ $app->department()->departmentName }}</td>
 								<td>{{ $app->doctor()->fullname() }}</td>
 								<td >
