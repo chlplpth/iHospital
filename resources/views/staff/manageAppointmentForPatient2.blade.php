@@ -4,7 +4,6 @@
 {!! HTML::script('js/staff.js') !!}
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
@@ -48,7 +47,14 @@
 									<td name="diagTime[]">{{ $app->diagTime }}</td>
 									<td name="doctorName[]">{{ $app->doctor()->fullname() }}</td>
 									<td name="department[]">{{ $app->department()->departmentName }}</td>
-									<td><a href ="{{url('/reschedulePatientAppointment')}}" class="btn btn-warning" >เลื่อน</a></td>
+									<td name="appId[]" style="display:none">{!! Form::hidden('appointmentId', $app->appointmentId) !!}</td>
+
+									<td>
+										{!! Form::open(array('url' => '/delayAppointmentForPatient')) !!}
+										{!! Form::hidden('appointmentId', $app->appointmentId) !!}
+										{!! Form::submit('เลื่อน', ['class' => 'btn btn-warning']) !!}
+										{!! Form::close() !!}
+									
 									<td>{!! Form::button('ยกเลิก', ["class" => "btn btn-danger", "data-toggle" => "modal", "data-target" => "#myModal","onClick"=>"setDelModal($i)"]) !!}</td>
 									<?php $i++; ?>
 								</tr>
@@ -69,10 +75,13 @@
 								<div class="modal-body">
 									<p>ท่านต้องการยกเลิกการนัดหมายแพทย์ <span id='delDoc'></span> ในวันที่ <span id='delDate'></span> เวลา <span id='delTime'></span> ของ <span id='delName'></span> หรือไม่</p>
 								</div>
+								{!! Form::open(array('url' => '/deleteAppointmentByStaff')) !!}
 								<div class="modal-footer">
-									<input type="submit" class="btn btn-success" data-dismiss="modal" value="ยืนยัน">
+										<span id='delForm'></span>
+										{!! Form::submit('ยืนยัน', ["class" => "btn btn-success"]) !!}
 									<button type="button" class="btn btn-danger" data-dismiss="modal">ยกเลิก</button>
 								</div>
+								{!! Form::close() !!}
 							</div>
 						</div>
 					</div>

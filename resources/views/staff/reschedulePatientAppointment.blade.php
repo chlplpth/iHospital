@@ -3,34 +3,34 @@
 <link href="{{asset('css/staff.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => 'foo/bar')) !!}
 
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">เลื่อนการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
+        {!! Form::open(array('url' => '/delayAppointmentByStaffRequest')) !!}
 		<div id = "reschedulePatientAppointmentForm">
 			
 			<div class="form-group row">
 				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
-				<label class="col-xs-3">XXX</label>
+				<label class="col-xs-3">{{ $appointment->patient->hospitalNo }}</label>
 			</div>
 			<div class="form-group row">  
 				<label class="col-xs-2">ชื่อ</label>
-				<label class="col-xs-10">ชลัมพล</label>
+				<label class="col-xs-10">{{ $appointment->patient->name() }}</label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">นามสกุล</label>
-					<label class="col-xs-10">ไก๊ไก่ไก๊ไก่</label>
+					<label class="col-xs-10">{{ $appointment->patient->surname() }}</label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แผนก</label>
-					<label class="col-xs-10">โสต นาสิก</label>
+					<label class="col-xs-10">{{ $appointment->department()->departmentName }}</label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แพทย์</label>
-					<label class="col-xs-10">ญานิกา</label>
+					<label class="col-xs-10">{{ $appointment->doctor()->fullname() }}</label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">วันนัด</label>
@@ -46,7 +46,7 @@
 
 				<div class="form-group row">
 					<label class="col-xs-2">อาการเบื้องต้น</label>
-					<label class="col-xs-10">ง่อยรับประทาน</label>
+					<label class="col-xs-10">{{ $appointment->symptom }}</label>
 				</div>
 
 
@@ -58,6 +58,8 @@
             });
             </script>
         </div>
+        {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+        {!! Form::hidden('doctorId', $appointment->doctor()->userId) !!}
         <div class="row">
         	<div class="col-xs-4"></div>
         	<div class="col-xs-2">
@@ -65,46 +67,53 @@
         	</div>
         	<div class="col-xs-6"></div>
         </div>
+        {!! Form::close() !!}
+
+        @if(isset($newApps))
         <div class="panel-body">
         	<div class="row">
         		<div class="col-xs-1"></div>
         		<div class="col-xs-10">
-        			<table class="table table-bordered">
-        				<thead >
-        					<br>
-        					<tr>
-        						<th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
-        						<th style="width: 20%; text-align:center;">เวลา</th>
-        						<th style="width: 20%; text-align:center;">แผนก</th>
-        						<th style="width: 40%; text-align:center;">แพทย์</th>
-        						<th style="width: 10%; text-align:center;">นัดหมาย</th>
-        					</tr>
-        				</thead>
-        				<tbody>
-        					<tr>
-        						<td>20/11/2558</td>
-        						<td>9.00 น. - 12.00 น.</td>
-        						<td>จักษุวิทยา</td>
-        						<td>กรภพ</td>
-        						<td ><a href="{{ url('/confirmAppointmentForPatient') }}" class="btn btn-info">เลือก</a></td>
-        					</tr>
-
-        					<tr>
-        						<td>21/11/2558</td>
-        						<td>13.00 น. - 16.00 น.</td>
-        						<td>กุมารเวชรศาสตร์</td>
-        						<td>ญานิกา</td>
-        						<td ><a href="{{ url('/confirmAppointmentForPatient') }}" class="btn btn-info">เลือก</a></td>
-        					</tr>
-        				</tbody>
-        			</table>
+        			
+                    @if(count($newApps) == 0)
+                        ไม่มีตารางออกตรวจของแพทย์ในวันที่ท่านต้องการ
+                    @else
+                        <table class="table table-bordered">
+            				<thead >
+            					<br>
+            					<tr>
+            						<th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+            						<th style="width: 20%; text-align:center;">เวลา</th>
+            						<th style="width: 20%; text-align:center;">แผนก</th>
+            						<th style="width: 40%; text-align:center;">แพทย์</th>
+            						<th style="width: 10%; text-align:center;">นัดหมาย</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+                                @foreach($newApps as $app)
+            					<tr>
+            						<td>{{ $app->diagDate }}</td>
+            						<td>{{ $app->diagTime }}</td>
+            						<td>{{ $app->department()->departmentName }}</td>
+            						<td>{{ $app->doctor()->fullname() }}</td>
+            						<td >
+                                        {!! Form::open(array('url' => '/confirmReappointmentByStaff')) !!}
+                                        {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+                                        {!! Form::hidden('scheduleId', $app->scheduleId) !!}
+                                        {!! Form::submit('เลือก', ["class" => "btn btn-info"]) !!}
+                                        {!! Form::close() !!}
+                                    </td>
+            					</tr>
+                                @endforeach
+            				</tbody>
+            			</table>
+                    @endif
         		</div>
         		<div class="col-xs-1"></div>
         	</div>
         	
         </div>
+        @endif
     </div>
 </div>
-
-{!! Form::close() !!}
 @stop

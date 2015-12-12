@@ -161,7 +161,12 @@ Route::post('createAppointmentByStaffStore', 'appointmentController@createAppoin
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
-Route::get('manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
+Route::get('/manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
+Route::post('/delayAppointmentForPatient', 'appointmentController@delayAppointmentByStaffShow');
+Route::post('/delayAppointmentByStaffRequest', 'appointmentController@delayAppointmentByStaffRequest');
+Route::post('/confirmReappointmentByStaff', 'appointmentController@confirmReappointmentByStaffShow');
+Route::post('delayAppointmentByStaff', 'appointmentController@delayAppointmentByStaffStore');
+Route::post('/deleteAppointmentByStaff', 'appointmentController@deleteAppointmentByStaffStore');
 
 // import doctor schedule
 Route::get('/importDoctorSchedule/', function() {

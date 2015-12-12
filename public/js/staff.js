@@ -79,12 +79,15 @@ function setDelModal(i){
 	var date = document.getElementsByName('diagDate[]');
 	var time = document.getElementsByName('diagTime[]');
 	var doc = document.getElementsByName('doctorName[]');
+	var appId = document.getElementsByName('appId[]');
 	name=$('#patientName').html(); 
 	date = $(date[i]).html();
 	time = $(time[i]).html();
 	doc = $(doc[i]).html();
+	appId = $(appId[i]).html();
 	$('#delDoc').html(doc); 
 	$('#delDate').html(date);
 	$('#delTime').html(time);
 	$('#delName').html(name);
+	$('#delForm').html(appId);
 }

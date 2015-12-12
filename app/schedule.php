@@ -61,7 +61,7 @@ class schedule extends Model
     public static function formatDiagDate($value)
     {
         $date = explode('-', $value);
-        
+
         $day = $date[2];
         if($day[0] == '0')
         {

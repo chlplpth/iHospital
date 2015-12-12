@@ -50,8 +50,15 @@ class scheduleLog extends Model
 
     public static function importSchedule($request)
     {
-        $morning = scheduleLog::getDiagDateString($request['m']);
-        $afternoon = scheduleLog::getDiagDateString($request['a']);
+        $morning = $afternoon = '0000000';
+        if(isset($request['m']))
+        {
+            $morning = scheduleLog::getDiagDateString($request['m']);
+        }
+        if(isset($request['a']))
+        {
+            $afternoon = scheduleLog::getDiagDateString($request['a']);
+        }
         $request['diagDateList'] = $morning . $afternoon;
 
         $request['startDate'] = scheduleLog::changeDateFormat($request['startDate']);
