@@ -72,7 +72,7 @@
 						<div class="input-group date">
 							{!! Form::text('dateOfBirth', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
 							<div class="input-group-addon">
-								<span class="glyphicon glyphicon-calendar"></span>
+								<span class="glyphicon glyphicon-calendar" style ="font-size:15px;"></span>
 							</div>
 						</div>
 					</div>

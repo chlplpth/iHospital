@@ -53,10 +53,22 @@
   margin-left: 40px;
   margin-top: 20px;
 }
+#confirmAppointmentwindow{
+  margin-left: 40px;
+  margin-top: 20px;
+}
+#cancelAppointmentForm{
+  margin-left: 40px;
+  margin-top: 20px;
+}
+#rescheduleAppointmentForm{
+  margin-left: 40px;
+  margin-top: 20px;
+}
 #symptomArea{
   width: 390px;  
 }
-#bio{
+#editProfileForm{
   margin-left: 40px;
 }
 #address{
@@ -69,7 +81,7 @@
   margin-left: -80px;
   margin-top: -3px;
 }
-.header{
+.bold{
   font-weight: bold;
 }
 .glyphicon-calendar{
@@ -78,8 +90,9 @@
 .btn-left{
   float: left;
 }
-#findAppointmentButton{
-
+#diagnosisRecordWindow{
+  margin-left: 40px;
+  margin-top: 20px;
 }
 #goToEdit{
 

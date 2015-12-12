@@ -33,10 +33,11 @@
   <script src="{{asset('js/language/th-TH.js')}}"></script>
   <script src="{{asset('js/jstimezonedetect/jstz.min.js')}}"></script>
  
- <!--Selectize search -->
+  <!--Selectize search -->
    <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
   <!-- // <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script> -->
   <script type="text/javascript" src='{{ asset("selectize/js/standalone/selectize.min.js") }}'></script>
+
   </head>
 
   <body>
@@ -55,7 +56,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
-            <li><a href="#">ข้อมูลส่วนตัว</a></li>
+            <li><a href="{{ url('/nurseProfile') }}">ข้อมูลส่วนตัว</a></li>
             <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
           </ul>
         </div>
@@ -84,9 +85,7 @@
     </div>
   </body>
 
-  <script>
-     var root = '{{url("/")}}';
-  </script>
-
+  <!-- selectize -->
   <script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
+
 </html>

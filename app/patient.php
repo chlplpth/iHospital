@@ -16,6 +16,7 @@ class patient extends Model
      * @var string
      */
     protected $table = 'patient';
+    protected $primaryKey = 'userId';
 
     /**
      * The attributes that are mass assignable.
@@ -31,6 +32,7 @@ class patient extends Model
         'citizenNo',
         'dateOfBirth',
         'sex',
+        'drugAllergy',
         'bloodGroup'];
 
 
@@ -89,6 +91,47 @@ class patient extends Model
         }
     }
 
+    public function getDrugAllergyAttribute($value)
+    {
+        if($value == '')
+        {
+            return '-';
+        }
+        else
+        {
+            return $value;
+        }
+    }
+
+    public function getDateOfBirthAttribute($value)
+    {
+        $date = explode('-', $value);
+        $year = $date[0] + 543;
+        $monthName = array('01'=>'มกราคม', '02'=>'กุมภาพันธ์', '03'=>'มีนาคม', '04'=>'เมษายน', '05'=>'พฤษภาคม', '06'=>'มิถุนายน', '07'=>'กรกฎาคม', '08'=>'สิงหาคม', '09'=>'กันยายน', '10'=>'ตุลาคม', '11'=>'พฤศจิกายน', '12'=>'ธันวาคม');
+        $month = $monthName[$date[1]];
+        return $date[2] . ' ' . $month . ' ' . $year;
+    }
+
+    public function setDateOfBirthAttribute($value)
+    {
+        $date = explode('/', $value);
+        $CEyear = intval($date[2]) - 543;
+        $this->attributes['dateOfBirth'] = $CEyear . '-' . $date[1] . '-' . $date[0];
+    }
+
+    public function setDrugAllergyAttribute($value)
+    {
+        $drug = '';
+        $checked = false;
+        foreach($value as $med)
+        {
+            if($checked == true) $drug = $drug . ', ';
+            $drug = $drug . $med;
+            $checked = true;
+        }
+        $this->attributes['drugAllergy'] = $drug;
+    }
+
     public function addressDetail(){
 
         // just province list, you should skip this to see the detail below...
@@ -106,14 +149,51 @@ class patient extends Model
         return $arr;
     }
 
-    //----------------- relationship --------------------
+    // -------------------------------  relationship -------------------------------
+    
     public function user()
     {
-        $this->belongsTo('App\User');
+        return $this->belongsTo('App\User', 'userId', 'userId');
     }
+
+    public function appointments()
+    {
+        return $this->hasMany('App\appointment', 'patientId', 'userId');
+    }
+
+    public function name()
+    {
+        return $this->user->name;
+    }
+
+    public function surname()
+    {
+        return $this->user->surname;
+    }
+
+    public function fullname()
+    {
+        return $this->name() . ' ' . $this->surname();
+    }
+
+    // -----------------------------------------------------------------------------
 
     //----------------- function --------------------
     
+    public function appointmentSorted()
+    {
+        // return appointment::where('appointment.patientId', '=', $this->userId)
+        //            ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+        //            ->orderBy('schedule.diagDate', 'asc')
+        //            ->orderBy('schedule.diagTime', 'asc')
+        //            ->get();
+        return schedule::join('appointment', 'schedule.scheduleId', '=', 'appointment.scheduleId')
+                   ->where('appointment.patientId', '=', $this->userId)
+                   ->orderBy('schedule.diagDate', 'asc')
+                   ->orderBy('schedule.diagTime', 'asc')
+                   ->get();
+    }
+
     public static function viewPatientProfile($userId)
     {
         $patient = DB::table('users')

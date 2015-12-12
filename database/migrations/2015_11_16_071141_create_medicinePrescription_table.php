@@ -14,15 +14,16 @@ class CreateMedicinePrescriptionTable extends Migration
     {
         Schema::create('medicinePrescription', function (Blueprint $table) {
             $table->integer('prescriptionId')->unsigned();
-            $table->string('medicineId');
-            $table->integer('quantity');
+            // $table->string('medicineId');
+            $table->string('medicineName');
+            $table->string('quantity');
             $table->string('instruction');
-            $table->string('note');
+            $table->text('note');
             $table->timestamps();
         });
 
         Schema::table('medicinePrescription', function(Blueprint $table) {
-            $table->primary(['prescriptionId', 'medicineId']);
+            $table->primary(['prescriptionId', 'medicineName']);
         });
 
         Schema::table('medicinePrescription', function(Blueprint $table) {
@@ -30,9 +31,9 @@ class CreateMedicinePrescriptionTable extends Migration
                   ->references('prescriptionId')
                   ->on('prescription');
 
-            $table->foreign('medicineId')
-                  ->references('medicineId')
-                  ->on('medicine');
+            // $table->foreign('medicineId')
+            //       ->references('medicineId')
+            //       ->on('medicine');
         });
     }
 

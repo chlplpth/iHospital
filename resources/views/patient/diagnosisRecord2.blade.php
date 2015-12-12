@@ -3,87 +3,110 @@
 <link href="{{asset('css/patient.css')}}" rel="stylesheet">
 @stop
 @section('content')
-
+{!! Form::open(array('url' => '/diagRecordPdf')) !!}
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ประวัติการรักษา</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "createAppointmentForm">
-			<br>
-			<span class ="header">รหัสประจำตัวผู้ป่วย : </span>PatientID 
+		<div id = "diagnosisRecordWindow">
+			<span class="bold">รหัสประจำตัวผู้ป่วย : </span>{{ $app->patient->hospitalNo }}
 			<br> <br>
 
 			<div class="row">
-				<div class="col-md-4"> <span class ="header">ชื่อ : </span>ชื่อจริง 
+				<div class="col-md-4"> <span class="bold">ชื่อ : </span> {{ $app->patient->name() }}
 				</div>
-				<div class="col-md-8"><span class ="header">นามสกุล : </span>นามสกุล
+				<div class="col-md-8"><span class="bold">นามสกุล : </span> {{ $app->patient->surname() }}
 				</div>
 			</div>
 			<br>
 
 			<div class ="row">
 				<div class ="col-md-2">
-					<span class ="header">เพศ : </span>ชาย 
+					<span class="bold">เพศ : </span> {{ $app->patient->sex }}
 				</div>
 				<div class ="col-md-2">
-					<span class ="header">กรุ๊ปเลือด : </span>O
+					<span class="bold">กรุ๊ปเลือด : </span> {{ $app->patient->bloodGroup }}
 				</div>	
 				<div class ="col-md-8">
-					<span class ="header">อายุ : </span> 20 
+					<span class="bold">อายุ : </span> เดี๋ยวค่อยใส่
 				</div>
 				<br><br>
 			</div>
 			<div class="row">
-				<div class="col-md-4"><span class ="header">แพทย์ : </span>ชลัมพล 
+				<div class="col-md-4"><span class="bold">แพทย์ : </span> {{ $app->doctor()->fullname() }} 
 				</div>
-				<div class="col-md-8"><span class ="header">แผนก : </span>โปเกม่อนวิทยา
+				<div class="col-md-8"><span class="bold">แผนก : </span> {{ $app->department()->departmentName }}
 				</div>
 			</div>
 			<br>
 
 			<div class ="row">
 				<div class ="col-md-4">
-					<span class ="header">วันที่รับการตรวจ : </span>19/11/2015 
+					<span class="bold">วันที่รับการตรวจ : </span> {{ $app->diagDate() }}
 				</div>
 				<div class ="col-md-8">
-					<span class ="header">เวลา : </span>9.00 น. -12.00 น. 
+					<span class="bold">เวลา : </span> {{ $app->diagTime() }} 
 				</div>
 			</div>
 
 			<br>
-			<span class ="header">อาการ : </span>ง่อยแดก
+			<span class="bold">อาการ : </span> {{ $app->symptom }}
 			<br><br>
-			<span class ="header">คำแนะนำจาแพทย์ : </span>กินยาแล้วไปนอนพัก 
+			<span class="bold">คำแนะนำจากแพทย์ : </span> {{ $diag->doctorAdvice }}
 			<br><br>
-			<span class ="header">รายการยา</span> 
-			<br><br>
-			<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
-				<thead >
-					<tr>
-						<th style="width: 33%; text-align:center;">ชื่อยา</th>
-						<th style="width: 16%; text-align:center;">จำนวน</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>paracetamol</td>
-						<td>2 เม็ด</td>
-					</tr>
-					<tr>
-						<td>ยาบ้า</td>
-						<td>5 แผง</td>
-					</tr>
+			<div class ="row">
+				<div class ="col-md-4">
+					<span class="bold">น้ำหนัก : </span> {{ $phys->weight }}
+				</div>
+				<div class ="col-md-4">
+					<span class="bold">ส่วนสูง : </span> {{ $phys->height }} 
+				</div>
+			</div>
+			<br>
+			<div class ="row">
+				<div class ="col-md-4">
+					<span class="bold">ความดันโลหิต : {{ $phys->bloodPressure() }}</span>
+				</div>
+				<div class ="col-md-4">
+					<span class="bold">อัตราการเต้นของหัวใจ : </span> {{ $phys->heartRate }}
+				</div>
+			</div>
 
-				</tbody>
-			</table>	
+			<br>
+			<span class="bold">รหัสโรค : </span> {{ $diag->diseaseCode }}
+			<br><br>
+			<span class="bold">รายละเอียดการวินิจฉัย : </span> {{ $diag->diagnosisDetail }}
+			<br><br>
+			@if(count($prescription->medicines) > 0)
+				<span class="bold">รายการยา</span> 
+				<br><br>
+				<table class="table table-bordered" id="diagnosisTable" style = "text-align:center;">
+					<thead >
+						<tr>
+							<th style="width: 33%; text-align:center;">ชื่อยา</th>
+							<th style="width: 16%; text-align:center;">จำนวน</th>
+						</tr>
+					</thead>
+					<tbody>
+						@foreach($prescription->medicines as $med)
+						<tr>
+							<td>{{ $med->medicineName }}</td>
+							<td>{{ $med->quantity }}</td>
+						</tr>
+						@endforeach
+					</tbody>
+				</table>
+			@endif
+				
 			<div class ="row">
 				<div class ="col-md-5"></div>
-				<div class ="col-md-2">{!! Form::submit('ส่งออก', ['class' => 'btn btn-warning']) !!}</div>
+				<div class ="col-md-2"><a href = "{{ url('/diagRecordPdf') }}" class="btn btn-warning" >ส่งออก</a></div>
 				<div class ="col-md-5"></div>
 				<br><br>
 			</div>
 		</div>
 	</div>
 </div>
+{!! Form::close() !!}
 @stop

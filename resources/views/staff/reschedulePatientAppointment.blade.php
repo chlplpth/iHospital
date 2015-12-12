@@ -10,7 +10,7 @@
 		<h3 class="panel-title">เลื่อนการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "createAppointmentForm">
+		<div id = "reschedulePatientAppointmentForm">
 			
 			<div class="form-group row">
 				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
@@ -86,7 +86,7 @@
         						<td>9.00 น. - 12.00 น.</td>
         						<td>จักษุวิทยา</td>
         						<td>กรภพ</td>
-        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
+        						<td ><a href="{{ url('/confirmAppointmentForPatient') }}" class="btn btn-info">เลือก</a></td>
         					</tr>
 
         					<tr>
@@ -94,7 +94,7 @@
         						<td>13.00 น. - 16.00 น.</td>
         						<td>กุมารเวชรศาสตร์</td>
         						<td>ญานิกา</td>
-        						<td ><a href="{{ url('/confirmAppointment') }}" class="btn btn-info">เลือก</a></td>
+        						<td ><a href="{{ url('/confirmAppointmentForPatient') }}" class="btn btn-info">เลือก</a></td>
         					</tr>
         				</tbody>
         			</table>

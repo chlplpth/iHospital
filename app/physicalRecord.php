@@ -31,20 +31,42 @@ class physicalRecord extends Model
         'heartRate'];
 
 
-    public static function recordPatientGeneralDetail($input)
+    //-------------------------------  accessors -------------------------------
+
+    public function getHeightAttribute($value)
     {
-        $keyword = $input['patient'];
-        $patient = patient::searchPatient($keyword)->first();
-        return $patient;
+        return $value . ' เซนติเมตร';
+    }
+
+    public function getWeightAttribute($value)
+    {
+        return $value . ' กิโลกรัม';
+    }
+
+    public function getHeartRateAttribute($value)
+    {
+        return $value . ' ครั้งต่อนาที';
+    }
+
+    public function bloodPressure()
+    {
+        return $this->sysBlood . '/' . $this->diBlood . ' มิลลิเมตรปรอท';
+    }
+
+    public static function createNewPhysRecord($input, $nurseId)
+    {
+        $input['nurseId'] = $nurseId;
+        $physRecord = physicalRecord::create($input);
     }
 
     public static function recordPatientGeneralDetail2($input)
     {
         $patientId = $input['patient'];
         $appointment = appointment::where('patientId',$patientId)->first();
-        $input['appointmentId'] = $appointment->appointmentId; 
-        $input['nurseId'] = 5;
-        $physicalRecord = physicalRecord::create($input);
-        return $physicalRecord;
+        // $input['appointmentId'] = $appointment->appointmentId; 
+        $input['nurseId'] = 16;
+        $input['appointmentId'] = 12;
+        // $physicalRecord = physicalRecord::create($input);
+        // return $physicalRecord;
     }
 }

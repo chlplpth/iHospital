@@ -113,7 +113,7 @@
               <div type="button" class="btn btn-default" data-dismiss="modal">ปิด</div>
               {!! Form::hidden('hiddenMr', '-1', ['id'=>'hiddenMr']); !!}
               {!! Form::hidden('hiddenAf', '-1', ['id'=>'hiddenAf']); !!}
-              {!! Form::hidden('hiddenDate', '-1', ['id'=>'hiddenDate']); !!}
+              {!! Form::hidden('hiddenDate', '-1', ['id'=>'date']); !!}
               {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!}
             </div>
           </div>
@@ -249,12 +249,10 @@
 
         // pass value using hidden
         $(':checkbox').click(function() {
-          $('#hiddenMr').prop('value', $('#ckb1').prop('checked'));
-          $('#hiddenAf').prop('value', $('#ckb2').prop('checked'));
+          $('#hiddenMr').prop('value', $('#ckb1').checked);
+          $('#hiddenAf').prop('value', $('#ckb2').checked);
           $('#hiddenDate').prop('value', dateOfModal);
-          console.log($('#hiddenMr'));
-          console.log($('#hiddenAf'));
-          console.log($('#hiddenDate'));
+          console.log('AAAAAA');
         });
         
         // set default when Modal is cloesed

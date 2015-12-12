@@ -8,26 +8,40 @@
 	<div class="panel-heading">
 		<h3 class="panel-title">เลื่อนการนัดหมาย</h3>
 	</div>
-	<div class="panel-body">
-        {!! Form::open(array('url' => '/rescheduleAppointment')) !!}
-		<div id = "createAppointmentForm">
+    <div class="panel-body">
+        {!! Form::open(array('url' => 'rescheduleAppointmentRequest')) !!}
+		<div id = "rescheduleAppointmentForm">
+			{!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+			<div class="form-group row">
+				<label class="col-xs-2">รหัสประจำตัวผู้ป่วย</label>
+				<label class="col-xs-3">{{ $appointment->patient->hospitalNo }}</label>
+			</div>
+			<div class="form-group row">  
+				<label class="col-xs-2">ชื่อ</label>
+				<label class="col-xs-10"> {{ $appointment->patient->name() }}</label>
+				</div>
+				<div class="form-group row">
+					<label class="col-xs-2">นามสกุล</label>
+					<label class="col-xs-10"> {{ $appointment->patient->surname() }} </label>
+				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แผนก</label>
-					<label class="col-xs-10">{{ $appointment->departmentName }}</label>
+					<label class="col-xs-10"> {{ $appointment->department()->departmentName }} </label>
 				</div>
 				<div class="form-group row">
 					<label class="col-xs-2">แพทย์</label>
-					<label class="col-xs-10">{{ $appointment->name }} {{ $appointment->surname }} </label>
+					<label class="col-xs-10"> {{ $appointment->doctor()->fullname() }}</label>
+                    {!! Form::hidden('doctorId', $appointment->doctor()->userId) !!}
 				</div>
-                <div class="form-group row">
-                    <label class="col-xs-2">วันนัดเดิม</label>
-                    <label class="col-xs-10">{{ $appointment->diagDate }}</label>
-                </div>
 				<div class="form-group row">
 					<label class="col-xs-2">วันนัด</label>
 					<div class="col-xs-3">
 						<div class="input-group date">
-							{!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+							@if(isset($requestedDate))
+                                {!! Form::text('date', $requestedDate, ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+                            @else
+                                {!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+                            @endif
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
@@ -52,9 +66,6 @@
         <div class="row">
         	<div class="col-xs-4"></div>
         	<div class="col-xs-2">
-                {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
-                {!! Form::hidden('departmentId', $appointment->departmentId) !!}
-                {!! Form::hidden('doctorId', $appointment->userId) !!}
         		{!! Form::submit('ยืนยัน', ['class' => 'btn btn-success']) !!}
         	</div>
         	<div class="col-xs-6"></div>
@@ -62,44 +73,52 @@
         {!! Form::close() !!}
 
         @if(isset($newAppointments))
-        <div class="panel-body">
-        	<div class="row">
-        		<div class="col-xs-1"></div>
-        		<div class="col-xs-10">
-        			<table class="table table-bordered">
-        				<thead >
-        					<br>
-        					<tr>
-        						<th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
-        						<th style="width: 20%; text-align:center;">เวลา</th>
-        						<th style="width: 20%; text-align:center;">แผนก</th>
-        						<th style="width: 40%; text-align:center;">แพทย์</th>
-        						<th style="width: 10%; text-align:center;">นัดหมาย</th>
-        					</tr>
-        				</thead>
-        				<tbody>
-        					@foreach($newAppointments as $app)
-                            <tr>
-        						<td>{{ $app->diagDate }}</td>
-        						<td>{{ $app->diagTime }}</td>
-        						<td>{{ $app->departmentName }}</td>
-        						<td>{{ $app->name }} {{ $app->surname }}</td>
-                                {!! Form::open(array('url' => '/confirmDelayAppointment')) !!}
-                                    {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
-                                    {!! Form::hidden('scheduleId', $app->scheduleId) !!}
-        						<td>{!! Form::submit("เลือก", ['class' => 'btn btn-info']) !!}</td>
-                                {!! Form::close() !!}
-        					</tr>
-                            @endforeach
-        				</tbody>
-        			</table>
-        		</div>
-        		<div class="col-xs-1"></div>
-        	</div>
-        	
-        </div>
+            @if(count($newAppointments) > 0)
+            <div class="panel-body">
+            	<div class="row">
+            		<div class="col-xs-1"></div>
+            		<div class="col-xs-10">
+            			<table class="table table-bordered">
+            				<thead >
+            					<br>
+            					<tr>
+            						<th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+            						<th style="width: 20%; text-align:center;">เวลา</th>
+            						<th style="width: 20%; text-align:center;">แผนก</th>
+            						<th style="width: 40%; text-align:center;">แพทย์</th>
+            						<th style="width: 10%; text-align:center;">นัดหมาย</th>
+            					</tr>
+            				</thead>
+            				<tbody>
+            					
+                                @foreach($newAppointments as $schedule)
+                                <tr>
+                                    <td>{{ $schedule->diagDate }}</td>
+                                    <td>{{ $schedule->diagTime }}</td>
+                                    <td>{{ $schedule->department()->departmentName }}</td>
+                                    <td>{{ $schedule->doctor()->fullname() }}</td>
+                                    <td >
+                                    {!! Form::open(array('url' => 'confirmReAppointment')) !!}
+                                        {!! Form::hidden('appointmentId', $appointment->appointmentId) !!}
+                                        {!! Form::hidden('scheduleId', $schedule->scheduleId) !!}
+                                        {!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
+                                    {!! Form::close() !!}
+                                    </td>
+                                </tr>
+                                @endforeach
+
+            				</tbody>
+            			</table>
+            		</div>
+            		<div class="col-xs-1"></div>
+            	</div>
+            	
+            </div>
+            @else
+                <br>
+                ไม่มีตารางออกตรวจของแพทย์ในวันที่ {{ $formattedDate }}
+            @endif
         @endif
     </div>
 </div>
-
 @stop

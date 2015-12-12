@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
@@ -12,9 +13,129 @@ use App\physicalRecord;
 use App\medicinePrescription;
 use App\appointment;
 use App\prescription;
+use App\doctor;
+use App\schedule;
 
 class diagnosisRecordController extends Controller
 {
+
+    // ==================================================================================================
+    // ============================================ PATIENT =============================================
+    // ==================================================================================================
+
+    public function showDiagnosisRecordList()
+    {
+        $patientId = Auth::user()->userId;
+        $appointments = appointment::getRecordedAppointments($patientId);
+        return view('patient.diagnosisRecord')
+                ->with('appointments', $appointments);
+    }
+
+    public function showDiagnosisRecord($appId)
+    {
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        $phys = $appointment->physicalRecord;
+        $diag = $appointment->diagnosisRecord;
+        $prescription = $appointment->prescription;
+        return view('patient.diagnosisRecord2')
+                ->with('app', $appointment)
+                ->with('phys', $phys)
+                ->with('diag', $diag)
+                ->with('prescription', $prescription);
+    }
+
+    // ==================================================================================================
+    // ============================================ DOCTOR =============================================
+    // ==================================================================================================
+
+    public function showDiagnosisRecordDoctor($appId)
+    {
+        $appointment = appointment::where('appointmentId', $appId)->first();
+        $phys = $appointment->physicalRecord;
+        $diag = $appointment->diagnosisRecord;
+        $prescription = $appointment->prescription;
+        return view('doctor.patientProfileByDoctor2')
+                ->with('app', $appointment)
+                ->with('phys', $phys)
+                ->with('diag', $diag)
+                ->with('prescription', $prescription);
+    }
+
+    public function recordDiagnosisRecordShow($patientId)
+    {
+        $appointment = appointment::toBeRecordedDiag($patientId);
+        $phys = null;
+        $search = 'yes';
+        if($appointment != null)
+        {
+            $phys = $appointment->physicalRecord;
+        }
+        return view('doctor.diagnose')
+                    ->with('appointment', $appointment)
+                    ->with('phys', $phys)
+                    ->with('search', $search);
+    }
+
+    public function diagnose(Request $request)
+    {
+        $input = $request->all();
+        $doctorId = Auth::user()->userId;
+        diagnosisRecord::recordDiagnosisResults($input);
+        if($input['nextAppDate'] != ''){
+            appointment::newAppointmentByDoctor($input, $doctorId, $input['patientId']);
+        }
+        return redirect('diagnose');
+    }
+
+    public function showDiagnosisHistory(Request $request)
+    {
+        $input = $request->all();
+        $doctor = doctor::where('userId', Auth::user()->userId)->first();
+        $stats = $doctor->getDiagStats(($input['year'] - 543), $input['month']);
+        return view('doctor.showDiagnosisHistory')
+                ->with('stats', $stats)
+                ->with('year', $input['year'])
+                ->with('month', schedule::getMonthName($input['month']));
+    }
+
+    // ==================================================================================================
+    // ============================================ NURSE =============================================
+    // ==================================================================================================
+
+    public function recordPhysicalRecordShow($patientId)
+    {
+        $appointment = appointment::toBeRecordedPhys($patientId);
+        return view('nurse.recordPatientGeneralDetail')
+                ->with('appointment', $appointment);
+    }
+
+    public function recordPhysicalRecordStore(Request $request)
+    {
+        $input = $request->all();
+        physicalRecord::createNewPhysRecord($input, Auth::user()->userId);
+        return redirect('recordPatientGeneralDetail');
+    }
+     // ==================================================================================================
+    // ============================================ PHARMACIST =============================================
+    // ==================================================================================================
+
+    public function recordPrescriptionShow($patientId)
+    {
+        $appointment = appointment::toBePrescribe($patientId);
+        $prescription = $appointment->prescription;
+        return view('pharmacist.recordPrescriptionHistory2')
+                    ->with('appointment', $appointment)
+                    ->with('prescription', $prescription);
+    }
+
+    public function recordPrescription(Request $request)
+    {
+        $input = $request->all();
+        $prescription = prescription::where('prescriptionId', $input['prescriptionId'])->first();
+        $prescription->confirm(Auth::user()->userId);
+        return redirect('recordPrescriptionHistory');
+    }
+
     public function recordDiagnosis(Request $request)
 	{
 		$input = $request->all();
@@ -68,6 +189,8 @@ class diagnosisRecordController extends Controller
     	$input = $request->all();
         $diagnosisRecords = diagnosisRecord::viewDiagnosisHistoryPatient($input);
     }
+
+    
 
     //click from user profile-> diagnosisHistory to view detail
     public function viewDiagnosisResult(Request $request)

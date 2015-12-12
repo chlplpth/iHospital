@@ -11,82 +11,180 @@
 |
 */
 
-// Route::get('/home', 'appointmentController@home');
+/*
+|
+| Routes in this file are ordered by the following roles/topics
+| General -> Patient -> Doctor -> Staff -> Nurse -> Pharmacist -> Admin
+| The order is same for all controllers
+|
+*/
 
-Route::get('/rescheduleAppointmentByStaff', function () {
-    return view('staff/rescheduleAppointmentByStaff');
-});
+// ==================================================================================================
+// ============================================ GENERAL =============================================
+// ==================================================================================================
 
-Route::get('/index', function () {
-    return view('index');
-});
+// main page for all users (shows login page for non-user)
+Route::get('/', 'Auth\AuthController@getMainPage');
 
+// login
+Route::post('/login', 'Auth\AuthController@authenticate');
+
+// logout
+Route::get('/logout', 'Auth\AuthController@logout');
+
+// register for patient
 Route::get('/register', function () {
     return view('general/register');
 });
+Route::post('/register', 'userController@checkPatientStatus');
+Route::post('/registerOld', 'userController@registerOldPatient');
+Route::post('/registerNew', 'userController@registerNewPatient');
 
-
-Route::get('/changePassword', function () {
-    return view('general/changePassword');
-});
-
+// forget and change password
 Route::get('/forgetPassword', function () {
     return view('general/forgetPassword');
 });
+Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
+Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGet');
+Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
+
+
+// ==================================================================================================
+// ============================================ PATIENT =============================================
+// ==================================================================================================
+
+// main page for patient
+Route::get('mainPatient', function() {
+    return view('patient/mainPatient');
+});
+
+// show patient's profile
+Route::get('patientProfile', 'userController@viewMyProfilePatient');
+
+// create new appointment
+Route::get('createAppointment', 'appointmentController@createAppointmentShow');
+Route::post('createAppointment', 'appointmentController@createAppointmentRequest');
+Route::post('confirmAppointment', 'appointmentController@confirmAppointmentShow');
+Route::post('storeAppointment', 'appointmentController@createAppointmentStore');
+
+// edit patient's profile
+Route::get('editProfile', 'userController@editMyProfilePatientShow');
+Route::post('editProfile', 'userController@editMyProfilePatientStore');
+
+// show patient's appointments list
+Route::get('patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
+
+// change appointment date
+Route::post('rescheduleAppointment', 'appointmentController@delayAppointmentShow');
+Route::post('rescheduleAppointmentRequest', 'appointmentController@delayAppointmentRequest');
+Route::post('confirmReAppointment', 'appointmentController@confirmReAppointment');
+Route::post('delayAppointment', 'appointmentController@delayAppointmentStore');
+
+// cancel appointment
+Route::post('cancelAppointment', 'appointmentController@cancelAppointmentShow');
+Route::post('cancelAppointmentStore', 'appointmentController@cancelAppointmentStore');
+
+// show doctors list & search doctors
+Route::get('doctorList', 'userController@searchDoctorShow');
+Route::post('doctorList','userController@searchDoctor');
+
+// show patient's diagnosis history
+Route::get('diagnosisRecord', 'diagnosisRecordController@showDiagnosisRecordList');
+Route::get('diagnosisRecord/{appId}', 'diagnosisRecordController@showDiagnosisRecord');
+
+
+// ==================================================================================================
+// ============================================= DOCTOR =============================================
+// ==================================================================================================
+
+// main page for doctor
+Route::get('/mainDoctor', function () {
+    return view('doctor/mainDoctor');
+});
+
+// doctor's profile
+Route::get('/doctorProfile', 'userController@showDoctorProfile');
+Route::post('/editDoctorProfile', 'userController@editDoctorProfile');
+
+// doctor view patient's profile
+Route::get('/searchPatientProfileByDoctor', function () {
+    return view('doctor/searchPatientProfileByDoctor');
+});
+Route::get('/patientProfileByDoctor/{patientId}', 'userController@showPatientProfileToDoctor');
+Route::get('patientDiagRecordByDoctor/{appId}', 'diagnosisRecordController@showDiagnosisRecordDoctor');
+
+// record diagnosis results
+Route::get('/diagnose', function () {
+    return view('doctor/diagnose');
+});
+Route::get('/diagnose/{patientId}', 'diagnosisRecordController@recordDiagnosisRecordShow');
+Route::post('/diagnose', 'diagnosisRecordController@diagnose');
+
+// doctor's schedule
+Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
+
+
+// diagnosis history
+Route::get('/diagnosisHistory', function () {
+    return view('doctor/diagnosisHistory');
+});
+Route::post('/showDiagnosisHistory', 'diagnosisRecordController@showDiagnosisHistory');
+
+// ==================================================================================================
+// ============================================= STAFF ==============================================
+// ==================================================================================================
 
 Route::get('mainStaff', function() {
     return view('staff/mainStaff');
 });
 
-Route::get('mainPatient', function() {
-    return view('patient/mainPatient');
-});
+// staff profile
+Route::get('staffProfile', 'userController@showStaffProfile');
+Route::post('editStaffProfile', 'userController@editStaffProfile');
 
+// add patient
+Route::get('/addPatient', function() {
+    return view('staff.addPatient');
+});
+Route::post('/addPatient', 'userController@addPatient');
+
+// create appointment
 Route::get('createAppointmentForPatient', function() {
     return view('staff/createAppointmentForPatient');
 });
+Route::get('/createAppointmentForPatient/{patientId}', 'appointmentController@createAppointmentByStaffShow');
+Route::post('/createAppointmentForPatient/', 'appointmentController@createAppointmentStaffRequest');
+Route::post('confirmAppointmentByStaff', 'appointmentController@confirmAppointmentByStaffShow');
+Route::post('createAppointmentByStaffStore', 'appointmentController@createAppointmentByStaffStore');
 
-Route::get('diagnosisRecord', function() {
-    return view('patient/diagnosisRecord');
-});
-
-
-Route::get('diagnosisRecord2', function() {
-    return view('patient/diagnosisRecord2');
-});
-
-Route::get('rescheduleAppointment', function() {
-    return view('patient/rescheduleAppointment');
-});
-
-Route::get('confirmAppointment', function() {
-    return view('patient/confirmAppointment');
-});
-
-Route::get('cancelAppointment', function() {
-    return view('patient/cancelAppointment');
-});
-
+// manage appointment
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
+Route::get('manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
 
-Route::get('doctorScheduleByStaff', function() {
-    return view('staff/doctorScheduleByStaff');
+// import doctor schedule
+Route::get('/importDoctorSchedule/', function() {
+    return view('staff.importDoctorSchedule');
 });
+Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
+Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 
-Route::get('doctorList', function () {
-    return view('patient/doctorList');
+// view doctor schedule
+Route::get('searchDoctorScheduleByStaff', function() {
+    return view('staff/searchDoctorScheduleByStaff');
 });
-Route::post('doctorList','userController@searchDoctor');
+Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@doctorScheduleByStaff');
 
-Route::get('addStaffByStaff', function() {
-    return view('staff/addStaffByStaff');
-});
+// add staff
+Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
+Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
 
+// manage staff
 Route::get('manageStaffByStaff', function() {
     return view('staff/manageStaffByStaff');
 });
+Route::get('manageStaffByStaff/{staffId}', 'userController@manageStaffShow');
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
 Route::post('manageStaffDelete','userController@deleteStaff');
@@ -96,13 +194,66 @@ Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
 });
 
-Route::get('searchDoctorScheduleByStaff', function() {
-    return view('staff/searchDoctorScheduleByStaff');
+
+// ==================================================================================================
+// ============================================= NURSE ==============================================
+// ==================================================================================================
+
+
+Route::get('/mainNurse', function () {
+    return view('nurse/mainNurse');
 });
 
-Route::get('patientAppointmentSchedule', function() {
-    return view('patient/patientAppointmentSchedule');
+// nurse profile
+Route::get('/nurseProfile', 'userController@showNurseProfile');
+Route::post('/editNurseProfile', 'userController@editNurseProfile');
+
+// view patient profile
+Route::get('/searchPatientProfileByNurse', function () {
+    return view('nurse/searchPatientProfileByNurse');
 });
+Route::get('patientProfileByNurse/{patientId}', 'userController@patientProfileByNurse');
+
+Route::get('/recordPatientGeneralDetail', function () {
+    return view('nurse/recordPatientGeneralDetail');
+});
+
+Route::get('/recordPatientGeneralDetail/{patientId}', 'diagnosisRecordController@recordPhysicalRecordShow');
+Route::post('/recordPatientGeneralDetail', 'diagnosisRecordController@recordPhysicalRecordStore');
+
+
+Route::get('/doctorScheduleByNurse', function () {
+    return view('nurse/doctorScheduleByNurse');
+});
+
+
+// ==================================================================================================
+// =========================================== PHARMACIST ===========================================
+// ==================================================================================================
+
+Route::get('/mainPharmacist', function () {
+    return view('pharmacist/mainPharmacist');
+});
+
+Route::get('pharmacistProfile', 'userController@showPharmacistProfile');
+Route::post('editPharmacistProfile', 'userController@editPharmacistProfile');
+
+Route::get('/searchPatientProfileByPharmacist', function () {
+    return view('pharmacist/searchPatientProfileByPharmacist');
+});
+Route::get('patientProfileByPharmacist/{patientId}', 'userController@patientProfileByPharmacist');
+
+Route::get('/recordPrescriptionHistory', function () {
+    return view('pharmacist/recordPrescriptionHistory');
+});
+Route::get('/recordPrescription/{patientId}', 'diagnosisRecordController@recordPrescriptionShow');
+Route::post('recordPrescription', 'diagnosisRecordController@recordPrescription');
+
+
+
+// ==================================================================================================
+// ============================================= ADMIN ==============================================
+// ==================================================================================================
 
 Route::get('mainAdmin', function () {
     return view('admin/mainAdmin');
@@ -111,76 +262,74 @@ Route::get('mainAdmin', function () {
 Route::get('/addDepartment', function () {
     return view('admin/addDepartment');
 });
-
 Route::post('/addDepartment','departmentController@addDepartment');
-
 
 // addmedicine
 Route::get('/addMedicine', function () {
     return view('admin/addMedicine');
 });
-
-
 Route::post('/addMedicine','medicineController@addmedicine');
-
-
 
 Route::get('/addStaffByAdmin', function () {
     return view('admin/addStaffByAdmin');
 });
 
+// grant staff
 Route::get('/grantStaff', function () {
     return view('admin/grantStaff');
 });
+Route::post('grantStaff', 'userController@grantStaffSearch');
+Route::post('grantStaffStore', 'userController@grantStaffStore');
 
-Route::get('/mainPharmacist', function () {
-    return view('pharmacist/mainPharmacist');
-});
+Route::get('/addStaffByAdmin', 'userController@addHospitalStaffByAdminShow');
+Route::post('/addStaffByAdmin', 'userController@addHospitalStaffByAdminStore');
 
-Route::get('/recordPrescriptionHistory', function () {
-    return view('pharmacist/recordPrescriptionHistory');
-});
+// ==================================================================================================
+// ========================================== SEARCH ===========================================
+// ==================================================================================================
 
-Route::get('/searchPatientProfileByPharmacist', function () {
-    return view('pharmacist/searchPatientProfileByPharmacist');
-});
-Route::get('/mainNurse', function () {
-    return view('nurse/mainNurse');
-});
+// doctor
+Route::get('/search/patientProfileByDoctor', 'searchController@searchPatientProfileByDoctor');
 
-Route::get('/recordPatientGeneralDetail', function () {
-    return view('nurse/recordPatientGeneralDetail');
-});
-Route::get('/recordPatientGeneralDetail2', function () {
-    return view('nurse/recordPatientGeneralDetail2');
-});
-Route::post('/recordPatientGeneralDetail','diagnosisRecordController@recordPatientGeneralDetail');
+// staff
+Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
+Route::get('/search/patientDiagnoseRecord', 'searchController@searchPatientDiagnoseRecord');
+Route::get('/search/createAppointmentByStaff', 'searchController@searchPatientMakeAppointment');
+Route::get('/search/manageAppointmentByStaff', 'searchController@searchPatientManageAppointment');
+Route::get('/search/manageScheduleByStaff', 'searchController@searchDoctorManageAppointmentByStaff');
+Route::get('/search/manageStaffByStaff', 'searchController@searchHospitalStaffManage');
+
+// nurse
+Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');
+Route::get('/search/patientProfileByNurse', 'searchController@searchPatientProfileByNurse');
+
+// pharmacist
+Route::get('/search/patientProfileByPharmacist', 'searchController@searchPatientProfileByPharmacist');
+Route::get('/search/searchPrescribe', 'searchController@searchPrescribe');
+
+// ==================================================================================================
+// ==================== just for test, it should be deleted after job's done ========================
+// ==================================================================================================
+
+Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
+// Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
 
 
+Route::get('/testmodel', 'testController@testfunc');
 
-Route::get('/searchPatientProfileByNurse', function () {
-    return view('nurse/searchPatientProfileByNurse');
-});
 
-Route::get('/doctorScheduleByNurse', function () {
-    return view('nurse/doctorScheduleByNurse');
-});
+// ==================================================================================================
+// ========================================== PDF & EMAIL ===========================================
+// ==================================================================================================
 
-Route::get('/mainDoctor', function () {
-    return view('doctor/mainDoctor');
-});
+Route::get('/diagRecordPdf','pdfController@diagRecordPdf');
+Route::get('/showDiagnosisHistoryPdf','pdfController@showDiagnosisHistoryPdf');
+Route::get('/forgetPasswordEmail', 'emailController@forgetPasswordEmail');
+Route::get('/postponedAppointmentEmail', 'emailController@postponedAppointmentEmail');
+Route::get('/createStaffEmail', 'emailController@createStaffEmail');
+Route::get('/confirmRegistrationEmail', 'emailController@confirmRegistrationEmail');
 
-Route::get('/diagnose', function () {
-    return view('doctor/recordDiag');
-});
-Route::post('/diagnose','diagnosisRecordController@recordDiagnosis');
-Route::post('/searchMedicine','medicineController@searchMedicine');
-Route::post('/addMedicineToPrescription','diagnosisRecordController@addMedicineToPrescription');
-
-Route::get('/showDiagnosisHistory', function () {
-    return view('doctor/showDiagnosisHistory');
-});
-
+Route::get('/confirmAppointmentEmail', 'emailController@confirmAppointmentEmail');
 Route::get('sendemail', function () {
     $data = array(
         'name' => "Noon",
@@ -198,159 +347,3 @@ Route::get('sendemail', function () {
     return "Your email has been sent successfully";
 
 });
-
-Route::get('/doctorAppointmentSchedule', function () {
-    return view('doctor/doctorAppointmentSchedule');
-});
-
-Route::get('/searchPatientProfileByDoctor', function () {
-    return view('doctor/searchPatientProfileByDoctor');
-});
-
-Route::get('/doctorScheduleByDoctor', function () {
-    return view('doctor/doctorScheduleByDoctor');
-});
-
-Route::get('/doctorAppointmentSchedule', function () {
-    return view('doctor/doctorAppointmentSchedule');
-});
-
-Route::get('/diagnosisHistory', function () {
-    return view('doctor/diagnosisHistory');
-});
-
-// ================= PATIENT =================
-
-Route::get('patientProfile', 'userController@viewMyProfilePatient');
-Route::get('editProfile', 'userController@editMyProfilePatientShow');
-Route::post('editProfile', 'userController@editMyProfilePatientStore');
-
-Route::get('createAppointment', 'appointmentController@createAppointmentShow');
-Route::post('/createAppointment', 'appointmentController@createAppointmentRequest');
-Route::post('/storeAppointment', 'appointmentController@createAppointmentStore');
-
-Route::get('/patientAppointmentSchedule', 'appointmentController@viewPatientAppointment');
-Route::get('/cancelAppointment/{appId}', 'appointmentController@cancelAppointment');
-Route::get('/rescheduleAppointment/{appId}', 'appointmentController@delayAppointmentShow');
-Route::post('/rescheduleAppointment', 'appointmentController@delayAppointmentRequest');
-Route::post('/confirmDelayAppointment', 'appointmentController@delayAppointmentStore');
-
-// ================= DOCTOR =================
-
-Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
-Route::post('/updateScheduleByDoctor', 'scheduleController@updateScheduleDoctor');
-
-// ================= STAFF =================
-
-Route::get('/addPatient', function() {
-    return view('staff.addPatient');
-});
-Route::post('/addPatient', 'userController@addPatient');
-
-Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
-Route::post('/addStaffByStaff', 'userController@addHospitalStaffStore');
-
-Route::get('/importDoctorSchedule/', function() {
-    return view('staff.importDoctorSchedule');
-});
-Route::get('/importDoctorSchedule/{userId}', 'scheduleController@importScheduleShow');
-Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
-Route::post('/createAppointmentForPatient/{userId}', 'appointmentController@createAppointmentStaff');
-
-// ================= nurse =================
-
-Route::get('/recordPatientGeneralDetail2/{userId}', 'physicalRecordController@showPatient');
-
-// ================= ADMIN =================
-
-Route::post('/addDepartment', 'departmentController@addDepartment');
-Route::get('/addStaffByAdmin', 'userController@addHospitalStaffByAdminShow');
-Route::post('/addStaffByAdmin', 'userController@addHospitalStaffByAdminStore');
-
-// ================= AUTHENTICATE =================
-
-Route::get('/', 'Auth\AuthController@getMainPage');
-Route::get('/logout', 'Auth\AuthController@logout');
-
-Route::post('/login', 'Auth\AuthController@authenticate');
-Route::post('/register', 'userController@checkPatientStatus');
-Route::post('/registerOld', 'userController@registerOldPatient');
-Route::post('/registerNew', 'userController@registerNewPatient');
-
-Route::get('/genPassword/{text}', 'Auth\AuthController@genPassword');
-Route::get('/testModel', 'Auth\AuthController@testModel');
-
-
-Route::post('/forgetPassword', 'Auth\AuthController@forgetPassword');
-Route::get('/changePassword/{verifyCode}', 'Auth\AuthController@changePasswordGet');
-Route::post('/changePassword', 'Auth\AuthController@changePasswordPost');
-
-
-Route::get('/testSearch', function() {
-    return view('testSearch');
-});
-Route::get('/api/search', 'searchController@searchImportDoctorSchedule');
-Route::get('/search/importDoctorSchedule', 'searchController@searchImportDoctorSchedule');
-Route::get('/search/staffCreateAppointment', 'searchController@searchCreateAppointmentStaff');
-Route::get('/search/nurseRecord', 'searchController@searchForNurseRecord');
-// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
-// Route::post('/editProfile', 'SmurfController@editProfileValidate');
-// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-// Route::post('/doctorList', 'SmurfController@doctorListValidate');
-
-// ================= FOR SMURF CONTROLLER (VALIDATION) ============================
-// ================= Patient ==================
-
-// Route::post('/editProfile', 'SmurfController@editProfileValidate');
-// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-// //Route::post('/doctorList', 'SmurfController@doctorListValidate');
-// // ================= Admin ====================
-// //Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-// //Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
-// Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
-// Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
-// // ================= Nurse ====================
-// Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
-// Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
-// Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
-// // ================= Phar ====================
-// Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
-// // ================= Doctor ====================
-// Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
-// Route::post('/diagnose', 'SmurfController@diagnoseValidate');
-// // ================= Doctor ====================
-// Route::post('/addPatient', 'SmurfController@addPatientValidate');
-
-// Route::post('/editProfile', 'SmurfController@editProfileValidate');
-// Route::post('/createAppointment', 'SmurfController@createAppointmentValidate');
-// Route::post('/doctorList', 'SmurfController@doctorListValidate');
-// // ================= Admin ====================
-// Route::post('/addDepartment', 'SmurfController@addDepartmentValidate');
-// Route::post('/addMedicine', 'SmurfController@addMedicineValidate');
-// Route::post('/addStaffByAdmin', 'SmurfController@addStaffByAdminValidate');
-// Route::post('/grantStaff', 'SmurfController@grantStaffValidate');
-// // ================= Nurse ====================
-// Route::post('/searchPatientProfileByNurse', 'SmurfController@searchPatientProfileByNurseValidate');
-// Route::post('/recordPatientGeneralDetail', 'SmurfController@recordPatientGeneralDetailValidate');
-// Route::post('/doctorScheduleByNurse', 'SmurfController@doctorScheduleByNurseValidate');
-// // ================= Phar ====================
-// Route::post('/recordPrescriptionHistory', 'SmurfController@recordPrescriptionHistoryValidate');
-// // ================= Doctor ====================
-// Route::post('/searchPatientProfileByDoctor', 'SmurfController@searchPatientProfileByDoctorValidate');
-// Route::post('/diagnose', 'SmurfController@diagnoseValidate');
-// // ================= Doctor ====================
-// Route::post('/addPatient', 'SmurfController@addPatientValidate');
-
-
-
-
-
-
-Route::get('/diagRecordPdf','pdfController@diagRecordPdf');
-Route::get('/showDiagnosisHistoryPdf','pdfController@showDiagnosisHistoryPdf');
-Route::get('/forgetPasswordEmail', 'emailController@forgetPasswordEmail');
-Route::get('/postponedAppointmentEmail', 'emailController@postponedAppointmentEmail');
-Route::get('/createStaffEmail', 'emailController@createStaffEmail');
-Route::get('/confirmRegistrationEmail', 'emailController@confirmRegistrationEmail');
-Route::get('/confirmAppointmentEmail', 'emailController@confirmAppointmentEmail');
-

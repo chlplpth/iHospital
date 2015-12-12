@@ -3,12 +3,14 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
+  {!! Form::open(array('url' => 'foo/bar')) !!}
 
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">ตารางการออกตรวจ</h3>
     </div>
     <div class="panel-body" style="margin-top: 2%; margin-left: 40px;">
+      <form role="form">
         <div class="form-group row">
           <div class="col-xs-8" style="">
             <div class="btn-group btn-group-lg" style="margin-bottom: 10px; width:100%; height:54px;">
@@ -34,7 +36,7 @@
               <h4 class="modal-title">Modal Header</h4>
             </div>
             <div class="modal-body">
-              {!! Form::open(array('url' => '/updateScheduleByDoctor')) !!}
+              <form  style="margin-top:2%; margin-left: 2%; margin-right: 2%; border:0px;">
                 <div class="form-group row">
                   <br>
                   <div class="col-xs-4">
@@ -50,52 +52,19 @@
                     <div id="editBtn" class="btn btn-info" style="float: right;">แก้ไข</div>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <div class="col-xs-12">
-                    <table class="table table-bordered centerBtn" style = "text-align:center;">
-                      <thead >
-                        <br>
-                        <tr>
-                          <th style="width: 5%; text-align:center;">ลำดับ</th>
-                          <th style="width: 15%; text-align:center;">ช่วงเวลา</th>
-                          <th style="width: 25%; text-align:center;">รหัสผู้ป่วย</th>
-                          <th style="width: 25%; text-align:center;">ชื่อผู้ป่วย</th>
-                          <th style="width: 25%; text-align:center;">นามสกุลผู้ป่วย</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>บ่าย</td>
-                          <td>123456789</td>
-                          <td>ชลัมพวย</td>
-                          <td >กวยเอ้ย</td>
-                        </tr>
-
-                        <tr>
-                          <td>2</td>
-                          <td>เช้า</td>
-                          <td>987654321</td>
-                          <td>แคมแคม</td>
-                          <td >นู้บบี้</td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+              </form>
             </div>
             <div class="modal-footer">
               <div type="button" class="btn btn-default" data-dismiss="modal">ปิด</div>
               {!! Form::hidden('hiddenMr', '-1', ['id'=>'hiddenMr']); !!}
               {!! Form::hidden('hiddenAf', '-1', ['id'=>'hiddenAf']); !!}
-              {!! Form::hidden('hiddenDate', '-1', ['id'=>'hiddenDate']); !!}
+              {!! Form::hidden('hiddenDate', '-1', ['id'=>'date']); !!}
               {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!}
             </div>
-            {!! Form::close() !!}
           </div>
         </div>
       </div>
+    </form>
 
 
       <script type="text/javascript">
@@ -223,12 +192,10 @@
 
         // pass value using hidden
         $(':checkbox').click(function() {
-          $('#hiddenMr').prop('value', $('#ckb1').prop('checked'));
-          $('#hiddenAf').prop('value', $('#ckb2').prop('checked'));
+          $('#hiddenMr').prop('value', $('#ckb1').checked);
+          $('#hiddenAf').prop('value', $('#ckb2').checked);
           $('#hiddenDate').prop('value', dateOfModal);
-          console.log($('#hiddenMr'));
-          console.log($('#hiddenAf'));
-          console.log($('#hiddenDate'));
+          console.log('AAAAAA');
         });
 
         // set default when Modal is cloesed
@@ -243,4 +210,5 @@
     </div>
   </div>
 
+  {!! Form::close() !!}
 @stop

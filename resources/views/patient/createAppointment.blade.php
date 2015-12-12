@@ -43,7 +43,7 @@
                 <label class="col-xs-2">วันนัด</label>
                 <div class="col-xs-3">
                     <div class="input-group date">
-                        {!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปป']) !!}
+                        {!! Form::text('date', '', ['class' => 'form-control input-medium', 'data-date-language'=>"th-th", 'data-provide'=>"datepicker", 'placeholder'=>'วว/ดด/ปปปป']) !!}
                         <div class="input-group-addon">
                             <span class="glyphicon glyphicon-calendar"></span>
                         </div>
@@ -86,10 +86,10 @@
 	                    <table class="table table-bordered" style = "text-align:center;">
 	                        <thead >
 	                            <tr>
-	                                <th style="width: 10%; text-align:center;">วัน/เดือน/ปี</th>
+	                                <th style="width: 16%; text-align:center;">วัน/เดือน/ปี</th>
 	                                <th style="width: 20%; text-align:center;">เวลา</th>
-	                                <th style="width: 20%; text-align:center;">แผนก</th>
-	                                <th style="width: 40%; text-align:center;">แพทย์</th>
+	                                <th style="width: 17%; text-align:center;">แผนก</th>
+	                                <th style="width: 37%; text-align:center;">แพทย์</th>
 	                                <th style="width: 10%; text-align:center;">นัดหมาย</th>
 	                            </tr>
 	                        </thead>
@@ -98,13 +98,13 @@
 		                            <tr>
 		                                <td>{{ $app->diagDate }}</td>
 		                                <td>{{ $app->diagTime }}</td>
-		                                <td>{{ $app->departmentName }}</td>
-		                                <td>{{ $app->name }} {{ $app->surname }}</td>
+		                                <td>{{ $app->doctor()->department()->departmentName }}</td>
+		                                <td>{{ $app->doctor()->fullname() }}</td>
 		                                <td >
-		                                	{!! Form::open(array('url' => '/storeAppointment')) !!}
-		                                	{!! Form::hidden('scheduleId', $app->scheduleId) !!}
-		                                	{!! Form::hidden('symptom', $symptom) !!}
-		                                	{!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
+		                                	{!! Form::open(array('url' => '/confirmAppointment')) !!}
+			                                	{!! Form::hidden('scheduleId', $app->scheduleId) !!}
+			                                	{!! Form::hidden('symptom', $symptom) !!}
+			                                	{!! Form::submit('เลือก', ['class' => 'btn btn-info']) !!}
 		                                	{!! Form::close() !!}
 		                                </td>
 		                            </tr>

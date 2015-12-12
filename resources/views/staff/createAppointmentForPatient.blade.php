@@ -13,9 +13,9 @@
 	</div>
 	<div class="panel-body">
 		<div id = "createAppointmentForm">
+			<span class ="bold">ชื่อหรือนามสกุลตัวผู้ป่วย&nbsp;&nbsp;</span>
 			<div class="form-group row">
-				<!-- <div class="col-xs-2" id="staffLabel">{!! Form::label('keyword', 'ชื่อหรือรหัสแพทย์'); !!}</div> -->
-				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อผู้ป่วย" class="form-control"></select></div>
+				<div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสผู้ป่วย" class="form-control"></select></div>
 			</div>
 		</div>
 	</div>
@@ -26,5 +26,5 @@
 
 <script>
 var root = '{{url("/")}}';
-var searchAddress = '/search/staffCreateAppointment';
+var searchAddress = '/search/createAppointmentByStaff';
 </script>

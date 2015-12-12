@@ -4,13 +4,13 @@ function citizenNoCheck(){
 	var er = /^-?[0-9]+$/;
 	if(no.length!=13){
 		console.log(no.length);
-		$('.submitCitizenNo').prop('disabled', true);
+		$('#submitCitizenNo').prop('disabled', true);
 		document.getElementById('citizenError').innerHTML = 'กรุณาใส่เลขประจำตัวประชาชน 13 หลัก';
 	}else{
 		console.log(no);
 		if(er.test(no)){
 			console.log(no.length);
-			$('.submitCitizenNo').prop('disabled', false);
+			$('#submitCitizenNo').prop('disabled', false);
 			document.getElementById('citizenError').innerHTML = '';
 		}
 	}

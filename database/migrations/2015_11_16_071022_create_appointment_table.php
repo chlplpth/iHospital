@@ -17,7 +17,7 @@ class CreateAppointmentTable extends Migration
             $table->integer('patientId')->unsigned();
             $table->integer('staffId')->unsigned()->nullable();
             $table->integer('scheduleId')->unsigned();
-            $table->string('symptom');
+            $table->text('symptom');
             $table->boolean('walkIn')->default(false);
             $table->timestamps();
         });

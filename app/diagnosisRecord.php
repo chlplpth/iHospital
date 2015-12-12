@@ -12,19 +12,7 @@ class diagnosisRecord extends Model
      * @var string
      */
     protected $table = 'diagnosisRecord';
-
-    // -------- relationship ------------
-    public function appointment(){
-        return $this->belongsTo('App\appointment');
-    }
-
-    public function doctor(){
-        return $this->hasManyThrough('App\appointment', 'App\doctor');
-    }
-
-    public function patient(){
-        return $this->hasManyThrough('App\appointment'. 'App\patient');
-    }
+    protected $primaryKey = 'diagRecordId';
 
     /**
      * The attributes that are mass assignable.
@@ -35,10 +23,47 @@ class diagnosisRecord extends Model
         'appointmentId',
         'diseaseCode',
         'doctorAdvice',
-        'diagnonsisDetail',
+        'diagnosisDetail',
         'physicalRecordId'];
 
+    //-------------------------------  relationship -------------------------------
+    public function appointment()
+    {
+        return $this->belongsTo('App\appointment', 'appointmentId', 'appointmentId');
+    }
+
+    public function patient()
+    {
+        return $this->appointment->patient;
+    }
+
+    public function doctor()
+    {
+        return $this->appointment->doctor;
+    }
+
     //------------------   function -------------------------
+
+    public static function recordDiagnosisResults($input)
+    {
+        $diag = diagnosisRecord::create($input);
+        
+        $prescription = new prescription;
+        $prescription->appointmentId = $input['appointmentId'];
+        $prescription->save();
+        $preId = $prescription->prescriptionId;
+
+        for($i = 0; $i < count($input['medName']); $i++)
+        {
+            $med = new medicinePrescription;
+            $med->prescriptionId = $preId;
+            $med->medicineName = $input['medName'][$i];
+            $med->quantity = $input['medQuantity'][$i] . ' ' . $input['medUnit'][$i];
+            $med->instruction = $input['medInstruction'][$i];
+            $med->note = $input['medNote'][$i];
+            $med->save();
+        }
+    }
 
     public static function viewDiagnosisHistoryPatient($input)
     {

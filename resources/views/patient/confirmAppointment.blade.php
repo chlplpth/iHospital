@@ -9,39 +9,45 @@
 		<h3 class="panel-title">ยืนยันการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<div id = "createAppointmentForm">
-			<br>
-		
-		<div class ="row">
-    	<div class ="col-md-3">
-    		<span class ="header">แผนก : </span>จักษุวิทยา 
-  		</div>
-  		<div class ="col-md-2">
-			<span class ="header">อาคาร : </span>จามจุรี 9
-  		</div>	
-  		<div class ="col-md-7">
-  			<span class ="header">ชั้น : </span>4 
-  		</div>
-  	</div>
-
-		<br>
-		<span class ="header">แพทย์ : </span>ชลัมพล
-		<br><br>
-		<div class ="row">
-					
-					<div class ="col-md-3">
-						<span class ="header">วันที่ : </span>19/11/2015
-					</div>
-					<div class ="col-md-9">
-						<span class ="header">เวลา : </span>9.00 น. - 12.00 น.
-					</div>	
+		<div id = "confirmAppointmentwindow">	
+			<span class ="bold">รหัสผู้ป่วย : </span>{{ $patient->hospitalNo }} <br><br>
+			<span class ="bold">ผู้ป่วย : </span> {{ $patient->fullname() }}
+			<br><br>
+			<div class ="row">
+				<div class ="col-md-3">
+					<span class ="bold">แผนก : </span> {{ $schedule->department()->departmentName }}
 				</div>
-		<br>
+				<div class ="col-md-9">
+					<span class ="bold">อาคาร : </span>{{ $schedule->department()->departmentBuilding }}
+				</div>	
+			</div>
 
-	     	<a href="{{ url('/mainPatient') }}" class="btn btn-left btn-success linkBtn">ยืนยัน</a>
-      <br><br>  
-</div>
+			<br>
+			<div class ="row">
+				<div class = "col-md-12">
+					<span class ="bold">แพทย์ : </span> {{ $schedule->doctor()->fullname() }}
+				</div>
+			</div>
+			<br>
+			<div class ="row">
 
-</div>
+				<div class ="col-md-3">
+					<span class ="bold">วันที่ : </span> {{ $schedule->diagDate }}
+				</div>
+				<div class ="col-md-9">
+					<span class ="bold">เวลา : </span> {{ $schedule->diagTime }}
+				</div>	
+			</div>
+			<br>
+
+			{!! Form::open(array('url' => '/storeAppointment')) !!}
+				{!! Form::hidden('scheduleId', $schedule->scheduleId) !!}
+				{!! Form::hidden('symptom', $symptom) !!}
+				{!! Form::submit('ยืนยัน', ['class' => 'btn btn-left btn-success linkBtn']) !!}
+			{!! Form::close() !!}
+			<br><br>  
+		</div>
+
+	</div>
 </div>
 @stop

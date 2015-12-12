@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use DB;
 use App\user;
 use App\hospitalStaff;
 
@@ -29,7 +30,27 @@ class hospitalStaff extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User', 'userId');
+        return $this->belongsTo('App\User', 'userId', 'userId');
+    }
+
+    public function department()
+    {
+        return $this->belongsTo('App\department', 'departmentId', 'departmentId');
+    }
+
+    public function name()
+    {
+        return $this->user->name;
+    }
+
+    public function surname()
+    {
+        return $this->user->surname;
+    }
+
+    public function fullname()
+    {
+        return $this->name() . ' ' . $this->surname();
     }
 
 
@@ -49,8 +70,6 @@ class hospitalStaff extends Model
 
     public static function editStaff($input, $userId)
     {
-        
-        
         User::where('userId',$userId)->update(array(
                 'name'      => $input['name'],
                 'surname'   => $input['surname']
@@ -58,23 +77,37 @@ class hospitalStaff extends Model
         hospitalStaff::where('userId',$userId)->update(array(
                 'departmentId'   => $input['departmentId']
             ));
+        return hospitalStaff::where('userId', $userId)->get();
     }
 
-    public static function deleteStaff($input)
+    public static function deleteStaff($staffId)
     {
-        
-        $hospitalStaff = hospitalStaff::where('userId',$input)->first();
-        // //echo $hospitalStaff->userId;
-        $hospitalStaff ->delete();
-        //if(sizeof($hospitalStaff)==0) echo "not found";
-        //$hospitalStaff->delete();
-        $user = user::where('userId',$input)->first();
+        $user = user::where('userId',$staffId)->first();
+        if($user->userType == 'doctor')
+        {
+            $doctor = doctor::where('userId', $staffId)->first();
+            $doctor->delete();
+        }
+        else if($user->userType == 'staff')
+        {
+            $staff = staff::where('userId', $staffId)->first();
+            $staff->delete();
+        }
+
+        $hospitalStaff = hospitalStaff::where('userId', $staffId)->first();
+        $hospitalStaff->delete();
         $user -> delete();
     }
 
-    public function department()
+    public static function searchHospitalStaff($keyword)
     {
-        return $this->belongsTo('App\department', 'departmentId');
-
+        $users = DB::table('users')
+                     ->join('hospitalStaff','users.userId','=','hospitalStaff.userId')
+                     ->where(function ($query) use($keyword){
+                             $query->where('name', 'like', '%'.$keyword.'%')
+                                   ->orwhere('surname', 'like', '%'.$keyword.'%');
+                            });
+                     // ->get();   
+        return $users;
     }
 }

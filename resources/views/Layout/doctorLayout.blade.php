@@ -21,7 +21,7 @@
   <link href="{{asset('css/calendar.css')}}" rel="stylesheet">
   @yield('css')
   <!-- Bootstrap core JavaScript -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="{{asset('js/jquery.min.js')}}"></script>
   <script src="{{asset('js/bootstrap.min.js')}}"></script>
   <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
   <script src="{{asset('js/locales/bootstrap-datepicker.th.js')}}"></script>
@@ -32,6 +32,11 @@
   <script src="{{asset('js/calendar.js')}}"></script>
   <script src="{{asset('js/language/th-TH.js')}}"></script>
   <script src="{{asset('js/jstimezonedetect/jstz.min.js')}}"></script>
+
+  <!--Selectize search -->
+   <link href="{{ asset('selectize/css/selectize.bootstrap3.css') }}" rel="stylesheet">
+  <!-- // <script type="text/javascript" src='//code.jquery.com/jquery-1.10.2.min.js'></script> -->
+  <script type="text/javascript" src='{{ asset("selectize/js/standalone/selectize.min.js") }}'></script>
 </head>
 
 <body>
@@ -50,7 +55,7 @@
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">{{ Auth::user()->name }} &nbsp; {{ Auth::user()->lastname }}</a></li>
-          <li><a href="#">ข้อมูลส่วนตัว</a></li>
+          <li><a href="{{ url('/doctorProfile') }}">ข้อมูลส่วนตัว</a></li>
           <li><a href="{{ url('/logout') }}">ออกจากระบบ</a></li>
         </ul>
       </div>
@@ -81,4 +86,8 @@
     </div>
   </div>
 </body>
+
+<!-- selectize -->
+<script type="text/javascript" src='{{ asset("js/searchSelectize.js") }}'></script>
+
 </html>

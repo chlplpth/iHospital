@@ -42,7 +42,16 @@
 					<span style ="font-weight:bold;">วันที่รับการตรวจ : </span>{{$diagDate}} 
 					<span style ="left:400px; position: absolute;"><span style ="font-weight:bold;">เวลา : </span>9.00 น. -12.00 น.</span>
 				</div>
-
+				<br>
+				<div class ="row">
+					<span style ="font-weight:bold;">น้ำหนัก : </span>50 kg 
+					<span style ="left:400px; position: absolute;"><span style ="font-weight:bold;">ส่วนสูง : </span>150 cm</span>
+				</div>
+				<br>
+				<div class ="row">
+					<span style ="font-weight:bold;">ความดันโลหิต : </span>20/120 mmph
+					<span style ="left:400px; position: absolute;"><span style ="font-weight:bold;">อัตราการเต้นของหัวใจ : </span>70 bpm</span>
+				</div>
 				<br>
 				<span style ="font-weight:bold;">อาการ : </span>{{$symptom}}
 				<br><br>

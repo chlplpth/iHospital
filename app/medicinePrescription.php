@@ -23,17 +23,17 @@ class medicinePrescription extends Model
      */
     protected $fillable = [
         'prescriptionId',
-        'medicineId',
+        'medicineName',
         'quantity',
         'instruction',
         'note'];
 
     //-------------  relationship
 
-      public function medicines()
-      {
-      	return $this->hasMany('App/medicine','medicineId');
-      }
+      // public function medicines()
+      // {
+      // 	return $this->hasMany('App/medicine','medicineId');
+      // }
 
     //=============== function ==========================
 

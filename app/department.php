@@ -20,6 +20,16 @@ class department extends Model
      *
      * @var array
      */
+    protected $fillable = [
+        'departmentName',
+        'departmentBuilding',
+        'departmentTel'];
+
+    // -------------------------------  relationship -------------------------------
+    public function doctors()
+    {
+        return $this->hasManyThrough('App\doctor', 'App\hospitalStaff', 'departmentId', 'userId');
+    }
 
     public static function getDoctorArray()
     {
@@ -30,6 +40,18 @@ class department extends Model
             $tmpArr[$dep->departmentId] = $dep->getDoctorByDepartment($dep->departmentId);
         }
         return $tmpArr;
+    }
+
+    public static function getDepartmentArray()
+    {
+        $department = department::all();
+        // $results = array();
+        // $results['0'] = 'ไม่ระบุ';
+        foreach($department as $d)
+        {
+            $results[$d->departmentId] = $d->departmentName;
+        }
+        return $results;
     }
 
     public function getDoctorByDepartment($departmentId)
@@ -43,15 +65,4 @@ class department extends Model
                     ->get();
         return $doctor;
     }
-
-    // ------------- relationships ------------- 
-    public function doctor()
-    {
-        return $this->hasManyThrough('App\hospitalStaff', 'App\doctor', 'userId', 'departmentId');
-    }
-
-    protected $fillable = [
-        'departmentName',
-        'departmentBuilding',
-        'departmentTel'];
 }

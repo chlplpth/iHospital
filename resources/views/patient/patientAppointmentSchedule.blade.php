@@ -9,10 +9,11 @@
 		<h3 class="panel-title">ตารางการนัดหมาย</h3>
 	</div>
 	<div class="panel-body">
-		<form>
-			<div class="form-group row">
-				<div class="col-xs-1"></div>
-				<div class="col-xs-10">
+		<div class="form-group row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-10">
+				
+				@if(count($appointments) > 0)
 					<table class="table table-bordered">
 						<thead >
 							<tr>
@@ -27,20 +28,32 @@
 						<tbody>
 							@foreach($appointments as $app)
 							<tr>
-								<td>{{ $app->diagDate }}</td>
-								<td>{{ $app->diagTime }}</td>
-								<td>{{ $app->departmentName }}</td>
-								<td>{{ $app->name }} {{ $app->surname }}</td>
-								<td ><a href="{{ url('/rescheduleAppointment/' . $app->appointmentId ) }}" class="btn btn-warning">เลื่อน</a></td>
-								<td ><a href="{{ url('/cancelAppointment/' . $app->appointmentId ) }}" class="btn btn-danger">ยกเลิก</a></td>
+								<td>{{ $app->diagDate() }}</td>
+								<td>{{ $app->diagTime() }}</td>
+								<td>{{ $app->department()->departmentName }}</td>
+								<td>{{ $app->doctor()->fullname() }}</td>
+								<td >
+								{!! Form::open(array('url' => 'cancelAppointment')) !!}
+									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
+									{!! Form::submit('เลื่อน', ['class' => 'btn btn-warning']) !!}
+								{!! Form::close() !!}
+								</td>
+								<td>
+								{!! Form::open(array('url' => 'cancelAppointment')) !!}
+									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
+									{!! Form::submit('ยกเลิก', ['class' => 'btn btn-danger']) !!}
+								{!! Form::close() !!}
+								</td>
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
-				</div>
-				<div class="col-xs-1"></div>
+				@else
+					ไม่มีการนัดหมาย
+				@endif
 			</div>
-		</form>
+			<div class="col-xs-1"></div>
+		</div>
 	</div>
 </div>
 @stop

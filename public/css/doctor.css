@@ -1,41 +1,29 @@
-#dateLabel {
-  font-family: 'superspace_regularregular';
-  font-size: 25px;
-  font-weight: bold;
-}
-.centerBtn {
-  display: block;
-  margin: 0 auto;
-  position: relative;
-}
-.linkBtn {
-  display: inline-block;
-  color: #333;
-  background-color: #fff;
-  border-color: #ccc
-}
-#doctorLabel {
-	margin-top: 7px;
-}
-.indent7 {
-	text-indent: 7px;
-}
 th {
 	text-align: center;
-}
-#buttonGroup {
-	float: right;
-}
-.btn-info {
-	float: right;
 }
 .panel-heading{
 	background-color: #c3e6cd !important;
 }
 .panel-title{
-  font-size: 20px;
+  font-size: 30px;
   font-weight: bold;
   color: gray;
+}
+.textbox{background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 20px;
+	line-height: 1.42857143;
+	color: #555;
 }
 #doctorRadio {
 	margin-top: 3px;
@@ -52,6 +40,53 @@ th {
 table tr td {
 	text-align: center;
 }
-table thead tr {
-	/*background: #c3e6cd;*/
+.form-control{
+	width:250px;
+	display :inline;
+}
+#diagnosisForm{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#searchPatientButton{
+	font-size: 15px;
+	margin-top: -1px;
+}
+#addMed{
+	float:right;
+}
+.glyphicon-calendar{
+	font-size: 15px;
+}
+#nextAppointmentTime{
+
+}
+#medOther{
+	display: inline;
+	width:200px;
+}
+#searchPatientForm{
+
+}
+#searchPatientTextbox{
+	width:300px;
+}
+.bold{
+	font-weight: bold;
+}
+#diagnosisRecordWindow{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#patientProfile{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+#doctorProfile{
+	margin-top: 20px;
+	margin-left: 40px;
+}
+label{
+	text-decoration: none;
+	font-weight: normal;
 }

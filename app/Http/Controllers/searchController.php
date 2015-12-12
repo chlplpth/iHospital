@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\patient;
 use App\doctor;
+use App\hospitalStaff;
 
 use Input;
 use Response;
@@ -19,19 +20,62 @@ class searchController extends Controller
     	
     // }
 
-    public function searchCreateAppointmentStaff()
+    // doctor
+    public function searchPatientProfileByDoctor()
     {
-        return $this->searchPatient('createAppointmentForPatient');
+        return $this->searchPatient('patientProfileByDoctor');
+    }
+    public function searchPatientDiagnoseRecord()
+    {
+        return $this->searchPatient('diagnose');
     }
 
+    // staff
     public function searchImportDoctorSchedule()
     {
     	return $this->searchDoctor('importDoctorSchedule');
     }
 
-    public function searchForNurseRecord()
+    public function searchPatientMakeAppointment()
     {
-        return $this->searchPatient('recordPatientGeneralDetail2');
+        return $this->searchPatient('createAppointmentForPatient');
+    }
+
+    public function searchPatientManageAppointment()
+    {
+        return $this->searchPatient('manageAppointmentForPatient');
+    }
+
+    public function searchDoctorManageAppointmentByStaff()
+    {
+        return $this->searchDoctor('doctorScheduleByStaff');
+    }
+
+    public function searchHospitalStaffManage()
+    {
+        return $this->searchHospitalStaff('manageStaffByStaff');
+    }
+
+    // nurse
+    public function searchPatientProfileByNurse()
+    {
+        return $this->searchPatient('patientProfileByNurse');
+    }
+
+    public function searchRecordPhysicalRecord()
+    {
+        return $this->searchPatient('recordPatientGeneralDetail');
+    }
+
+    // pharmacist
+    public function searchPatientProfileByPharmacist()
+    {
+        return $this->searchPatient('patientProfileByPharmacist');
+    }
+
+    public function searchPrescribe()
+    {
+        return $this->searchPatient('recordPrescription');
     }
 
     public function searchDoctor($url)
@@ -64,6 +108,22 @@ class searchController extends Controller
 		return Response::json(array(
 			'data' => $patient
 		));
+    }
+
+    public function searchHospitalStaff($url)
+    {
+        $query = e(Input::get('q',''));
+        if(!$query && $query == '') return Response::json(array(), 400);
+
+        $staff = hospitalStaff::searchHospitalStaff($query)
+                            ->take(5)
+                            ->get(array('hospitalStaff.userId', 'name', 'surname'));
+        $staff = $this->appendClass($staff, 'staff');
+        $staff = $this->appendUrl($staff, $url);
+
+        return Response::json(array(
+            'data' => $staff
+        ));
     }
 
     // ========================================================
