@@ -33,7 +33,7 @@
 								<td>{{ $app->department()->departmentName }}</td>
 								<td>{{ $app->doctor()->fullname() }}</td>
 								<td >
-								{!! Form::open(array('url' => 'cancelAppointment')) !!}
+								{!! Form::open(array('url' => 'rescheduleAppointment')) !!}
 									{!! Form::hidden('appointmentId', $app->appointmentId) !!}
 									{!! Form::submit('เลื่อน', ['class' => 'btn btn-warning']) !!}
 								{!! Form::close() !!}
