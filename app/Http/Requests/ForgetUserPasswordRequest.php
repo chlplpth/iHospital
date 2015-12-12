@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AddMedicineRequest extends Request
+class ForgetUserPasswordRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,19 +24,17 @@ class AddMedicineRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-              
+            'email' => 'required|email',
+            
+
         ];
     }
 
     public function messages()
     {
         return [
-            'id.required' => 'กรุณาระบุรหัสยา',
-            'name.required' => 'กรุณาระบุชื่อยา',
-            'description.required' => 'กรุณาระบุรายละเอียดยา',
+            'email.required' => 'กรุณาระบุอีเมล',
+            'email.email' => 'รูปแบบอีเมลไม่ถูกต้อง',
             
         ];
     }

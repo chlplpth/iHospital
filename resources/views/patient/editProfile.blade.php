@@ -28,8 +28,8 @@
 						</div>
 						<div class="col-md-8">{!! Form::label('surname', 'นามสกุล :'); !!} &nbsp
 							{!! Form::text('surname', $patient->surname(), ['class'=>'textbox']); !!}
-							@if( $errors->has('lastname') )<br><br>
-							<p class="text-danger"> {{ $errors->first('lastname') }} </p> 
+							@if( $errors->has('surname') )<br><br>
+							<p class="text-danger"> {{ $errors->first('surname') }} </p> 
 							@endif
 						</div>
 					</div>
@@ -62,8 +62,8 @@
 						<div class ="col-md-2">
 							{!!Form::label('addressNo', 'บ้านเลขที่ :');!!}&nbsp
 							{!!Form::text('addressNo', $address['addressNo'],['class'=>'textbox textbox70px']);!!}
-							@if( $errors->has('address1') )<br><br>
-							<p class="text-danger"> {{ $errors->first('address1') }} </p> 
+							@if( $errors->has('addressNo') )<br><br>
+							<p class="text-danger"> {{ $errors->first('addressNo') }} </p> 
 							@endif
 						</div>
 						<div class ="col-md-2">
@@ -77,8 +77,8 @@
 						<div class ="col-md-5">
 							{!!Form::label('subdistrict', 'แขวง/ตำบล :');!!}&nbsp
 							{!!Form::text('subdistrict', $address['subdistrict'],['class'=>'textbox textbox150px']);!!}
-							@if( $errors->has('address4') )<br><br>
-							<p class="text-danger"> {{ $errors->first('address4') }} </p> 
+							@if( $errors->has('subdistrict') )<br><br>
+							<p class="text-danger"> {{ $errors->first('subdistrict') }} </p> 
 							@endif
 						</div>
 					</div>
@@ -86,8 +86,8 @@
 						<div class ="col-md-3">
 							{!!Form::label('district', 'เขต/อำเภอ :');!!}&nbsp
 							{!!Form::text('district', $address['district'],['class'=>'textbox textbox150px']);!!}
-							@if( $errors->has('address5') )<br><br>
-							<p class="text-danger"> {{ $errors->first('address5') }} </p> 
+							@if( $errors->has('district') )<br><br>
+							<p class="text-danger"> {{ $errors->first('district') }} </p> 
 							@endif
 						</div>
 						<div class ="col-md-3 form-inline province">
@@ -97,8 +97,8 @@
 						<div class ="col-md-4">
 							{!!Form::label('zipcode', 'รหัสไปรษณีย์ :');!!}&nbsp
 							{!!Form::text('zipcode','72000',['class'=>'textbox textbox150px']);!!}
-							@if( $errors->has('address7') )<br><br>
-							<p class="text-danger"> {{ $errors->first('address7') }} </p> 
+							@if( $errors->has('zipcode') )<br><br>
+							<p class="text-danger"> {{ $errors->first('zipcode') }} </p> 
 							@endif
 						</div>
 						<div class ="col-md-2">

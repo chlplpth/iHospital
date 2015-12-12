@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
+use Hash;
+
+// models
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\doctor;
@@ -15,7 +18,11 @@ use App\department;
 use App\staff;
 use App\appointment;
 
-use Hash;
+
+// requests
+use App\Http\Requests\EditProfileRequest;
+use App\Http\Requests\AddPatientByStaffRequest;
+use App\Http\Requests\AddStaffByStaffRequest;
 
 class userController extends Controller
 {
@@ -100,7 +107,7 @@ class userController extends Controller
         return view('patient.editProfile')->with('patient', $patient)->with('address', $address);
     }
 
-    public function editMyProfilePatientStore(Request $request)
+    public function editMyProfilePatientStore(EditProfileRequest $request)
     {
         $input = $request->all();
         $input['userId'] = Auth::user()->userId;
@@ -113,7 +120,7 @@ class userController extends Controller
     // show department's details & list all doctors in hospital
     public function searchDoctorShow()
     {
-        $departments = department::getDepartmentArray();
+        $departments = department::getDepartmentArrayWithUnknown();
         $doctor = doctor::doctorSortByName()->get();
         return view('patient.doctorList')
                 ->with('departments', $departments)
@@ -128,7 +135,7 @@ class userController extends Controller
         $docQuery = $request->input('doctor');
         
         $doctors = doctor::searchDoctor($department, $docQuery);
-        $departments = department::getDepartmentArray();
+        $departments = department::getDepartmentArrayWithUnknown();
        
         return view('patient.doctorList')
                 ->with('doctors',$doctors)
@@ -186,6 +193,46 @@ class userController extends Controller
         $staff = staff::where('userId', Auth::user()->userId)->first();
         $staff->editStaffProfile($input);
         return redirect('staffProfile');
+    }
+
+    // manual add by staff no username no password
+    public function addPatient(AddPatientByStaffRequest $request)
+    {   
+        $user = new user($request->all());
+        $user->userType = 'patient';
+        $user->save();
+
+        patient::createNewPatient($user->userId, $request->all());
+        return redirect('/');
+    }
+
+    public function addHospitalStaffStore(AddStaffByStaffRequest $request)
+    {
+        $input = $request->all();
+        $user = User::create($input);
+
+        $hospitalStaff = $input;
+        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
+        //$patient['address'] = join(',,', $addressSet);
+        $hospitalStaff['userId'] = $user->userId;
+        //$hospitalStaff['staffId'] = Auth::user['userId'];
+        $hospitalStaff = hospitalStaff::create($hospitalStaff); 
+        if($input['userType']=="doctor")
+        {
+            $doctor = $input;
+            $doctor['userId'] = $user->userId;
+            $doctor = doctor::create($doctor); 
+        }
+
+        if($input['userType']=="staff")
+        {
+            $staff = $input;
+            $staff['userId'] = $user->userId;
+            $staff = staff::create($staff);
+        }
+
+        // send set password e-mail
+        return redirect('/');
     }
 
     public function manageStaffShow($staffId)
@@ -310,16 +357,6 @@ class userController extends Controller
     	
     }
 
-    // manual add by staff no username no password
-    public function addPatient(Request $request)
-    {	
-    	$user = new user($request->all());
-    	$user->userType	= 'patient';
-    	$user->save();
-
-        patient::createNewPatient($user->userId, $request->all());
-        return redirect('/');
-    }
 
     public function addHospitalStaffByAdminShow()
     {
@@ -369,33 +406,4 @@ class userController extends Controller
         return view('staff/addStaffByStaff')->with('department', $depList);
     }
 
-
-    public function addHospitalStaffStore(Request $request)
-    {
-    	$input = $request->all();
-        $user = User::create($input);
-
-        $hospitalStaff = $input;
-        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        //$patient['address'] = join(',,', $addressSet);
-        $hospitalStaff['userId'] = $user->userId;
-        //$hospitalStaff['staffId'] = Auth::user['userId'];
-        $hospitalStaff = hospitalStaff::create($hospitalStaff);	
-        if($input['userType']=="doctor")
-        {
-            $doctor = $input;
-            $doctor['userId'] = $user->userId;
-            $doctor = doctor::create($doctor); 
-        }
-
-        if($input['userType']=="staff")
-        {
-            $staff = $input;
-            $staff['userId'] = $user->userId;
-            $staff = staff::create($staff);
-        }
-
-        // send set password e-mail
-        return redirect('/');
-    }
 }

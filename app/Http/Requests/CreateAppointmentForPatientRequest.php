@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class CreateAppointmentRequest extends Request
+class CreateAppointmentForPatientRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,17 +25,19 @@ class CreateAppointmentRequest extends Request
     {
         return [
             
-            'symptom' => 'required',
-            
-
+            // 'id' => 'required|numeric',
+            // 'date' => 'required',            
+            'symptom' => 'required'
         ];
     }
 
     public function messages()
     {
         return [
+            // 'id.required' => 'กรุณาระบุรหัสประจำตัวผู้ป่วย',
+            // 'id.numeric' => 'รหัสประจำตัวผู้ป่วยต้องเป็นตัวเลขเท่านั้น',
+            // 'date.required' => 'กรุณาระบุวันนัด',
             'symptom.required' => 'กรุณาระบุอาการเบื้องต้น',
-            
         ];
     }
 }

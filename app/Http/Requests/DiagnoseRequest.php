@@ -24,9 +24,9 @@ class DiagnoseRequest extends Request
     public function rules()
     {
         return [
-            'disid' => 'required|alpha_num',
-            'disname' => 'required|alpha_num',
-            'description' => 'required',
+            'diseaseCode' => 'required|alpha_num',
+            // 'disname' => 'required|alpha_num',
+            'diagnosisDetail' => 'required',
 
         ];
     }
@@ -34,11 +34,11 @@ class DiagnoseRequest extends Request
     public function messages()
     {
         return [
-            'disid.required' => 'กรุณาระบุรหัสโรค',
-            'disid.alpha_num' => 'รหัสโรคต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
-            'disname.required' => 'กรุณาระบุชื่อโรค',
-            'disname.alpha_num' => 'ชื่อโรคต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
-            'description.required' => 'กรุณาระบุรายละเอียดการตรวจ',
+            'diseaseCode.required' => 'กรุณาระบุรหัสโรค',
+            'diseaseCode.alpha_num' => 'รหัสโรคต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
+            // 'disname.required' => 'กรุณาระบุชื่อโรค',
+            // 'disname.alpha_num' => 'ชื่อโรคต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
+            'diagnosisDetail.required' => 'กรุณาระบุรายละเอียดการตรวจ',
         ];
     }
 }

@@ -15,10 +15,18 @@
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('name', 'ชื่อ'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('name', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('name') )
+						<p class="text-danger"> {{ $errors->first('name') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('surname', 'นามสกุล'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('surname', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('surname') )
+						<p class="text-danger"> {{ $errors->first('surname') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('departmentId', 'แผนก'); !!}</div>
@@ -35,10 +43,18 @@
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('username', 'ชื่อผู้ใช้'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('username', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('username') )
+						<p class="text-danger"> {{ $errors->first('username') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('email', 'อีเมล'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('email', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('email') )
+						<p class="text-danger"> {{ $errors->first('email') }} </p> 
+						@endif 
+					</div>
 	            </div> 
 	            <div class="form-group row">
 	              <div class="col-xs-4"></div>

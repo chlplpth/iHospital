@@ -11,12 +11,18 @@ use Mail;
 use DB;
 use Auth;
 use Session;
+
+// models
 use App\appointment;
 use App\patient;
 use App\schedule;
 use App\department;
 use App\doctor;
 use App\scheduleLog;
+
+// requests
+use App\Http\Requests\CreateAppointmentRequest;
+use App\Http\Requests\CreateAppointmentForPatientRequest;
 
 class appointmentController extends Controller
 {
@@ -45,7 +51,7 @@ class appointmentController extends Controller
     }
 
     // user fill form and return available date for make appointment
-    public function createAppointmentRequest(Request $request)
+    public function createAppointmentRequest(CreateAppointmentRequest $request)
     {
         $input = $request->all();
         if($input['departmentId'] == '0')
@@ -176,7 +182,7 @@ class appointmentController extends Controller
                     ->with('doctor', $doctor);
     }
 
-    public function createAppointmentStaffRequest(Request $request)
+    public function createAppointmentStaffRequest(CreateAppointmentForPatientRequest $request)
     {
         $input = $request->all();
         if($input['departmentId'] == '0')

@@ -24,13 +24,13 @@ class RecordPatientGeneralDetailRequest extends Request
     public function rules()
     {
         return [
-            'hospitalId' => 'digits:8|required',
+            // 'hospitalId' => 'digits:8|required',
             'weight' => 'required|numeric|min:1|max:1000',
             'height' => 'required|numeric|min:1|max:300',
-            'highBP' => 'required|numeric|min:1|max:300',
-            'lowBP' => 'required|numeric|min:1|max:300',
-            'heartBeat' => 'required|numeric|min:1|max:300',
-            'symptom' => 'required',
+            'sysBlood' => 'required|numeric|min:1|max:300',
+            'diBlood' => 'required|numeric|min:1|max:300',
+            'heartRate' => 'required|numeric|min:1|max:300',
+            // 'symptom' => 'required',
             
               
         ];
@@ -39,8 +39,8 @@ class RecordPatientGeneralDetailRequest extends Request
     public function messages()
     {
         return [
-            'hospitalId.digits' => 'รหัสผู้ป่วยต้องมีตัวเลขจำนวน 8 ตัว',
-            'hospitalId.required' => 'กรุณาระบุรหัสผู้ป่วย',
+            // 'hospitalId.digits' => 'รหัสผู้ป่วยต้องมีตัวเลขจำนวน 8 ตัว',
+            // 'hospitalId.required' => 'กรุณาระบุรหัสผู้ป่วย',
             'weight.required' => 'กรุณาระบุน้ำหนัก',
             'weight.numeric' => 'น้ำหนักต้องเป็นตัวเลขเท่านั้น',
             'weight.min' => 'น้ำหนักต้องมีค่าตั้งแต่ 1 ถึง 1000',
@@ -49,19 +49,19 @@ class RecordPatientGeneralDetailRequest extends Request
             'height.numeric' => 'ส่วนสูงต้องเป็นตัวเลขเท่านั้น',
             'height.min' => 'ส่วนสูงต้องมีค่าตั้งแต่ 1 ถึง 1000',
             'height.max' => 'ส่วนสูงต้องมีค่าตั้งแต่ 1 ถึง 300',
-            'highBP.required' => 'กรุณาระบุความดันโลหิตซีสโทลิค',
-            'highBP.numeric' => 'ความดันโลหิตซีสโทลิคต้องเป็นตัวเลขเท่านั้น',
-            'highBP.min' => 'ความดันโลหิตซีสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 1000',
-            'highBP.max' => 'ความดันโลหิตซีสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 300',
-            'lowBP.required' => 'กรุณาระบุความดันโลหิตไดแอสโทลิค',
-            'lowBP.numeric' => 'ความดันโลหิตไดแอสโทลิคต้องเป็นตัวเลขเท่านั้น',
-            'lowBP.min' => 'ความดันโลหิตไดแอสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 1000',
-            'lowBP.max' => 'ความดันโลหิตไดแอสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 300',
-            'heartBeat.required' => 'กรุณาระบุอัตราการเต้นหัวใจ',
-            'heartBeat.numeric' => 'อัตราการเต้นหัวใจต้องเป็นตัวเลขเท่านั้น',
-            'heartBeat.min' => 'อัตราการเต้นหัวใจต้องมีค่าตั้งแต่ 1 ถึง 1000',
-            'heartBeat.max' => 'อัตราการเต้นหัวใจต้องมีค่าตั้งแต่ 1 ถึง 300',
-            'symptom.required' => 'กรุณาระบุอาการการเบื้องตัน',
+            'sysBlood.required' => 'กรุณาระบุความดันโลหิตซีสโทลิค',
+            'sysBlood.numeric' => 'ความดันโลหิตซีสโทลิคต้องเป็นตัวเลขเท่านั้น',
+            'sysBlood.min' => 'ความดันโลหิตซีสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 1000',
+            'sysBlood.max' => 'ความดันโลหิตซีสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 300',
+            'diBlood.required' => 'กรุณาระบุความดันโลหิตไดแอสโทลิค',
+            'diBlood.numeric' => 'ความดันโลหิตไดแอสโทลิคต้องเป็นตัวเลขเท่านั้น',
+            'diBlood.min' => 'ความดันโลหิตไดแอสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 1000',
+            'diBlood.max' => 'ความดันโลหิตไดแอสโทลิคต้องมีค่าตั้งแต่ 1 ถึง 300',
+            'heartRate.required' => 'กรุณาระบุอัตราการเต้นหัวใจ',
+            'heartRate.numeric' => 'อัตราการเต้นหัวใจต้องเป็นตัวเลขเท่านั้น',
+            'heartRate.min' => 'อัตราการเต้นหัวใจต้องมีค่าตั้งแต่ 1 ถึง 1000',
+            'heartRate.max' => 'อัตราการเต้นหัวใจต้องมีค่าตั้งแต่ 1 ถึง 300',
+            // 'symptom.required' => 'กรุณาระบุอาการการเบื้องตัน',
             
         ];
     }

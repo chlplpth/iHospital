@@ -8,6 +8,7 @@ use Auth;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+// models
 use App\diagnosisRecord;
 use App\physicalRecord;
 use App\medicinePrescription;
@@ -15,6 +16,10 @@ use App\appointment;
 use App\prescription;
 use App\doctor;
 use App\schedule;
+
+// requests
+use App\Http\Requests\RecordPatientGeneralDetailRequest;
+use App\Http\Requests\DiagnoseRequest;
 
 class diagnosisRecordController extends Controller
 {
@@ -76,7 +81,7 @@ class diagnosisRecordController extends Controller
                     ->with('search', $search);
     }
 
-    public function diagnose(Request $request)
+    public function diagnose(DiagnoseRequest $request)
     {
         $input = $request->all();
         $doctorId = Auth::user()->userId;
@@ -109,7 +114,7 @@ class diagnosisRecordController extends Controller
                 ->with('appointment', $appointment);
     }
 
-    public function recordPhysicalRecordStore(Request $request)
+    public function recordPhysicalRecordStore(RecordPatientGeneralDetailRequest $request)
     {
         $input = $request->all();
         physicalRecord::createNewPhysRecord($input, Auth::user()->userId);
