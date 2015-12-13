@@ -69,7 +69,7 @@ class searchController extends Controller
 
     public function searchDoctorScheduleByNurse()
     {
-        return $this->searchDoctor('doctorScheduleByNurseRequest');
+        return $this->searchDoctor('doctorScheduleByNurse');
     }
 
     // pharmacist

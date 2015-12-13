@@ -67,8 +67,9 @@ if(!String.prototype.formatNum) {
 		// /component/bootstrap-calendar/tmpls/
 		// or absolute
 		// http://localhost/component/bootstrap-calendar/tmpls/
-		tmpl_path: 'tmpls/',
-		tmpl_cache: true,
+		// go to edit line 960 too
+		tmpl_path: 'http://localhost/iHospital/public/tmplsStaff/',
+		tmpl_cache: false,
 		classes: {
 			months: {
 				inmonth: 'cal-day-inmonth',
@@ -956,7 +957,7 @@ if(!String.prototype.formatNum) {
 			return this.options.tmpl_path(name)
 		}
 		else {
-			return this.options.tmpl_path + name + '.html';
+			return 'http://localhost/iHospital/public/tmplsStaff/' + name + '.html';
 		}
 	};
 

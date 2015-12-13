@@ -1,4 +1,4 @@
-@extends('layout/nurseLayout')
+@extends('nurse/nurseLayout')
 @section('css')
 <link href="{{asset('css/nurse.css')}}" rel="stylesheet">
 @stop
