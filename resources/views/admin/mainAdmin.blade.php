@@ -3,9 +3,5 @@
 <link href="{{asset('css/admin.css')}}" rel="stylesheet">
 @stop
 @section('content')
-	{!! Form::open(array('url' => 'foo/bar')) !!}
-
-	<h1>Hello Admin</h1>
-
-	{!! Form::close() !!}
+	<h1>ยินดีต้อนรับ {{Auth::user()->name}} {{Auth::user()->surname}}</h1>
 @stop

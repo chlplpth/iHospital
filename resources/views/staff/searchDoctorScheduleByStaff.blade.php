@@ -13,7 +13,7 @@
         <span class ="bold">ชื่อหรือนามสกุลตัวแพทย์&nbsp;&nbsp;</span>
         <form role="form">
           <div class="form-group row">
-        <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสแพทย์" class="form-control"></select></div>
+        <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือรหัสแพทย์" class="form-control"></select>
       </div>
         </form>
         <script type="text/javascript">

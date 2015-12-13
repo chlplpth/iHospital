@@ -29,7 +29,7 @@
 					<span class="bold">กรุ๊ปเลือด : </span> {{ $app->patient->bloodGroup }}
 				</div>	
 				<div class ="col-md-8">
-					<span class="bold">อายุ : </span> 20 
+					<span class="bold">อายุ : </span> {{ $app->age() }} 
 				</div>
 				<br><br>
 			</div>

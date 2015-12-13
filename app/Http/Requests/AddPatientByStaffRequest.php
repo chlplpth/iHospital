@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class PatientAppointmentScheduleRequest extends Request
+class AddPatientByStaffRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,15 @@ class PatientAppointmentScheduleRequest extends Request
     public function rules()
     {
         return [
-            'date' => 'required',
-            
-
+            'citizenNo' => 'required',
+              
         ];
     }
 
     public function messages()
     {
         return [
-            'date.required' => 'กรุณาระบุ วันที่ต้องการนัด',
+            'citizenNo.required' => 'กรุณาระบุรหัสยา',
             
         ];
     }

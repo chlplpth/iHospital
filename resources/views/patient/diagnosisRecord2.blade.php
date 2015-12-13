@@ -3,7 +3,7 @@
 <link href="{{asset('css/patient.css')}}" rel="stylesheet">
 @stop
 @section('content')
-{!! Form::open(array('url' => '/diagRecordPdf')) !!}
+
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<h3 class="panel-title">ประวัติการรักษา</h3>
@@ -29,7 +29,7 @@
 					<span class="bold">กรุ๊ปเลือด : </span> {{ $app->patient->bloodGroup }}
 				</div>	
 				<div class ="col-md-8">
-					<span class="bold">อายุ : </span> เดี๋ยวค่อยใส่
+					<span class="bold">อายุ : </span> {{ $app->age() }}
 				</div>
 				<br><br>
 			</div>
@@ -101,12 +101,17 @@
 				
 			<div class ="row">
 				<div class ="col-md-5"></div>
-				<div class ="col-md-2"><a href = "{{ url('/diagRecordPdf') }}" class="btn btn-warning" >ส่งออก</a></div>
+				{!! Form::open(array('url' => '/diagRecordPdf')) !!}
+				<div class ="col-md-2">
+					{!! Form::hidden('appointmentId', $app->appointmentId) !!}
+					{!! Form::submit('ส่งออก', ["class" => "btn btn-warning"]) !!}
+				</div>
+				{!! Form::close() !!}
 				<div class ="col-md-5"></div>
 				<br><br>
 			</div>
 		</div>
 	</div>
 </div>
-{!! Form::close() !!}
+
 @stop

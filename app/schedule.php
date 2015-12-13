@@ -61,7 +61,7 @@ class schedule extends Model
     public static function formatDiagDate($value)
     {
         $date = explode('-', $value);
-        
+
         $day = $date[2];
         if($day[0] == '0')
         {
@@ -108,6 +108,30 @@ class schedule extends Model
                     ->hasPhysicalRecord()
                     ->hasDiagnosisRecord()
                     ->count();
+    }
+
+    public static function updateSchedule($diagDate, $diagTime, $mode, $doctorId)
+    {
+        $schedule = schedule::join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
+                            ->where('scheduleLog.doctorId', '=', $doctorId)
+                            ->where('schedule.diagDate', '=', $diagDate)
+                            ->where('schedule.diagTime', '=', $diagTime)
+                            ->first();
+
+        // add new schedule
+        if($schedule == null && $mode == 'true')
+        {
+            $slog = scheduleLog::newInstantScheduleLog($diagDate, $doctorId);
+            $newSchedule = new schedule;
+            $newSchedule->scheduleLogId = $slog->scheduleLogId;
+            $newSchedule->diagDate = $diagDate;
+            $newSchedule->diagTime = $diagTime;
+            $newSchedule->save();
+        }
+        else if($schedule != null && $mode == 'false')
+        {
+            $schedule->delete();
+        }
     }
 
     //-------------------------  function ---------------------

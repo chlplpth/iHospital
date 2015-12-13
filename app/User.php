@@ -44,7 +44,13 @@ class User extends Model implements AuthenticatableContract,
 
     public function genVerifyCode()
     {
-        $verifyCode = str_random(60);
+        $user = null;
+        $verifyCode = '';
+        do{
+            $verifyCode = str_random(60);
+            $user = User::where('verifyCode', '=', $verifyCode)->first();
+        }while($user != null);
+        
         $this->verifyCode = $verifyCode;
         $this->save();
         return $verifyCode;

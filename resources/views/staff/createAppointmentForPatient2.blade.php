@@ -61,6 +61,10 @@
 				<div class="col-xs-4">
 					{!! Form::textarea('symptom', '', ["class" => "form-control", "rows" => "5"]) !!}
 				</div>
+				<div class="col-xs-6">@if( $errors->has('symptom') )
+						<p class="text-danger"> {{ $errors->first('symptom') }} </p> 
+						@endif 
+					</div>
 			</div>
 			{!! Form::hidden('patientId', $patient->userId) !!}
 			<div class="form-group row">

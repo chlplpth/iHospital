@@ -95,6 +95,15 @@ class appointment extends Model
 
     //-------------------------------  function --------------------------
 
+    public function age()
+    {
+        $bd = $this->patient->getOriginal('dateOfBirth');
+        $diagDate = $this->schedule->getOriginal('diagDate');
+        $age = date_diff(date_create($bd), date_create($diagDate))->y;
+
+        return $age . ' ปี';
+    }
+
     public static function getRecordedAppointments($patientId)
     {
         return appointment::where('patientId', $patientId)

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AddMedicineRequest extends Request
+class ImportDoctorScheduleRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class AddMedicineRequest extends Request
     public function rules()
     {
         return [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
+            'keyword' => 'required',
+            'startDate' => 'required',
+            'endDate' => 'required',
               
         ];
     }
@@ -34,9 +34,9 @@ class AddMedicineRequest extends Request
     public function messages()
     {
         return [
-            'id.required' => 'กรุณาระบุรหัสยา',
-            'name.required' => 'กรุณาระบุชื่อยา',
-            'description.required' => 'กรุณาระบุรายละเอียดยา',
+            'keyword.required' => 'กรุณาระบุชื่อหรือรหัสแพทย์',
+            'startDate.required' => 'กรุณาระบุวันเริ่มต้น',
+            'endDate.required' => 'กรุณาระบุวันสิ้นสุด',
             
         ];
     }

@@ -25,6 +25,8 @@ class AddDepartmentRequest extends Request
     {
         return [
             'department' => 'required',
+            'place' => 'required',
+            'tel' => 'digits:9|required',
         ];
     }
 
@@ -32,7 +34,9 @@ class AddDepartmentRequest extends Request
     {
         return [
             'department.required' => 'กรุณาระบุชื่อแผนกที่ต้องการเพิ่ม',
-            
+            'place.required' => 'กรุณาระบุอาคาร/ชั้น',
+            'tel.digits' => 'เบอร์โทรศัพท์ต้องมีตัวเลข 9 ตัว',
+            'tel.required' => 'กรุณาระบุเบอร์โทรศัพท์', 
         ];
     }
 }

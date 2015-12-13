@@ -122,7 +122,7 @@ Route::post('/diagnose', 'diagnosisRecordController@diagnose');
 
 // doctor's schedule
 Route::get('/doctorScheduleByDoctor', 'scheduleController@showScheduleDoctor');
-
+Route::post('/doctorEditSchedule', 'scheduleController@editDoctorSchedule');
 
 // diagnosis history
 Route::get('/diagnosisHistory', function () {
@@ -161,7 +161,12 @@ Route::post('createAppointmentByStaffStore', 'appointmentController@createAppoin
 Route::get('manageAppointmentForPatient', function() {
     return view('staff/manageAppointmentForPatient');
 });
-Route::get('manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
+Route::get('/manageAppointmentForPatient/{patientId}', 'appointmentController@manageAppointmentShow');
+Route::post('/delayAppointmentForPatient', 'appointmentController@delayAppointmentByStaffShow');
+Route::post('/delayAppointmentByStaffRequest', 'appointmentController@delayAppointmentByStaffRequest');
+Route::post('/confirmReappointmentByStaff', 'appointmentController@confirmReappointmentByStaffShow');
+Route::post('delayAppointmentByStaff', 'appointmentController@delayAppointmentByStaffStore');
+Route::post('/deleteAppointmentByStaff', 'appointmentController@deleteAppointmentByStaffStore');
 
 // import doctor schedule
 Route::get('/importDoctorSchedule/', function() {
@@ -174,7 +179,7 @@ Route::post('/importDoctorSchedule', 'scheduleController@importScheduleStore');
 Route::get('searchDoctorScheduleByStaff', function() {
     return view('staff/searchDoctorScheduleByStaff');
 });
-Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@doctorScheduleByStaff');
+Route::get('doctorScheduleByStaff/{patientId}', 'scheduleController@viewDoctorScheduleByStaff');
 
 // add staff
 Route::get('/addStaffByStaff', 'userController@addHospitalStaffShow');
@@ -188,7 +193,6 @@ Route::get('manageStaffByStaff/{staffId}', 'userController@manageStaffShow');
 Route::post('manageStaffByStaff','userController@searchStaff');
 Route::post('manageStaffEdit','userController@editStaff');
 Route::post('manageStaffDelete','userController@deleteStaff');
-
 
 Route::get('searchPatientProfileByStaff', function() {
     return view('staff/searchPatientProfileByStaff');
@@ -214,17 +218,18 @@ Route::get('/searchPatientProfileByNurse', function () {
 });
 Route::get('patientProfileByNurse/{patientId}', 'userController@patientProfileByNurse');
 
+// record patient's general detail
 Route::get('/recordPatientGeneralDetail', function () {
     return view('nurse/recordPatientGeneralDetail');
 });
-
 Route::get('/recordPatientGeneralDetail/{patientId}', 'diagnosisRecordController@recordPhysicalRecordShow');
 Route::post('/recordPatientGeneralDetail', 'diagnosisRecordController@recordPhysicalRecordStore');
 
-
-Route::get('/doctorScheduleByNurse', function () {
-    return view('nurse/doctorScheduleByNurse');
+// doctor schedule by nurse
+Route::get('doctorScheduleByNurse', function () {
+    return view('nurse/searchDoctorScheduleByNurse');
 });
+Route::get('doctorScheduleByNurse/{doctorId}', 'scheduleController@viewScheduleByNurse');
 
 
 // ==================================================================================================
@@ -302,6 +307,7 @@ Route::get('/search/manageStaffByStaff', 'searchController@searchHospitalStaffMa
 // nurse
 Route::get('/search/recordPhysicalRecord', 'searchController@searchRecordPhysicalRecord');
 Route::get('/search/patientProfileByNurse', 'searchController@searchPatientProfileByNurse');
+Route::get('/search/manageScheduleBynurse', 'searchController@searchDoctorScheduleByNurse');
 
 // pharmacist
 Route::get('/search/patientProfileByPharmacist', 'searchController@searchPatientProfileByPharmacist');
@@ -322,8 +328,8 @@ Route::get('/testmodel', 'testController@testfunc');
 // ========================================== PDF & EMAIL ===========================================
 // ==================================================================================================
 
-Route::get('/diagRecordPdf','pdfController@diagRecordPdf');
-Route::get('/showDiagnosisHistoryPdf','pdfController@showDiagnosisHistoryPdf');
+Route::post('/diagRecordPdf','pdfController@diagRecordPdf');
+Route::get('/showDiagnosisHistoryPdf/{year}/{month}','pdfController@showDiagnosisHistoryPdf');
 Route::get('/forgetPasswordEmail', 'emailController@forgetPasswordEmail');
 Route::get('/postponedAppointmentEmail', 'emailController@postponedAppointmentEmail');
 Route::get('/createStaffEmail', 'emailController@createStaffEmail');

@@ -11,12 +11,18 @@ use Mail;
 use DB;
 use Auth;
 use Session;
+
+// models
 use App\appointment;
 use App\patient;
 use App\schedule;
 use App\department;
 use App\doctor;
 use App\scheduleLog;
+
+// requests
+use App\Http\Requests\CreateAppointmentRequest;
+use App\Http\Requests\CreateAppointmentForPatientRequest;
 
 class appointmentController extends Controller
 {
@@ -45,7 +51,7 @@ class appointmentController extends Controller
     }
 
     // user fill form and return available date for make appointment
-    public function createAppointmentRequest(Request $request)
+    public function createAppointmentRequest(CreateAppointmentRequest $request)
     {
         $input = $request->all();
         if($input['departmentId'] == '0')
@@ -74,7 +80,8 @@ class appointmentController extends Controller
         $input = $request->all();
         $input['patientId'] = Auth::user()->userId;
         $appointments = appointment::createAppointment($input);
-        // // $this->confirmAppointmentEmail();
+        // $this->confirmAppointmentEmail();
+        Session::flash('message', 'ท่านได้ทำการนัดหมายสำเร็จแล้ว!'); 
         return redirect('/');
     }
 
@@ -103,11 +110,9 @@ class appointmentController extends Controller
     // show available schedules for changing appointment date
     public function delayAppointmentRequest(Request $request)
     {
-        $oldDate = $request['date'];
         $input = $request;
         $appointment = appointment::getAppointmentDetail($input['appointmentId']);
         $newAppointments = schedule::requestDate($input);
-        $formattedDate = '';
         if($request['date'] != '')
         {
             $formattedDate = schedule::formatDiagDate($input['date']);
@@ -115,9 +120,7 @@ class appointmentController extends Controller
         
         return view('patient.rescheduleAppointment')
                 ->with('appointment', $appointment)
-                ->with('newAppointments', $newAppointments)
-                ->with('requestedDate', $oldDate)
-                ->with('formattedDate', $formattedDate);
+                ->with('newAppointments', $newAppointments);
     } 
 
     // show information before confirm new date for existing appointment
@@ -179,7 +182,7 @@ class appointmentController extends Controller
                     ->with('doctor', $doctor);
     }
 
-    public function createAppointmentStaffRequest(Request $request)
+    public function createAppointmentStaffRequest(CreateAppointmentForPatientRequest $request)
     {
         $input = $request->all();
         if($input['departmentId'] == '0')
@@ -228,6 +231,53 @@ class appointmentController extends Controller
         return view('staff.manageAppointmentForPatient2')
                     ->with('patient', $patient)
                     ->with('appointments', $appointments);
+    }
+
+    public function delayAppointmentByStaffShow(Request $request)
+    {
+        $input = $request->all();
+        $appointment = appointment::where('appointmentId', $input['appointmentId'])->first();
+        return view('staff.reschedulePatientAppointment')
+                    ->with('appointment', $appointment);
+    }
+
+    public function delayAppointmentByStaffRequest(Request $request)
+    {
+        $input = $request->all();
+        $appointment = appointment::getAppointmentDetail($input['appointmentId']);
+        $newAppointments = schedule::requestDate($input);
+        $formattedDate = '';
+
+        return view('staff.reschedulePatientAppointment')
+                    ->with('appointment', $appointment)
+                    ->with('newApps', $newAppointments);
+    }
+
+    public function confirmReappointmentByStaffShow(Request $request)
+    {
+        $input = $request->all();
+        $appointment = appointment::where('appointmentId', $input['appointmentId'])->first();
+        $schedule = schedule::where('scheduleId', $input['scheduleId'])->first();
+        return view('staff.confirmReAppointmentByStaff')
+                    ->with('appointment', $appointment)
+                    ->with('schedule', $schedule);
+    }
+
+    public function delayAppointmentByStaffStore(Request $request)
+    {
+        $input = $request->all();
+        $patientId = $appointment->patientId;
+        $appointment = appointment::delayAppointment($input);
+        return redirect('/manageAppointmentForPatient/' . $patientId);
+    }
+
+    public function deleteAppointmentByStaffStore(Request $request)
+    {
+        $appointmentId = $request['appointmentId'];
+        $appointment = appointment::where('appointmentId', $appointmentId)->first();
+        $patientId = $appointment->patientId;
+        $appointment->delete();
+        return redirect('/manageAppointmentForPatient/' . $patientId);
     }
 
     // ==================================================================================================

@@ -15,10 +15,18 @@
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('name', 'ชื่อ'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('name', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('name') )
+						<p class="text-danger"> {{ $errors->first('name') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('surname', 'นามสกุล'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('surname', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('surname') )
+						<p class="text-danger"> {{ $errors->first('surname') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('departmentId', 'แผนก'); !!}</div>
@@ -26,7 +34,7 @@
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('userType', 'บทบาท'); !!}</div>
-	              <div class="col-xs-3">{!! Form::select('userType', array('doctor' => 'แพทย์', 'nurse' => 'พยาบาล', 'staff' => 'เจ้าหน้าที่', 'phamacist' => 'เภสัชกร', 'admin' => 'ผู้ดูแลระบบ'), 'staff', ['class' => 'form-control','onChange'=>'toggleProficiency()']) !!}</div>
+	              <div class="col-xs-3">{!! Form::select('userType', array('doctor' => 'แพทย์', 'nurse' => 'พยาบาล', 'staff' => 'เจ้าหน้าที่', 'pharmacist' => 'เภสัชกร', 'admin' => 'ผู้ดูแลระบบ'), 'staff', ['class' => 'form-control','onChange'=>'toggleProficiency()']) !!}</div>
 	            </div>
 	            <div class="form-group row" id ="special" hidden>
 	              <div class="col-xs-2">{!! Form::label('proficiency', 'ความเชี่ยวชาญ'); !!}</div>
@@ -35,10 +43,18 @@
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('username', 'ชื่อผู้ใช้'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('username', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('username') )
+						<p class="text-danger"> {{ $errors->first('username') }} </p> 
+						@endif 
+					</div>
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('email', 'อีเมล'); !!}</div>
 	              <div class="col-xs-3">{!! Form::text('email', '', ['class' => 'form-control']) !!}</div>
+	              <div class="col-xs-7">@if( $errors->has('email') )
+						<p class="text-danger"> {{ $errors->first('email') }} </p> 
+						@endif 
+					</div>
 	            </div> 
 	            <div class="form-group row">
 	              <div class="col-xs-4"></div>

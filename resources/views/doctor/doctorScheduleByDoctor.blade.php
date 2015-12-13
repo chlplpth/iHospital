@@ -3,7 +3,6 @@
 <link href="{{asset('css/doctor.css')}}" rel="stylesheet">
 @stop
 @section('content')
-  {!! Form::open(array('url' => 'foo/bar')) !!}
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -54,12 +53,15 @@
                 </div>
               </form>
             </div>
+            {!! Form::open(array('url' => '/doctorEditSchedule')) !!}
             <div class="modal-footer">
               <div type="button" class="btn btn-default" data-dismiss="modal">ปิด</div>
-              {!! Form::hidden('hiddenMr', '-1', ['id'=>'hiddenMr']); !!}
-              {!! Form::hidden('hiddenAf', '-1', ['id'=>'hiddenAf']); !!}
-              {!! Form::hidden('hiddenDate', '-1', ['id'=>'date']); !!}
-              {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary"]) !!}
+                {!! Form::hidden('hiddenMr', '-1', ['id'=>'hiddenMr']); !!}
+                {!! Form::hidden('hiddenAf', '-1', ['id'=>'hiddenAf']); !!}
+                {!! Form::hidden('hiddenDate', '-1', ['id'=>'hiddenDate']); !!}
+              {!! Form::submit('ยืนยัน', ["class" => "btn btn-primary", "disabled", "id"=>"confirmButton"]) !!}
+            </div>
+            {!! Form::close() !!}
             </div>
           </div>
         </div>
@@ -165,6 +167,7 @@
           console.log(editMode);
           edited = true;
           $('#checkboxField').attr('disabled', editMode);
+          $('#confirmButton').attr('disabled', editMode);
           editMode = (editMode) ? false : true;
         });
 
@@ -191,11 +194,13 @@
         // });
 
         // pass value using hidden
-        $(':checkbox').click(function() {
-          $('#hiddenMr').prop('value', $('#ckb1').checked);
-          $('#hiddenAf').prop('value', $('#ckb2').checked);
+        $('#confirmButton').click(function() {
+          $('#hiddenMr').prop('value', $('#ckb1').prop('checked'));
++         $('#hiddenAf').prop('value', $('#ckb2').prop('checked'));
           $('#hiddenDate').prop('value', dateOfModal);
-          console.log('AAAAAA');
+          console.log($('#hiddenMr'));
++         console.log($('#hiddenAf'));
++         console.log($('#hiddenDate'));
         });
 
         // set default when Modal is cloesed

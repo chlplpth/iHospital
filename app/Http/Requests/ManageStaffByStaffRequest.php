@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AddMedicineRequest extends Request
+class ManageStaffByStaffRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,22 +22,19 @@ class AddMedicineRequest extends Request
      * @return array
      */
     public function rules()
-    {
+    {	
         return [
-            'id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-              
+            'keyword' => 'required|alpha_num',
+            
+
         ];
     }
 
     public function messages()
     {
         return [
-            'id.required' => 'กรุณาระบุรหัสยา',
-            'name.required' => 'กรุณาระบุชื่อยา',
-            'description.required' => 'กรุณาระบุรายละเอียดยา',
-            
+            'keyword.required' => 'กรุณาระบุชื่อหรือรหัสบุคลากร',
+            'keyword.alpha_num' => 'รหัสบุคลากรต้องเป็นตัวอักษรหรือตัวเลขเท่านั้น',
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-
+use Carbon\Carbon;
 use App\user;
 use DB;
 
@@ -189,6 +189,7 @@ class patient extends Model
         //            ->get();
         return schedule::join('appointment', 'schedule.scheduleId', '=', 'appointment.scheduleId')
                    ->where('appointment.patientId', '=', $this->userId)
+                   ->where('schedule.diagDate', '>', Carbon::now())
                    ->orderBy('schedule.diagDate', 'asc')
                    ->orderBy('schedule.diagTime', 'asc')
                    ->get();
