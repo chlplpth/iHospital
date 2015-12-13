@@ -16,8 +16,8 @@
 		      <div>{!! Form::label('patient', 'กรอกชื่อหรือนามสกุลผู้ป่วยเพื่อค้นหา'); !!}</div>
 		      <div class="col-xs-3"><select id="searchbox" name="q" placeholder="กรอกชื่อหรือนามสกุลผู้ป่วย" class="form-control"></select></div>
 		    </div>
-		<!-- @elseif(!isset($appointment)) -->
-			<!-- ผู้ป่วยคนดังกล่าวไม่มีการนัดหมายที่ยังไม่ได้รับการวินิจฉัย -->
+		@elseif(!isset($appointment))
+			ผู้ป่วยคนดังกล่าวไม่มีการนัดหมายที่ยังไม่ได้รับการวินิจฉัย
 		@else
 		<div id="diagnosisForm">
 			<div class="form-group row">  
