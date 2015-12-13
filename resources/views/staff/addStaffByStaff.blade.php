@@ -34,7 +34,7 @@
 	            </div>
 	            <div class="form-group row">
 	              <div class="col-xs-2">{!! Form::label('userType', 'บทบาท'); !!}</div>
-	              <div class="col-xs-3">{!! Form::select('userType', array('doctor' => 'แพทย์', 'nurse' => 'พยาบาล', 'staff' => 'เจ้าหน้าที่', 'phamacist' => 'เภสัชกร', 'admin' => 'ผู้ดูแลระบบ'), 'staff', ['class' => 'form-control','onChange'=>'toggleProficiency()']) !!}</div>
+	              <div class="col-xs-3">{!! Form::select('userType', array('doctor' => 'แพทย์', 'nurse' => 'พยาบาล', 'staff' => 'เจ้าหน้าที่', 'pharmacist' => 'เภสัชกร', 'admin' => 'ผู้ดูแลระบบ'), 'staff', ['class' => 'form-control','onChange'=>'toggleProficiency()']) !!}</div>
 	            </div>
 	            <div class="form-group row" id ="special" hidden>
 	              <div class="col-xs-2">{!! Form::label('proficiency', 'ความเชี่ยวชาญ'); !!}</div>

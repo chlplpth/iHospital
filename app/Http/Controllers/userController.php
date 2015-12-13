@@ -212,10 +212,7 @@ class userController extends Controller
         $user = User::create($input);
 
         $hospitalStaff = $input;
-        //$addressSet = array($input['addressNo'], $input['moo'], $input['street'], $input['subdistrict'], $input['district'], $input['province'], $input['zipcode']);
-        //$patient['address'] = join(',,', $addressSet);
         $hospitalStaff['userId'] = $user->userId;
-        //$hospitalStaff['staffId'] = Auth::user['userId'];
         $hospitalStaff = hospitalStaff::create($hospitalStaff); 
         if($input['userType']=="doctor")
         {
@@ -231,8 +228,11 @@ class userController extends Controller
             $staff = staff::create($staff);
         }
 
+        $user->genVerifyCode();
+        $link = url('/') . '/changePassword/' . $user->verifyCode;
+        echo '<a href="' . $link . '"> change password </a>';
         // send set password e-mail
-        return redirect('/');
+        //return redirect('/');
     }
 
     public function manageStaffShow($staffId)
