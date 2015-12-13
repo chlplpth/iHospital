@@ -29,10 +29,10 @@
 							<?php 
 								$sum=(int)$diagnosis['morning']+(int)$diagnosis['afternoon'];
 							?>
-							<td style="border:1px solid black;">{{ $diagnosis['diagDate'] }}</td>
+							<td style="border:1px solid black;">{{ $diagnosis['date'] }}</td>
 							<td style="border:1px solid black;">{{ $diagnosis['morning'] }}</td>
 							<td style="border:1px solid black;">{{ $diagnosis['afternoon']}}</td>
-							<td style="border:1px solid black;">{{ $sum }}</td>
+							<td style="border:1px solid black;">{{ $diagnosis['sum'] }}</td>
 						</tr>
 			@endforeach
 		</tbody>

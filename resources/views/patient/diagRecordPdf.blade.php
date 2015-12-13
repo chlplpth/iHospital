@@ -70,7 +70,7 @@
 					<tbody>
 						@foreach($medicine as $med)
 						<tr>
-							<td style="border:1px solid black;">{{ $med['drugName'] }}</td>
+							<td style="border:1px solid black;">{{ $med['medicineName'] }}</td>
 							<td style="border:1px solid black;">{{ $med['quantity'] }}</td>
 						</tr>
 						@endforeach

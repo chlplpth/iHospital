@@ -328,8 +328,8 @@ Route::get('/testmodel', 'testController@testfunc');
 // ========================================== PDF & EMAIL ===========================================
 // ==================================================================================================
 
-Route::get('/diagRecordPdf','pdfController@diagRecordPdf');
-Route::get('/showDiagnosisHistoryPdf','pdfController@showDiagnosisHistoryPdf');
+Route::post('/diagRecordPdf','pdfController@diagRecordPdf');
+Route::get('/showDiagnosisHistoryPdf/{year}/{month}','pdfController@showDiagnosisHistoryPdf');
 Route::get('/forgetPasswordEmail', 'emailController@forgetPasswordEmail');
 Route::get('/postponedAppointmentEmail', 'emailController@postponedAppointmentEmail');
 Route::get('/createStaffEmail', 'emailController@createStaffEmail');

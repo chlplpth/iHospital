@@ -100,7 +100,9 @@ class diagnosisRecordController extends Controller
         return view('doctor.showDiagnosisHistory')
                 ->with('stats', $stats)
                 ->with('year', $input['year'])
-                ->with('month', schedule::getMonthName($input['month']));
+                ->with('month', schedule::getMonthName($input['month']))
+                ->with('rawYear', ($input['year'] - 543))
+                ->with('rawMonth', ($input['month']));
     }
 
     // ==================================================================================================
