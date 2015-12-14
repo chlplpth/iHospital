@@ -132,11 +132,13 @@ class appointment extends Model
         return null;
     }
 
-    public static function toBeRecordedDiag($patientId)
+    public static function toBeRecordedDiag($patientId, $doctorId)
     {
         $apps = appointment::where('patientId', $patientId)
                             ->join('schedule', 'appointment.scheduleId', '=', 'schedule.scheduleId')
+                            ->join('scheduleLog', 'schedule.scheduleLogId', '=', 'scheduleLog.scheduleLogId')
                             ->where('schedule.diagDate', '>', Carbon::now())
+                            ->where('scheduleLog.doctorId', '=', $doctorId)
                             ->hasPhysicalRecord()
                             ->orderBy('diagDate', 'asc')
                             ->orderBy('diagTime', 'asc')

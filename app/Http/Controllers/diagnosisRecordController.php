@@ -68,7 +68,7 @@ class diagnosisRecordController extends Controller
 
     public function recordDiagnosisRecordShow($patientId)
     {
-        $appointment = appointment::toBeRecordedDiag($patientId);
+        $appointment = appointment::toBeRecordedDiag($patientId, Auth::user()->userId);
         $phys = null;
         $search = 'yes';
         if($appointment != null)
