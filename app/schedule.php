@@ -130,6 +130,11 @@ class schedule extends Model
         }
         else if($schedule != null && $mode == 'false')
         {
+            $appointments = $schedule->appointments()->get();
+            foreach($appointments as $app)
+            {
+                $app->delete();
+            }
             $schedule->delete();
         }
     }

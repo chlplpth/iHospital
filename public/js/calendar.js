@@ -68,7 +68,7 @@ if(!String.prototype.formatNum) {
 		// or absolute
 		// http://localhost/component/bootstrap-calendar/tmpls/
 		// go to edit line 960 too
-		tmpl_path: 'http://localhost/iHospital/public/tmplsStaff/',
+		tmpl_path: 'http://localhost:8888/tmplsStaff/',
 		tmpl_cache: false,
 		classes: {
 			months: {
@@ -957,7 +957,7 @@ if(!String.prototype.formatNum) {
 			return this.options.tmpl_path(name)
 		}
 		else {
-			return 'http://localhost/iHospital/public/tmplsStaff/' + name + '.html';
+			return 'http://localhost:8888/tmplsStaff/' + name + '.html';
 		}
 	};
 
